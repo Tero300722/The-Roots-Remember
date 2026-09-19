@@ -10,6 +10,12 @@ const DATA = {
       className: "Monk",
       subclass: "Warrior of the Storm Dragon",
       accent: "151, 113, 255",
+      cardDescription: "A disciplined elven martial artist from distant Vidrora, striving to master his strength, emotions, and pride.",
+      description: [
+        "Aurelius Tempestine is a young elven martial artist who hails from Vidrora, a distant continent far from the lands in which he now travels. Having grown up in harsh circumstances, Aurelius developed a strong sense of independence, determination, and adaptability from an early age.",
+        "Now carrying the Tempestine name, Aurelius follows a disciplined martial path inspired by the power and presence of dragons. He is generally focused and determined, constantly striving to keep his strength, emotions, and pride under control.",
+        "Aurelius seeks to use his abilities for something greater than himself. Far from his homeland of Vidrora, he travels as an adventurer, hoping to prove through his actions what kind of person he chooses to become."
+      ],
     },
     {
       slug: "cassian-caelaris",
@@ -21,6 +27,11 @@ const DATA = {
       className: "Paladin",
       subclass: "Oath of the Noble Genies",
       accent: "218, 68, 61",
+      cardDescription: "A calm and disciplined noble paladin who protects his allies through swordsmanship, mobility, and elemental power.",
+      description: [
+        "Cassian Caelaris is a 20-year-old Winged Tiefling Paladin of House Caelaris, a noble family devoted to the Noble Genies and the four elements. Calm, disciplined, loyal, and observant, Cassian values honor, justice, protection, and responsibility, though his past has left him with a harder edge beneath his noble demeanor.",
+        "In combat, Cassian fights with Dawnbringer and a shield, combining disciplined swordsmanship, mobility, and elemental power. He prefers a tactical and protective fighting style, using Fire, Water, Earth, and Air to adapt to the battlefield, defend allies, and strike when necessary."
+      ],
     },
     {
       slug: "leoric-everheart",
@@ -32,6 +43,12 @@ const DATA = {
       className: "Wizard / Bard",
       subclass: "Bibliomancy",
       accent: "224, 183, 104",
+      cardDescription: "A pacifistic Khoravar scholar, librarian, and magical tinkerer who prefers resolving conflict through persuasion before turning to magic.",
+      description: [
+        "Leoric is a 5'8\" Khoravar with short brown hair and amber eyes. He is often seen wearing a red tie paired with formal attire, with a spellbook kept at his hip. When he was young, he was often seen alongside his best friend Cassian, whose family is known for its renowned paladins. The two occasionally found themselves in trouble with Cassian's family because of their escapades.",
+        "Leoric has spent most of his life studying the arcane arts and is currently enrolled at Silvercrest Academy, where he also works part time as a librarian. In his free time, he takes part in the Magical Crafts Club, tinkering with and crafting magical gadgets that either intrigue him or have been requested through the club.",
+        "Outside of student life, Leoric pursues the role of a mediator. Fueled by his pacifistic nature, he tries to resolve conflicts as peacefully as possible, ideally with both sides walking away with something from the encounter. He usually relies on his affinity for persuasion, but if push comes to shove, he may use magical means to bring a conflict to an end."
+      ],
     },
     {
       slug: "morvan-nyx",
@@ -65,21 +82,52 @@ const DATA = {
       className: "Warlock",
       subclass: "Eightfold Covenant",
       accent: "237, 132, 45",
+      cardDescription: "Bold, heroic, and eager to charge first, Vaeloryn fights on the front line with martial skill, magic, and spectral pact weapons.",
+      description: [
+        "Bold, confident, and possessed of a heroic ego to match, Vaeloryn is always the first to throw himself into danger and often assumes everyone else will follow. He carries himself like the hero of a story already being written, meeting impossible odds with bravado, determination, and an almost reckless eagerness to prove himself.",
+        "In battle, he fights on the front lines, weaving martial skill and magic together while calling upon the Vestiges—souls of the departed that manifest through him as spectral pact weapons with mystical abilities."
+      ],
     }
   ],
-  quest: {
-    title: "Investigate the Robbery of Stardust and Slag",
-    status: "In Progress",
-    givenBy: "Orthen Solaris",
-    location: "Industrial Area of Elaris",
-    image: "assets/orthen-solaris.webp",
-    description: "Orthen started off the party's adventure by sending them out of Valemere and into the industrial area of Elaris. Their task is to investigate who robbed Stardust and Slag, uncover why the supplier was targeted, and bring the person responsible for the break-in and theft to justice.",
-    objectives: [
-      "Investigate the break-in at Stardust and Slag",
-      "Discover who carried out the robbery and why",
-      "Bring the person responsible to justice"
-    ]
-  },
+  quests: [
+    {
+      title: "Investigate the Robbery of Stardust and Slag",
+      status: "In Progress",
+      state: "active",
+      givenBy: "Orthen Solaris",
+      location: "Industrial Area of Elaris",
+      image: "assets/orthen-solaris.webp",
+      description: "Orthen started off the party's adventure by sending them out of Valemere and into the industrial area of Elaris. Their task is to investigate who robbed Stardust and Slag, uncover why the supplier was targeted, and bring the person responsible for the break-in and theft to justice.",
+      objectives: [
+        "Investigate the break-in at Stardust and Slag",
+        "Discover who carried out the robbery and why",
+        "Bring the person responsible to justice"
+      ]
+    }
+  ],
+  npcs: [
+    {
+      name: "Orthen Solaris",
+      role: "Quest Giver • House Solaris",
+      importance: "major",
+      image: "assets/npcs/cards/orthen-solaris.webp",
+      description: "Orthen is a Leonin and a descendant of the Solaris family. He serves as the party's quest giver and has spent the last 18 years searching for his missing brother, who vanished after being sent on a mission. Even after all that time, Orthen still holds on to the hope that one day he will find him—dead or alive."
+    },
+    {
+      name: "Pip",
+      role: "Owner • The Middle Fiddler Tavern/Inn",
+      importance: "supporting",
+      image: "assets/npcs/cards/pip.webp",
+      description: "Pip owns and runs The Middle Fiddler Tavern/Inn. She keeps the entire business moving and, as part of the job, deals with drunkards on a daily basis."
+    },
+    {
+      name: "Sebastian",
+      role: "Orthen Solaris' Butler",
+      importance: "supporting",
+      image: "assets/npcs/cards/sebastian.webp",
+      description: "Sebastian is Orthen's butler and has remained by his side for many years, becoming a familiar and dependable presence in the Solaris household."
+    }
+  ],
   sessions: [
     {
       number: "Session I",
@@ -129,7 +177,7 @@ const DATA = {
   ]
 };
 
-const ASSET_VERSION = '20260919-map1';
+const ASSET_VERSION = '20260919-leoric1';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const landing = document.getElementById('landing');
@@ -291,6 +339,12 @@ function renderCharacterDetail(character) {
             <div class="detail-row"><span>Class</span><strong>${character.className}</strong></div>
             <div class="detail-row"><span>Subclass</span><strong>${character.subclass}</strong></div>
           </div>
+          ${character.description ? `
+            <div class="character-profile-description">
+              <span>Character Description</span>
+              ${character.description.map(paragraph => `<p>${paragraph}</p>`).join("")}
+            </div>
+          ` : ""}
         </div>
       </div>
     </article>
@@ -311,42 +365,121 @@ characterBack.addEventListener('click', () => {
 });
 
 /* -------------------- Quest board -------------------- */
-const quest = DATA.quest;
-document.getElementById('quest-board').innerHTML = `
-  <article class="quest-card">
-    <div class="quest-copy">
-      <div class="quest-seal" aria-hidden="true">✦</div>
-      <p class="eyebrow">Active Contract</p>
-      <div class="quest-title-line">
-        <h3>${quest.title}</h3>
-        <span class="status">${quest.status}</span>
-      </div>
-      <p>${quest.description}</p>
-      <div class="quest-meta">
-        <div class="meta-box"><span>Quest Giver</span><strong>${quest.givenBy}</strong></div>
-        <div class="meta-box"><span>Destination</span><strong>${quest.location}</strong></div>
-      </div>
-      <div class="quest-objectives">
-        <div class="quest-objectives-title">Known Objectives</div>
-        ${quest.objectives.map((objective, index) => `
-          <div class="quest-objective">
-            <span class="objective-mark">${index + 1}</span>
-            <span>${objective}</span>
+const questBoard = document.getElementById('quest-board');
+const activeQuests = DATA.quests.filter(quest => quest.state === 'active');
+const completedQuests = DATA.quests.filter(quest => quest.state === 'completed');
+
+function renderActiveQuest(quest) {
+  return `
+    <article class="quest-card">
+      <div class="quest-card-head">
+        <div class="quest-heading-group">
+          <div class="quest-seal" aria-hidden="true">✦</div>
+          <div>
+            <p class="eyebrow">Active Contract</p>
+            <h3>${quest.title}</h3>
           </div>
-        `).join('')}
+        </div>
+        <span class="status"><span class="status-dot" aria-hidden="true"></span>${quest.status}</span>
       </div>
-    </div>
-    <div class="quest-art">
+
+      <div class="quest-card-body">
+        <p class="quest-description">${quest.description}</p>
+
+        <div class="quest-meta">
+          <div class="meta-box"><span>Quest Giver</span><strong>${quest.givenBy}</strong></div>
+          <div class="meta-box"><span>Destination</span><strong>${quest.location}</strong></div>
+        </div>
+
+        <div class="quest-objectives">
+          <div class="quest-objectives-title">Known Objectives</div>
+          <div class="quest-objective-list">
+            ${quest.objectives.map((objective, index) => `
+              <div class="quest-objective">
+                <span class="objective-mark">${index + 1}</span>
+                <span>${objective}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderCompletedQuest(quest) {
+  return `
+    <article class="completed-quest-card">
+      <div class="completed-quest-copy">
+        <p class="eyebrow">Completed Contract</p>
+        <h4>${quest.title}</h4>
+        <div class="completed-quest-meta">
+          <span>${quest.givenBy}</span>
+          <span>${quest.location}</span>
+        </div>
+      </div>
       <img
-        src="${asset(quest.image)}"
-        alt="Orthen Solaris"
+        class="quest-complete-stamp"
+        src="${asset("assets/quest-complete-stamp.png")}"
+        alt="Quest Complete"
         loading="lazy"
         decoding="async"
       >
-      <div class="quest-giver-label"><span>Quest Giver</span><strong>${quest.givenBy}</strong></div>
+    </article>
+  `;
+}
+
+questBoard.innerHTML = `
+  <div class="quest-board-layout">
+    <div class="active-quest-column">
+      ${activeQuests.length
+        ? activeQuests.map(renderActiveQuest).join('')
+        : `<div class="quest-empty active-empty"><span>✦</span><strong>No active contract</strong><p>The board is quiet for now.</p></div>`
+      }
     </div>
-  </article>
+    <aside class="completed-quest-column" aria-label="Completed quests">
+      <div class="completed-board-heading">
+        <p class="eyebrow">Archived Contracts</p>
+        <h3>Completed Quests</h3>
+        <p>Finished quests are moved here and marked with the royal completion stamp.</p>
+      </div>
+      <div class="completed-quest-list">
+        ${completedQuests.length
+          ? completedQuests.map(renderCompletedQuest).join('')
+          : `<div class="quest-empty"><span>◇</span><strong>No completed quests yet</strong><p>When the party finishes a contract, it will be archived here.</p></div>`
+        }
+      </div>
+    </aside>
+  </div>
 `;
+
+/* -------------------- NPC archive -------------------- */
+const majorNpcList = document.getElementById('npc-major-list');
+const supportingNpcList = document.getElementById('npc-supporting-list');
+
+function buildNpcCard(npc, index) {
+  const card = document.createElement('article');
+  card.className = `npc-card ${npc.importance === 'major' ? 'npc-card-major' : ''}`;
+  card.style.animationDelay = `${index * 80}ms`;
+  card.innerHTML = `
+    <div class="npc-portrait">
+      <img src="${asset(npc.image)}" alt="${npc.name}" loading="lazy" decoding="async">
+    </div>
+    <div class="npc-copy">
+      <h3>${npc.name}</h3>
+      <div class="npc-role">${npc.role}</div>
+      <p>${npc.description}</p>
+    </div>
+  `;
+  return card;
+}
+
+DATA.npcs.filter(npc => npc.importance === 'major').forEach((npc, index) => {
+  majorNpcList.appendChild(buildNpcCard(npc, index));
+});
+DATA.npcs.filter(npc => npc.importance === 'supporting').forEach((npc, index) => {
+  supportingNpcList.appendChild(buildNpcCard(npc, index));
+});
 
 /* -------------------- Session archive -------------------- */
 function buildSessionCard(session, index) {
@@ -647,7 +780,7 @@ function renderFromHash({ immediate = true } = {}) {
     }
   }
 
-  const validPages = ['home', 'characters', 'quests', 'map', 'sessions'];
+  const validPages = ['home', 'characters', 'quests', 'map', 'npcs', 'sessions'];
   const target = validPages.includes(hash) ? hash : 'home';
   actuallyShowPage(target);
 

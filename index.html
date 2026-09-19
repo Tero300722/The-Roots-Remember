@@ -10,7 +10,7 @@
   <meta property="og:description" content="The official player archive for The Roots Remember campaign." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tero300722.github.io/The-Roots-Remember/" />
-  <meta property="og:image" content="https://tero300722.github.io/The-Roots-Remember/assets/share-preview.jpg?v=20260919-map1" />
+  <meta property="og:image" content="https://tero300722.github.io/The-Roots-Remember/assets/share-preview.jpg?v=20260919-layout2" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -18,12 +18,12 @@
   <title>The Roots Remember</title>
   <link rel="canonical" href="https://tero300722.github.io/The-Roots-Remember/" />
 
-  <link rel="icon" href="assets/favicon.svg?v=20260919-map1" type="image/svg+xml" />
-  <link rel="preload" as="image" href="assets/campaign-hero.webp?v=20260919-map1" fetchpriority="high" />
+  <link rel="icon" href="assets/favicon.svg?v=20260919-layout2" type="image/svg+xml" />
+  <link rel="preload" as="image" href="assets/campaign-hero.webp?v=20260919-layout2" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260919-map1" />
+  <link rel="stylesheet" href="style.css?v=20260919-layout2" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -41,7 +41,7 @@
 
   <div class="landing" id="landing" aria-label="Campaign landing screen">
     <img
-      src="assets/campaign-hero.webp?v=20260919-map1"
+      src="assets/campaign-hero.webp?v=20260919-layout2"
       width="1672"
       height="941"
       alt=""
@@ -83,6 +83,7 @@
         <button class="nav-link" data-page="characters">Characters</button>
         <button class="nav-link" data-page="quests">Quest Board</button>
         <button class="nav-link" data-page="map">Map</button>
+        <button class="nav-link" data-page="npcs">NPCs</button>
         <button class="nav-link" data-page="sessions">Session Archive</button>
       </nav>
     </header>
@@ -98,7 +99,7 @@
         <div class="hero-card reveal-cinematic delay-a">
           <img
             class="hero-art"
-            src="assets/session-3-home.webp?v=20260919-map1"
+            src="assets/session-3-home.webp?v=20260919-layout2"
             width="1536"
             height="1024"
             alt="Valemere under stormy skies"
@@ -171,7 +172,7 @@
 
           <button class="map-preview" id="map-preview" type="button" aria-label="Open the Kingdom of Valemere map in the full-screen viewer">
             <img
-              src="assets/kingdom-of-valemere-map.webp?v=20260919-map1"
+              src="assets/kingdom-of-valemere-map.webp?v=20260919-layout2"
               width="1448"
               height="1086"
               alt="Illustrated campaign map of the Kingdom of Valemere"
@@ -181,6 +182,36 @@
             <span class="map-open-hint"><span aria-hidden="true">⌕</span> Click to explore</span>
           </button>
         </section>
+      </section>
+
+      <section class="page" id="npcs">
+        <header class="section-header page-reveal-item">
+          <p class="eyebrow">People Met Along the Road</p>
+          <h2>NPC Archive</h2>
+          <p>Known faces from the campaign, separated by how important they currently are to the party's story.</p>
+        </header>
+
+        <div class="npc-section-block page-reveal-item">
+          <div class="npc-tier-heading">
+            <span class="npc-tier-mark npc-tier-mark-high" aria-hidden="true">◆</span>
+            <div>
+              <p class="eyebrow">High Importance</p>
+              <h3>Major NPCs</h3>
+            </div>
+          </div>
+          <div class="npc-grid npc-grid-major" id="npc-major-list"></div>
+        </div>
+
+        <div class="npc-section-block page-reveal-item npc-supporting-block">
+          <div class="npc-tier-heading">
+            <span class="npc-tier-mark" aria-hidden="true">◇</span>
+            <div>
+              <p class="eyebrow">Low Importance</p>
+              <h3>Supporting NPCs</h3>
+            </div>
+          </div>
+          <div class="npc-grid" id="npc-supporting-list"></div>
+        </div>
       </section>
 
       <section class="page" id="sessions">
@@ -217,7 +248,7 @@
       <div class="map-viewport" id="map-viewport">
         <img
           id="map-full-image"
-          src="assets/kingdom-of-valemere-map.webp?v=20260919-map1"
+          src="assets/kingdom-of-valemere-map.webp?v=20260919-layout2"
           width="1448"
           height="1086"
           alt="Illustrated campaign map of the Kingdom of Valemere"
@@ -229,6 +260,6 @@
     </section>
   </div>
 
-  <script src="script.js?v=20260919-map1"></script>
+  <script src="script.js?v=20260919-layout2"></script>
 </body>
 </html>
