@@ -10,7 +10,6 @@ const DATA = {
       className: "Monk",
       subclass: "Warrior of the Storm Dragon",
       accent: "151, 113, 255",
-      effect: "lightning"
     },
     {
       slug: "cassian-caelaris",
@@ -22,7 +21,6 @@ const DATA = {
       className: "Paladin",
       subclass: "Oath of the Noble Genies",
       accent: "218, 68, 61",
-      effect: "smite"
     },
     {
       slug: "leoric-everheart",
@@ -34,7 +32,6 @@ const DATA = {
       className: "Wizard / Bard",
       subclass: "Bibliomancy",
       accent: "224, 183, 104",
-      effect: "equations"
     },
     {
       slug: "morvan-nyx",
@@ -46,7 +43,6 @@ const DATA = {
       className: "Fighter",
       subclass: "Umbral Tempest",
       accent: "49, 78, 175",
-      effect: "mist"
     },
     {
       slug: "syrsa-orsona",
@@ -58,7 +54,6 @@ const DATA = {
       className: "Bard",
       subclass: "College of the Unbound Song",
       accent: "255, 220, 58",
-      effect: "music"
     },
     {
       slug: "vaeloryn-starsong",
@@ -70,7 +65,6 @@ const DATA = {
       className: "Warlock",
       subclass: "Eightfold Covenant",
       accent: "237, 132, 45",
-      effect: "summon"
     }
   ],
   quest: {
@@ -232,76 +226,9 @@ DATA.sessions.at(-1).paragraphs.forEach(text => {
 });
 
 /* -------------------- Characters -------------------- */
-function characterEffectMarkup(character) {
-  switch (character.effect) {
-    case 'lightning':
-      return `
-        <div class="character-fx fx-lightning" aria-hidden="true">
-          <svg viewBox="0 0 100 140" preserveAspectRatio="none">
-            <path class="lightning-bolt bolt-a" d="M7,-5 L18,20 L11,38 L24,57 L15,78 L29,98 L20,118 L27,145" />
-            <path class="lightning-bolt bolt-b" d="M91,-8 L82,17 L90,35 L77,55 L86,73 L72,94 L80,112 L70,145" />
-            <path class="lightning-bolt bolt-c" d="M2,34 L17,46 L11,60 L30,70" />
-            <path class="lightning-bolt bolt-d" d="M98,42 L83,55 L89,68 L70,78" />
-          </svg>
-          <span class="lightning-flash flash-a"></span>
-          <span class="lightning-flash flash-b"></span>
-        </div>`;
-    case 'smite':
-      return `
-        <div class="character-fx fx-smite" aria-hidden="true">
-          <span class="smite-column"></span>
-          <span class="smite-ring ring-a"></span>
-          <span class="smite-ring ring-b"></span>
-          <span class="smite-spark spark-a"></span><span class="smite-spark spark-b"></span>
-          <span class="smite-spark spark-c"></span><span class="smite-spark spark-d"></span>
-          <span class="smite-spark spark-e"></span><span class="smite-spark spark-f"></span>
-        </div>`;
-    case 'equations':
-      return `
-        <div class="character-fx fx-equations" aria-hidden="true">
-          <span class="equation eq-a">∫ Ψ · dΩ = Φ</span>
-          <span class="equation eq-b">Δx · Δp ≥ ℏ/2</span>
-          <span class="equation eq-c">Σ aₙeⁱⁿᶿ</span>
-          <span class="equation eq-d">∂²φ / ∂t²</span>
-          <span class="equation eq-e">∞  ⟡  √λ  ≈  π</span>
-          <span class="equation-orbit"><i></i><b></b></span>
-        </div>`;
-    case 'mist':
-      return `
-        <div class="character-fx fx-mist" aria-hidden="true">
-          <span class="mist-veil"></span>
-          <span class="mist-cloud cloud-a"></span><span class="mist-cloud cloud-b"></span>
-          <span class="mist-cloud cloud-c"></span><span class="mist-cloud cloud-d"></span>
-          <span class="mist-wisp wisp-a"></span><span class="mist-wisp wisp-b"></span>
-        </div>`;
-    case 'music':
-      return `
-        <div class="character-fx fx-music" aria-hidden="true">
-          <span class="sound-ring sound-a"></span><span class="sound-ring sound-b"></span>
-          <span class="music-note note-a">♪</span><span class="music-note note-b">♫</span>
-          <span class="music-note note-c">♬</span><span class="music-note note-d">♪</span>
-          <span class="music-note note-e">𝄞</span><span class="music-note note-f">♫</span>
-          <span class="music-note note-g">♪</span><span class="music-note note-h">♬</span>
-        </div>`;
-    case 'summon':
-      return `
-        <div class="character-fx fx-summon" aria-hidden="true">
-          <span class="summon-circle summon-a"></span>
-          <span class="summon-circle summon-b"></span>
-          <span class="summon-circle summon-c"></span>
-          <span class="summon-core">✦</span>
-          <span class="summon-rune rune-1">◇</span><span class="summon-rune rune-2">△</span>
-          <span class="summon-rune rune-3">✧</span><span class="summon-rune rune-4">○</span>
-          <span class="summon-rune rune-5">⋄</span><span class="summon-rune rune-6">✦</span>
-        </div>`;
-    default:
-      return '';
-  }
-}
-
 function makeCharacterCard(character, index) {
   const card = document.createElement('article');
-  card.className = `character-card character-${character.effect}`;
+  card.className = 'character-card';
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', `Open ${character.name}'s character profile`);
@@ -309,7 +236,6 @@ function makeCharacterCard(character, index) {
   card.style.setProperty('--accent-rgb', character.accent);
   card.innerHTML = `
     <img src="${character.cardImage}" alt="${character.name}">
-    ${characterEffectMarkup(character)}
     <div class="character-orbit" aria-hidden="true"></div>
     <div class="character-info">
       <h3>${character.name}</h3>
