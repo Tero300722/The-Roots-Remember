@@ -60,6 +60,10 @@ const DATA = {
       className: "Fighter",
       subclass: "Umbral Tempest",
       accent: "49, 78, 175",
+      description: [
+        "Morvan Nyx is quiet, observant, and naturally reserved, rarely speaking more than he needs to. He tends to keep others at a distance, preferring to understand a situation before involving himself in it. Despite his detached appearance, Morvan is deeply loyal to the people he trusts and will put himself in danger without hesitation to protect them. He is curious by nature, drawn toward mysteries and things he cannot understand, though he rarely reveals just how much is going through his mind.",
+        "In combat, Morvan fights with speed, precision, and unpredictability rather than brute force alone. He uses darkness and rapid movement to control positioning, slipping around opponents and striking from unexpected angles before disappearing from their reach. His style is aggressive when an opening appears but calculated enough that he rarely commits without purpose. To anyone watching him fight, it can seem as though Morvan is constantly one step ahead—moving through the battlefield like a shadow and forcing his enemies to react to him rather than the other way around."
+      ],
     },
     {
       slug: "syrsa-orsona",
