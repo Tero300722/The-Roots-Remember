@@ -5,11 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#07090f" />
   <meta name="description" content="The Roots Remember — player campaign archive." />
+
+  <meta property="og:title" content="The Roots Remember" />
+  <meta property="og:description" content="The official player archive for The Roots Remember campaign." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tero300722.github.io/The-Roots-Remember/" />
+  <meta property="og:image" content="https://tero300722.github.io/The-Roots-Remember/assets/share-preview.jpg?v=20260919-map1" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <title>The Roots Remember</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="canonical" href="https://tero300722.github.io/The-Roots-Remember/" />
+
+  <link rel="icon" href="assets/favicon.svg?v=20260919-map1" type="image/svg+xml" />
+  <link rel="preload" as="image" href="assets/campaign-hero.webp?v=20260919-map1" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=20260919-map1" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -26,7 +40,15 @@
   </div>
 
   <div class="landing" id="landing" aria-label="Campaign landing screen">
-    <img src="assets/campaign-hero.png" alt="" class="landing-art" />
+    <img
+      src="assets/campaign-hero.webp?v=20260919-map1"
+      width="1672"
+      height="941"
+      alt=""
+      class="landing-art"
+      fetchpriority="high"
+      decoding="async"
+    />
     <div class="landing-vignette"></div>
     <div class="landing-shimmer"></div>
     <div class="landing-runes" aria-hidden="true"></div>
@@ -46,7 +68,6 @@
     <div class="transition-line"></div>
   </div>
 
-
   <div class="page-shell" id="site-shell">
     <header class="topbar">
       <button class="brand nav-link" data-page="home" aria-label="Home">
@@ -61,9 +82,9 @@
         <button class="nav-link active" data-page="home">Previously On</button>
         <button class="nav-link" data-page="characters">Characters</button>
         <button class="nav-link" data-page="quests">Quest Board</button>
+        <button class="nav-link" data-page="map">Map</button>
         <button class="nav-link" data-page="sessions">Session Archive</button>
       </nav>
-
     </header>
 
     <main>
@@ -75,12 +96,20 @@
         </div>
 
         <div class="hero-card reveal-cinematic delay-a">
-          <img class="hero-art" src="assets/session-3-home.png" alt="The Roots Remember campaign artwork" />
+          <img
+            class="hero-art"
+            src="assets/session-3-home.webp?v=20260919-map1"
+            width="1536"
+            height="1024"
+            alt="Valemere under stormy skies"
+            fetchpriority="high"
+            decoding="async"
+          />
           <div class="hero-vignette"></div>
           <div class="hero-glow"></div>
           <div class="hero-content">
             <p class="eyebrow">Session III</p>
-            <h1>The Road<br>Beyond Valemere</h1>
+            <h1>The Road<br />Beyond Valemere</h1>
             <p class="lead">The party's first real journey begins beyond the city gates, where a broken carriage, hungry wolves, and a winged owlbear turn the road to Stardust and Slag into something far more dangerous than expected.</p>
             <div class="hero-actions">
               <button class="btn btn-primary" data-jump="sessions">Read Full Recap</button>
@@ -124,6 +153,36 @@
         <div id="quest-board"></div>
       </section>
 
+      <section class="page" id="map">
+        <header class="section-header page-reveal-item">
+          <p class="eyebrow">Known Realm</p>
+          <h2>Kingdom of Valemere</h2>
+          <p>Explore the campaign map and inspect the roads, settlements, regions, and landmarks known to the party.</p>
+        </header>
+
+        <section class="map-card page-reveal-item" aria-labelledby="map-card-title">
+          <div class="map-card-heading">
+            <div>
+              <p class="eyebrow">Campaign Map</p>
+              <h3 id="map-card-title">The Kingdom of Valemere</h3>
+            </div>
+            <button class="btn btn-primary map-fullscreen-btn" id="open-map" type="button">View Full Map</button>
+          </div>
+
+          <button class="map-preview" id="map-preview" type="button" aria-label="Open the Kingdom of Valemere map in the full-screen viewer">
+            <img
+              src="assets/kingdom-of-valemere-map.webp?v=20260919-map1"
+              width="1448"
+              height="1086"
+              alt="Illustrated campaign map of the Kingdom of Valemere"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="map-open-hint"><span aria-hidden="true">⌕</span> Click to explore</span>
+          </button>
+        </section>
+      </section>
+
       <section class="page" id="sessions">
         <header class="section-header page-reveal-item">
           <p class="eyebrow">Campaign Chronicle</p>
@@ -140,6 +199,36 @@
     </footer>
   </div>
 
-  <script src="script.js"></script>
+  <div class="map-modal" id="map-modal" aria-hidden="true">
+    <div class="map-modal-backdrop" data-map-close></div>
+    <section class="map-modal-panel" role="dialog" aria-modal="true" aria-label="Kingdom of Valemere map viewer">
+      <div class="map-viewer-bar">
+        <div>
+          <span class="map-viewer-kicker">Campaign Map</span>
+          <strong>Kingdom of Valemere</strong>
+        </div>
+        <div class="map-viewer-controls" aria-label="Map controls">
+          <button type="button" class="map-control" id="map-zoom-out" aria-label="Zoom out">−</button>
+          <button type="button" class="map-control map-reset" id="map-reset">Reset</button>
+          <button type="button" class="map-control" id="map-zoom-in" aria-label="Zoom in">+</button>
+          <button type="button" class="map-control map-close" id="map-close" aria-label="Close map">×</button>
+        </div>
+      </div>
+      <div class="map-viewport" id="map-viewport">
+        <img
+          id="map-full-image"
+          src="assets/kingdom-of-valemere-map.webp?v=20260919-map1"
+          width="1448"
+          height="1086"
+          alt="Illustrated campaign map of the Kingdom of Valemere"
+          draggable="false"
+          decoding="async"
+        />
+      </div>
+      <p class="map-viewer-help">Use + and − to zoom. When zoomed in, drag the map to move around it. Press Esc to close.</p>
+    </section>
+  </div>
+
+  <script src="script.js?v=20260919-map1"></script>
 </body>
 </html>

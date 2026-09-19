@@ -4,9 +4,9 @@ const DATA = {
       slug: "aurelius-tempestine",
       name: "Aurelius Tempestine",
       player: "Dathan Baldacchino",
-      sheetImage: "assets/characters/full/aurelius-tempestine.jpg",
-      cardImage: "assets/characters/cards/aurelius-tempestine.jpg",
-      fullImage: "assets/characters/full/aurelius-tempestine.jpg",
+      sheetImage: "assets/characters/full/aurelius-tempestine.webp",
+      cardImage: "assets/characters/cards/aurelius-tempestine.webp",
+      fullImage: "assets/characters/full/aurelius-tempestine.webp",
       className: "Monk",
       subclass: "Warrior of the Storm Dragon",
       accent: "151, 113, 255",
@@ -15,9 +15,9 @@ const DATA = {
       slug: "cassian-caelaris",
       name: "Cassian Caelaris",
       player: "Matthias Martino",
-      sheetImage: "assets/characters/full/cassian-caelaris.jpg",
-      cardImage: "assets/characters/cards/cassian-caelaris.jpg",
-      fullImage: "assets/characters/full/cassian-caelaris.jpg",
+      sheetImage: "assets/characters/full/cassian-caelaris.webp",
+      cardImage: "assets/characters/cards/cassian-caelaris.webp",
+      fullImage: "assets/characters/full/cassian-caelaris.webp",
       className: "Paladin",
       subclass: "Oath of the Noble Genies",
       accent: "218, 68, 61",
@@ -26,9 +26,9 @@ const DATA = {
       slug: "leoric-everheart",
       name: "Leoric Everheart",
       player: "Daniel Mercieca",
-      sheetImage: "assets/characters/full/leoric-everheart.jpg",
-      cardImage: "assets/characters/cards/leoric-everheart.jpg",
-      fullImage: "assets/characters/full/leoric-everheart.jpg",
+      sheetImage: "assets/characters/full/leoric-everheart.webp",
+      cardImage: "assets/characters/cards/leoric-everheart.webp",
+      fullImage: "assets/characters/full/leoric-everheart.webp",
       className: "Wizard / Bard",
       subclass: "Bibliomancy",
       accent: "224, 183, 104",
@@ -37,9 +37,9 @@ const DATA = {
       slug: "morvan-nyx",
       name: "Morvan Nyx",
       player: "Remsi Agius",
-      sheetImage: "assets/characters/full/morvan-nyx.jpg",
-      cardImage: "assets/characters/cards/morvan-nyx.jpg",
-      fullImage: "assets/characters/full/morvan-nyx.jpg",
+      sheetImage: "assets/characters/full/morvan-nyx.webp",
+      cardImage: "assets/characters/cards/morvan-nyx.webp",
+      fullImage: "assets/characters/full/morvan-nyx.webp",
       className: "Fighter",
       subclass: "Umbral Tempest",
       accent: "49, 78, 175",
@@ -48,9 +48,9 @@ const DATA = {
       slug: "syrsa-orsona",
       name: "Syrsa Orsona",
       player: "James Bianco",
-      sheetImage: "assets/characters/full/syrsa-orsona.jpg",
-      cardImage: "assets/characters/cards/syrsa-orsona.jpg",
-      fullImage: "assets/characters/full/syrsa-orsona.jpg",
+      sheetImage: "assets/characters/full/syrsa-orsona.webp",
+      cardImage: "assets/characters/cards/syrsa-orsona.webp",
+      fullImage: "assets/characters/full/syrsa-orsona.webp",
       className: "Bard",
       subclass: "College of the Unbound Song",
       accent: "255, 220, 58",
@@ -59,9 +59,9 @@ const DATA = {
       slug: "vaeloryn-starsong",
       name: "Vaeloryn Starsong",
       player: "Gianluca Amato",
-      sheetImage: "assets/characters/full/vaeloryn-starsong.jpg",
-      cardImage: "assets/characters/cards/vaeloryn-starsong.jpg",
-      fullImage: "assets/characters/full/vaeloryn-starsong.jpg",
+      sheetImage: "assets/characters/full/vaeloryn-starsong.webp",
+      cardImage: "assets/characters/cards/vaeloryn-starsong.webp",
+      fullImage: "assets/characters/full/vaeloryn-starsong.webp",
       className: "Warlock",
       subclass: "Eightfold Covenant",
       accent: "237, 132, 45",
@@ -72,7 +72,7 @@ const DATA = {
     status: "In Progress",
     givenBy: "Orthen Solaris",
     location: "Industrial Area of Elaris",
-    image: "assets/orthen-solaris.png",
+    image: "assets/orthen-solaris.webp",
     description: "Orthen started off the party's adventure by sending them out of Valemere and into the industrial area of Elaris. Their task is to investigate who robbed Stardust and Slag, uncover why the supplier was targeted, and bring the person responsible for the break-in and theft to justice.",
     objectives: [
       "Investigate the break-in at Stardust and Slag",
@@ -129,6 +129,9 @@ const DATA = {
   ]
 };
 
+const ASSET_VERSION = '20260919-map1';
+const asset = path => `${path}?v=${ASSET_VERSION}`;
+
 const landing = document.getElementById('landing');
 const enterButton = document.getElementById('enter-site');
 const pages = [...document.querySelectorAll('.page')];
@@ -139,11 +142,12 @@ const characterGrid = document.getElementById('character-grid');
 const characterDetailContent = document.getElementById('character-detail-content');
 const characterBack = document.getElementById('character-back');
 const sessionList = document.getElementById('session-list');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 let currentPage = 'home';
 let transitionBusy = false;
 
-/* -------------------- Landing screen -------------------- */
+/* -------------------- Landing -------------------- */
 document.body.classList.add('intro-open');
 
 function enterSite() {
@@ -162,19 +166,12 @@ if (new URLSearchParams(location.search).get('skipIntro') === '1') {
   document.body.classList.add('site-entered');
 }
 
-/* -------------------- Navigation + transitions -------------------- */
+/* -------------------- Navigation -------------------- */
 function setActiveNav(id) {
   const navId = id === 'character-detail' ? 'characters' : id;
-  navButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.page === navId));
-}
-
-function routeHashFor(id) {
-  if (id === 'character-detail') return location.hash || '#characters';
-  return `#${id}`;
-}
-
-function afterPageShown(id) {
-  if (id === 'sessions') refreshOpenSessions();
+  navButtons.forEach(button => {
+    button.classList.toggle('active', button.dataset.page === navId);
+  });
 }
 
 function actuallyShowPage(id) {
@@ -182,20 +179,26 @@ function actuallyShowPage(id) {
   setActiveNav(id);
   currentPage = id;
   window.scrollTo({ top: 0, behavior: 'auto' });
-  afterPageShown(id);
 }
 
-function showPage(id, { immediate = false, updateHash = true } = {}) {
+function navigateTo(id, { immediate = false, replace = false, hash = null } = {}) {
   if (!document.getElementById(id)) return;
-  if (id === currentPage && !immediate) {
-    afterPageShown(id);
-    return;
-  }
   if (transitionBusy && !immediate) return;
 
-  if (immediate) {
+  const targetHash = hash ?? `#${id}`;
+  const applyHistory = () => {
+    const method = replace ? 'replaceState' : 'pushState';
+    history[method](null, '', targetHash);
+  };
+
+  if (id === currentPage && id !== 'character-detail') {
+    if (location.hash !== targetHash) applyHistory();
+    return;
+  }
+
+  if (immediate || reducedMotion.matches) {
     actuallyShowPage(id);
-    if (updateHash && id !== 'character-detail') history.replaceState(null, '', routeHashFor(id));
+    if (location.hash !== targetHash) applyHistory();
     return;
   }
 
@@ -205,24 +208,29 @@ function showPage(id, { immediate = false, updateHash = true } = {}) {
 
   window.setTimeout(() => {
     actuallyShowPage(id);
-    if (updateHash && id !== 'character-detail') history.pushState(null, '', routeHashFor(id));
-  }, 250);
+    if (location.hash !== targetHash) applyHistory();
+  }, 230);
 
   window.setTimeout(() => {
     transitionOverlay.classList.remove('active');
     document.body.classList.remove('transitioning');
     transitionBusy = false;
-  }, 620);
+  }, 580);
 }
 
-navButtons.forEach(btn => btn.addEventListener('click', () => showPage(btn.dataset.page)));
-document.querySelectorAll('[data-jump]').forEach(btn => btn.addEventListener('click', () => showPage(btn.dataset.jump)));
+navButtons.forEach(button => {
+  button.addEventListener('click', () => navigateTo(button.dataset.page));
+});
+
+document.querySelectorAll('[data-jump]').forEach(button => {
+  button.addEventListener('click', () => navigateTo(button.dataset.jump));
+});
 
 /* -------------------- Latest recap -------------------- */
 DATA.sessions.at(-1).paragraphs.forEach(text => {
-  const p = document.createElement('p');
-  p.textContent = text;
-  latestRecap.appendChild(p);
+  const paragraph = document.createElement('p');
+  paragraph.textContent = text;
+  latestRecap.appendChild(paragraph);
 });
 
 /* -------------------- Characters -------------------- */
@@ -232,11 +240,15 @@ function makeCharacterCard(character, index) {
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', `Open ${character.name}'s character profile`);
-  card.style.animationDelay = `${index * 85}ms`;
+  card.style.animationDelay = `${index * 70}ms`;
   card.style.setProperty('--accent-rgb', character.accent);
   card.innerHTML = `
-    <img src="${character.cardImage}" alt="${character.name}">
-    <div class="character-orbit" aria-hidden="true"></div>
+    <img
+      src="${asset(character.cardImage)}"
+      alt="${character.name}"
+      loading="lazy"
+      decoding="async"
+    >
     <div class="character-info">
       <h3>${character.name}</h3>
       <div class="character-player">Played by ${character.player}</div>
@@ -247,14 +259,6 @@ function makeCharacterCard(character, index) {
     </div>
   `;
 
-  card.addEventListener('mousemove', event => {
-    const rect = card.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--mx', `${x}%`);
-    card.style.setProperty('--my', `${y}%`);
-  });
-
   const open = () => openCharacter(character);
   card.addEventListener('click', open);
   card.addEventListener('keydown', event => {
@@ -263,20 +267,21 @@ function makeCharacterCard(character, index) {
       open();
     }
   });
-
   return card;
 }
 
-DATA.characters.forEach((character, index) => characterGrid.appendChild(makeCharacterCard(character, index)));
+DATA.characters.forEach((character, index) => {
+  characterGrid.appendChild(makeCharacterCard(character, index));
+});
 
 function renderCharacterDetail(character) {
   characterDetailContent.innerHTML = `
-    <article class="character-detail-wrap" style="--char-rgb:${character.accent}; --detail-bg:url('${character.sheetImage}')">
+    <article class="character-detail-wrap" style="--char-rgb:${character.accent}; --detail-bg:url('${asset(character.sheetImage)}')">
       <div class="character-detail-bg" aria-hidden="true"></div>
       <div class="character-detail-rune" aria-hidden="true"></div>
       <div class="character-detail-grid">
         <div class="character-portrait-stage">
-          <img src="${character.fullImage}" alt="${character.name}">
+          <img src="${asset(character.fullImage)}" alt="${character.name}" decoding="async">
         </div>
         <div class="character-detail-copy">
           <p class="eyebrow">Character Profile</p>
@@ -292,43 +297,53 @@ function renderCharacterDetail(character) {
   `;
 }
 
-function openCharacter(character, { immediate = false } = {}) {
+function openCharacter(character, { immediate = false, replace = false } = {}) {
   renderCharacterDetail(character);
-  history.pushState(null, '', `#character-${character.slug}`);
-  showPage('character-detail', { immediate, updateHash: false });
+  navigateTo('character-detail', {
+    immediate,
+    replace,
+    hash: `#character-${character.slug}`
+  });
 }
 
-characterBack.addEventListener('click', () => showPage('characters'));
+characterBack.addEventListener('click', () => {
+  navigateTo('characters', { replace: true });
+});
 
 /* -------------------- Quest board -------------------- */
-const q = DATA.quest;
+const quest = DATA.quest;
 document.getElementById('quest-board').innerHTML = `
   <article class="quest-card">
     <div class="quest-copy">
       <div class="quest-seal" aria-hidden="true">✦</div>
       <p class="eyebrow">Active Contract</p>
       <div class="quest-title-line">
-        <h3>${q.title}</h3>
-        <span class="status">${q.status}</span>
+        <h3>${quest.title}</h3>
+        <span class="status">${quest.status}</span>
       </div>
-      <p>${q.description}</p>
+      <p>${quest.description}</p>
       <div class="quest-meta">
-        <div class="meta-box"><span>Quest Giver</span><strong>${q.givenBy}</strong></div>
-        <div class="meta-box"><span>Destination</span><strong>${q.location}</strong></div>
+        <div class="meta-box"><span>Quest Giver</span><strong>${quest.givenBy}</strong></div>
+        <div class="meta-box"><span>Destination</span><strong>${quest.location}</strong></div>
       </div>
       <div class="quest-objectives">
         <div class="quest-objectives-title">Known Objectives</div>
-        ${q.objectives.map((objective, i) => `
+        ${quest.objectives.map((objective, index) => `
           <div class="quest-objective">
-            <span class="objective-mark">${i + 1}</span>
+            <span class="objective-mark">${index + 1}</span>
             <span>${objective}</span>
           </div>
         `).join('')}
       </div>
     </div>
     <div class="quest-art">
-      <img src="${q.image}" alt="Orthen Solaris">
-      <div class="quest-giver-label"><span>Quest Giver</span><strong>${q.givenBy}</strong></div>
+      <img
+        src="${asset(quest.image)}"
+        alt="Orthen Solaris"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="quest-giver-label"><span>Quest Giver</span><strong>${quest.givenBy}</strong></div>
     </div>
   </article>
 `;
@@ -336,73 +351,195 @@ document.getElementById('quest-board').innerHTML = `
 /* -------------------- Session archive -------------------- */
 function buildSessionCard(session, index) {
   const card = document.createElement('article');
+  const bodyId = `session-body-${index + 1}`;
   card.className = 'session-card';
-  card.style.animationDelay = `${index * 90}ms`;
+  card.style.animationDelay = `${index * 80}ms`;
   card.innerHTML = `
-    <button class="session-head" type="button">
+    <button
+      class="session-head"
+      type="button"
+      aria-expanded="false"
+      aria-controls="${bodyId}"
+    >
       <div>
         <div class="session-number">${session.number}</div>
         <h3>${session.title}</h3>
       </div>
-      <span class="session-plus">+</span>
+      <span class="session-plus" aria-hidden="true">+</span>
     </button>
-    <div class="session-body"><div class="session-body-inner"></div></div>
+    <div class="session-body" id="${bodyId}">
+      <div class="session-body-inner"></div>
+    </div>
   `;
 
   const inner = card.querySelector('.session-body-inner');
   session.paragraphs.forEach(text => {
-    const p = document.createElement('p');
-    p.textContent = text;
-    inner.appendChild(p);
+    const paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    inner.appendChild(paragraph);
   });
 
   const head = card.querySelector('.session-head');
-  head.addEventListener('click', () => toggleSessionCard(card));
+  head.addEventListener('click', () => {
+    const open = !card.classList.contains('open');
+    card.classList.toggle('open', open);
+    head.setAttribute('aria-expanded', String(open));
+  });
 
   return card;
 }
 
-function getSessionBodyParts(card) {
-  const body = card.querySelector('.session-body');
-  const inner = card.querySelector('.session-body-inner');
-  return { body, inner };
+DATA.sessions.forEach((session, index) => {
+  sessionList.appendChild(buildSessionCard(session, index));
+});
+
+/* -------------------- Campaign map viewer -------------------- */
+const mapModal = document.getElementById('map-modal');
+const mapPreview = document.getElementById('map-preview');
+const openMapButton = document.getElementById('open-map');
+const closeMapButton = document.getElementById('map-close');
+const mapViewport = document.getElementById('map-viewport');
+const mapImage = document.getElementById('map-full-image');
+const mapZoomIn = document.getElementById('map-zoom-in');
+const mapZoomOut = document.getElementById('map-zoom-out');
+const mapReset = document.getElementById('map-reset');
+
+const mapState = {
+  scale: 1,
+  x: 0,
+  y: 0,
+  dragging: false,
+  startX: 0,
+  startY: 0,
+  originX: 0,
+  originY: 0,
+  lastFocus: null
+};
+
+const MAP_MIN_SCALE = 1;
+const MAP_MAX_SCALE = 4;
+const MAP_ZOOM_STEP = 0.35;
+
+function clampMapPan() {
+  if (!mapViewport || !mapImage) return;
+  const baseWidth = mapImage.clientWidth;
+  const baseHeight = mapImage.clientHeight;
+  const maxX = Math.max(0, (baseWidth * mapState.scale - mapViewport.clientWidth) / 2);
+  const maxY = Math.max(0, (baseHeight * mapState.scale - mapViewport.clientHeight) / 2);
+  mapState.x = Math.max(-maxX, Math.min(maxX, mapState.x));
+  mapState.y = Math.max(-maxY, Math.min(maxY, mapState.y));
 }
 
-function setSessionOpen(card, open) {
-  const { body, inner } = getSessionBodyParts(card);
-  card.classList.toggle('open', open);
-  body.style.maxHeight = open ? `${inner.scrollHeight + 36}px` : '0px';
+function renderMapTransform() {
+  clampMapPan();
+  mapImage.style.transform = `translate3d(${mapState.x}px, ${mapState.y}px, 0) scale(${mapState.scale})`;
+  mapViewport.classList.toggle('is-zoomed', mapState.scale > 1.01);
+  mapZoomOut.disabled = mapState.scale <= MAP_MIN_SCALE + 0.001;
+  mapZoomIn.disabled = mapState.scale >= MAP_MAX_SCALE - 0.001;
 }
 
-function refreshOpenSessions() {
-  document.querySelectorAll('.session-card.open').forEach(card => {
-    const { body, inner } = getSessionBodyParts(card);
-    body.style.maxHeight = `${inner.scrollHeight + 36}px`;
-  });
+function setMapScale(nextScale) {
+  mapState.scale = Math.max(MAP_MIN_SCALE, Math.min(MAP_MAX_SCALE, nextScale));
+  if (mapState.scale === MAP_MIN_SCALE) {
+    mapState.x = 0;
+    mapState.y = 0;
+  }
+  renderMapTransform();
 }
 
-function toggleSessionCard(card) {
-  const opening = !card.classList.contains('open');
-  document.querySelectorAll('.session-card.open').forEach(other => {
-    if (other !== card) setSessionOpen(other, false);
-  });
-  setSessionOpen(card, opening);
+function resetMapView() {
+  mapState.scale = 1;
+  mapState.x = 0;
+  mapState.y = 0;
+  renderMapTransform();
 }
 
-DATA.sessions.forEach((session, index) => sessionList.appendChild(buildSessionCard(session, index)));
-window.addEventListener('resize', refreshOpenSessions);
+function openMapViewer(trigger) {
+  mapState.lastFocus = trigger || document.activeElement;
+  mapModal.classList.add('open');
+  mapModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('map-open');
+  resetMapView();
+  window.setTimeout(() => closeMapButton.focus({ preventScroll: true }), 50);
+}
+
+function closeMapViewer() {
+  if (!mapModal.classList.contains('open')) return;
+  mapModal.classList.remove('open');
+  mapModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('map-open');
+  mapState.dragging = false;
+  if (mapState.lastFocus && typeof mapState.lastFocus.focus === 'function') {
+    mapState.lastFocus.focus({ preventScroll: true });
+  }
+}
+
+mapPreview.addEventListener('click', () => openMapViewer(mapPreview));
+openMapButton.addEventListener('click', () => openMapViewer(openMapButton));
+closeMapButton.addEventListener('click', closeMapViewer);
+mapModal.querySelector('[data-map-close]').addEventListener('click', closeMapViewer);
+mapZoomIn.addEventListener('click', () => setMapScale(mapState.scale + MAP_ZOOM_STEP));
+mapZoomOut.addEventListener('click', () => setMapScale(mapState.scale - MAP_ZOOM_STEP));
+mapReset.addEventListener('click', resetMapView);
+
+mapViewport.addEventListener('wheel', event => {
+  if (!mapModal.classList.contains('open')) return;
+  event.preventDefault();
+  const direction = event.deltaY < 0 ? MAP_ZOOM_STEP : -MAP_ZOOM_STEP;
+  setMapScale(mapState.scale + direction);
+}, { passive: false });
+
+mapViewport.addEventListener('pointerdown', event => {
+  if (mapState.scale <= 1.01 || event.button !== 0) return;
+  mapState.dragging = true;
+  mapState.startX = event.clientX;
+  mapState.startY = event.clientY;
+  mapState.originX = mapState.x;
+  mapState.originY = mapState.y;
+  mapViewport.classList.add('is-dragging');
+  mapViewport.setPointerCapture(event.pointerId);
+});
+
+mapViewport.addEventListener('pointermove', event => {
+  if (!mapState.dragging) return;
+  mapState.x = mapState.originX + (event.clientX - mapState.startX);
+  mapState.y = mapState.originY + (event.clientY - mapState.startY);
+  renderMapTransform();
+});
+
+function stopMapDrag(event) {
+  if (!mapState.dragging) return;
+  mapState.dragging = false;
+  mapViewport.classList.remove('is-dragging');
+  if (event && mapViewport.hasPointerCapture(event.pointerId)) {
+    mapViewport.releasePointerCapture(event.pointerId);
+  }
+}
+
+mapViewport.addEventListener('pointerup', stopMapDrag);
+mapViewport.addEventListener('pointercancel', stopMapDrag);
+mapViewport.addEventListener('dblclick', resetMapView);
+
+window.addEventListener('resize', () => {
+  if (mapModal.classList.contains('open')) renderMapTransform();
+});
+
+document.addEventListener('keydown', event => {
+  if (!mapModal.classList.contains('open')) return;
+  if (event.key === 'Escape') closeMapViewer();
+  if (event.key === '+' || event.key === '=') setMapScale(mapState.scale + MAP_ZOOM_STEP);
+  if (event.key === '-') setMapScale(mapState.scale - MAP_ZOOM_STEP);
+  if (event.key === '0') resetMapView();
+});
 
 /* -------------------- Custom cursor -------------------- */
 const cursor = document.getElementById('custom-cursor');
 const finePointer = window.matchMedia('(pointer:fine)');
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 function updateCursorMode() {
   const enabled = finePointer.matches && !reducedMotion.matches;
   document.body.classList.toggle('custom-cursor-enabled', enabled);
-  if (!enabled) {
-    cursor.classList.remove('visible', 'active');
-  }
+  if (!enabled) cursor.classList.remove('visible', 'active');
 }
 
 updateCursorMode();
@@ -419,14 +556,14 @@ window.addEventListener('mousemove', event => {
 document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
 document.addEventListener('mouseover', event => {
   if (!document.body.classList.contains('custom-cursor-enabled')) return;
-  const interactive = event.target.closest('button, .character-card, a');
-  cursor.classList.toggle('active', Boolean(interactive));
+  cursor.classList.toggle('active', Boolean(event.target.closest('button, .character-card, a')));
 });
 
-/* -------------------- Magical particle field -------------------- */
+/* -------------------- Ambient particle field -------------------- */
 const canvas = document.getElementById('magic-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
+let animationFrame = null;
 
 function resizeCanvas() {
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -439,61 +576,83 @@ function resizeCanvas() {
 }
 
 function makeParticles() {
-  const count = Math.min(78, Math.max(36, Math.floor(innerWidth / 21)));
+  const count = Math.min(68, Math.max(28, Math.floor(innerWidth / 24)));
   particles = Array.from({ length: count }, () => ({
     x: Math.random() * innerWidth,
     y: Math.random() * innerHeight,
-    r: Math.random() * 1.55 + 0.35,
-    vy: -(Math.random() * 0.19 + 0.035),
-    vx: (Math.random() - 0.5) * 0.07,
-    a: Math.random() * 0.42 + 0.10,
+    r: Math.random() * 1.4 + 0.3,
+    vy: -(Math.random() * 0.16 + 0.03),
+    vx: (Math.random() - 0.5) * 0.06,
+    a: Math.random() * 0.34 + 0.08,
     phase: Math.random() * Math.PI * 2
   }));
 }
 
-function drawParticles(t = 0) {
+function drawParticles(time = 0) {
+  if (reducedMotion.matches) {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    animationFrame = null;
+    return;
+  }
+
   ctx.clearRect(0, 0, innerWidth, innerHeight);
-  particles.forEach(p => {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.y < -10) {
-      p.y = innerHeight + 10;
-      p.x = Math.random() * innerWidth;
+  particles.forEach(particle => {
+    particle.x += particle.vx;
+    particle.y += particle.vy;
+    if (particle.y < -10) {
+      particle.y = innerHeight + 10;
+      particle.x = Math.random() * innerWidth;
     }
-    if (p.x < -10) p.x = innerWidth + 10;
-    if (p.x > innerWidth + 10) p.x = -10;
-    const glow = p.a * (0.72 + Math.sin(t * 0.001 + p.phase) * 0.28);
+    if (particle.x < -10) particle.x = innerWidth + 10;
+    if (particle.x > innerWidth + 10) particle.x = -10;
+
+    const glow = particle.a * (0.72 + Math.sin(time * 0.001 + particle.phase) * 0.28);
     ctx.beginPath();
     ctx.fillStyle = `rgba(231, 190, 111, ${glow})`;
-    ctx.shadowBlur = 9;
-    ctx.shadowColor = 'rgba(228, 184, 101, .55)';
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = 'rgba(228, 184, 101, .48)';
+    ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
     ctx.fill();
   });
   ctx.shadowBlur = 0;
-  requestAnimationFrame(drawParticles);
+  animationFrame = requestAnimationFrame(drawParticles);
+}
+
+function syncParticleMotion() {
+  if (reducedMotion.matches) {
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    animationFrame = null;
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+  } else if (!animationFrame) {
+    animationFrame = requestAnimationFrame(drawParticles);
+  }
 }
 
 window.addEventListener('resize', resizeCanvas);
+if (typeof reducedMotion.addEventListener === 'function') reducedMotion.addEventListener('change', syncParticleMotion);
 resizeCanvas();
-drawParticles();
+syncParticleMotion();
 
 /* -------------------- Hash routing -------------------- */
-function handleHash({ immediate = true } = {}) {
+function renderFromHash({ immediate = true } = {}) {
   const hash = location.hash.replace('#', '');
+
   if (hash.startsWith('character-')) {
     const slug = hash.replace('character-', '');
     const character = DATA.characters.find(item => item.slug === slug);
     if (character) {
       renderCharacterDetail(character);
-      showPage('character-detail', { immediate, updateHash: false });
+      actuallyShowPage('character-detail');
       return;
     }
   }
-  const valid = ['home', 'characters', 'quests', 'sessions'];
-  const target = valid.includes(hash) ? hash : 'home';
-  showPage(target, { immediate, updateHash: false });
+
+  const validPages = ['home', 'characters', 'quests', 'map', 'sessions'];
+  const target = validPages.includes(hash) ? hash : 'home';
+  actuallyShowPage(target);
+
+  if (!hash) history.replaceState(null, '', '#home');
 }
 
-window.addEventListener('popstate', () => handleHash({ immediate: false }));
-handleHash({ immediate: true });
+window.addEventListener('popstate', () => renderFromHash({ immediate: true }));
+renderFromHash({ immediate: true });
