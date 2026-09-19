@@ -363,3 +363,56 @@ body.custom-cursor-enabled .character-card{cursor:none!important}
     border-radius:20px !important;
   }
 }
+
+/* ---------------- Version 5.2: centered character profile artwork ---------------- */
+.character-detail-grid{
+  align-items:center !important;
+}
+
+.character-portrait-stage{
+  align-items:center !important;
+  justify-content:center !important;
+  padding:30px 24px !important;
+}
+
+.character-portrait-stage img{
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  max-width:88% !important;
+  max-height:590px !important;
+  margin:auto !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  animation:none !important;
+  transform:none !important;
+  border-radius:24px !important;
+}
+
+.character-detail-copy{
+  justify-content:center !important;
+  align-self:center !important;
+}
+
+@media (max-width:1050px){
+  .character-portrait-stage{
+    min-height:600px !important;
+    padding:28px 20px !important;
+  }
+  .character-portrait-stage img{
+    max-width:88% !important;
+    max-height:540px !important;
+  }
+}
+
+@media (max-width:700px){
+  .character-portrait-stage{
+    min-height:500px !important;
+    padding:24px 14px !important;
+  }
+  .character-portrait-stage img{
+    max-width:92% !important;
+    max-height:450px !important;
+    border-radius:20px !important;
+  }
+}
