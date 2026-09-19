@@ -21,7 +21,6 @@ body{
   font-family:"Manrope",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 body.intro-open{overflow:hidden}
-body.transitioning{overflow:hidden}
 body.map-open{overflow:hidden}
 button{font:inherit}
 button,a{-webkit-tap-highlight-color:transparent}
@@ -94,21 +93,12 @@ body.custom-cursor-enabled,body.custom-cursor-enabled *{cursor:none!important}
 .enter-btn i{font-style:normal;color:#f2d89d;animation:pulseGlyph 1.8s ease-in-out infinite}
 .landing-bottom{position:absolute;bottom:18px;z-index:2;font-family:"Cinzel",serif;font-size:.64rem;letter-spacing:.42em;color:rgba(239,220,182,.45)}
 
-/* ---------- Page transition ---------- */
-.page-transition{position:fixed;inset:0;z-index:450;display:grid;place-items:center;background:radial-gradient(circle,rgba(26,20,13,.80),rgba(4,6,10,.97) 62%);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
-.page-transition.active{opacity:1;visibility:visible;pointer-events:auto}
-.transition-rune{width:112px;height:112px;position:relative;display:grid;place-items:center;border:1px solid rgba(232,197,128,.28);border-radius:50%;animation:spin 3s linear infinite}
-.transition-rune::before,.transition-rune::after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(232,197,128,.20)}
-.transition-rune::before{inset:13px}.transition-rune::after{inset:31px}
-.transition-rune span{color:#f0d695;font-size:1.35rem;text-shadow:0 0 20px rgba(237,196,119,.7);animation:pulseGlyph 1.2s ease-in-out infinite}
-.transition-line{position:absolute;left:50%;top:50%;width:0;height:1px;background:linear-gradient(90deg,transparent,#e9c780,transparent);transform:translate(-50%,-50%);box-shadow:0 0 16px rgba(225,182,103,.34)}
-.page-transition.active .transition-line{animation:lineFlash .55s ease .12s both}
-
 /* ---------- App shell ---------- */
 .page-shell{width:min(1260px,calc(100% - 32px));margin:0 auto}
 .topbar{position:sticky;top:14px;z-index:50;margin:14px 0 28px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:18px;border:1px solid var(--line);border-radius:20px;background:rgba(6,8,13,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 15px 50px rgba(0,0,0,.28)}
 .brand{display:flex;align-items:center;gap:12px;border:0;background:none;color:var(--ink);cursor:pointer;text-align:left}
-.brand-glyph{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--gold);box-shadow:0 0 22px rgba(211,173,103,.15)}
+.brand-logo-wrap{width:40px;height:40px;flex:0 0 40px;display:block;border-radius:12px;overflow:hidden;box-shadow:0 0 22px rgba(211,173,103,.16)}
+.brand-logo{display:block;width:100%;height:100%;object-fit:cover;border-radius:12px}
 .brand strong{display:block;font-family:"Cinzel",serif;font-size:.98rem;letter-spacing:.07em}
 .brand small{display:block;margin-top:2px;color:#8f8a81}
 .nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
@@ -547,4 +537,3 @@ body.site-entered .page.active .reveal-cinematic{animation:cinematicReveal .8s c
 @keyframes landingContentIn{from{opacity:0;transform:translateY(18px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
 @keyframes shimmerSweep{0%,20%{transform:translateX(-55%) rotate(2deg);opacity:0}45%{opacity:1}75%,100%{transform:translateX(55%) rotate(2deg);opacity:0}}
 @keyframes pulseGlyph{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}
-@keyframes lineFlash{0%{width:0;opacity:0}45%{width:min(70vw,760px);opacity:1}100%{width:min(86vw,1000px);opacity:0}}

@@ -184,7 +184,6 @@ const landing = document.getElementById('landing');
 const enterButton = document.getElementById('enter-site');
 const pages = [...document.querySelectorAll('.page')];
 const navButtons = [...document.querySelectorAll('.nav-link[data-page]')];
-const transitionOverlay = document.getElementById('page-transition');
 const latestRecap = document.getElementById('latest-recap');
 const characterGrid = document.getElementById('character-grid');
 const characterDetailContent = document.getElementById('character-detail-content');
@@ -193,7 +192,6 @@ const sessionList = document.getElementById('session-list');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 let currentPage = 'home';
-let transitionBusy = false;
 
 /* -------------------- Landing -------------------- */
 document.body.classList.add('intro-open');
@@ -231,7 +229,6 @@ function actuallyShowPage(id) {
 
 function navigateTo(id, { immediate = false, replace = false, hash = null } = {}) {
   if (!document.getElementById(id)) return;
-  if (transitionBusy && !immediate) return;
 
   const targetHash = hash ?? `#${id}`;
   const applyHistory = () => {
@@ -244,26 +241,8 @@ function navigateTo(id, { immediate = false, replace = false, hash = null } = {}
     return;
   }
 
-  if (immediate || reducedMotion.matches) {
-    actuallyShowPage(id);
-    if (location.hash !== targetHash) applyHistory();
-    return;
-  }
-
-  transitionBusy = true;
-  document.body.classList.add('transitioning');
-  transitionOverlay.classList.add('active');
-
-  window.setTimeout(() => {
-    actuallyShowPage(id);
-    if (location.hash !== targetHash) applyHistory();
-  }, 230);
-
-  window.setTimeout(() => {
-    transitionOverlay.classList.remove('active');
-    document.body.classList.remove('transitioning');
-    transitionBusy = false;
-  }, 580);
+  actuallyShowPage(id);
+  if (location.hash !== targetHash) applyHistory();
 }
 
 navButtons.forEach(button => {
