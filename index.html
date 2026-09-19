@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07090f" />
+  <meta name="description" content="The Roots Remember — player campaign archive." />
+  <title>The Roots Remember</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="world-bg" aria-hidden="true">
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+    <div class="rune rune-a"></div>
+    <div class="rune rune-b"></div>
+    <canvas id="magic-canvas"></canvas>
+  </div>
+
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <span class="cursor-core"></span>
+    <span class="cursor-ring"></span>
+  </div>
+
+  <div class="landing" id="landing" aria-label="Campaign landing screen">
+    <img src="assets/campaign-hero.png" alt="" class="landing-art" />
+    <div class="landing-vignette"></div>
+    <div class="landing-shimmer"></div>
+    <div class="landing-runes" aria-hidden="true"></div>
+    <div class="landing-content">
+      <p class="landing-kicker">A PLAYER CAMPAIGN ARCHIVE</p>
+      <p class="landing-copy">Six adventurers. One road forward. Every choice leaves a mark.</p>
+      <button class="enter-btn" id="enter-site" type="button">
+        <span>Enter the Chronicle</span>
+        <i aria-hidden="true">✦</i>
+      </button>
+    </div>
+    <div class="landing-bottom">THE STORY CONTINUES</div>
+  </div>
+
+  <div class="page-transition" id="page-transition" aria-hidden="true">
+    <div class="transition-rune"><span>✦</span></div>
+    <div class="transition-line"></div>
+  </div>
+
+
+  <div class="page-shell" id="site-shell">
+    <header class="topbar">
+      <button class="brand nav-link" data-page="home" aria-label="Home">
+        <span class="brand-glyph">✦</span>
+        <span>
+          <strong>The Roots Remember</strong>
+          <small>Player Archive</small>
+        </span>
+      </button>
+
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="home">Previously On</button>
+        <button class="nav-link" data-page="characters">Characters</button>
+        <button class="nav-link" data-page="quests">Quest Board</button>
+        <button class="nav-link" data-page="sessions">Session Archive</button>
+      </nav>
+
+    </header>
+
+    <main>
+      <section class="page active" id="home">
+        <div class="home-intro reveal-cinematic">
+          <span class="intro-line"></span>
+          <p class="eyebrow">Previously On</p>
+          <span class="intro-line"></span>
+        </div>
+
+        <div class="hero-card reveal-cinematic delay-a">
+          <img class="hero-art" src="assets/session-3-home.png" alt="The Roots Remember campaign artwork" />
+          <div class="hero-vignette"></div>
+          <div class="hero-glow"></div>
+          <div class="hero-content">
+            <p class="eyebrow">Session III</p>
+            <h1>The Road<br>Beyond Valemere</h1>
+            <p class="lead">The party's first real journey begins beyond the city gates, where a broken carriage, hungry wolves, and a winged owlbear turn the road to Stardust and Slag into something far more dangerous than expected.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-jump="sessions">Read Full Recap</button>
+              <button class="btn btn-ghost" data-jump="quests">View Current Quest</button>
+            </div>
+          </div>
+        </div>
+
+        <section class="story-panel reveal-cinematic delay-b">
+          <div class="section-title-row">
+            <div>
+              <p class="eyebrow">Last Session Recap</p>
+              <h3>The Road Beyond Valemere</h3>
+            </div>
+            <span class="chapter-mark">III</span>
+          </div>
+          <div class="prose" id="latest-recap"></div>
+        </section>
+      </section>
+
+      <section class="page" id="characters">
+        <header class="section-header page-reveal-item">
+          <p class="eyebrow">The Party</p>
+          <h2>Character Select</h2>
+          <p>Six adventurers. One journey. Select a character to view their public profile.</p>
+        </header>
+        <div class="character-grid" id="character-grid"></div>
+      </section>
+
+      <section class="page character-detail-page" id="character-detail">
+        <button class="back-btn" id="character-back" type="button">← Return to Character Select</button>
+        <div id="character-detail-content"></div>
+      </section>
+
+      <section class="page" id="quests">
+        <header class="section-header page-reveal-item">
+          <p class="eyebrow">Current Objective</p>
+          <h2>Quest Board</h2>
+          <p>Known assignments and objectives currently being pursued by the party.</p>
+        </header>
+        <div id="quest-board"></div>
+      </section>
+
+      <section class="page" id="sessions">
+        <header class="section-header page-reveal-item">
+          <p class="eyebrow">Campaign Chronicle</p>
+          <h2>Session Archive</h2>
+          <p>Every chapter of the party's story, preserved in order.</p>
+        </header>
+        <div class="session-timeline" id="session-list"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>THE ROOTS REMEMBER</span>
+      <small>Player Campaign Archive</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
