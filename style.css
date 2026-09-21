@@ -57,7 +57,8 @@ img{display:block;max-width:100%}
 .custom-cursor.active .cursor-ring{width:42px;height:42px;border-color:rgba(240,216,156,.88)}
 .custom-cursor.visible{opacity:1}
 body:not(.custom-cursor-enabled),body:not(.custom-cursor-enabled) button,body:not(.custom-cursor-enabled) .character-card{cursor:auto}
-body.custom-cursor-enabled,body.custom-cursor-enabled *{cursor:none!important}
+html.custom-cursor-enabled,html.custom-cursor-enabled body,html.custom-cursor-enabled body *,body.custom-cursor-enabled,body.custom-cursor-enabled *{cursor:none!important}
+html.custom-cursor-enabled .topbar,html.custom-cursor-enabled .topbar *,body.custom-cursor-enabled .topbar,body.custom-cursor-enabled .topbar *{cursor:none!important}
 
 /* ---------- Landing ---------- */
 .landing{
