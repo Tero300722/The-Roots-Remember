@@ -106,9 +106,9 @@ html.custom-cursor-enabled .topbar,html.custom-cursor-enabled .topbar *,body.cus
 .nav-link:not(.brand){padding:9px 13px;border:1px solid transparent;border-radius:999px;background:transparent;color:#c4bdaf;cursor:pointer;transition:color .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
 .nav-link:not(.brand):hover,.nav-link:not(.brand).active{color:#fff7e8;border-color:var(--line);background:rgba(211,173,103,.07);box-shadow:0 0 24px rgba(211,173,103,.08)}
 .nav-dropdown{position:relative;display:flex;align-items:center}
-.nav-dropdown-toggle{display:inline-flex;align-items:center;gap:7px}
-.nav-dropdown-caret{font-size:.86rem;color:#aa9d86;transition:transform .2s ease,color .2s ease}
-.nav-dropdown.open .nav-dropdown-caret,.nav-dropdown:hover .nav-dropdown-caret,.nav-dropdown:focus-within .nav-dropdown-caret{transform:rotate(180deg);color:#ead3a4}
+.nav-dropdown-toggle{display:inline-flex;align-items:center;gap:9px}
+.nav-dropdown-caret{display:block;width:30px;height:18px;object-fit:contain;flex:0 0 auto;transform-origin:center;transition:transform .2s ease,filter .2s ease;filter:drop-shadow(0 0 5px rgba(211,173,103,.18))}
+.nav-dropdown.open .nav-dropdown-caret,.nav-dropdown:hover .nav-dropdown-caret,.nav-dropdown:focus-within .nav-dropdown-caret{transform:rotate(180deg);filter:drop-shadow(0 0 7px rgba(234,211,164,.34))}
 .nav-dropdown-menu{position:absolute;z-index:80;top:calc(100% + 10px);left:50%;width:210px;padding:8px;display:grid;gap:5px;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,-7px);border:1px solid rgba(220,184,111,.22);border-radius:16px;background:rgba(8,10,15,.97);box-shadow:0 20px 55px rgba(0,0,0,.48),0 0 28px rgba(211,173,103,.06);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:opacity .18s ease,transform .18s ease,visibility .18s ease}
 .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
 .nav-dropdown-menu::before{content:"";position:absolute;left:0;right:0;top:-11px;height:12px}
@@ -229,10 +229,10 @@ main{min-height:75vh}
 .remembered-divider{height:1px;margin:25px 0;background:linear-gradient(90deg,rgba(180,180,180,.28),transparent)}
 .remembered-session{margin:0 0 25px;color:#ddd6ca;font-family:"Cinzel",serif;font-size:1rem;letter-spacing:.02em}
 .remembered-details{display:grid;gap:12px;margin:0}
-.remembered-details>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:14px 16px;border:1px solid rgba(255,255,255,.065);border-radius:14px;background:rgba(255,255,255,.018)}
-.remembered-details dt{color:#8d8982;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
-.remembered-details dd{margin:0;color:#d2cbc0;line-height:1.62}
-.remembered-circumstances{align-items:start}
+.remembered-details>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center;min-height:58px;padding:14px 18px;border:1px solid rgba(255,255,255,.065);border-radius:14px;background:rgba(255,255,255,.018)}
+.remembered-details dt{align-self:center;color:#d6b672;font-size:.69rem;font-weight:600;line-height:1.4;letter-spacing:.12em;text-transform:uppercase}
+.remembered-details dd{align-self:center;margin:0;color:#d2cbc0;line-height:1.58}
+.remembered-circumstances{align-items:center}
 .remembered-empty{padding:28px;border:1px dashed rgba(255,255,255,.09);border-radius:18px;color:#8f8a82;background:rgba(255,255,255,.012);text-align:center}
 
 /* ---------- Quest board ---------- */
