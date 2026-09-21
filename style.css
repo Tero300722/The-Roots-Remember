@@ -143,16 +143,33 @@ main{min-height:75vh}
 
 /* ---------- Character select ---------- */
 .character-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.character-card{position:relative;min-height:520px;overflow:hidden;border:1px solid rgba(var(--accent-rgb,211,173,103),.30);border-radius:24px;background:#0a0c12;box-shadow:0 18px 50px rgba(0,0,0,.32);cursor:pointer;outline:none;transition:border-color .22s ease,box-shadow .22s ease}
+.character-card{position:relative;min-height:520px;overflow:hidden;border:1px solid rgba(211,173,103,.34);border-radius:24px;background:#0a0c12;box-shadow:0 18px 50px rgba(0,0,0,.32);cursor:pointer;outline:none;transition:border-color .22s ease,box-shadow .22s ease}
 .character-card::after{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(180deg,rgba(4,6,9,.02) 0%,rgba(4,6,9,.10) 46%,rgba(4,6,9,.90) 100%);pointer-events:none}
 .character-card:hover,.character-card:focus-visible{border-color:rgba(var(--accent-rgb,211,173,103),.92);box-shadow:0 24px 64px rgba(0,0,0,.48),0 0 30px rgba(var(--accent-rgb,211,173,103),.18)}
 .character-card:focus-visible{outline:2px solid rgba(var(--accent-rgb,211,173,103),.75);outline-offset:3px}
+.character-card.is-deceased:hover,.character-card.is-deceased:focus-visible{border-color:rgba(150,150,150,.92);box-shadow:0 24px 64px rgba(0,0,0,.48),0 0 30px rgba(150,150,150,.18)}
+.character-card.is-deceased:focus-visible{outline-color:rgba(150,150,150,.75)}
 .character-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .character-info{position:absolute;z-index:3;left:22px;right:22px;bottom:20px}
 .character-info h3{margin:0 0 7px;font-family:"Cinzel",serif;font-size:1.36rem;line-height:1.15}
 .character-player{margin-bottom:10px;color:#e1c584;font-size:.89rem}
 .character-tags{display:flex;flex-wrap:wrap;gap:7px}
 .tag{padding:7px 10px;border:1px solid rgba(255,255,255,.10);border-radius:999px;background:rgba(9,11,17,.62);backdrop-filter:blur(8px);color:#d8d1c5;font-size:.74rem}
+
+/* ---------- Deceased character ---------- */
+.character-card.is-deceased img{
+  filter:grayscale(1) saturate(0) brightness(.62) contrast(.96);
+}
+.character-card.is-deceased:hover img,
+.character-card.is-deceased:focus-visible img{
+  filter:grayscale(1) saturate(0) brightness(.68) contrast(.98);
+}
+.character-detail-wrap.is-deceased .character-detail-bg{
+  filter:grayscale(1) saturate(0) blur(2px);
+}
+.character-detail-wrap.is-deceased .character-portrait-stage img{
+  filter:grayscale(1) saturate(0) brightness(.72) contrast(.96);
+}
 
 /* ---------- Character detail ---------- */
 .character-detail-page{padding-top:20px}

@@ -43,11 +43,13 @@ const DATA = {
       className: "Wizard / Bard",
       subclass: "Bibliomancy",
       accent: "224, 183, 104",
+      deceased: true,
       cardDescription: "A pacifistic Khoravar scholar, librarian, and magical tinkerer who prefers resolving conflict through persuasion before turning to magic.",
       description: [
         "Leoric is a 5'8\" Khoravar with short brown hair and amber eyes. He is often seen wearing a red tie paired with formal attire, with a spellbook kept at his hip. When he was young, he was often seen alongside his best friend Cassian, whose family is known for its renowned paladins. The two occasionally found themselves in trouble with Cassian's family because of their escapades.",
         "Leoric has spent most of his life studying the arcane arts and is currently enrolled at Silvercrest Academy, where he also works part time as a librarian. In his free time, he takes part in the Magical Crafts Club, tinkering with and crafting magical gadgets that either intrigue him or have been requested through the club.",
-        "Outside of student life, Leoric pursues the role of a mediator. Fueled by his pacifistic nature, he tries to resolve conflicts as peacefully as possible, ideally with both sides walking away with something from the encounter. He usually relies on his affinity for persuasion, but if push comes to shove, he may use magical means to bring a conflict to an end."
+        "Outside of student life, Leoric pursues the role of a mediator. Fueled by his pacifistic nature, he tries to resolve conflicts as peacefully as possible, ideally with both sides walking away with something from the encounter. He usually relies on his affinity for persuasion, but if push comes to shove, he may use magical means to bring a conflict to an end.",
+        "During the investigation at Stardust and Slag, Leoric followed suspicious figures alone and was ambushed behind a nearby factory. He died from poison and multiple stab wounds before the party could save him."
       ],
     },
     {
@@ -75,6 +77,11 @@ const DATA = {
       className: "Bard",
       subclass: "College of the Unbound Song",
       accent: "255, 220, 58",
+      description: [
+        "Syrsa Orsona is a 25-year-old Wood Elven Bard of the College of the Unbound Song. She discovered her magical abilities while playing the lute, when she learned of her potential as a Bard. She supports her party using magic and music while trying to stay out of trouble.",
+        "She describes herself as a free spirit, adventuring to experience events and conflicts so that she can later write songs about them. Her hope is to become famous—or at least be remembered after her death—and to show her family that she is worth something.",
+        "Syrsa is also quite fond of pipeweed and smokes it often."
+      ],
     },
     {
       slug: "vaeloryn-starsong",
@@ -177,11 +184,33 @@ const DATA = {
         "Unable to leave them to starve, the group cut meat from their fallen mother and brought it to the cubs. Most accepted it. One did not. It stared directly at Leoric with hatred, promising that they would meet again. And next time, it would not be peacefully.",
         "After a short rest, the group climbed back into their carriage and continued toward the industrial district. Their destination: Stardust and Slag. The mineral shop that had been robbed."
       ]
+    },
+    {
+      number: "Session IV",
+      title: "The Price of Curiosity",
+      paragraphs: [
+        "The journey toward Stardust and Slag continued beneath the cover of darkness. Morvan remained perched on the carriage, invisible and alert, watching the forest for any sign of danger. Before long, the trees began to give way to a distant glow on the horizon—the unmistakable dome of light hanging above Valemere’s industrial district. The group left their carriage on the outskirts and stepped into unfamiliar territory, surrounded by smoke, machinery, and the constant rhythm of automatons that continued working long after night had fallen.",
+        "It was there that they encountered a strange Vedalken named Kegel. Tall and slender, he carried an elaborate clockwork mechanism across his chest, its moving parts even holding a cigar to his lips. When asked for directions, Kegel agreed to lead them to Stardust and Slag, though not without leaving them with a warning. The robbery had already been reported to the Crown, yet no guards had come. No investigation had begun. No protection had been offered.",
+        "The warning put the group on edge. Upon reaching the building, Morvan took hold of Vaeloryn and vanished with him through a broken window in a cloud of black mist, opening the entrance for the others from within. What awaited them was chaos. Crates had been overturned, supplies scattered, and nearly every corner of the building had been torn apart. As the group searched for clues, Aurelius felt an uneasy pounding in his chest. Something was wrong. Following the instinct deeper into the building, he entered a room filled with crates—only for a figure to fall from the ceiling above him.",
+        "A female Dragonborn struck Aurelius to the ground, pinned him beneath her, and pressed her staff against his neck. She recognized him immediately as a member of the Tempest Order. Her hostility was not without purpose. She warned Aurelius that the Order was not what he believed it to be—that dark things were happening within it, and that he was being used as nothing more than a pawn. The confrontation quickly turned violent, ending only when a terrified gnome named Gimera arrived and managed to calm the room.",
+        "Once the tension settled, Gimera revealed the true scale of the robbery. Nearly three months' worth of Iridium had been stolen, an amount so large that there seemed to be no reasonable explanation for it. Stardust and Slag primarily supplied the Crown itself, making the theft all the more suspicious. She also spoke of a former Vedalken employee named Rydoran Kalek, a man obsessed with studying minerals—Iridium above all else. On the very day of the Silvercrest Jubilee, Rydoran had abruptly resigned, claiming he had found a better opportunity.",
+        "While the others continued questioning Gimera, Leoric followed another trail. Dried blood had been discovered near the broken window, and he decided to investigate it outside. During his search, he noticed two figures lurking in the distance, watching the building and listening to the conversation from the shadows. Curiosity overcame caution. Without informing the others, Leoric followed them.",
+        "The figures slipped behind a nearby factory, vanishing from sight. Leoric pursued them until a third man suddenly seized him from behind, wrapping an arm around his neck and pressing a dagger against his side. Leoric demanded to know who they were and whether they were responsible for what had happened at Stardust and Slag. The man offered almost nothing in return.",
+        "Only one warning: ‘Don't worry. Soon, you won't remember.’",
+        "The two figures Leoric had followed stepped back into view, their blades now coated in poison. The first dagger tore into his side. Another struck his stomach. The last found his neck.",
+        "Leoric’s owl familiar, still watching from above, immediately obeyed its final command and flew back toward the party. The moment they realized Leoric was missing, panic took hold. They followed the owl through the industrial district, running toward the rear of the factory with fear written across their faces.",
+        "There, they found him.",
+        "Leoric lay surrounded by blood, foam gathering at his mouth as the poison coursed through him. The group refused to accept what they were seeing. They tried healing magic. They tried CPR. They tried everything they could.",
+        "Nothing worked.",
+        "Leoric Everheart was dead.",
+        "As silence fell over the group, something strange began to happen. The red tie around Leoric’s neck slowly loosened itself. It began to glow, rising gently into the air as though guided by an unseen hand. Then, drifting away from the body of its owner, it crossed the space between them and wrapped itself around Cassian’s arm.",
+        "The night had begun as an investigation. It ended with one of their own lying dead in the shadows."
+      ]
     }
   ]
 };
 
-const ASSET_VERSION = '20260919-leoric1';
+const ASSET_VERSION = '20260921-session4-death1';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const landing = document.getElementById('landing');
@@ -267,7 +296,7 @@ DATA.sessions.at(-1).paragraphs.forEach(text => {
 /* -------------------- Characters -------------------- */
 function makeCharacterCard(character, index) {
   const card = document.createElement('article');
-  card.className = 'character-card';
+  card.className = `character-card${character.deceased ? ' is-deceased' : ''}`;
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', `Open ${character.name}'s character profile`);
@@ -307,7 +336,7 @@ DATA.characters.forEach((character, index) => {
 
 function renderCharacterDetail(character) {
   characterDetailContent.innerHTML = `
-    <article class="character-detail-wrap" style="--char-rgb:${character.accent}; --detail-bg:url('${asset(character.sheetImage)}')">
+    <article class="character-detail-wrap${character.deceased ? ' is-deceased' : ''}" style="--char-rgb:${character.accent}; --detail-bg:url('${asset(character.sheetImage)}')">
       <div class="character-detail-bg" aria-hidden="true"></div>
       <div class="character-detail-rune" aria-hidden="true"></div>
       <div class="character-detail-grid">
