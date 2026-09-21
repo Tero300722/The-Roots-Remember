@@ -44,6 +44,13 @@ const DATA = {
       subclass: "Bibliomancy",
       accent: "224, 183, 104",
       deceased: true,
+      race: "Khoravar",
+      death: {
+        session: "Session IV — The Price of Curiosity",
+        cause: "Poisoning and multiple stab wounds",
+        location: "Industrial District of Elaris",
+        circumstances: "Killed after following suspicious figures behind a factory during the Stardust and Slag investigation."
+      },
       cardDescription: "A pacifistic Khoravar scholar, librarian, and magical tinkerer who prefers resolving conflict through persuasion before turning to magic.",
       description: [
         "Leoric is a 5'8\" Khoravar with short brown hair and amber eyes. He is often seen wearing a red tie paired with formal attire, with a spellbook kept at his hip. When he was young, he was often seen alongside his best friend Cassian, whose family is known for its renowned paladins. The two occasionally found themselves in trouble with Cassian's family because of their escapades.",
@@ -210,17 +217,20 @@ const DATA = {
   ]
 };
 
-const ASSET_VERSION = '20260921-session4-death1';
+const ASSET_VERSION = '20260921-profilemenu2';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const landing = document.getElementById('landing');
 const enterButton = document.getElementById('enter-site');
 const pages = [...document.querySelectorAll('.page')];
-const navButtons = [...document.querySelectorAll('.nav-link[data-page]')];
+const navButtons = [...document.querySelectorAll('.nav-link[data-page], .nav-dropdown-item[data-page]')];
 const latestRecap = document.getElementById('latest-recap');
 const characterGrid = document.getElementById('character-grid');
 const characterDetailContent = document.getElementById('character-detail-content');
 const characterBack = document.getElementById('character-back');
+const rememberedPlayerList = document.getElementById('remembered-player-list');
+const charactersNav = document.getElementById('characters-nav');
+const charactersNavToggle = document.getElementById('characters-nav-toggle');
 const sessionList = document.getElementById('session-list');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -251,6 +261,9 @@ function setActiveNav(id) {
   navButtons.forEach(button => {
     button.classList.toggle('active', button.dataset.page === navId);
   });
+
+  const charactersActive = ['characters', 'remembered', 'character-detail'].includes(id);
+  charactersNavToggle.classList.toggle('active', charactersActive);
 }
 
 function actuallyShowPage(id) {
@@ -279,7 +292,38 @@ function navigateTo(id, { immediate = false, replace = false, hash = null } = {}
 }
 
 navButtons.forEach(button => {
-  button.addEventListener('click', () => navigateTo(button.dataset.page));
+  button.addEventListener('click', () => {
+    navigateTo(button.dataset.page);
+    charactersNav.classList.remove('open');
+    charactersNavToggle.setAttribute('aria-expanded', 'false');
+    button.blur();
+  });
+});
+
+charactersNavToggle.addEventListener('click', event => {
+  event.stopPropagation();
+  const open = charactersNav.classList.toggle('open');
+  charactersNavToggle.setAttribute('aria-expanded', String(open));
+});
+
+charactersNav.addEventListener('mouseleave', () => {
+  charactersNav.classList.remove('open');
+  charactersNavToggle.setAttribute('aria-expanded', 'false');
+  if (charactersNav.contains(document.activeElement)) document.activeElement.blur();
+});
+
+document.addEventListener('click', event => {
+  if (!charactersNav.contains(event.target)) {
+    charactersNav.classList.remove('open');
+    charactersNavToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    charactersNav.classList.remove('open');
+    charactersNavToggle.setAttribute('aria-expanded', 'false');
+  }
 });
 
 document.querySelectorAll('[data-jump]').forEach(button => {
@@ -330,9 +374,46 @@ function makeCharacterCard(character, index) {
   return card;
 }
 
-DATA.characters.forEach((character, index) => {
-  characterGrid.appendChild(makeCharacterCard(character, index));
-});
+DATA.characters
+  .filter(character => !character.deceased)
+  .forEach((character, index) => {
+    characterGrid.appendChild(makeCharacterCard(character, index));
+  });
+
+function makeRememberedCard(character) {
+  const card = document.createElement('article');
+  card.className = 'remembered-card';
+  card.innerHTML = `
+    <div class="remembered-portrait-wrap">
+      <img
+        class="remembered-portrait"
+        src="${asset(character.cardImage)}"
+        alt="${character.name}"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="remembered-portrait-veil" aria-hidden="true"></div>
+    </div>
+    <div class="remembered-copy">
+      <p class="eyebrow">Fallen Adventurer</p>
+      <h3>${character.name}</h3>
+      <p class="remembered-identity"><em>${character.race} — ${character.className}</em></p>
+      <p class="remembered-player">Played by ${character.player}</p>
+      <div class="remembered-divider" aria-hidden="true"></div>
+      <p class="remembered-session"><strong>Fell during ${character.death.session}</strong></p>
+      <dl class="remembered-details">
+        <div><dt>Cause of Death</dt><dd>${character.death.cause}</dd></div>
+        <div><dt>Location</dt><dd>${character.death.location}</dd></div>
+        <div class="remembered-circumstances"><dt>Circumstances</dt><dd>${character.death.circumstances}</dd></div>
+      </dl>
+    </div>
+  `;
+  return card;
+}
+
+DATA.characters
+  .filter(character => character.deceased && character.death)
+  .forEach(character => rememberedPlayerList.appendChild(makeRememberedCard(character)));
 
 function renderCharacterDetail(character) {
   characterDetailContent.innerHTML = `
@@ -789,13 +870,17 @@ function renderFromHash({ immediate = true } = {}) {
     const slug = hash.replace('character-', '');
     const character = DATA.characters.find(item => item.slug === slug);
     if (character) {
-      renderCharacterDetail(character);
-      actuallyShowPage('character-detail');
+      if (character.deceased) {
+        actuallyShowPage('remembered');
+      } else {
+        renderCharacterDetail(character);
+        actuallyShowPage('character-detail');
+      }
       return;
     }
   }
 
-  const validPages = ['home', 'characters', 'quests', 'map', 'npcs', 'sessions'];
+  const validPages = ['home', 'characters', 'remembered', 'quests', 'map', 'npcs', 'sessions'];
   const target = validPages.includes(hash) ? hash : 'home';
   actuallyShowPage(target);
 

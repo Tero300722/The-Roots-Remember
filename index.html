@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260921-cursor-spelling1" />
+  <link rel="stylesheet" href="style.css?v=20260921-profilemenu2" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -78,7 +78,15 @@
 
       <nav class="nav" aria-label="Main navigation">
         <button class="nav-link active" data-page="home">Previously On</button>
-        <button class="nav-link" data-page="characters">Characters</button>
+        <div class="nav-dropdown" id="characters-nav">
+          <button class="nav-link nav-dropdown-toggle" id="characters-nav-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <span>Characters</span><span class="nav-dropdown-caret" aria-hidden="true">⌄</span>
+          </button>
+          <div class="nav-dropdown-menu" id="characters-nav-menu" role="menu" aria-label="Characters menu">
+            <button class="nav-dropdown-item" type="button" data-page="characters" role="menuitem">Meet the Characters</button>
+            <button class="nav-dropdown-item" type="button" data-page="remembered" role="menuitem">The Remembered</button>
+          </div>
+        </div>
         <button class="nav-link" data-page="quests">Quest Board</button>
         <button class="nav-link" data-page="map">Map</button>
         <button class="nav-link" data-page="npcs">NPCs</button>
@@ -137,8 +145,39 @@
         <div class="character-grid" id="character-grid"></div>
       </section>
 
+
+      <section class="page" id="remembered">
+        <header class="section-header page-reveal-item">
+          <p class="eyebrow">In Memoriam</p>
+          <h2>The Remembered</h2>
+          <p>Those whose journeys ended, but whose names remain part of the story.</p>
+        </header>
+
+        <section class="remembered-section page-reveal-item" aria-labelledby="fallen-adventurers-title">
+          <div class="remembered-tier-heading">
+            <span class="remembered-mark" aria-hidden="true">✦</span>
+            <div>
+              <p class="eyebrow">Fallen Adventurers</p>
+              <h3 id="fallen-adventurers-title">Members of the Party</h3>
+            </div>
+          </div>
+          <div class="remembered-list" id="remembered-player-list"></div>
+        </section>
+
+        <section class="remembered-section page-reveal-item remembered-npc-section" aria-labelledby="fallen-figures-title">
+          <div class="remembered-tier-heading">
+            <span class="remembered-mark" aria-hidden="true">◇</span>
+            <div>
+              <p class="eyebrow">Fallen Figures</p>
+              <h3 id="fallen-figures-title">Important NPCs</h3>
+            </div>
+          </div>
+          <div class="remembered-empty">No important fallen figures have been recorded yet.</div>
+        </section>
+      </section>
+
       <section class="page character-detail-page" id="character-detail">
-        <button class="back-btn" id="character-back" type="button">← Return to Character Select</button>
+        <button class="back-btn" id="character-back" type="button">← Return to Meet the Characters</button>
         <div id="character-detail-content"></div>
       </section>
 
@@ -257,6 +296,6 @@
     </section>
   </div>
 
-  <script src="script.js?v=20260921-cursor-spelling1"></script>
+  <script src="script.js?v=20260921-profilemenu2"></script>
 </body>
 </html>
