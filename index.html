@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260921-menuicon2" />
+  <link rel="stylesheet" href="style.css?v=20260929-qa1" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -68,7 +68,7 @@
 
   <div class="page-shell" id="site-shell">
     <header class="topbar">
-      <button class="brand nav-link" data-page="home" aria-label="Home">
+      <button class="brand nav-link" data-page="home" aria-label="Home" type="button">
         <span class="brand-logo-wrap"><img class="brand-logo" src="assets/site-logo.webp?v=20260919-logo1" width="256" height="256" alt="" aria-hidden="true" decoding="async" /></span>
         <span>
           <strong>The Roots Remember</strong>
@@ -77,7 +77,7 @@
       </button>
 
       <nav class="nav" aria-label="Main navigation">
-        <button class="nav-link active" data-page="home">Previously On</button>
+        <button class="nav-link active" data-page="home" type="button">Previously On</button>
         <div class="nav-dropdown" id="characters-nav">
           <button class="nav-link nav-dropdown-toggle" id="characters-nav-toggle" type="button" aria-haspopup="true" aria-expanded="false">
             <span>Characters</span><img class="nav-dropdown-caret" src="assets/characters-dropdown-arrow.png?v=20260921-menuicon2" width="30" height="18" alt="" aria-hidden="true" decoding="async" />
@@ -87,10 +87,10 @@
             <button class="nav-dropdown-item" type="button" data-page="remembered" role="menuitem">The Remembered</button>
           </div>
         </div>
-        <button class="nav-link" data-page="quests">Quest Board</button>
-        <button class="nav-link" data-page="map">Map</button>
-        <button class="nav-link" data-page="npcs">NPCs</button>
-        <button class="nav-link" data-page="sessions">Session Archive</button>
+        <button class="nav-link" data-page="quests" type="button">Quest Board</button>
+        <button class="nav-link" data-page="map" type="button">Map</button>
+        <button class="nav-link" data-page="npcs" type="button">NPCs</button>
+        <button class="nav-link" data-page="sessions" type="button">Session Archive</button>
       </nav>
     </header>
 
@@ -104,23 +104,23 @@
 
         <div class="hero-card reveal-cinematic delay-a">
           <img
-            class="hero-art"
-            src="assets/session-4-home.webp?v=20260921-session4"
-            width="1536"
-            height="1024"
-            alt="Valemere beneath the night sky"
+            class="hero-art hero-art-session5"
+            src="assets/session-5-home.webp?v=20260929-session5b"
+            width="1122"
+            height="1402"
+            alt="Morvan and Vaeloryn fighting goblins inside a tavern"
             fetchpriority="high"
             decoding="async"
           />
           <div class="hero-vignette"></div>
           <div class="hero-glow"></div>
           <div class="hero-content">
-            <p class="eyebrow">Session IV</p>
-            <h1>The Price<br />of Curiosity</h1>
-            <p class="lead">The investigation at Stardust and Slag uncovers a suspicious theft, a warning about the Tempest Order, and a trail Leoric follows alone—one that ends in poison, steel, and the loss of one of their own.</p>
+            <p class="eyebrow">Session V</p>
+            <h1>Grief<br />and Betrayal</h1>
+            <p class="lead">The party fractures beneath the weight of Leoric’s death as one path carries him home and another follows a dangerous trail to Thornwatch—where Gymerra’s betrayal reveals a far larger conspiracy.</p>
             <div class="hero-actions">
-              <button class="btn btn-primary" data-jump="sessions">Read Full Recap</button>
-              <button class="btn btn-ghost" data-jump="quests">View Current Quest</button>
+              <button class="btn btn-primary" data-jump="sessions" type="button">Read Full Recap</button>
+              <button class="btn btn-ghost" data-jump="quests" type="button">View Current Quest</button>
             </div>
           </div>
         </div>
@@ -129,9 +129,9 @@
           <div class="section-title-row">
             <div>
               <p class="eyebrow">Last Session Recap</p>
-              <h3>The Price of Curiosity</h3>
+              <h3>Grief and Betrayal</h3>
             </div>
-            <span class="chapter-mark">IV</span>
+            <span class="chapter-mark">V</span>
           </div>
           <div class="prose" id="latest-recap"></div>
         </section>
@@ -290,12 +290,13 @@
           alt="Illustrated campaign map of the Kingdom of Valemere"
           draggable="false"
           decoding="async"
+          loading="lazy"
         />
       </div>
       <p class="map-viewer-help">Use + and − to zoom. When zoomed in, drag the map to move around it. Press Esc to close.</p>
     </section>
   </div>
 
-  <script src="script.js?v=20260921-menuicon2"></script>
+  <script src="script.js?v=20260929-qa1"></script>
 </body>
 </html>

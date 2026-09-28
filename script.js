@@ -213,11 +213,34 @@ const DATA = {
         "As silence fell over the group, something strange began to happen. The red tie around Leoric’s neck slowly loosened itself. It began to glow, rising gently into the air as though guided by an unseen hand. Then, drifting away from the body of its owner, it crossed the space between them and wrapped itself around Cassian’s arm.",
         "The night had begun as an investigation. It ended with one of their own lying dead in the shadows."
       ]
+    },
+    {
+      number: "Session V",
+      title: "Grief and Betrayal",
+      paragraphs: [
+        "The night carried on, but for the group, everything had stopped. Leoric Everheart was dead. For a time, nobody knew what to say. Cassian’s grief quickly turned to fury, his anger consuming him as he struck the earth again and again, powerless to change what had happened. Vaeloryn could not accept it either. Desperate for another answer, he stepped away from the others and called upon one of his vestiges, demanding to know if Leoric could be brought back. The warning he received was clear: death and fate were not forces to be interfered with. Yet Vaeloryn continued to insist. Eventually, the vestige offered only one possibility—the Feywild, a realm where perhaps something capable of defying death could be found.",
+        "As the vestige disappeared and Vaeloryn began making his way back, darkness suddenly swallowed everything around him. Black feathers drifted from above, and from beside him passed a faceless figure: the Queen of Ravens, deity of death. She spoke no words. She did not need to. A single expression directed toward Vaeloryn sent a chill through his entire body. Then, just as suddenly as it had appeared, the darkness tore away, leaving him standing once again beneath the night sky.",
+        "The group ultimately decided that Leoric needed to be returned to Silvercrest. Cassian believed his father deserved to hear what had happened and to receive his son himself. Morvan, however, had noticed two suspicious individuals travelling northwest toward Thornwatch Village. With a possible lead slipping away, the group made the difficult decision to split. Morvan and Vaeloryn would pursue the trail toward Thornwatch, while Cassian, Aurelius and Syrsa carried Leoric home.",
+        "With the help of Orina, they preserved Leoric’s body as best they could throughout the journey. Upon entering Silvercrest, the familiar sight of the Solaris Mansion was one of the first things they saw. Sebastian answered their knock, and one look at their faces was enough for him to know that something had gone terribly wrong. He immediately went to fetch Orthen. Heavy footsteps eventually echoed through the mansion as the old Leonin entered with his usual welcoming smile—but the moment he saw them, it vanished. Cassian explained what had happened. For a moment, Orthen seemed to shrink beneath the weight of the news. He struggled to contain the anxiety and grief building inside him before quietly offering a short prayer for Leoric.",
+        "Then came the part Cassian had been dreading. They travelled to the home of Leoric’s father. When he opened the door and saw Cassian standing there, his first thought was that Leoric had gotten himself into trouble—or perhaps ended up in prison. He had no idea that his son’s body rested inside the carriage behind them. When he finally saw Leoric, he said nothing. Minutes passed in complete silence. Without a word, he magically lifted his son from the carriage, carried him inside, and closed the door.",
+        "Meanwhile, Morvan and Vaeloryn had reached Thornwatch Village, where their search led them into a local tavern. Inside, unexpectedly, sat Gymerra, the owner of Stardust and Slag. She immediately recognized the two from the previous night. Her initial happiness quickly faded into unease, something Morvan immediately noticed. He grabbed three pints of beer, sat beside her, and turned the conversation into a drinking contest. Morvan came out victorious—and with Gymerra’s guard lowered, information began to spill. She spoke suspiciously of the Crown and of unusual purchases being made by the King through her establishment. Eventually, claiming exhaustion, Gymerra excused herself and returned to her room.",
+        "Vaeloryn questioned the barkeep about whether anyone unusual had arrived the previous night. His answer immediately raised suspicion: two strange individuals had entered the tavern and gone to Room 10. The very same room Gymerra had just entered.",
+        "Morvan and Vaeloryn followed.",
+        "From outside the room, they heard a conversation that changed everything. Gymerra was speaking with someone about the investigation. She admitted that she had not known House Solaris was involved, and it became painfully clear that she knew far more about the robbery than she had ever admitted. Whoever she was speaking to did not take the news well. The conversation suddenly became violent as Gymerra began choking beneath the grip of the unseen figure inside.",
+        "Morvan acted immediately.",
+        "From the darkness of his cloak, he summoned his greatsword and split the door apart.",
+        "An arrow struck him the moment he entered.",
+        "The room was filled with goblins, led by their chieftain. What followed was a vicious fight that pushed both Morvan and Vaeloryn dangerously close to death. Somehow, battered and bleeding, they prevailed—but the goblin chieftain escaped before they could capture him.",
+        "One goblin remained.",
+        "Determined to get answers, Vaeloryn subjected him to a brutal interrogation. Eventually, the goblin broke. He revealed that someone named Mazakar, currently imprisoned in Silvercrest, had been overseeing their operations. He also gave them the name of the escaped goblin chieftain—Grimnak—and revealed where his people could be found: the docks of Emberford.",
+        "When it was finally over, there was no celebration. Morvan collapsed onto his back, covered in blood, his heart pounding from exhaustion. Vaeloryn rested nearby, equally drained.",
+        "Leoric was gone. Gymerra had betrayed them. And what had begun as a simple robbery investigation was becoming something far larger than any of them had imagined."
+      ]
     }
   ]
 };
 
-const ASSET_VERSION = '20260921-profilemenu2';
+const ASSET_VERSION = '20260929-session5';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const landing = document.getElementById('landing');
@@ -259,11 +282,16 @@ if (new URLSearchParams(location.search).get('skipIntro') === '1') {
 function setActiveNav(id) {
   const navId = id === 'character-detail' ? 'characters' : id;
   navButtons.forEach(button => {
-    button.classList.toggle('active', button.dataset.page === navId);
+    const active = button.dataset.page === navId;
+    button.classList.toggle('active', active);
+    if (active) button.setAttribute('aria-current', 'page');
+    else button.removeAttribute('aria-current');
   });
 
   const charactersActive = ['characters', 'remembered', 'character-detail'].includes(id);
   charactersNavToggle.classList.toggle('active', charactersActive);
+  if (charactersActive) charactersNavToggle.setAttribute('aria-current', 'page');
+  else charactersNavToggle.removeAttribute('aria-current');
 }
 
 function actuallyShowPage(id) {
@@ -284,6 +312,7 @@ function navigateTo(id, { immediate = false, replace = false, hash = null } = {}
 
   if (id === currentPage && id !== 'character-detail') {
     if (location.hash !== targetHash) applyHistory();
+    window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
     return;
   }
 
@@ -707,6 +736,9 @@ mapModal.querySelector('[data-map-close]').addEventListener('click', closeMapVie
 mapZoomIn.addEventListener('click', () => setMapScale(mapState.scale + MAP_ZOOM_STEP));
 mapZoomOut.addEventListener('click', () => setMapScale(mapState.scale - MAP_ZOOM_STEP));
 mapReset.addEventListener('click', resetMapView);
+mapImage.addEventListener('load', () => {
+  if (mapModal.classList.contains('open')) renderMapTransform();
+});
 
 mapViewport.addEventListener('wheel', event => {
   if (!mapModal.classList.contains('open')) return;
@@ -752,7 +784,28 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('keydown', event => {
   if (!mapModal.classList.contains('open')) return;
-  if (event.key === 'Escape') closeMapViewer();
+
+  if (event.key === 'Escape') {
+    closeMapViewer();
+    return;
+  }
+
+  if (event.key === 'Tab') {
+    const focusable = [...mapModal.querySelectorAll('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
+      .filter(element => element.offsetParent !== null);
+    if (focusable.length) {
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
   if (event.key === '+' || event.key === '=') setMapScale(mapState.scale + MAP_ZOOM_STEP);
   if (event.key === '-') setMapScale(mapState.scale - MAP_ZOOM_STEP);
   if (event.key === '0') resetMapView();
@@ -848,7 +901,8 @@ function drawParticles(time = 0) {
 }
 
 function syncParticleMotion() {
-  if (reducedMotion.matches) {
+  const shouldPause = reducedMotion.matches || document.visibilityState !== 'visible';
+  if (shouldPause) {
     if (animationFrame) cancelAnimationFrame(animationFrame);
     animationFrame = null;
     ctx.clearRect(0, 0, innerWidth, innerHeight);
@@ -858,6 +912,7 @@ function syncParticleMotion() {
 }
 
 window.addEventListener('resize', resizeCanvas);
+document.addEventListener('visibilitychange', syncParticleMotion);
 if (typeof reducedMotion.addEventListener === 'function') reducedMotion.addEventListener('change', syncParticleMotion);
 resizeCanvas();
 syncParticleMotion();
