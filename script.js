@@ -110,8 +110,8 @@ const DATA = {
   quests: [
     {
       title: "Investigate the Robbery of Stardust and Slag",
-      status: "In Progress",
-      state: "active",
+      status: "Completed",
+      state: "completed",
       givenBy: "Orthen Solaris",
       location: "Industrial Area of Elaris",
       image: "assets/orthen-solaris.webp",
@@ -490,35 +490,34 @@ characterBack.addEventListener('click', () => {
 const questBoard = document.getElementById('quest-board');
 const activeQuests = DATA.quests.filter(quest => quest.state === 'active');
 const completedQuests = DATA.quests.filter(quest => quest.state === 'completed');
+const closedQuests = DATA.quests.filter(quest => quest.state === 'closed');
 
-function renderActiveQuest(quest) {
+function renderActiveQuest(quest, index = 0) {
   return `
-    <article class="quest-card">
-      <div class="quest-card-head">
+    <article class="quest-feature-card ${index > 0 ? 'quest-feature-card-secondary' : ''}">
+      <div class="quest-feature-head">
         <div class="quest-heading-group">
           <div class="quest-seal" aria-hidden="true">✦</div>
           <div>
-            <p class="eyebrow">Active Contract</p>
+            <p class="eyebrow">${index === 0 ? 'Current Contract' : 'Active Contract'}</p>
             <h3>${quest.title}</h3>
           </div>
         </div>
         <span class="status"><span class="status-dot" aria-hidden="true"></span>${quest.status}</span>
       </div>
 
-      <div class="quest-card-body">
+      <div class="quest-feature-body">
         <p class="quest-description">${quest.description}</p>
-
         <div class="quest-meta">
           <div class="meta-box"><span>Quest Giver</span><strong>${quest.givenBy}</strong></div>
           <div class="meta-box"><span>Destination</span><strong>${quest.location}</strong></div>
         </div>
-
         <div class="quest-objectives">
           <div class="quest-objectives-title">Known Objectives</div>
           <div class="quest-objective-list">
-            ${quest.objectives.map((objective, index) => `
+            ${quest.objectives.map((objective, objectiveIndex) => `
               <div class="quest-objective">
-                <span class="objective-mark">${index + 1}</span>
+                <span class="objective-mark">${objectiveIndex + 1}</span>
                 <span>${objective}</span>
               </div>
             `).join('')}
@@ -531,47 +530,111 @@ function renderActiveQuest(quest) {
 
 function renderCompletedQuest(quest) {
   return `
-    <article class="completed-quest-card">
-      <div class="completed-quest-copy">
-        <p class="eyebrow">Completed Contract</p>
-        <h4>${quest.title}</h4>
-        <div class="completed-quest-meta">
-          <span>${quest.givenBy}</span>
-          <span>${quest.location}</span>
+    <article class="ledger-card ledger-card-completed" aria-label="${quest.title} — completed quest">
+      <div class="ledger-card-summary">
+        <div class="ledger-card-copy">
+          <p class="eyebrow">Completed Contract</p>
+          <h4>${quest.title}</h4>
+          <div class="ledger-card-meta">
+            <span><small>Quest Giver</small>${quest.givenBy}</span>
+            <span><small>Destination</small>${quest.location}</span>
+          </div>
         </div>
+        <img
+          class="quest-complete-stamp"
+          src="${asset("assets/quest-complete-stamp.png")}"
+          alt="Quest Complete"
+          loading="lazy"
+          decoding="async"
+        >
       </div>
-      <img
-        class="quest-complete-stamp"
-        src="${asset("assets/quest-complete-stamp.png")}"
-        alt="Quest Complete"
-        loading="lazy"
-        decoding="async"
-      >
     </article>
   `;
 }
 
-questBoard.innerHTML = `
-  <div class="quest-board-layout">
-    <div class="active-quest-column">
-      ${activeQuests.length
-        ? activeQuests.map(renderActiveQuest).join('')
-        : `<div class="quest-empty active-empty"><span>✦</span><strong>No active contract</strong><p>The board is quiet for now.</p></div>`
-      }
-    </div>
-    <aside class="completed-quest-column" aria-label="Completed quests">
-      <div class="completed-board-heading">
-        <p class="eyebrow">Archived Contracts</p>
-        <h3>Completed Quests</h3>
-        <p>Finished quests are moved here and marked with the royal completion stamp.</p>
+function renderClosedQuest(quest) {
+  return `
+    <details class="ledger-card ledger-card-closed">
+      <summary class="ledger-card-summary">
+        <div class="ledger-card-copy">
+          <p class="eyebrow">Closed Contract</p>
+          <h4>${quest.title}</h4>
+          <div class="ledger-card-meta">
+            <span><small>Quest Giver</small>${quest.givenBy}</span>
+            <span><small>Destination</small>${quest.location}</span>
+          </div>
+        </div>
+      </summary>
+      <div class="ledger-card-details">
+        <p>${quest.description}</p>
       </div>
-      <div class="completed-quest-list">
-        ${completedQuests.length
-          ? completedQuests.map(renderCompletedQuest).join('')
-          : `<div class="quest-empty"><span>◇</span><strong>No completed quests yet</strong><p>When the party finishes a contract, it will be archived here.</p></div>`
+    </details>
+  `;
+}
+
+questBoard.innerHTML = `
+  <div class="quest-board-redesign">
+    <section class="current-contract-section" aria-labelledby="current-contract-title">
+      <div class="quest-section-heading">
+        <div>
+          <p class="eyebrow">Current Contracts</p>
+          <h3 id="current-contract-title">On the Board</h3>
+        </div>
+        <span class="quest-count">${activeQuests.length}</span>
+      </div>
+      <div class="active-contract-list">
+        ${activeQuests.length
+          ? activeQuests.map(renderActiveQuest).join('')
+          : `<div class="quest-empty quest-empty-wide"><span>✦</span><strong>No active contract</strong><p>The board is quiet for now. The next assignment has yet to be posted.</p></div>`
         }
       </div>
-    </aside>
+    </section>
+
+    <section class="quest-ledger" aria-labelledby="quest-ledger-title">
+      <div class="quest-ledger-head">
+        <div>
+          <p class="eyebrow">Campaign Record</p>
+          <h3 id="quest-ledger-title">The Quest Ledger</h3>
+          <p>Every contract taken by the party is recorded here as the campaign grows.</p>
+        </div>
+        <div class="quest-ledger-stats" aria-label="Quest totals">
+          <span><strong>${activeQuests.length}</strong>Active</span>
+          <span><strong>${completedQuests.length}</strong>Completed</span>
+          <span><strong>${closedQuests.length}</strong>Closed</span>
+        </div>
+      </div>
+
+      <section class="ledger-section" aria-labelledby="completed-contracts-title">
+        <div class="ledger-section-title">
+          <div>
+            <p class="eyebrow">Archived Contracts</p>
+            <h4 id="completed-contracts-title">Completed</h4>
+          </div>
+          <span class="ledger-section-count">${completedQuests.length}</span>
+        </div>
+        <div class="ledger-grid">
+          ${completedQuests.length
+            ? completedQuests.map(renderCompletedQuest).join('')
+            : `<div class="quest-empty quest-empty-wide"><span>◇</span><strong>No completed contracts yet</strong><p>Completed quests will be preserved here.</p></div>`
+          }
+        </div>
+      </section>
+
+      ${closedQuests.length ? `
+        <section class="ledger-section ledger-section-closed" aria-labelledby="closed-contracts-title">
+          <div class="ledger-section-title">
+            <div>
+              <p class="eyebrow">No Longer Pursued</p>
+              <h4 id="closed-contracts-title">Closed</h4>
+            </div>
+            <span class="ledger-section-count">${closedQuests.length}</span>
+          </div>
+          <div class="ledger-grid">
+            ${closedQuests.map(renderClosedQuest).join('')}
+          </div>
+        </section>
+      ` : ''}
+    </section>
   </div>
 `;
 
@@ -944,3 +1007,59 @@ function renderFromHash({ immediate = true } = {}) {
 
 window.addEventListener('popstate', () => renderFromHash({ immediate: true }));
 renderFromHash({ immediate: true });
+
+/* -------------------- Previously On image carousel -------------------- */
+const heroCarousel = document.getElementById('session-hero-carousel');
+
+if (heroCarousel) {
+  const heroSlides = [...heroCarousel.querySelectorAll('[data-hero-slide]')];
+  const heroDots = [...heroCarousel.querySelectorAll('[data-hero-dot]')];
+  const heroPrev = heroCarousel.querySelector('.hero-carousel-prev');
+  const heroNext = heroCarousel.querySelector('.hero-carousel-next');
+  const heroStatus = document.getElementById('hero-carousel-status');
+  const heroSlideSurface = heroCarousel.querySelector('.hero-slides');
+  let heroIndex = 0;
+  let heroTouchStartX = null;
+
+  function showHeroSlide(index) {
+    if (!heroSlides.length) return;
+    heroIndex = (index + heroSlides.length) % heroSlides.length;
+
+    heroSlides.forEach((slide, slideIndex) => {
+      const active = slideIndex === heroIndex;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+    });
+
+    heroDots.forEach((dot, dotIndex) => {
+      const active = dotIndex === heroIndex;
+      dot.classList.toggle('is-active', active);
+      if (active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+
+    if (heroStatus) heroStatus.textContent = `Image ${heroIndex + 1} of ${heroSlides.length}`;
+  }
+
+  heroPrev?.addEventListener('click', () => showHeroSlide(heroIndex - 1));
+  heroNext?.addEventListener('click', () => showHeroSlide(heroIndex + 1));
+
+  heroDots.forEach(dot => {
+    dot.addEventListener('click', () => showHeroSlide(Number(dot.dataset.heroDot)));
+  });
+
+  heroSlideSurface?.addEventListener('touchstart', event => {
+    heroTouchStartX = event.changedTouches[0]?.clientX ?? null;
+  }, { passive: true });
+
+  heroSlideSurface?.addEventListener('touchend', event => {
+    if (heroTouchStartX === null) return;
+    const endX = event.changedTouches[0]?.clientX ?? heroTouchStartX;
+    const distance = endX - heroTouchStartX;
+    heroTouchStartX = null;
+    if (Math.abs(distance) < 48) return;
+    showHeroSlide(heroIndex + (distance < 0 ? 1 : -1));
+  }, { passive: true });
+
+  showHeroSlide(0);
+}

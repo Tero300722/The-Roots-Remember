@@ -22,10 +22,11 @@
   <link rel="icon" href="assets/favicon-64.png?v=20260919-logo1" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="assets/favicon-180.png?v=20260919-logo1" />
   <link rel="preload" as="image" href="assets/campaign-hero.webp?v=20260919-layout2" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/session-5-memory-leoric.webp?v=20260930-slideshow2" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260929-qa1" />
+  <link rel="stylesheet" href="style.css?v=20260930-questledger1" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -102,18 +103,42 @@
           <span class="intro-line"></span>
         </div>
 
-        <div class="hero-card reveal-cinematic delay-a">
-          <img
-            class="hero-art hero-art-session5"
-            src="assets/session-5-home.webp?v=20260929-session5c"
-            width="1955"
-            height="1024"
-            alt="Morvan and Vaeloryn fighting goblins inside a tavern"
-            fetchpriority="high"
-            decoding="async"
-          />
+        <div class="hero-card hero-carousel reveal-cinematic delay-a" id="session-hero-carousel" aria-roledescription="carousel" aria-label="Session V visual recap">
+          <div class="hero-slides">
+            <img
+              class="hero-art hero-slide hero-slide-leoric is-active"
+              src="assets/session-5-memory-leoric.webp?v=20260930-slideshow2"
+              width="1672"
+              height="941"
+              alt="Cassian carrying Leoric through a rain-soaked forest"
+              fetchpriority="high"
+              decoding="async"
+              data-hero-slide
+            />
+            <img
+              class="hero-art hero-slide hero-art-session5"
+              src="assets/session-5-home.webp?v=20260929-session5c"
+              width="1955"
+              height="1024"
+              alt="Morvan and Vaeloryn fighting goblins inside a tavern"
+              decoding="async"
+              data-hero-slide
+              aria-hidden="true"
+            />
+          </div>
           <div class="hero-vignette"></div>
           <div class="hero-glow"></div>
+          <button class="hero-carousel-arrow hero-carousel-prev" type="button" aria-label="Previous session image">
+            <img src="assets/carousel-arrow-right.png?v=20260930-arrowfix2" alt="" aria-hidden="true" />
+          </button>
+          <button class="hero-carousel-arrow hero-carousel-next" type="button" aria-label="Next session image">
+            <img src="assets/carousel-arrow-left.png?v=20260930-arrowfix2" alt="" aria-hidden="true" />
+          </button>
+          <div class="hero-carousel-dots" role="group" aria-label="Session image selection">
+            <button class="hero-carousel-dot is-active" type="button" aria-label="Show image 1 of 2" aria-current="true" data-hero-dot="0"></button>
+            <button class="hero-carousel-dot" type="button" aria-label="Show image 2 of 2" data-hero-dot="1"></button>
+          </div>
+          <span class="sr-only" id="hero-carousel-status" aria-live="polite">Image 1 of 2</span>
           <div class="hero-content">
             <p class="eyebrow">Session V</p>
             <h1>Grief<br />and Betrayal</h1>
@@ -183,9 +208,9 @@
 
       <section class="page" id="quests">
         <header class="section-header page-reveal-item">
-          <p class="eyebrow">Current Objective</p>
+          <p class="eyebrow">Contracts & Objectives</p>
           <h2>Quest Board</h2>
-          <p>Known assignments and objectives currently being pursued by the party.</p>
+          <p>Active assignments, completed contracts, and the party’s growing quest history.</p>
         </header>
         <div id="quest-board"></div>
       </section>
@@ -297,6 +322,6 @@
     </section>
   </div>
 
-  <script src="script.js?v=20260929-qa1"></script>
+  <script src="script.js?v=20260930-questledger1"></script>
 </body>
 </html>
