@@ -96,14 +96,14 @@ html.custom-cursor-enabled .topbar,html.custom-cursor-enabled .topbar *,body.cus
 
 /* ---------- App shell ---------- */
 .page-shell{width:min(1260px,calc(100% - 32px));margin:0 auto}
-.topbar{position:sticky;top:14px;z-index:50;margin:14px 0 28px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:18px;border:1px solid var(--line);border-radius:20px;background:rgba(6,8,13,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 15px 50px rgba(0,0,0,.28)}
-.brand{display:flex;align-items:center;gap:12px;border:0;background:none;color:var(--ink);cursor:pointer;text-align:left}
-.brand-logo-wrap{width:40px;height:40px;flex:0 0 40px;display:block;border-radius:12px;overflow:hidden;box-shadow:0 0 22px rgba(211,173,103,.16)}
+.topbar{position:sticky;top:14px;z-index:50;width:max-content;max-width:100%;margin:14px 0 28px;padding:9px 10px;display:grid;grid-template-columns:auto auto auto;align-items:center;justify-content:start;gap:10px;border:1px solid var(--line);border-radius:18px;background:rgba(6,8,13,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 15px 50px rgba(0,0,0,.28)}
+.brand{display:flex;align-items:center;gap:9px;border:0;background:none;color:var(--ink);cursor:pointer;text-align:left}
+.brand-logo-wrap{width:36px;height:36px;flex:0 0 36px;display:block;border-radius:10px;overflow:hidden;box-shadow:0 0 22px rgba(211,173,103,.16)}
 .brand-logo{display:block;width:100%;height:100%;object-fit:cover;border-radius:12px}
-.brand strong{display:block;font-family:"Cinzel",serif;font-size:.98rem;letter-spacing:.07em}
-.brand small{display:block;margin-top:2px;color:#8f8a81}
-.nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.nav-link:not(.brand){padding:9px 13px;border:1px solid transparent;border-radius:999px;background:transparent;color:#c4bdaf;cursor:pointer;transition:color .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.brand strong{display:block;font-family:"Cinzel",serif;font-size:.88rem;letter-spacing:.06em;white-space:nowrap}
+.brand small{display:block;margin-top:1px;color:#8f8a81;font-size:.68rem;white-space:nowrap}
+.nav{display:flex;justify-content:flex-start;gap:4px;flex-wrap:nowrap}
+.nav-link:not(.brand){padding:8px 10px;border:1px solid transparent;border-radius:999px;background:transparent;color:#c4bdaf;cursor:pointer;transition:color .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
 .nav-link:not(.brand):hover,.nav-link:not(.brand).active{color:#fff7e8;border-color:var(--line);background:rgba(211,173,103,.07);box-shadow:0 0 24px rgba(211,173,103,.08)}
 .nav-dropdown{position:relative;display:flex;align-items:center}
 .nav-dropdown-toggle{display:inline-flex;align-items:center;gap:9px}
@@ -686,4 +686,377 @@ body.site-entered .page.active .reveal-cinematic{animation:cinematicReveal .8s c
 .ledger-card-completed:hover{
   border-color:rgba(224,187,116,.18);
   box-shadow:none;
+}
+
+/* ---------- Chronicle selector ---------- */
+.chronicle-selector{
+  position:fixed;
+  inset:0;
+  z-index:600;
+  display:grid;
+  place-items:center;
+  overflow:auto;
+  padding:clamp(28px,5vw,64px);
+  background:
+    radial-gradient(circle at 18% 20%,rgba(114,76,38,.16),transparent 31%),
+    radial-gradient(circle at 82% 78%,rgba(72,48,122,.14),transparent 34%),
+    linear-gradient(180deg,rgba(4,6,10,.97),rgba(7,9,15,.99));
+  transition:opacity .55s ease,visibility .55s ease;
+}
+.chronicle-selector::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 31%,rgba(229,190,114,.035) 50%,transparent 68%);
+  opacity:.8;
+}
+.chronicle-selector.dismissed{opacity:0;visibility:hidden;pointer-events:none}
+.chronicle-selector-inner{position:relative;z-index:1;width:min(1180px,100%)}
+.chronicle-selector-heading{text-align:center;margin-bottom:32px}
+.chronicle-selector-heading .eyebrow{margin-bottom:8px}
+.chronicle-selector-heading h1{margin:0;font-family:"Cinzel",serif;font-size:clamp(2.5rem,6vw,5.3rem);line-height:1;letter-spacing:-.025em}
+.chronicle-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.chronicle-card{
+  position:relative;
+  padding:0;
+  overflow:hidden;
+  border:1px solid rgba(220,184,111,.25);
+  border-radius:28px;
+  background:rgba(10,12,18,.92);
+  color:var(--ink);
+  text-align:left;
+  cursor:pointer;
+  box-shadow:0 30px 80px rgba(0,0,0,.36);
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.chronicle-card:hover,.chronicle-card:focus-visible{
+  transform:translateY(-6px);
+  border-color:rgba(240,207,142,.68);
+  box-shadow:0 34px 90px rgba(0,0,0,.48),0 0 34px rgba(211,173,103,.10);
+  outline:none;
+}
+.chronicle-card-art-wrap{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#080a0f}
+.chronicle-card-art{width:100%;height:100%;object-fit:cover;object-position:center;transition:filter .3s ease,transform .4s ease}
+.chronicle-card:hover .chronicle-card-art,.chronicle-card:focus-visible .chronicle-card-art{transform:scale(1.018);filter:brightness(1.05) saturate(1.03)}
+.chronicle-card-shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(5,7,11,.72) 100%);pointer-events:none}
+.chronicle-card-copy{display:block;padding:22px 24px 24px;border-top:1px solid rgba(255,255,255,.055)}
+.chronicle-type{display:block;margin-bottom:7px;color:#d7b66f;font-size:.67rem;letter-spacing:.16em;text-transform:uppercase}
+.chronicle-card-copy strong{display:block;font-family:"Cinzel",serif;font-size:clamp(1.35rem,2.5vw,2.15rem);line-height:1.15}
+.chronicle-card-grimwood{border-color:rgba(181,150,102,.26)}
+
+/* ---------- Chronicle switching ---------- */
+.brand-cluster{display:contents}
+.chronicle-switch{
+  flex:0 0 auto;
+  min-height:34px;
+  padding:7px 10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border:1px solid rgba(211,173,103,.18);
+  border-radius:11px;
+  background:rgba(211,173,103,.035);
+  color:#9f978c;
+  font-size:.58rem;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease;
+}
+.chronicle-switch-icon{font-size:.82rem;line-height:1;opacity:.75}
+.chronicle-switch:hover,.chronicle-switch:focus-visible{color:#f0d89c;border-color:rgba(231,197,129,.44);background:rgba(211,173,103,.07);transform:translateY(-1px);outline:none}
+.grimwood-brand-art img{object-fit:cover}
+
+/* ---------- Grimwood Manor shell ---------- */
+.grimwood-page{display:none;min-height:52vh}
+.grimwood-page.active{display:block}
+body.site-entered .grimwood-page.active .grimwood-reveal{animation:cinematicReveal .8s cubic-bezier(.2,.75,.2,1) forwards}
+.grimwood-reveal{opacity:0;transform:translateY(22px);filter:blur(6px)}
+.grimwood-hero{
+  position:relative;
+  min-height:660px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:#0b0e15;
+  box-shadow:var(--shadow);
+}
+.grimwood-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.98) contrast(1.03)}
+.grimwood-hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,12,.94),rgba(5,7,12,.60) 42%,rgba(5,7,12,.18) 76%),linear-gradient(0deg,rgba(4,6,10,.68),transparent 54%)}
+.grimwood-hero-copy{position:relative;z-index:2;width:min(630px,90%);min-height:660px;padding:clamp(38px,6vw,84px);display:flex;flex-direction:column;justify-content:center}
+.grimwood-hero-copy h1{margin:0 0 18px;font-family:"Cinzel",serif;font-size:clamp(3.1rem,6vw,6rem);line-height:.98;letter-spacing:-.025em}
+.grimwood-hero-copy>p:last-child{margin:0;color:#cfc6b8;font-size:1.05rem;line-height:1.8}
+.chronicle-empty{
+  min-height:300px;
+  padding:42px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border:1px dashed rgba(211,173,103,.18);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(15,18,27,.68),rgba(8,10,16,.58));
+  color:#999287;
+}
+.chronicle-empty>span{margin-bottom:12px;color:#d0ad69;font-size:1.65rem}
+.chronicle-empty strong{font-family:"Cinzel",serif;color:#ddd4c5;font-size:1.2rem}
+.chronicle-empty p{max-width:56ch;margin:10px 0 0;line-height:1.7;font-size:.9rem}
+
+@media (max-width:1050px){
+  .brand-cluster{justify-content:flex-start;flex-wrap:wrap}
+  .chronicle-grid{gap:18px}
+}
+
+@media (max-width:700px){
+  .chronicle-selector{padding:24px 14px}
+  .chronicle-selector-heading{margin-bottom:22px}
+  .chronicle-grid{grid-template-columns:1fr;gap:16px}
+  .chronicle-card-art-wrap{aspect-ratio:16/9}
+  .brand-cluster{width:100%;justify-content:space-between}
+  .chronicle-switch{padding:7px 9px;font-size:.56rem}
+  .grimwood-hero{min-height:610px}
+  .grimwood-hero-copy{min-height:610px;padding:34px 24px}
+  .grimwood-hero-copy h1{font-size:clamp(2.6rem,13vw,4.4rem)}
+  .chronicle-empty{min-height:250px;padding:30px 22px}
+}
+
+
+/* ---------- Grimwood Manor: Halloween chronicle identity ---------- */
+.chronicle-card-grimwood{
+  border-color:rgba(214,104,38,.42);
+  background:linear-gradient(145deg,rgba(19,10,17,.98),rgba(7,8,13,.98));
+  box-shadow:0 30px 80px rgba(0,0,0,.42),0 0 34px rgba(112,46,130,.06);
+}
+.chronicle-card-grimwood .chronicle-card-shade{
+  background:linear-gradient(180deg,rgba(18,6,20,.05) 35%,rgba(15,5,15,.82) 100%),radial-gradient(circle at 72% 25%,rgba(219,87,28,.10),transparent 34%);
+}
+.chronicle-card-grimwood .chronicle-type{color:#e78742}
+.chronicle-card-grimwood:hover,.chronicle-card-grimwood:focus-visible{
+  border-color:rgba(242,126,53,.82);
+  box-shadow:0 34px 90px rgba(0,0,0,.52),0 0 28px rgba(225,91,34,.14),0 0 44px rgba(105,46,126,.10);
+}
+.chronicle-card-grimwood:hover .chronicle-card-art,.chronicle-card-grimwood:focus-visible .chronicle-card-art{
+  filter:brightness(.98) saturate(1.08) contrast(1.05);
+}
+
+.grimwood-shell{
+  --ink:#f2e6d5;
+  --muted:#aaa093;
+  --gold:#d06e32;
+  --gold-2:#f0a15d;
+  --line:rgba(219,105,46,.28);
+  --line-soft:rgba(180,118,171,.13);
+  --shadow:0 28px 84px rgba(0,0,0,.55);
+}
+.grimwood-shell .topbar{
+  border-color:rgba(210,91,39,.26);
+  background:linear-gradient(90deg,rgba(11,7,13,.88),rgba(8,9,13,.86));
+  box-shadow:0 15px 50px rgba(0,0,0,.38),0 0 28px rgba(95,38,111,.05);
+}
+.grimwood-shell .brand-logo-wrap{box-shadow:0 0 22px rgba(223,95,37,.16)}
+.grimwood-shell .brand small{color:#9c8b83}
+.grimwood-shell .nav-link:not(.brand):hover,.grimwood-shell .nav-link:not(.brand).active{
+  color:#fff0df;
+  border-color:rgba(218,102,44,.32);
+  background:linear-gradient(135deg,rgba(208,78,27,.10),rgba(100,45,113,.07));
+  box-shadow:0 0 24px rgba(208,78,27,.08);
+}
+.grimwood-shell .nav-dropdown-menu{
+  border-color:rgba(211,91,37,.28);
+  background:rgba(12,7,13,.96);
+  box-shadow:0 18px 52px rgba(0,0,0,.52),0 0 28px rgba(100,45,113,.08);
+}
+.grimwood-shell .nav-dropdown-item:hover,.grimwood-shell .nav-dropdown-item:focus-visible{
+  color:#ffe8d3;
+  background:rgba(215,83,31,.10);
+}
+.grimwood-shell .chronicle-switch{
+  border-color:rgba(216,93,38,.24);
+  background:rgba(201,71,25,.05);
+  color:#ad9488;
+}
+.grimwood-shell .chronicle-switch:hover,.grimwood-shell .chronicle-switch:focus-visible{
+  color:#f1a260;
+  border-color:rgba(234,118,54,.54);
+  background:rgba(214,80,29,.09);
+}
+.grimwood-shell .eyebrow{color:#dd7a3c}
+.grimwood-shell .section-header h2,.grimwood-shell .grimwood-hero-copy h1{color:#f2e5d4;text-shadow:0 0 30px rgba(115,48,126,.11)}
+.grimwood-hero{
+  border-color:rgba(217,98,40,.31);
+  background:#09070b;
+  box-shadow:0 34px 92px rgba(0,0,0,.56),0 0 42px rgba(92,37,108,.07);
+}
+.grimwood-hero>img{filter:saturate(.92) contrast(1.08) brightness(.83)}
+.grimwood-hero-overlay{
+  background:linear-gradient(90deg,rgba(8,4,10,.96),rgba(14,6,13,.72) 44%,rgba(13,6,12,.24) 78%),linear-gradient(0deg,rgba(5,4,8,.80),transparent 52%),radial-gradient(circle at 72% 25%,rgba(219,84,27,.10),transparent 28%);
+}
+.grimwood-hero-copy>p:last-child{color:#c8b6aa}
+.grimwood-shell .chronicle-empty{
+  border-color:rgba(198,81,32,.23);
+  background:radial-gradient(circle at 50% 10%,rgba(107,42,119,.08),transparent 34%),linear-gradient(145deg,rgba(17,9,16,.76),rgba(8,8,12,.72));
+  color:#9d9189;
+}
+.grimwood-shell .chronicle-empty>span{color:#df7637}
+.grimwood-shell .chronicle-empty strong{color:#e4d3c4}
+.grimwood-shell .map-card{border-color:rgba(209,91,37,.25);background:linear-gradient(145deg,rgba(17,9,16,.90),rgba(8,8,12,.86))}
+.grimwood-shell .btn-primary{border-color:rgba(226,111,51,.42);background:linear-gradient(135deg,rgba(208,79,28,.17),rgba(92,43,105,.12));box-shadow:0 0 26px rgba(211,78,28,.07)}
+.grimwood-shell .btn-primary:hover{border-color:rgba(240,137,76,.70);background:linear-gradient(135deg,rgba(215,84,30,.23),rgba(101,48,116,.16))}
+.grimwood-shell footer{color:#765f58}
+
+body.chronicle-grimwood-active .world-bg{
+  background:radial-gradient(circle at 78% 4%,rgba(189,67,20,.10),transparent 28%),radial-gradient(circle at 16% 88%,rgba(87,39,105,.18),transparent 32%),linear-gradient(180deg,#050407 0%,#0b070c 55%,#050407 100%);
+}
+body.chronicle-grimwood-active .aurora-a{background:#b7451c;opacity:.14}
+body.chronicle-grimwood-active .aurora-b{background:#713083;opacity:.20}
+body.chronicle-grimwood-active .rune{border-color:rgba(222,91,37,.055)}
+body.chronicle-grimwood-active .cursor-core{background:#ef8b4d;box-shadow:0 0 14px rgba(239,113,55,.85)}
+body.chronicle-grimwood-active .cursor-ring{border-color:rgba(203,98,157,.55);box-shadow:0 0 18px rgba(181,69,118,.13)}
+body.chronicle-grimwood-active .custom-cursor.active .cursor-ring{border-color:rgba(239,124,69,.82)}
+
+
+/* ---------- Grimwood Manor character archive ---------- */
+.grimwood-character-grid{margin-top:8px}
+.grimwood-character-card{border-color:rgba(223,111,55,.34);background:linear-gradient(160deg,#130b10,#08090d)}
+.grimwood-character-card img{object-position:center top}
+.grimwood-character-card:hover,.grimwood-character-card:focus-visible{border-color:rgba(var(--accent-rgb,223,111,55),.92);box-shadow:0 24px 64px rgba(0,0,0,.52),0 0 34px rgba(var(--accent-rgb,223,111,55),.18)}
+.grimwood-character-card::after{background:linear-gradient(180deg,rgba(8,4,7,.01) 0%,rgba(8,4,7,.12) 44%,rgba(8,4,7,.94) 100%)}
+.grimwood-character-card .tag{border-color:rgba(223,111,55,.24);background:rgba(223,88,42,.055);color:#e7c6ae}
+.grimwood-character-card .character-player{color:#c28b76}
+.grimwood-character-detail-page{padding-top:20px}
+.grimwood-character-detail-wrap{border-color:rgba(var(--char-rgb),.40);background:linear-gradient(145deg,rgba(20,8,15,.97),rgba(7,7,12,.96));box-shadow:0 36px 90px rgba(0,0,0,.52),0 0 65px rgba(var(--char-rgb),.07)}
+.grimwood-character-detail-wrap .character-detail-bg{background-image:linear-gradient(90deg,rgba(10,4,8,.18),rgba(10,4,8,.91) 55%,rgba(7,6,10,.99)),var(--detail-bg);filter:saturate(.62) blur(2px);opacity:.14}
+.grimwood-character-detail-wrap .character-portrait-stage{background:radial-gradient(circle at 50% 46%,rgba(var(--char-rgb),.13),transparent 50%)}
+.grimwood-character-detail-wrap .player-credit{color:rgb(var(--char-rgb))}
+.grimwood-back-btn{border-color:rgba(223,111,55,.22);color:#d8b9a7;background:rgba(223,76,35,.035)}
+.grimwood-back-btn:hover{border-color:rgba(239,128,69,.52);color:#fff0df;background:rgba(223,76,35,.075)}
+
+@media (max-width:760px){
+  .grimwood-character-card{min-height:570px}
+}
+
+/* ---------- Grimwood roster + NPC additions ---------- */
+@media (min-width:1051px){
+  .grimwood-character-grid{grid-template-columns:repeat(6,minmax(0,1fr));}
+  .grimwood-character-grid .grimwood-character-card{grid-column:span 2;}
+  .grimwood-character-grid .grimwood-character-card:nth-child(4):nth-last-child(2){grid-column:2 / span 2;}
+  .grimwood-character-grid .grimwood-character-card:nth-child(5):last-child{grid-column:4 / span 2;}
+}
+.grimwood-npc-card{border-color:rgba(214,96,43,.22);background:linear-gradient(150deg,rgba(20,10,14,.97),rgba(8,8,12,.94));}
+.grimwood-npc-card .npc-portrait{background:#0b080c}
+.grimwood-npc-card .npc-role{color:#df8b59}
+.grimwood-npc-card .npc-copy p + p{margin-top:12px}
+.grimwood-npc-card .npc-copy p{max-width:64ch}
+.grimwood-npc-card.npc-card-major .npc-copy p{max-width:68ch}
+.grimwood-npc-grid .npc-card{min-height:390px}
+
+@media (max-width:1050px){
+  .topbar{width:100%;grid-template-columns:1fr;gap:8px}
+  .chronicle-switch{justify-self:start}
+  .nav{flex-wrap:wrap}
+  .grimwood-character-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:700px){
+  .grimwood-character-grid{grid-template-columns:1fr}
+  .chronicle-switch{width:auto}
+}
+
+/* ---------- 2026-10-05 Grimwood polish: centered navigation ---------- */
+@media (min-width:1051px){
+  .topbar{
+    margin:14px auto 28px;
+    padding:10px 14px;
+    grid-template-columns:auto auto;
+    justify-content:center;
+    gap:18px;
+  }
+  .nav{gap:7px;justify-content:center}
+  .nav-link:not(.brand){padding:8px 12px}
+}
+.brand-chronicle-switch{position:relative;padding:0 5px 0 0;border-radius:12px;transition:background .2s ease,box-shadow .2s ease}
+.brand-chronicle-switch:hover,.brand-chronicle-switch:focus-visible{background:rgba(211,173,103,.045);box-shadow:0 0 22px rgba(211,173,103,.06);outline:none}
+.brand-switch-glyph{width:24px;height:24px;display:grid;place-items:center;margin-left:2px;border-left:1px solid rgba(255,255,255,.08);color:#bda878;font-size:.84rem;opacity:.76}
+.grimwood-shell .brand-chronicle-switch:hover,.grimwood-shell .brand-chronicle-switch:focus-visible{background:rgba(214,80,29,.055);box-shadow:0 0 22px rgba(214,80,29,.06)}
+.grimwood-shell .brand-switch-glyph{color:#d58654;border-left-color:rgba(222,112,58,.15)}
+
+/* ---------- Chronicle selector polish ---------- */
+.chronicle-selector{
+  background:
+    radial-gradient(circle at 50% -12%,rgba(211,173,103,.13),transparent 32%),
+    radial-gradient(circle at 12% 78%,rgba(78,52,133,.15),transparent 30%),
+    radial-gradient(circle at 88% 80%,rgba(150,61,28,.11),transparent 29%),
+    linear-gradient(180deg,#05070b 0%,#090a11 56%,#05060a 100%);
+}
+.chronicle-selector::before{
+  background:
+    linear-gradient(90deg,transparent 0 7%,rgba(227,193,126,.026) 7% 7.08%,transparent 7.08% 92.92%,rgba(227,193,126,.026) 92.92% 93%,transparent 93%),
+    linear-gradient(115deg,transparent 31%,rgba(229,190,114,.045) 50%,transparent 68%);
+}
+.chronicle-selector::after{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  width:min(86vw,1160px);aspect-ratio:1;
+  transform:translate(-50%,-52%);
+  border:1px solid rgba(220,184,111,.035);
+  border-radius:50%;
+  box-shadow:inset 0 0 0 44px rgba(220,184,111,.007),inset 0 0 0 110px rgba(114,76,151,.008);
+  pointer-events:none;
+}
+.chronicle-selector-inner{width:min(1220px,100%)}
+.chronicle-selector-heading{margin-bottom:38px}
+.chronicle-selector-emblem{width:72px;height:72px;margin:0 auto 14px;padding:7px;border:1px solid rgba(225,190,119,.26);border-radius:20px;background:rgba(211,173,103,.035);box-shadow:0 0 30px rgba(211,173,103,.09)}
+.chronicle-selector-emblem img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.chronicle-selector-heading h1{text-shadow:0 8px 34px rgba(0,0,0,.52),0 0 35px rgba(211,173,103,.07)}
+.chronicle-selector-lead{max-width:560px;margin:12px auto 0;color:#a9a195;font-size:.94rem;line-height:1.7}
+.chronicle-heading-ornament{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 0;color:#c2a061;font-size:.7rem}
+.chronicle-heading-ornament span{width:min(12vw,105px);height:1px;background:linear-gradient(90deg,transparent,rgba(218,180,108,.36))}
+.chronicle-heading-ornament span:last-child{transform:scaleX(-1)}
+.chronicle-heading-ornament i{font-style:normal;filter:drop-shadow(0 0 8px rgba(211,173,103,.22))}
+.chronicle-grid{gap:28px}
+.chronicle-card{border-radius:30px;border-color:rgba(220,184,111,.31);box-shadow:0 34px 88px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.025)}
+.chronicle-card::before{content:"";position:absolute;z-index:3;inset:10px;border:1px solid rgba(232,202,143,.065);border-radius:21px;pointer-events:none}
+.chronicle-card-art-wrap{aspect-ratio:16/9}
+.chronicle-card-copy{position:relative;padding:23px 26px 25px;background:linear-gradient(180deg,rgba(15,17,23,.98),rgba(8,10,15,.99));border-top-color:rgba(225,190,119,.10)}
+.chronicle-card-copy::before{content:"";position:absolute;left:26px;right:26px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(230,195,127,.22),transparent)}
+.chronicle-card-enter{display:flex;align-items:center;gap:8px;margin-top:14px;color:#8f897f;font-size:.67rem;letter-spacing:.10em;text-transform:uppercase;transition:color .2s ease,gap .2s ease}
+.chronicle-card-enter i{font-style:normal;color:#d1ad67;font-size:.92rem}
+.chronicle-card:hover .chronicle-card-enter,.chronicle-card:focus-visible .chronicle-card-enter{color:#d1c5b3;gap:12px}
+.chronicle-card-grimwood .chronicle-card-enter i{color:#e78742}
+
+/* ---------- Grimwood character accents ---------- */
+.grimwood-character-card .character-player{color:rgb(var(--accent-rgb));text-shadow:0 0 16px rgba(var(--accent-rgb),.10)}
+.grimwood-character-card .tag{border-color:rgba(var(--accent-rgb),.24);background:rgba(var(--accent-rgb),.055);color:#ded7cf}
+.grimwood-character-detail-wrap .detail-row span{color:rgba(var(--char-rgb),.82)}
+.grimwood-character-detail-wrap .detail-row{border-color:rgba(var(--char-rgb),.14)}
+
+/* ---------- Grimwood NPC archive: wider, calmer layout ---------- */
+.grimwood-npc-grid{grid-template-columns:1fr;gap:22px}
+.grimwood-npc-card{width:100%}
+.grimwood-npc-grid .npc-card{grid-template-columns:minmax(320px,35%) minmax(0,1fr);min-height:390px}
+.grimwood-npc-card.npc-card-major{grid-template-columns:minmax(370px,38%) minmax(0,1fr);min-height:490px}
+.grimwood-npc-card .npc-portrait{display:grid;place-items:center;padding:14px;background:radial-gradient(circle at 50% 38%,rgba(121,54,133,.10),transparent 52%),#09070b}
+.grimwood-npc-card .npc-portrait::before{background:linear-gradient(90deg,transparent 78%,rgba(7,7,11,.24) 100%),linear-gradient(180deg,transparent 84%,rgba(5,5,8,.20) 100%)}
+.grimwood-npc-card .npc-portrait img{width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:16px}
+.grimwood-npc-card .npc-copy{padding:36px clamp(34px,4vw,54px)}
+.grimwood-npc-card .npc-copy p{max-width:78ch;line-height:1.82}
+.grimwood-npc-card.npc-card-major .npc-copy p{max-width:82ch}
+.grimwood-npc-card .npc-copy h3{font-size:clamp(1.8rem,3vw,2.65rem)}
+.grimwood-npc-card.npc-card-major .npc-copy h3{font-size:clamp(2.25rem,4vw,3.45rem)}
+
+@media (max-width:1050px){
+  .brand-switch-glyph{margin-left:auto}
+  .grimwood-npc-grid .npc-card,.grimwood-npc-card.npc-card-major{grid-template-columns:280px minmax(0,1fr);min-height:380px}
+}
+@media (max-width:700px){
+  .chronicle-selector-emblem{width:62px;height:62px}
+  .chronicle-grid{gap:18px}
+  .chronicle-card-copy{padding:20px 21px 22px}
+  .grimwood-npc-grid .npc-card,.grimwood-npc-card.npc-card-major{grid-template-columns:1fr;min-height:0}
+  .grimwood-npc-card .npc-portrait{height:430px;border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .grimwood-npc-card .npc-copy{padding:28px 24px 30px}
 }

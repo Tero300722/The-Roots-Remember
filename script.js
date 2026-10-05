@@ -240,13 +240,69 @@ const DATA = {
   ]
 };
 
-const ASSET_VERSION = '20260929-session5';
+const GRIMWOOD_CHARACTERS = [
+  {
+    slug: "elior-ilphelkiir",
+    name: "Elior Ilphelkiir",
+    player: "Mikael Delia",
+    cardImage: "assets/grimwood/characters/cards/elior-ilphelkiir.webp",
+    fullImage: "assets/grimwood/characters/full/elior-ilphelkiir.webp",
+    className: "Wizard",
+    subclass: "Diviner",
+    accent: "221, 178, 90"
+  },
+  {
+    slug: "theodas-ilphelkiir",
+    name: "Theodas Ilphelkiir",
+    player: "Matthias Martino",
+    cardImage: "assets/grimwood/characters/cards/theodas-ilphelkiir.webp",
+    fullImage: "assets/grimwood/characters/full/theodas-ilphelkiir.webp",
+    className: "Rogue",
+    subclass: "Misfortune Bringer",
+    accent: "210, 68, 61"
+  },
+  {
+    slug: "vaelis-rimehart",
+    name: "Vaelis Rimehart",
+    player: "Dathan Baldacchino",
+    cardImage: "assets/grimwood/characters/cards/unnamed-sorcerer.webp",
+    fullImage: "assets/grimwood/characters/full/unnamed-sorcerer.webp",
+    className: "Sorcerer",
+    subclass: "Frost",
+    accent: "143, 208, 242"
+  },
+  {
+    slug: "lucien-veyr",
+    name: "Lucien Veyr",
+    player: "Remsi Agius",
+    cardImage: "assets/grimwood/characters/cards/lucien-veyr.webp",
+    fullImage: "assets/grimwood/characters/full/lucien-veyr.webp",
+    className: "Rogue",
+    subclass: "Soulknife",
+    accent: "166, 96, 218"
+  },
+  {
+    slug: "xavier-serahart",
+    name: "Xavier Serahart",
+    player: "James Bianco",
+    cardImage: "assets/grimwood/characters/cards/xavier-serahart.webp",
+    fullImage: "assets/grimwood/characters/full/xavier-serahart.webp",
+    className: "Paladin",
+    subclass: "Oath of the Slaughter",
+    accent: "104, 110, 122"
+  }
+];
+
+const ASSET_VERSION = '20261005-vaelis1';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
-const landing = document.getElementById('landing');
-const enterButton = document.getElementById('enter-site');
-const pages = [...document.querySelectorAll('.page')];
-const navButtons = [...document.querySelectorAll('.nav-link[data-page], .nav-dropdown-item[data-page]')];
+const chronicleSelector = document.getElementById('chronicle-selector');
+const chronicleButtons = [...document.querySelectorAll('[data-chronicle]')];
+const siteShell = document.getElementById('site-shell');
+const grimwoodShell = document.getElementById('grimwood-shell');
+const switchChronicleButtons = [...document.querySelectorAll('[data-switch-chronicle]')];
+const pages = [...siteShell.querySelectorAll('.page')];
+const navButtons = [...siteShell.querySelectorAll('.nav-link[data-page], .nav-dropdown-item[data-page]')];
 const latestRecap = document.getElementById('latest-recap');
 const characterGrid = document.getElementById('character-grid');
 const characterDetailContent = document.getElementById('character-detail-content');
@@ -257,26 +313,61 @@ const charactersNavToggle = document.getElementById('characters-nav-toggle');
 const sessionList = document.getElementById('session-list');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
 let currentPage = 'home';
 
-/* -------------------- Landing -------------------- */
+/* -------------------- Chronicle selector -------------------- */
 document.body.classList.add('intro-open');
 
-function enterSite() {
-  landing.classList.add('dismissed');
+let currentChronicle = null;
+
+function hideChronicleSelector() {
+  chronicleSelector.classList.add('dismissed');
+  chronicleSelector.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('intro-open');
   document.body.classList.add('site-entered');
-  window.setTimeout(() => landing.setAttribute('aria-hidden', 'true'), 900);
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 }
 
-enterButton.addEventListener('click', enterSite);
-
-if (new URLSearchParams(location.search).get('skipIntro') === '1') {
-  landing.classList.add('dismissed');
-  landing.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('intro-open');
-  document.body.classList.add('site-entered');
+function showChronicleSelector() {
+  document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active');
+  currentChronicle = null;
+  siteShell.hidden = true;
+  grimwoodShell.hidden = true;
+  chronicleSelector.classList.remove('dismissed');
+  chronicleSelector.removeAttribute('aria-hidden');
+  document.body.classList.add('intro-open');
+  document.body.classList.remove('site-entered');
+  history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 }
+
+function selectChronicle(chronicle) {
+  currentChronicle = chronicle;
+  document.body.classList.toggle('chronicle-trr-active', chronicle === 'trr');
+  document.body.classList.toggle('chronicle-grimwood-active', chronicle === 'grimwood');
+  hideChronicleSelector();
+
+  if (chronicle === 'trr') {
+    grimwoodShell.hidden = true;
+    siteShell.hidden = false;
+    actuallyShowPage('home');
+    history.replaceState(null, '', '#/home');
+    requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+    return;
+  }
+
+  siteShell.hidden = true;
+  grimwoodShell.hidden = false;
+  showGrimwoodPage('characters', { replace: true });
+}
+
+chronicleButtons.forEach(button => {
+  button.addEventListener('click', () => selectChronicle(button.dataset.chronicle));
+});
+
+switchChronicleButtons.forEach(button => button.addEventListener('click', showChronicleSelector));
 
 /* -------------------- Navigation -------------------- */
 function setActiveNav(id) {
@@ -304,7 +395,7 @@ function actuallyShowPage(id) {
 function navigateTo(id, { immediate = false, replace = false, hash = null } = {}) {
   if (!document.getElementById(id)) return;
 
-  const targetHash = hash ?? `#${id}`;
+  const targetHash = hash ?? `#/${id}`;
   const applyHistory = () => {
     const method = replace ? 'replaceState' : 'pushState';
     history[method](null, '', targetHash);
@@ -358,6 +449,133 @@ document.addEventListener('keydown', event => {
 document.querySelectorAll('[data-jump]').forEach(button => {
   button.addEventListener('click', () => navigateTo(button.dataset.jump));
 });
+
+/* -------------------- Grimwood Manor navigation -------------------- */
+const grimwoodPages = [...document.querySelectorAll('.grimwood-page')];
+const grimwoodNavButtons = [...document.querySelectorAll('[data-grimwood-page]')];
+const grimwoodCharacterMenu = document.querySelector('.grimwood-character-menu');
+const grimwoodCharacterToggle = document.querySelector('.grimwood-character-toggle');
+let currentGrimwoodPage = 'characters';
+
+function setGrimwoodActiveNav(id) {
+  grimwoodNavButtons.forEach(button => {
+    const active = button.dataset.grimwoodPage === id;
+    button.classList.toggle('active', active);
+    if (active) button.setAttribute('aria-current', 'page');
+    else button.removeAttribute('aria-current');
+  });
+  const charactersActive = ['characters', 'remembered', 'character-detail'].includes(id);
+  grimwoodCharacterToggle.classList.toggle('active', charactersActive);
+  if (charactersActive) grimwoodCharacterToggle.setAttribute('aria-current', 'page');
+  else grimwoodCharacterToggle.removeAttribute('aria-current');
+}
+
+function showGrimwoodPage(id, { replace = false } = {}) {
+  if (!document.getElementById(`grimwood-${id}`)) id = 'characters';
+  grimwoodPages.forEach(page => page.classList.toggle('active', page.id === `grimwood-${id}`));
+  setGrimwoodActiveNav(id);
+  currentGrimwoodPage = id;
+  const method = replace ? 'replaceState' : 'pushState';
+  const targetHash = `#/grimwood/${id}`;
+  if (location.hash !== targetHash) history[method](null, '', targetHash);
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+}
+
+grimwoodNavButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    showGrimwoodPage(button.dataset.grimwoodPage);
+    grimwoodCharacterMenu?.classList.remove('open');
+    grimwoodCharacterToggle?.setAttribute('aria-expanded', 'false');
+    button.blur();
+  });
+});
+
+grimwoodCharacterToggle?.addEventListener('click', event => {
+  event.stopPropagation();
+  const open = grimwoodCharacterMenu.classList.toggle('open');
+  grimwoodCharacterToggle.setAttribute('aria-expanded', String(open));
+});
+
+grimwoodCharacterMenu?.addEventListener('mouseleave', () => {
+  grimwoodCharacterMenu.classList.remove('open');
+  grimwoodCharacterToggle.setAttribute('aria-expanded', 'false');
+});
+
+
+const grimwoodCharacterGrid = document.getElementById('grimwood-character-grid');
+const grimwoodCharacterDetailContent = document.getElementById('grimwood-character-detail-content');
+const grimwoodCharacterBack = document.getElementById('grimwood-character-back');
+
+function makeGrimwoodCharacterCard(character, index) {
+  const card = document.createElement('article');
+  card.className = 'character-card grimwood-character-card';
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
+  card.setAttribute('aria-label', `Open ${character.name}'s character profile`);
+  card.style.animationDelay = `${index * 70}ms`;
+  card.style.setProperty('--accent-rgb', character.accent);
+  card.innerHTML = `
+    <img src="${asset(character.cardImage)}" alt="${character.name}" loading="lazy" decoding="async">
+    <div class="character-info">
+      <h3>${character.name}</h3>
+      <div class="character-player">Played by ${character.player}</div>
+      <div class="character-tags">
+        <span class="tag">${character.className}</span>
+        <span class="tag">${character.subclass}</span>
+      </div>
+    </div>
+  `;
+  const open = () => openGrimwoodCharacter(character);
+  card.addEventListener('click', open);
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      open();
+    }
+  });
+  return card;
+}
+
+GRIMWOOD_CHARACTERS.forEach((character, index) => {
+  grimwoodCharacterGrid?.appendChild(makeGrimwoodCharacterCard(character, index));
+});
+
+function renderGrimwoodCharacterDetail(character) {
+  if (!grimwoodCharacterDetailContent) return;
+  grimwoodCharacterDetailContent.innerHTML = `
+    <article class="character-detail-wrap grimwood-character-detail-wrap" style="--char-rgb:${character.accent}; --detail-bg:url('${asset(character.fullImage)}')">
+      <div class="character-detail-bg" aria-hidden="true"></div>
+      <div class="character-detail-rune" aria-hidden="true"></div>
+      <div class="character-detail-grid">
+        <div class="character-portrait-stage">
+          <img src="${asset(character.fullImage)}" alt="${character.name}" decoding="async">
+        </div>
+        <div class="character-detail-copy">
+          <p class="eyebrow">Grimwood Manor Guest</p>
+          <h2>${character.name}</h2>
+          <div class="player-credit">Played by ${character.player}</div>
+          <div class="detail-stack">
+            <div class="detail-row"><span>Class</span><strong>${character.className}</strong></div>
+            <div class="detail-row"><span>Subclass</span><strong>${character.subclass}</strong></div>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function openGrimwoodCharacter(character, { replace = false } = {}) {
+  renderGrimwoodCharacterDetail(character);
+  grimwoodPages.forEach(page => page.classList.toggle('active', page.id === 'grimwood-character-detail'));
+  setGrimwoodActiveNav('character-detail');
+  currentGrimwoodPage = 'character-detail';
+  const method = replace ? 'replaceState' : 'pushState';
+  const targetHash = `#/grimwood/character-${character.slug}`;
+  if (location.hash !== targetHash) history[method](null, '', targetHash);
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+}
+
+grimwoodCharacterBack?.addEventListener('click', () => showGrimwoodPage('characters', { replace: true }));
 
 /* -------------------- Latest recap -------------------- */
 DATA.sessions.at(-1).paragraphs.forEach(text => {
@@ -478,7 +696,7 @@ function openCharacter(character, { immediate = false, replace = false } = {}) {
   navigateTo('character-detail', {
     immediate,
     replace,
-    hash: `#character-${character.slug}`
+    hash: `#/character-${character.slug}`
   });
 }
 
@@ -982,7 +1200,25 @@ syncParticleMotion();
 
 /* -------------------- Hash routing -------------------- */
 function renderFromHash({ immediate = true } = {}) {
-  const hash = location.hash.replace('#', '');
+  const rawHash = location.hash.slice(1);
+  const hash = rawHash.startsWith('/') ? rawHash.slice(1) : rawHash;
+
+  if (currentChronicle === 'grimwood') {
+    const grimwoodHash = hash.startsWith('grimwood/') ? hash.slice('grimwood/'.length) : 'characters';
+    if (grimwoodHash.startsWith('character-')) {
+      const slug = grimwoodHash.replace('character-', '');
+      const character = GRIMWOOD_CHARACTERS.find(item => item.slug === slug);
+      if (character) {
+        openGrimwoodCharacter(character, { replace: true });
+        return;
+      }
+    }
+    const validGrimwoodPages = ['characters', 'remembered', 'npcs', 'sessions'];
+    showGrimwoodPage(validGrimwoodPages.includes(grimwoodHash) ? grimwoodHash : 'characters', { replace: true });
+    return;
+  }
+
+  if (currentChronicle !== 'trr') return;
 
   if (hash.startsWith('character-')) {
     const slug = hash.replace('character-', '');
@@ -1002,11 +1238,14 @@ function renderFromHash({ immediate = true } = {}) {
   const target = validPages.includes(hash) ? hash : 'home';
   actuallyShowPage(target);
 
-  if (!hash) history.replaceState(null, '', '#home');
+  if (!hash) history.replaceState(null, '', '#/home');
+  else if (rawHash && !rawHash.startsWith('/')) history.replaceState(null, '', `#/${hash}`);
 }
 
 window.addEventListener('popstate', () => renderFromHash({ immediate: true }));
-renderFromHash({ immediate: true });
+actuallyShowPage('home');
+showGrimwoodPage('home', { replace: true });
+history.replaceState(null, '', location.pathname + location.search);
 
 /* -------------------- Previously On image carousel -------------------- */
 const heroCarousel = document.getElementById('session-hero-carousel');

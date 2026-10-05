@@ -16,17 +16,29 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <title>The Roots Remember</title>
+  <script>
+    // Prevent browsers from restoring a previous scroll position or treating page routes as anchors.
+    try {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      const legacyRoute = location.hash.slice(1);
+      if (legacyRoute && !legacyRoute.startsWith('/')) {
+        const validLegacyRoute = ['home','characters','remembered','quests','map','npcs','sessions'].includes(legacyRoute) || legacyRoute.startsWith('character-');
+        if (validLegacyRoute) history.replaceState(null, '', `#/${legacyRoute}`);
+      }
+    } catch (_) {}
+    window.scrollTo(0, 0);
+  </script>
   <link rel="canonical" href="https://tero300722.github.io/The-Roots-Remember/" />
 
   <link rel="icon" href="assets/favicon.ico?v=20260919-logo1" sizes="any" />
   <link rel="icon" href="assets/favicon-64.png?v=20260919-logo1" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="assets/favicon-180.png?v=20260919-logo1" />
-  <link rel="preload" as="image" href="assets/campaign-hero.webp?v=20260919-layout2" fetchpriority="high" />
-  <link rel="preload" as="image" href="assets/session-5-memory-leoric.webp?v=20260930-slideshow2" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/campaign-hero.webp?v=20261005-chronicles1" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/grimwood-manor-hero.webp?v=20261005-chronicles1" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260930-questledger1" />
+  <link rel="stylesheet" href="style.css?v=20261005-grimwood-polish2" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -42,39 +54,54 @@
     <span class="cursor-ring"></span>
   </div>
 
-  <div class="landing" id="landing" aria-label="Campaign landing screen">
-    <img
-      src="assets/campaign-hero.webp?v=20260919-layout2"
-      width="1672"
-      height="941"
-      alt=""
-      class="landing-art"
-      fetchpriority="high"
-      decoding="async"
-    />
-    <div class="landing-vignette"></div>
-    <div class="landing-shimmer"></div>
-    <div class="landing-runes" aria-hidden="true"></div>
-    <div class="landing-content">
-      <p class="landing-kicker">A PLAYER CAMPAIGN ARCHIVE</p>
-      <p class="landing-copy">Six adventurers. One road forward. Every choice leaves a mark.</p>
-      <button class="enter-btn" id="enter-site" type="button">
-        <span>Enter the Chronicle</span>
-        <i aria-hidden="true">✦</i>
-      </button>
+  <section class="chronicle-selector" id="chronicle-selector" aria-label="Choose a campaign chronicle">
+    <div class="chronicle-selector-inner">
+      <header class="chronicle-selector-heading">
+        <div class="chronicle-selector-emblem" aria-hidden="true"><img src="assets/site-logo.webp?v=20261005-chronicles-polish" alt="" width="96" height="96"></div>
+        <p class="eyebrow">Campaign Chronicles</p>
+        <h1>Choose a Chronicle</h1>
+        <p class="chronicle-selector-lead">Choose the story you wish to enter.</p>
+        <div class="chronicle-heading-ornament" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+      </header>
+
+      <div class="chronicle-grid">
+        <button class="chronicle-card" type="button" data-chronicle="trr" aria-label="Enter The Roots Remember main campaign">
+          <span class="chronicle-card-art-wrap">
+            <img class="chronicle-card-art" src="assets/campaign-hero.webp?v=20261005-chronicles1" width="1672" height="941" alt="The Roots Remember campaign artwork" fetchpriority="high" decoding="async" />
+            <span class="chronicle-card-shade"></span>
+          </span>
+          <span class="chronicle-card-copy">
+            <span class="chronicle-type">Main Campaign</span>
+            <strong>The Roots Remember</strong>
+            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
+          </span>
+        </button>
+
+        <button class="chronicle-card chronicle-card-grimwood" type="button" data-chronicle="grimwood" aria-label="Enter Into the Grimwood Manor canon one-shot">
+          <span class="chronicle-card-art-wrap">
+            <img class="chronicle-card-art" src="assets/grimwood-manor-hero.webp?v=20261005-chronicles1" width="1536" height="1024" alt="Into the Grimwood Manor title artwork" fetchpriority="high" decoding="async" />
+            <span class="chronicle-card-shade"></span>
+          </span>
+          <span class="chronicle-card-copy">
+            <span class="chronicle-type">Canon Halloween One-Shot</span>
+            <strong>Into the Grimwood Manor</strong>
+            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
+          </span>
+        </button>
+      </div>
     </div>
-    <div class="landing-bottom">THE STORY CONTINUES</div>
-  </div>
+  </section>
 
 
-  <div class="page-shell" id="site-shell">
-    <header class="topbar">
-      <button class="brand nav-link" data-page="home" aria-label="Home" type="button">
+  <div class="page-shell" id="site-shell" hidden>
+    <header class="topbar compact-topbar">
+      <button class="brand brand-chronicle-switch" data-switch-chronicle aria-label="Switch Chronicle" title="Switch Chronicle" type="button">
         <span class="brand-logo-wrap"><img class="brand-logo" src="assets/site-logo.webp?v=20260919-logo1" width="256" height="256" alt="" aria-hidden="true" decoding="async" /></span>
         <span>
           <strong>The Roots Remember</strong>
           <small>Player Archive</small>
         </span>
+        <span class="brand-switch-glyph" aria-hidden="true">↩</span>
       </button>
 
       <nav class="nav" aria-label="Main navigation">
@@ -291,6 +318,142 @@
     </footer>
   </div>
 
+  <div class="page-shell grimwood-shell" id="grimwood-shell" hidden>
+    <header class="topbar compact-topbar">
+      <button class="brand grimwood-brand brand-chronicle-switch" type="button" data-switch-chronicle aria-label="Switch Chronicle" title="Switch Chronicle">
+        <span class="brand-logo-wrap grimwood-brand-art"><img class="brand-logo" src="assets/grimwood-manor-hero.webp?v=20261005-grimwood2" width="1536" height="1024" alt="" aria-hidden="true" decoding="async" /></span>
+        <span>
+          <strong>Into the Grimwood Manor</strong>
+          <small>Canon Halloween One-Shot</small>
+        </span>
+        <span class="brand-switch-glyph" aria-hidden="true">↩</span>
+      </button>
+
+      <nav class="nav grimwood-nav" aria-label="Grimwood Manor navigation">
+        <div class="nav-dropdown grimwood-character-menu">
+          <button class="nav-link nav-dropdown-toggle grimwood-character-toggle active" type="button" aria-haspopup="true" aria-expanded="false" aria-current="page">
+            <span>Characters</span><img class="nav-dropdown-caret" src="assets/characters-dropdown-arrow.png?v=20260921-menuicon2" width="30" height="18" alt="" aria-hidden="true" decoding="async" />
+          </button>
+          <div class="nav-dropdown-menu grimwood-character-dropdown" role="menu" aria-label="Grimwood characters menu">
+            <button class="nav-dropdown-item active" type="button" data-grimwood-page="characters" role="menuitem" aria-current="page">Meet the Characters</button>
+            <button class="nav-dropdown-item" type="button" data-grimwood-page="remembered" role="menuitem">The Remembered</button>
+          </div>
+        </div>
+        <button class="nav-link" type="button" data-grimwood-page="npcs">NPCs</button>
+        <button class="nav-link" type="button" data-grimwood-page="sessions">Session Archive</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="grimwood-page active" id="grimwood-characters">
+        <header class="section-header grimwood-reveal">
+          <p class="eyebrow">The Guests of Grimwood</p>
+          <h2>Meet the Characters</h2>
+        </header>
+        <div class="character-grid grimwood-character-grid" id="grimwood-character-grid"></div>
+      </section>
+
+      <section class="grimwood-page grimwood-character-detail-page" id="grimwood-character-detail">
+        <button class="back-btn grimwood-back-btn" id="grimwood-character-back" type="button">← Return to Meet the Characters</button>
+        <div id="grimwood-character-detail-content"></div>
+      </section>
+
+      <section class="grimwood-page" id="grimwood-remembered">
+        <header class="section-header grimwood-reveal"><p class="eyebrow">In Memoriam</p><h2>The Remembered</h2></header>
+        <div class="chronicle-empty grimwood-reveal"><span>◇</span><strong>No Names Recorded</strong><p>No fallen adventurers or important figures have been recorded for this chronicle.</p></div>
+      </section>
+
+      <section class="grimwood-page" id="grimwood-npcs">
+        <header class="section-header grimwood-reveal"><p class="eyebrow">People of the Manor</p><h2>NPC Archive</h2></header>
+
+        <section class="npc-section-block grimwood-reveal">
+          <div class="npc-tier-heading">
+            <span class="npc-tier-mark npc-tier-mark-high" aria-hidden="true">✦</span>
+            <div><p class="eyebrow">Manor Host</p><h3>Baron Vane Grimwood</h3></div>
+          </div>
+          <div class="npc-grid npc-grid-major">
+            <article class="npc-card npc-card-major grimwood-npc-card">
+              <div class="npc-portrait"><img src="assets/grimwood/npcs/full/baron-vane-grimwood.webp?v=20261005-grimwood-cast1" alt="Baron Vane Grimwood" loading="lazy" decoding="async"></div>
+              <div class="npc-copy">
+                <h3>Baron Vane Grimwood</h3>
+                <div class="npc-role">Baron of Grimwood Manor</div>
+                <p>Few had heard the name Vane Grimwood until recent years.</p>
+                <p>Then, seemingly from nowhere, came the estate, the wealth, and the title. Grimwood's name began appearing among merchants and nobility alike, accompanied by stories of extravagant purchases, valuable holdings, and a fortune whose true extent remains a matter of speculation.</p>
+                <p>Where this sudden prosperity came from is uncertain. Some attribute it to shrewd investments, others to distant inheritance or simple good fortune. The Baron himself has offered little explanation.</p>
+                <p>Those who have met Baron Vane Grimwood describe a tall, imposing man with long black hair swept neatly back, distinguished by a single streak of silver. He is unfailingly composed and courteous, though there is something unusually intense about his gaze. Even when smiling warmly, he has a habit of making people feel as though they are being carefully studied.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="npc-section-block npc-supporting-block grimwood-reveal">
+          <div class="npc-tier-heading">
+            <span class="npc-tier-mark" aria-hidden="true">◇</span>
+            <div><p class="eyebrow">Guests of Note</p><h3>Invited Figures</h3></div>
+          </div>
+          <div class="npc-grid grimwood-npc-grid">
+            <article class="npc-card grimwood-npc-card">
+              <div class="npc-portrait"><img src="assets/grimwood/npcs/full/vice-emberclaw.webp?v=20261005-grimwood-cast1" alt="Vice Emberclaw" loading="lazy" decoding="async"></div>
+              <div class="npc-copy">
+                <h3>Vice Emberclaw</h3>
+                <div class="npc-role">Mining Magnate</div>
+                <p>Vice Emberclaw built his fortune beneath the Ironpeak Mountains, where his mining company extracts iron, coal, and smaller quantities of precious metals. His wealth has earned him a place among respectable society, though older noble families sometimes regard him more as a businessman than a true aristocrat.</p>
+                <p>Vice is broad and imposing, with dull black scales and several old scars across his hands and snout. Unlike many of the guests, he dresses practically: a well-tailored dark coat, heavy boots, and only enough jewelry to demonstrate that he can afford it.</p>
+                <p>He is blunt, practical, and difficult to impress. Vice dislikes excessive ceremony and has little patience for nobles who inherited everything they own. He respects people who work for their success, making adventurers considerably more interesting to him than most of Grimwood's guests.</p>
+              </div>
+            </article>
+
+            <article class="npc-card grimwood-npc-card">
+              <div class="npc-portrait"><img src="assets/grimwood/npcs/full/charlotte-fleaklight.webp?v=20261005-grimwood-cast1" alt="Charlotte Fleaklight" loading="lazy" decoding="async"></div>
+              <div class="npc-copy">
+                <h3>Charlotte Fleaklight</h3>
+                <div class="npc-role">Noble Widow of the Verdant Reach</div>
+                <p>Charlotte Fleaklight is the widow of a prominent nobleman from the Verdant Reach, a man remembered as one of the region's strongest advocates for druidic rights and protections. His considerable fortune funded sanctuaries, legal campaigns, protected woodland, and efforts to curb the exploitation of druidic communities.</p>
+                <p>Following his death, that fortune passed almost entirely to Charlotte.</p>
+                <p>Unfortunately, Charlotte couldn't care less about his life's work.</p>
+                <p>Since inheriting his estate, she has steadily withdrawn funding from her husband's causes and redirected the money toward lavish parties, expensive clothing, exotic luxuries, travel, and whatever happens to amuse her that month. She rarely speaks badly of her late husband; she simply considers his ideals an unfortunate waste of perfectly good money.</p>
+              </div>
+            </article>
+
+            <article class="npc-card grimwood-npc-card">
+              <div class="npc-portrait"><img src="assets/grimwood/npcs/cards/empior-windveil.webp?v=20261005-exact3" alt="Empior Windveil" loading="lazy" decoding="async"></div>
+              <div class="npc-copy">
+                <h3>Empior Windveil</h3>
+                <div class="npc-role">Royal Academy Patron & Admissions Council Member</div>
+                <p>Empior Windveil is one of the most influential figures associated with the prestigious Royal Academy of Valemere. Though not primarily known as a scholar himself, his extensive financial contributions have funded new wings, research programs, scholarships, and the acquisition of rare magical texts and artifacts.</p>
+                <p>More importantly, Windveil holds a powerful position on the Academy's admissions council.</p>
+                <p>Few students enter the Academy without his approval.</p>
+                <p>Applicants may spend years studying for the Academy's examinations, but exceptional grades alone are rarely enough. Windveil believes that the Academy's students must possess more than intelligence—they must demonstrate ambition, discipline, composure, and the potential to someday enhance the Academy's reputation.</p>
+                <p>This has made an audience with Empior nearly as intimidating as the entrance examinations themselves.</p>
+              </div>
+            </article>
+
+            <article class="npc-card grimwood-npc-card">
+              <div class="npc-portrait"><img src="assets/grimwood/npcs/cards/adam-newport.webp?v=20261005-exact3" alt="Adam Newport" loading="lazy" decoding="async"></div>
+              <div class="npc-copy">
+                <h3>Adam Newport</h3>
+                <div class="npc-role">Independent Porter of the Emberford Docks</div>
+                <p>Adam Newport is one of the most successful independent porters operating from the Emberford Docks. For decades, his ships have carried cargo between distant ports and the markets of Valemere, earning him both considerable wealth and a reputation for getting valuable goods where they need to go.</p>
+                <p>Spices, medicines, foreign textiles, enchanted materials, rare wines and countless mundane necessities have passed through Newport's hands. Many merchants throughout Valemere owe at least some portion of their success to his trade routes.</p>
+                <p>But there is one possession Adam values above his fortune:</p>
+                <p><strong>The Righteous Anne.</strong></p>
+                <p>His ship is his pride and joy. Ask Adam about his wealth and he'll shrug. Ask about The Righteous Anne and you'll struggle to stop him talking. He knows every plank, sail and repair the vessel has received and becomes genuinely offended if anyone refers to her as simply "a boat."</p>
+                <p>Despite his success, Adam retains much of the personality of a working sailor. He is boisterous, sociable, outspoken and somewhat rough around the edges, making him stand out considerably among Grimwood's carefully mannered aristocratic guests.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="grimwood-page" id="grimwood-sessions">
+        <header class="section-header grimwood-reveal"><p class="eyebrow">One-Shot Chronicle</p><h2>Session Archive</h2></header>
+        <div class="chronicle-empty grimwood-reveal"><span>✦</span><strong>The Archive Is Empty</strong><p>The session record will begin once Into the Grimwood Manor is played.</p></div>
+      </section>
+    </main>
+
+    <footer><span>INTO THE GRIMWOOD MANOR</span><small>Canon Halloween One-Shot Chronicle</small></footer>
+  </div>
+
   <div class="map-modal" id="map-modal" aria-hidden="true">
     <div class="map-modal-backdrop" data-map-close></div>
     <section class="map-modal-panel" role="dialog" aria-modal="true" aria-label="Kingdom of Valemere map viewer">
@@ -322,6 +485,6 @@
     </section>
   </div>
 
-  <script src="script.js?v=20260930-questledger1"></script>
+  <script src="script.js?v=20261005-grimwood-polish2"></script>
 </body>
 </html>
