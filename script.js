@@ -277,7 +277,13 @@ const GRIMWOOD_CHARACTERS = [
     fullImage: "assets/grimwood/characters/full/unnamed-sorcerer.webp",
     className: "Sorcerer",
     subclass: "Frost",
-    accent: "143, 208, 242"
+    accent: "143, 208, 242",
+    description: [
+      "Vaelis Rimehart was born in the frozen reaches of the Iron Peak Mountains, where he learned to read the strange signs hidden within blizzards, frost, and shifting mountain winds. His unusual gift for interpreting omens eventually led him to train under the Seers of Sea and Sky, studying the natural world for glimpses of what fate might bring.",
+      "During his training, Vaelis discovered that frost did more than surround him—it answered him. His innate sorcery manifested through ice and bitter cold, showing his gift for Cryomancy",
+      "At some point in his travels, Vaelis lost his right arm. Rather than accept the loss, he shaped his magic into a permanent prosthetic arm of living ice, one he can move as naturally as flesh.",
+      "Now he wanders beyond the Iron Peaks, following omens wherever they lead in hopes of uncovering the greater purpose behind his visions and finding where fate truly intends him to go."
+    ]
   },
   {
     slug: "lucien-veyr",
@@ -301,7 +307,7 @@ const GRIMWOOD_CHARACTERS = [
   }
 ];
 
-const ASSET_VERSION = '20261005-vaelis1';
+const ASSET_VERSION = '20261005-lucienpose1';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const chronicleSelector = document.getElementById('chronicle-selector');
