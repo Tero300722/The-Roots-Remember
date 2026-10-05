@@ -249,7 +249,11 @@ const GRIMWOOD_CHARACTERS = [
     fullImage: "assets/grimwood/characters/full/elior-ilphelkiir.webp",
     className: "Wizard",
     subclass: "Diviner",
-    accent: "221, 178, 90"
+    accent: "221, 178, 90",
+    description: [
+      "Standing at six feet two inches, Elior is an automaton forged by his own brother in the aftermath of a tragic accident. Possessing a deep fascination with the arcane, he has devoted himself to the study of divination, driven by a desire to understand what lies beyond the present and uncover the mysteries of the future.",
+      "Despite his pursuit of knowledge and magical mastery, Elior’s greatest priority remains far more personal. Above all else, he wishes to remain by his brother’s side, following him wherever their journey may lead."
+    ]
   },
   {
     slug: "theodas-ilphelkiir",
@@ -259,7 +263,11 @@ const GRIMWOOD_CHARACTERS = [
     fullImage: "assets/grimwood/characters/full/theodas-ilphelkiir.webp",
     className: "Rogue",
     subclass: "Misfortune Bringer",
-    accent: "210, 68, 61"
+    accent: "210, 68, 61",
+    description: [
+      "He is a quiet, observant wood elf who feels most at home in the wilderness, spending much of his life hunting beneath the trees. Exceptionally skilled with a bow, he relies on patience, precision, and stealth, often watching from a distance before deciding when to act. Though he can appear cold or unsettling to strangers, he is deeply loyal to those he cares about, especially his brother.",
+      "His greatest goal is to find a way to restore his brother, driven by an overwhelming sense of guilt over what happened to him. He carries that guilt quietly, rarely speaking about it, but almost everything he does is ultimately tied to the hope that one day he can make things right."
+    ]
   },
   {
     slug: "vaelis-rimehart",
@@ -558,6 +566,12 @@ function renderGrimwoodCharacterDetail(character) {
             <div class="detail-row"><span>Class</span><strong>${character.className}</strong></div>
             <div class="detail-row"><span>Subclass</span><strong>${character.subclass}</strong></div>
           </div>
+          ${character.description ? `
+            <div class="character-profile-description">
+              <span>Character Description</span>
+              ${character.description.map(paragraph => `<p>${paragraph}</p>`).join("")}
+            </div>
+          ` : ""}
         </div>
       </div>
     </article>
