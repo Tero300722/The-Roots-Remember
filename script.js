@@ -304,6 +304,17 @@ const GRIMWOOD_CHARACTERS = [
     className: "Paladin",
     subclass: "Oath of the Slaughter",
     accent: "104, 110, 122"
+  },
+  {
+    slug: "edwin-everbane",
+    name: "Edwin Everbane",
+    player: "Daniel Mercieca",
+    sheetImage: "assets/grimwood/characters/full/edwin-everbane.png",
+    cardImage: "assets/grimwood/characters/cards/edwin-everbane.png",
+    fullImage: "assets/grimwood/characters/full/edwin-everbane.png",
+    className: "Druid",
+    subclass: "Entropy",
+    accent: "34, 139, 34"
   }
 ];
 
@@ -327,6 +338,11 @@ const charactersNavToggle = document.getElementById('characters-nav-toggle');
 const sessionList = document.getElementById('session-list');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+const chronicleMusic = new window.ChronicleMusic(document.getElementById('chronicle-music-player'), {
+  trr: { title: 'The Roots Remember', element: document.getElementById('chronicle-audio-trr') },
+  grimwood: { title: 'Into the Grimwood Manor', element: document.getElementById('chronicle-audio-grimwood') }
+});
+
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
 let currentPage = 'home';
@@ -345,6 +361,8 @@ function hideChronicleSelector() {
 }
 
 function showChronicleSelector() {
+  window.ChronicleTools?.close({ restoreFocus: false });
+  chronicleMusic.leave();
   document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active');
   currentChronicle = null;
   siteShell.hidden = true;
@@ -358,6 +376,8 @@ function showChronicleSelector() {
 }
 
 function selectChronicle(chronicle) {
+  if (!['trr', 'grimwood'].includes(chronicle)) return;
+  chronicleMusic.enter(chronicle);
   currentChronicle = chronicle;
   document.body.classList.toggle('chronicle-trr-active', chronicle === 'trr');
   document.body.classList.toggle('chronicle-grimwood-active', chronicle === 'grimwood');
@@ -523,6 +543,7 @@ const grimwoodCharacterBack = document.getElementById('grimwood-character-back')
 function makeGrimwoodCharacterCard(character, index) {
   const card = document.createElement('article');
   card.className = 'character-card grimwood-character-card';
+  card.dataset.character = character.slug;
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', `Open ${character.name}'s character profile`);
@@ -582,6 +603,7 @@ function renderGrimwoodCharacterDetail(character) {
       </div>
     </article>
   `;
+  window.ChronicleTools?.updateCharacterNavigation('grimwood', character);
 }
 
 function openGrimwoodCharacter(character, { replace = false } = {}) {
@@ -709,6 +731,7 @@ function renderCharacterDetail(character) {
       </div>
     </article>
   `;
+  window.ChronicleTools?.updateCharacterNavigation('trr', character);
 }
 
 function openCharacter(character, { immediate = false, replace = false } = {}) {

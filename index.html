@@ -38,7 +38,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20261005-grimwood-polish2" />
+  <link rel="stylesheet" href="style.css?v=20261010-quality-of-life1" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -119,6 +119,7 @@
         <button class="nav-link" data-page="map" type="button">Map</button>
         <button class="nav-link" data-page="npcs" type="button">NPCs</button>
         <button class="nav-link" data-page="sessions" type="button">Session Archive</button>
+        <button class="chronicle-search-button" type="button" data-chronicle-search="trr" aria-label="Search The Roots Remember" title="Search this chronicle" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
       </nav>
     </header>
 
@@ -341,6 +342,7 @@
         </div>
         <button class="nav-link" type="button" data-grimwood-page="npcs">NPCs</button>
         <button class="nav-link" type="button" data-grimwood-page="sessions">Session Archive</button>
+        <button class="chronicle-search-button" type="button" data-chronicle-search="grimwood" aria-label="Search Into the Grimwood Manor" title="Search this chronicle" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
       </nav>
     </header>
 
@@ -485,6 +487,42 @@
     </section>
   </div>
 
-  <script src="script.js?v=20261005-vaelis-description"></script>
+  <audio id="chronicle-audio-trr" data-chronicle-audio="trr" data-duration="185.904" src="assets/audio/the-roots-remember.mp3" preload="auto" playsinline hidden></audio>
+  <audio id="chronicle-audio-grimwood" data-chronicle-audio="grimwood" data-duration="187.128" src="assets/audio/grimwood-manor.mp3" preload="auto" playsinline hidden></audio>
+
+  <section class="music-player" id="chronicle-music-player" aria-label="Chronicle music player" data-state="playing" hidden>
+    <button class="music-toggle" type="button" data-music-toggle aria-label="Pause music" title="Pause music">
+      <svg class="music-icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg>
+      <svg class="music-icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>
+    </button>
+    <span class="music-mini-label" aria-hidden="true">Music</span>
+    <div class="music-track" id="music-track-details">
+      <div class="music-caption"><span>Chronicle Soundtrack</span><span class="music-status" data-music-status role="status" aria-live="polite">Starting…</span></div>
+      <strong data-music-title>The Roots Remember</strong>
+      <div class="music-timeline"><progress data-music-progress max="1" value="0" aria-label="Song progress"></progress><span data-music-time>0:00 / 0:00</span></div>
+    </div>
+    <label class="music-volume" id="music-volume-controls">
+      <span class="music-volume-heading"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4zM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg><span>Volume</span><output data-music-volume-text>50%</output></span>
+      <input data-music-volume type="range" min="0" max="100" step="1" value="50" aria-label="Music volume" aria-valuetext="50 percent" style="--volume-fill:50%" />
+    </label>
+    <button class="music-collapse" type="button" data-music-collapse aria-expanded="true" aria-controls="music-track-details music-volume-controls" aria-label="Minimise music player" title="Minimise music player">
+      <svg class="music-collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+  </section>
+
+  <div class="chronicle-tools-modal" id="chronicle-tools-modal" hidden>
+    <div class="chronicle-tools-backdrop" data-tools-close aria-hidden="true"></div>
+    <section class="chronicle-tools-panel" role="dialog" aria-modal="true" aria-labelledby="chronicle-tools-title" tabindex="-1">
+      <header class="chronicle-tools-heading">
+        <div><p class="eyebrow" id="chronicle-tools-kicker"></p><h2 id="chronicle-tools-title"></h2></div>
+        <button class="chronicle-tools-close" type="button" data-tools-close aria-label="Close dialog" title="Close">×</button>
+      </header>
+      <div class="chronicle-tools-content" id="chronicle-tools-content"></div>
+    </section>
+  </div>
+
+  <script src="music.js?v=20261010-quality-of-life1"></script>
+  <script src="script.js?v=20261010-quality-of-life1"></script>
+  <script src="chronicle-tools.js?v=20261010-quality-of-life1"></script>
 </body>
 </html>
