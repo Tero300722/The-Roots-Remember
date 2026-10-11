@@ -7,7 +7,7 @@
   const FADE_IN = 2;
   const FADE_OUT = 3;
   const EXIT_FADE = 700;
-  const DEFAULT_VOLUME = 0.5;
+  const DEFAULT_VOLUME = 0.05;
 
   class ChronicleMusic {
     constructor(player, tracks) {
@@ -228,7 +228,8 @@
       session.voice.ready = false;
       session.voice.rewinding = false;
       this.planEnvelope(session.voice, [[0, 0]]);
-      this.setVolume(DEFAULT_VOLUME);
+      // Repeats and retries keep the listener's chosen level; new voices start at 5%.
+      this.setVolume(session.voice.volume);
       session.timer = window.setTimeout(() => {
         if (!this.owns(session) || !session.wanted) return;
         session.delayElapsed = true;

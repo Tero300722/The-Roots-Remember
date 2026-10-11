@@ -1027,6 +1027,13 @@ body.chronicle-grimwood-active .custom-cursor.active .cursor-ring{border-color:r
 .chronicle-card-enter i{font-style:normal;color:#d1ad67;font-size:.92rem}
 .chronicle-card:hover .chronicle-card-enter,.chronicle-card:focus-visible .chronicle-card-enter{color:#d1c5b3;gap:12px}
 .chronicle-card-grimwood .chronicle-card-enter i{color:#e78742}
+.chronicle-card-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;margin-bottom:13px}
+.chronicle-card-meta .chronicle-type{margin:0}
+.chronicle-status{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border:1px solid rgba(211,173,103,.25);border-radius:999px;background:rgba(211,173,103,.06);color:#dfc58e;font-size:.65rem;line-height:1.5;letter-spacing:.035em;white-space:nowrap}
+.chronicle-status-ongoing::before{content:"";width:5px;height:5px;margin-right:2px;border-radius:50%;background:#b8c79a}
+.chronicle-status-upcoming{border-color:rgba(223,139,89,.26);background:rgba(223,139,89,.055);color:#e1ae88}
+.chronicle-creator{display:block;margin-top:10px;color:#aaa294;font-size:.8rem;line-height:1.6}
+.chronicle-creator>span{color:#dfd3bf}
 
 /* ---------- Grimwood character accents ---------- */
 .grimwood-character-card .character-player{color:rgb(var(--accent-rgb));text-shadow:0 0 16px rgba(var(--accent-rgb),.10)}
@@ -1034,31 +1041,34 @@ body.chronicle-grimwood-active .custom-cursor.active .cursor-ring{border-color:r
 .grimwood-character-detail-wrap .detail-row span{color:rgba(var(--char-rgb),.82)}
 .grimwood-character-detail-wrap .detail-row{border-color:rgba(var(--char-rgb),.14)}
 
-/* ---------- Grimwood NPC archive: wider, calmer layout ---------- */
-.grimwood-npc-grid{grid-template-columns:1fr;gap:22px}
-.grimwood-npc-card{width:100%}
-.grimwood-npc-grid .npc-card{grid-template-columns:minmax(320px,35%) minmax(0,1fr);min-height:390px}
-.grimwood-npc-card.npc-card-major{grid-template-columns:minmax(370px,38%) minmax(0,1fr);min-height:490px}
-.grimwood-npc-card .npc-portrait{display:grid;place-items:center;padding:14px;background:radial-gradient(circle at 50% 38%,rgba(121,54,133,.10),transparent 52%),#09070b}
-.grimwood-npc-card .npc-portrait::before{background:linear-gradient(90deg,transparent 78%,rgba(7,7,11,.24) 100%),linear-gradient(180deg,transparent 84%,rgba(5,5,8,.20) 100%)}
-.grimwood-npc-card .npc-portrait img{width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:16px}
-.grimwood-npc-card .npc-copy{padding:36px clamp(34px,4vw,54px)}
-.grimwood-npc-card .npc-copy p{max-width:78ch;line-height:1.82}
-.grimwood-npc-card.npc-card-major .npc-copy p{max-width:82ch}
-.grimwood-npc-card .npc-copy h3{font-size:clamp(1.8rem,3vw,2.65rem)}
-.grimwood-npc-card.npc-card-major .npc-copy h3{font-size:clamp(2.25rem,4vw,3.45rem)}
+/* ---------- Shared NPC archive: Grimwood's layout in both chronicles ---------- */
+.npc-grid{grid-template-columns:1fr;gap:22px}
+.npc-grid .npc-card{width:100%;grid-template-columns:minmax(320px,35%) minmax(0,1fr);min-height:390px}
+.npc-grid .npc-card-major{grid-template-columns:minmax(370px,38%) minmax(0,1fr);min-height:490px}
+.npc-card .npc-portrait{display:grid;place-items:center;padding:14px}
+.grimwood-npc-card .npc-portrait{background:radial-gradient(circle at 50% 38%,rgba(121,54,133,.10),transparent 52%),#09070b}
+.npc-card .npc-portrait::before{background:linear-gradient(90deg,transparent 78%,rgba(7,7,11,.24) 100%),linear-gradient(180deg,transparent 84%,rgba(5,5,8,.20) 100%)}
+.npc-card .npc-portrait img{width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:16px}
+/* Fit the image element itself so rounding follows the artwork, not its letterbox. */
+#npc-major-list .npc-portrait img{width:auto;height:auto;max-width:100%;max-height:100%;border-radius:16px}
+.npc-card .npc-copy{padding:36px clamp(34px,4vw,54px)}
+.npc-card .npc-copy p{max-width:78ch;line-height:1.82}
+.npc-card .npc-copy p+p{margin-top:12px}
+.npc-card.npc-card-major .npc-copy p{max-width:82ch}
+.npc-card .npc-copy h3{font-size:clamp(1.8rem,3vw,2.65rem)}
+.npc-card.npc-card-major .npc-copy h3{font-size:clamp(2.25rem,4vw,3.45rem)}
 
 @media (max-width:1050px){
   .brand-switch-glyph{margin-left:auto}
-  .grimwood-npc-grid .npc-card,.grimwood-npc-card.npc-card-major{grid-template-columns:280px minmax(0,1fr);min-height:380px}
+  .npc-grid .npc-card{grid-template-columns:280px minmax(0,1fr);min-height:380px}
 }
 @media (max-width:700px){
   .chronicle-selector-emblem{width:62px;height:62px}
   .chronicle-grid{gap:18px}
   .chronicle-card-copy{padding:20px 21px 22px}
-  .grimwood-npc-grid .npc-card,.grimwood-npc-card.npc-card-major{grid-template-columns:1fr;min-height:0}
-  .grimwood-npc-card .npc-portrait{height:430px;border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}
-  .grimwood-npc-card .npc-copy{padding:28px 24px 30px}
+  .npc-grid .npc-card{grid-template-columns:1fr;min-height:0}
+  .npc-card .npc-portrait{height:430px;border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .npc-card .npc-copy{padding:28px 24px 30px}
 }
 
 
@@ -1224,3 +1234,12 @@ body.has-music-player.music-is-collapsed .page-shell{padding-bottom:98px}
   .chronicle-search-result{padding:15px}
 }
 @media print{.chronicle-tools-modal,.chronicle-search-button,.character-browse{display:none!important}}
+
+/* ---------- Character and archive refinements ---------- */
+.character-card,.character-detail-wrap,.remembered-card{border-width:2px}
+.hero-art-caption{margin:20px 0 0;color:#aaa292;font-size:.72rem;line-height:1.5}
+@media(min-width:1051px){
+  .topbar{grid-template-columns:auto minmax(0,auto);width:fit-content;max-width:100%;justify-content:start;gap:12px}
+  .nav{min-width:0;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:4px}
+  .nav-link:not(.brand){white-space:nowrap}
+}

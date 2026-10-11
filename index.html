@@ -34,11 +34,11 @@
   <link rel="icon" href="assets/favicon-64.png?v=20260919-logo1" type="image/png" sizes="64x64" />
   <link rel="apple-touch-icon" href="assets/favicon-180.png?v=20260919-logo1" />
   <link rel="preload" as="image" href="assets/campaign-hero.webp?v=20261005-chronicles1" fetchpriority="high" />
-  <link rel="preload" as="image" href="assets/grimwood-manor-hero.webp?v=20261005-chronicles1" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/grimwood-manor-title.png" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20261010-quality-of-life1" />
+  <link rel="stylesheet" href="style.css?v=20261011-artwork-volume" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -65,26 +65,34 @@
       </header>
 
       <div class="chronicle-grid">
-        <button class="chronicle-card" type="button" data-chronicle="trr" aria-label="Enter The Roots Remember main campaign">
+        <button class="chronicle-card" type="button" data-chronicle="trr" aria-label="Enter The Roots Remember, ongoing campaign created by Mikael Delia">
           <span class="chronicle-card-art-wrap">
             <img class="chronicle-card-art" src="assets/campaign-hero.webp?v=20261005-chronicles1" width="1672" height="941" alt="The Roots Remember campaign artwork" fetchpriority="high" decoding="async" />
             <span class="chronicle-card-shade"></span>
           </span>
           <span class="chronicle-card-copy">
-            <span class="chronicle-type">Main Campaign</span>
+            <span class="chronicle-card-meta">
+              <span class="chronicle-type">Main Campaign</span>
+              <span class="chronicle-status chronicle-status-ongoing">On going</span>
+            </span>
             <strong>The Roots Remember</strong>
+            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
             <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
           </span>
         </button>
 
-        <button class="chronicle-card chronicle-card-grimwood" type="button" data-chronicle="grimwood" aria-label="Enter Into the Grimwood Manor canon one-shot">
+        <button class="chronicle-card chronicle-card-grimwood" type="button" data-chronicle="grimwood" aria-label="Enter Into the Grimwood Manor, created by Gianluca Amato. Starts 24 October 2026">
           <span class="chronicle-card-art-wrap">
-            <img class="chronicle-card-art" src="assets/grimwood-manor-hero.webp?v=20261005-chronicles1" width="1536" height="1024" alt="Into the Grimwood Manor title artwork" fetchpriority="high" decoding="async" />
+            <img class="chronicle-card-art" src="assets/grimwood-manor-title.png" width="1672" height="941" alt="An Invitation to Grimwood Manor, a shadowed estate beyond ornate gates" fetchpriority="high" decoding="async" />
             <span class="chronicle-card-shade"></span>
           </span>
           <span class="chronicle-card-copy">
-            <span class="chronicle-type">Canon Halloween One-Shot</span>
+            <span class="chronicle-card-meta">
+              <span class="chronicle-type">Canon Halloween One-Shot</span>
+              <span class="chronicle-status chronicle-status-upcoming">Starts <time datetime="2026-10-24">24 October</time></span>
+            </span>
             <strong>Into the Grimwood Manor</strong>
+            <span class="chronicle-creator">Created by <span>Gianluca Amato</span></span>
             <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
           </span>
         </button>
@@ -131,50 +139,27 @@
           <span class="intro-line"></span>
         </div>
 
-        <div class="hero-card hero-carousel reveal-cinematic delay-a" id="session-hero-carousel" aria-roledescription="carousel" aria-label="Session V visual recap">
-          <div class="hero-slides">
+        <div class="hero-card reveal-cinematic delay-a" aria-label="Chronicle artwork from Session VI">
             <img
-              class="hero-art hero-slide hero-slide-leoric is-active"
-              src="assets/session-5-memory-leoric.webp?v=20260930-slideshow2"
-              width="1672"
-              height="941"
-              alt="Cassian carrying Leoric through a rain-soaked forest"
+              class="hero-art hero-art-session6"
+              src="assets/session-6-home.png"
+              width="1536"
+              height="1024"
+              alt="The bewildered party watches Valen tumble out of a colourful portal and collide with a tree beside the forest fire"
               fetchpriority="high"
               decoding="async"
-              data-hero-slide
             />
-            <img
-              class="hero-art hero-slide hero-art-session5"
-              src="assets/session-5-home.webp?v=20260929-session5c"
-              width="1955"
-              height="1024"
-              alt="Morvan and Vaeloryn fighting goblins inside a tavern"
-              decoding="async"
-              data-hero-slide
-              aria-hidden="true"
-            />
-          </div>
           <div class="hero-vignette"></div>
           <div class="hero-glow"></div>
-          <button class="hero-carousel-arrow hero-carousel-prev" type="button" aria-label="Previous session image">
-            <img src="assets/carousel-arrow-right.png?v=20260930-arrowfix2" alt="" aria-hidden="true" />
-          </button>
-          <button class="hero-carousel-arrow hero-carousel-next" type="button" aria-label="Next session image">
-            <img src="assets/carousel-arrow-left.png?v=20260930-arrowfix2" alt="" aria-hidden="true" />
-          </button>
-          <div class="hero-carousel-dots" role="group" aria-label="Session image selection">
-            <button class="hero-carousel-dot is-active" type="button" aria-label="Show image 1 of 2" aria-current="true" data-hero-dot="0"></button>
-            <button class="hero-carousel-dot" type="button" aria-label="Show image 2 of 2" data-hero-dot="1"></button>
-          </div>
-          <span class="sr-only" id="hero-carousel-status" aria-live="polite">Image 1 of 2</span>
           <div class="hero-content">
-            <p class="eyebrow">Session V</p>
-            <h1>Grief<br />and Betrayal</h1>
-            <p class="lead">The party fractures beneath the weight of Leoric’s death as one path carries him home and another follows a dangerous trail to Thornwatch—where Gymerra’s betrayal reveals a far larger conspiracy.</p>
+            <p class="eyebrow">Session VI</p>
+            <h1>Ashes<br />and Old Trails</h1>
+            <p class="lead">Reunited in Thornwood Village, the party faces the aftermath of a bloody battle, reconnects with an old friend, and finds a promising lead in the search for Orthen’s missing brother.</p>
             <div class="hero-actions">
               <button class="btn btn-primary" data-jump="sessions" type="button">Read Full Recap</button>
               <button class="btn btn-ghost" data-jump="quests" type="button">View Current Quest</button>
             </div>
+            <p class="hero-art-caption">Artwork from Session VI</p>
           </div>
         </div>
 
@@ -182,9 +167,9 @@
           <div class="section-title-row">
             <div>
               <p class="eyebrow">Last Session Recap</p>
-              <h3>Grief and Betrayal</h3>
+              <h3>Ashes and Old Trails</h3>
             </div>
-            <span class="chapter-mark">V</span>
+            <span class="chapter-mark">VI</span>
           </div>
           <div class="prose" id="latest-recap"></div>
         </section>
@@ -502,8 +487,8 @@
       <div class="music-timeline"><progress data-music-progress max="1" value="0" aria-label="Song progress"></progress><span data-music-time>0:00 / 0:00</span></div>
     </div>
     <label class="music-volume" id="music-volume-controls">
-      <span class="music-volume-heading"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4zM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg><span>Volume</span><output data-music-volume-text>50%</output></span>
-      <input data-music-volume type="range" min="0" max="100" step="1" value="50" aria-label="Music volume" aria-valuetext="50 percent" style="--volume-fill:50%" />
+      <span class="music-volume-heading"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4zM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg><span>Volume</span><output data-music-volume-text>5%</output></span>
+      <input data-music-volume type="range" min="0" max="100" step="1" value="5" aria-label="Music volume" aria-valuetext="5 percent" style="--volume-fill:5%" />
     </label>
     <button class="music-collapse" type="button" data-music-collapse aria-expanded="true" aria-controls="music-track-details music-volume-controls" aria-label="Minimise music player" title="Minimise music player">
       <svg class="music-collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -521,8 +506,8 @@
     </section>
   </div>
 
-  <script src="music.js?v=20261010-quality-of-life1"></script>
-  <script src="script.js?v=20261010-quality-of-life1"></script>
-  <script src="chronicle-tools.js?v=20261010-quality-of-life1"></script>
+  <script src="music.js?v=20261011-artwork-volume"></script>
+  <script src="script.js?v=20261011-artwork-volume"></script>
+  <script src="chronicle-tools.js?v=20261011-artwork-volume"></script>
 </body>
 </html>

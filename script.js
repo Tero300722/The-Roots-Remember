@@ -128,21 +128,43 @@ const DATA = {
       name: "Orthen Solaris",
       role: "Quest Giver • House Solaris",
       importance: "major",
-      image: "assets/npcs/cards/orthen-solaris.webp",
-      description: "Orthen is a Leonin and a descendant of the Solaris family. He serves as the party's quest giver and has spent the last 18 years searching for his missing brother, who vanished after being sent on a mission. Even after all that time, Orthen still holds on to the hope that one day he will find him—dead or alive."
+      image: "assets/npcs/orthen-solaris.webp",
+      imageSize: [825, 1100],
+      description: [
+        "Orthen Solaris is the last remaining member of the Solaris bloodline. After his brother, Gerxis Solaris, disappeared eighteen years ago while on a mission, Orthen began to lay low, stepping away from the dangerous assignments that had once defined his family. Despite the years that have passed, he has never stopped searching for Gerxis, holding onto the hope that somewhere, somehow, his brother may still be alive.",
+        "The name Solaris is known throughout the continent. For generations, the family dedicated themselves to protecting ordinary people, often stepping in when the Crown and its authorities refused—or failed—to act. Orthen continued that legacy, earning a reputation for accomplishing more for the people than the Crown ever would. To some, he is a respected protector and a man willing to do what others will not. To others, he is nothing more than a vigilante, interfering with the law and taking justice into his own hands.",
+        "Now older and far more cautious than he once was, Orthen serves as a mentor and quest giver to the party, providing them with missions, guidance, and whatever wisdom his years of experience can offer. Yet behind his welcoming nature and countless stories lies the same unanswered question that has haunted him for eighteen years.",
+        "What happened to Gerxis Solaris?",
+        "No matter how much time passes, Orthen has never given up the search for his brother."
+      ]
+    },
+    {
+      name: "Gerxis Solaris",
+      role: "Missing • House Solaris",
+      importance: "major",
+      image: "assets/npcs/gerxis-solaris-placeholder.png",
+      imageSize: [1654, 1654],
+      description: [
+        "Gerxis Solaris was last seen by his brother, Orthen Solaris, eighteen years ago. He had been sent away on a mission, but after leaving, he was never seen or heard from again. No letters returned, no word reached the family, and no one was ever able to confirm what had happened to him. For nearly two decades, Orthen has continued searching for any clue that could lead him closer to the truth.",
+        "A new lead was finally uncovered in Thornwood Village, where Amanita the Tailor found Gerxis’ name written in one of her old customer ledgers. The record confirmed that he had passed through the village many years ago, and more importantly, it revealed the direction he had been travelling.",
+        "His last recorded destination was the Ironpeak Mountains.",
+        "Whether Gerxis ever reached the mountains, what awaited him there, or whether he is still alive remains unknown. But after eighteen years of silence, the trail of Gerxis Solaris has finally begun to open again."
+      ]
     },
     {
       name: "Pip",
       role: "Owner • The Middle Fiddler Tavern/Inn",
       importance: "supporting",
-      image: "assets/npcs/cards/pip.webp",
+      image: "assets/npcs/pip.webp",
+      imageSize: [917, 1100],
       description: "Pip owns and runs The Middle Fiddler Tavern/Inn. She keeps the entire business moving and, as part of the job, deals with drunkards on a daily basis."
     },
     {
       name: "Sebastian",
       role: "Orthen Solaris' Butler",
       importance: "supporting",
-      image: "assets/npcs/cards/sebastian.webp",
+      image: "assets/npcs/sebastian.webp",
+      imageSize: [733, 1100],
       description: "Sebastian is Orthen's butler and has remained by his side for many years, becoming a familiar and dependable presence in the Solaris household."
     }
   ],
@@ -236,6 +258,36 @@ const DATA = {
         "When it was finally over, there was no celebration. Morvan collapsed onto his back, covered in blood, his heart pounding from exhaustion. Vaeloryn rested nearby, equally drained.",
         "Leoric was gone. Gymerra had betrayed them. And what had begun as a simple robbery investigation was becoming something far larger than any of them had imagined."
       ]
+    },
+    {
+      number: "Session VI",
+      title: "Ashes and Old Trails",
+      paragraphs: [
+        "Cassian, Syrsa, and Aurelius finally arrived in Thornwood Village, where their first sight was the local tavern—and their first encounter was considerably stranger. Two dwarves came barging through its doors, one completely drunk, covered in dirt and still carrying his filthy pickaxe, while the other desperately tried to drag him toward work without touching so much as a speck of grime. Taking pity on the germophobic dwarf, Syrsa magically cleaned his companion before the group stepped inside.",
+        "The tavernkeep was already drunk despite it still being afternoon. He welcomed the unfamiliar faces before Syrsa reminded him that she was hardly unfamiliar at all. After taking a closer look, recognition struck him immediately. Syrsa had been here before. After an enthusiastic reunion, the group asked where Morvan and Vaeloryn were staying. Unfortunately, the tavernkeep was far too drunk to be useful and jokingly sent them to Room Four instead of Room Ten.",
+        "Cassian knocked repeatedly before finally opening the door—and immediately regretted doing so. What followed was an extremely awkward confrontation with a maid who had most certainly not been expecting visitors. The argument became loud enough that Vaeloryn eventually threw open the door to Room Ten and shouted for everyone to keep quiet.",
+        "The moment the others entered the correct room, the humour disappeared.",
+        "The stench of death filled the air. Gymerra’s corpse remained inside, dried blood staining the floor, walls, and carpet, with even more seeping from the wardrobe. Morvan and Vaeloryn were still asleep among the aftermath, utterly exhausted from the battle that had nearly killed them. Once awakened and cleaned up, they explained everything: Gymerra’s involvement, the goblin attack, Grimnak’s escape, and perhaps most painfully, the pride the goblins had taken in Leoric’s death.",
+        "Syrsa contacted the tavernkeep through magic and called him upstairs. The sight nearly broke him. Pale and shaken, he had to be seated while the group explained what had happened. Eventually, a decision was made. The bodies could not remain. They would be taken into the forest and burned, while Room Ten would remain closed until the damage could be repaired.",
+        "Before leaving, however, Syrsa heard something familiar from downstairs.",
+        "A lute.",
+        "The musician performing inside the tavern was Jack Vinland, a man who had once been something of a father figure to her. Months had passed since they had last seen one another, and their reunion brought a rare moment of genuine happiness into what had otherwise been a grim few days.",
+        "The group eventually carried the bodies into the forest and set them alight. As flames consumed the evidence, reality itself suddenly tore open beside them. A portal appeared, and a man came hurtling through it at tremendous speed, crashing directly into a tree before collapsing unconscious.",
+        "Syrsa healed him.",
+        "When the stranger awoke, he introduced himself as Valen, a multiversal merchant who travelled between worlds selling rare and unusual items. He explained that he came from another universe entirely—and that somewhere beyond their world, he was following another group of adventurers much like them. After thanking the party for saving him, Valen disappeared once again, leaving behind considerably more questions than answers.",
+        "With the bodies gone, the party originally planned to return to Silvercrest and report everything to Orthen. Then they remembered the promise they had made him.",
+        "His missing brother.",
+        "They searched Thornwood for anyone who might remember seeing another Leonin bearing the Solaris name. Their first stop was the forge of Tornhornn, a massive, muscular dwarf blacksmith. After buying, selling, and asking questions, however, they left without answers.",
+        "Their next stop was a tailor shop belonging to Amanita. She searched through an enormous record of customers for nearly half an hour until, finally, she found something.",
+        "A name connected to Solaris.",
+        "A Leonin.",
+        "Gerxis.",
+        "It was the first genuine lead they had found regarding Orthen’s missing brother.",
+        "With their search finally bearing fruit, Syrsa celebrated in her own way—by relentlessly flirting with Amanita until the poor tailor became so flustered that she began walking into nearly every corner of her own shop.",
+        "Night had settled over Thornwood by the time they finished. Rather than return to the road, the group accepted Jack Vinland’s hospitality and stayed at his home for the evening.",
+        "For the first time since Leoric’s death, the group had found something they desperately needed.",
+        "A trail worth following."
+      ]
     }
   ]
 };
@@ -303,7 +355,12 @@ const GRIMWOOD_CHARACTERS = [
     fullImage: "assets/grimwood/characters/full/xavier-serahart.webp",
     className: "Paladin",
     subclass: "Oath of the Slaughter",
-    accent: "104, 110, 122"
+    accent: "104, 110, 122",
+    description: [
+      "A human with the past of a raider, pillaging alongside his former tribe when the need arose. Although for him it was something more, it was a joy, a pleasure to shed blood, both his own and of others. After a few years he left his tribe due to disgust of them not enjoying the violence and killing only when necessary.",
+      "He made the decision to join an army of mercenaries to fight in plenty of wars and battles where he got what he wished... blood, screams and death. This devotion to the slaughter started to gift him with magical power which he used to increase his kill count. After concerns of his bloodlust started to arise throughout the regiment of the mercenary band, he was secretly laid off, leaving Xavier to fend for himself.",
+      "Later he came upon the adventuring guild where he saw an opportunity to hone his skills, take jobs and shed more blood. Nowadays he takes care to hide his true persona of a bloodthirsty maniac but when he smells or sees a bloody figure, the bloodhound is released..."
+    ]
   },
   {
     slug: "edwin-everbane",
@@ -909,14 +966,20 @@ function buildNpcCard(npc, index) {
   card.style.animationDelay = `${index * 80}ms`;
   card.innerHTML = `
     <div class="npc-portrait">
-      <img src="${asset(npc.image)}" alt="${npc.name}" loading="lazy" decoding="async">
+      <img src="${asset(npc.image)}" alt="${npc.name}" ${npc.imageSize ? `width="${npc.imageSize[0]}" height="${npc.imageSize[1]}"` : ''} loading="lazy" decoding="async">
     </div>
     <div class="npc-copy">
       <h3>${npc.name}</h3>
       <div class="npc-role">${npc.role}</div>
-      <p>${npc.description}</p>
     </div>
   `;
+  const copy = card.querySelector('.npc-copy');
+  const paragraphs = Array.isArray(npc.description) ? npc.description : [npc.description];
+  paragraphs.forEach(text => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    copy.appendChild(paragraph);
+  });
   return card;
 }
 

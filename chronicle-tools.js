@@ -27,7 +27,7 @@
 
   // Existing NPC records are the source of truth, including Grimwood's HTML records.
   const npcs = {
-    trr: DATA.npcs.map(npc => ({ ...npc, paragraphs: [npc.description],
+    trr: DATA.npcs.map(npc => ({ ...npc, paragraphs: Array.isArray(npc.description) ? npc.description : [npc.description],
       target: [...siteShell.querySelectorAll('.npc-card')].find(card => card.querySelector('h3').textContent === npc.name) })),
     grimwood: [...grimwoodShell.querySelectorAll('.npc-card')].map(card => ({
       name: card.querySelector('.npc-copy h3').textContent,
@@ -141,8 +141,9 @@
     if (!options.length) return;
     const pattern = new RegExp(options.map(escapeRegex).join('|'), 'giu');
     const word = /[\p{L}\p{N}_]/u;
-    shells[chronicle].querySelectorAll('#latest-recap p, .session-body-inner p').forEach(paragraph => {
+    shells[chronicle].querySelectorAll('#latest-recap p, .session-body-inner p, #npcs .npc-copy p').forEach(paragraph => {
       if (paragraph.dataset.namesLinked === 'true') return;
+      const ownName = paragraph.closest('.npc-card')?.querySelector('h3')?.textContent;
       const text = paragraph.textContent;
       const fragment = document.createDocumentFragment();
       let end = 0;
@@ -150,8 +151,9 @@
         const before = text[match.index - 1] || '';
         const after = text[match.index + match[0].length] || '';
         if (word.test(before) || word.test(after)) continue;
-        fragment.appendChild(document.createTextNode(text.slice(end, match.index)));
         const entry = aliases.get(match[0].toLocaleLowerCase());
+        if (entry.person.name === ownName) continue;
+        fragment.appendChild(document.createTextNode(text.slice(end, match.index)));
         const button = element('button', 'recap-name', match[0]);
         button.type = 'button';
         button.setAttribute('aria-haspopup', 'dialog');
