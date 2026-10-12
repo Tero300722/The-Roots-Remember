@@ -1,0 +1,448 @@
+/* Echoes of Eternity. All world-specific treatments are scoped to this chronicle. */
+.chronicle-card-echoes {
+  --cover-accent: 179, 171, 203;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  background: #111219;
+}
+.chronicle-card-echoes .chronicle-card-copy {
+  padding: 25px 30px;
+  background: radial-gradient(ellipse at 100% 0, rgba(123, 92, 163, .09), transparent 75%), #111219;
+}
+.chronicle-card-echoes .chronicle-card-copy strong { font-size: clamp(1.55rem, 2.55vw, 2.15rem); }
+.chronicle-status-archived {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid rgba(181, 169, 198, .28);
+  border-radius: 999px;
+  color: #c7bed1;
+  background: rgba(162, 144, 183, .075);
+  font-family: "Manrope", sans-serif;
+  font-size: .68rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: .02em;
+}
+.echoes-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 11px;
+  min-height: 264px;
+  padding: 25px 18px;
+  overflow: hidden;
+  color: #bfb093;
+  background: radial-gradient(ellipse at 24% 20%, rgba(146, 100, 58, .10), transparent 60%),
+    radial-gradient(ellipse at 84% 65%, rgba(133, 61, 81, .12), transparent 60%), #0b0e14;
+}
+.echoes-cover::after { content: ""; position: absolute; inset: 13px; border: 1px solid rgba(173, 162, 190, .12); border-radius: 12px; pointer-events: none; }
+.echoes-medallion { display: block; flex-shrink: 0; width: 100%; height: auto; }
+.echoes-cover .echoes-medallion { width: 152px; }
+.echoes-cover-kicker { font-size: .54rem; letter-spacing: .16em; text-transform: uppercase; text-align: center; }
+.echoes-cover-worlds { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; color: #b7b0bf; font-size: .62rem; letter-spacing: .06em; }
+.echoes-cover-worlds i { font-style: normal; color: #71677e; }
+
+/* The premise has a neutral palette; each universe then supplies its own materials. */
+body.chronicle-echoes-active,
+#echoes-shell {
+  --chronicle-accent: 198, 180, 141;
+  --surface: #13151e;
+  --surface-deep: #0b0e15;
+  --surface-rgb: 15, 18, 27;
+  --ink: #eee9df;
+  --muted: #b8b5bd;
+  --gold: #c6b48d;
+  --gold-2: #e5d8bd;
+  --line: rgba(198, 180, 141, .25);
+  --line-soft: rgba(198, 180, 141, .13);
+  --echoes-heading: "Cinzel", Georgia, serif;
+  --echoes-title-weight: 500;
+}
+body.chronicle-echoes-active[data-echoes-universe="pirate"],
+#echoes-shell[data-universe="pirate"] {
+  --chronicle-accent: 201, 168, 106;
+  --surface: #101c26;
+  --surface-deep: #09121a;
+  --surface-rgb: 11, 22, 31;
+  --ink: #f0e4cc;
+  --muted: #b7b5ab;
+  --gold: #c9a86a;
+  --gold-2: #e4ce9c;
+  --line: rgba(201, 168, 106, .28);
+  --line-soft: rgba(201, 168, 106, .14);
+  --echoes-heading: "IM Fell English", Georgia, serif;
+  --echoes-title-weight: 400;
+}
+body.chronicle-echoes-active[data-echoes-universe="cyberpunk"],
+#echoes-shell[data-universe="cyberpunk"] {
+  --chronicle-accent: 235, 105, 114;
+  --surface: #191219;
+  --surface-deep: #0d0d14;
+  --surface-rgb: 17, 13, 21;
+  --ink: #f1e7ed;
+  --muted: #b9acb9;
+  --gold: #eb6972;
+  --gold-2: #f4b0b5;
+  --line: rgba(224, 69, 85, .48);
+  --line-soft: rgba(224, 69, 85, .22);
+  --echoes-heading: "Rajdhani", "Arial Narrow", sans-serif;
+  --echoes-title-weight: 600;
+  --panel-radius: 8px;
+  --inner-radius: 6px;
+}
+body.chronicle-echoes-active[data-echoes-universe="fantasy"],
+#echoes-shell[data-universe="fantasy"] {
+  --chronicle-accent: 204, 181, 122;
+  --surface: #10201c;
+  --surface-deep: #091511;
+  --surface-rgb: 11, 26, 21;
+  --ink: #f0ebdb;
+  --muted: #b7c2b6;
+  --gold: #ccb57a;
+  --gold-2: #e5d6ab;
+  --line: rgba(204, 181, 122, .27);
+  --line-soft: rgba(204, 181, 122, .14);
+  --echoes-heading: "Cormorant Garamond", Georgia, serif;
+  --echoes-title-weight: 600;
+}
+body.chronicle-echoes-active .world-bg {
+  background: radial-gradient(ellipse at 12% 10%, rgba(88, 67, 106, .14), transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(64, 97, 108, .09), transparent 50%), #080b11;
+}
+body.chronicle-echoes-active[data-echoes-universe="pirate"] .world-bg {
+  background-color: #08151b;
+  background-image: linear-gradient(180deg, rgba(5, 18, 25, .65), rgba(5, 18, 25, .86) 58%, #081216),
+    url("assets/echoes/universes/pirate.jpg");
+  background-size: 100% 100%, cover;
+  background-position: center, 42% center;
+  background-repeat: no-repeat;
+}
+body.chronicle-echoes-active[data-echoes-universe="cyberpunk"] .world-bg {
+  background: linear-gradient(rgba(231, 79, 96, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231, 79, 96, .025) 1px, transparent 1px),
+    radial-gradient(ellipse at 0 0, rgba(133, 29, 54, .15), transparent 65%), #080910;
+  background-size: 48px 48px, 48px 48px, auto, auto;
+}
+body.chronicle-echoes-active[data-echoes-universe="fantasy"] .world-bg {
+  background-color: #071a16;
+  background-image: linear-gradient(180deg, rgba(4, 20, 19, .65), rgba(4, 20, 19, .82) 58%, #06110f),
+    url("assets/echoes/universes/fantasy.jpg");
+  background-size: 100% 100%, cover;
+  background-position: center, center 56%;
+  background-repeat: no-repeat;
+}
+body.chronicle-echoes-active .aurora,
+body.chronicle-echoes-active .rune { opacity: .035; }
+body.chronicle-echoes-active[data-echoes-universe="cyberpunk"] #magic-canvas { opacity: 0; }
+#echoes-shell[hidden] { display: none; }
+.echoes-page { display: none; min-height: 55vh; }
+.echoes-page.active:not([hidden]) { display: block; }
+#echoes-shell .topbar { display: flex; flex-wrap: wrap; gap: 12px; }
+#echoes-shell .echoes-nav { flex-wrap: wrap; }
+.echoes-brand-mark { display: block; width: 43px; color: #c6b48d; flex: 0 0 43px; }
+#echoes-shell .brand strong { font-family: "Cinzel", Georgia, serif; }
+#echoes-shell .echoes-nav .nav-link { white-space: nowrap; }
+#echoes-shell[data-universe="cyberpunk"] .topbar { border-radius: 6px; border-top: 2px solid #ab3446; }
+#echoes-shell[data-universe="cyberpunk"] .nav-link:not(.brand),
+#echoes-shell[data-universe="cyberpunk"] .chronicle-search-button { border-radius: 3px; }
+#echoes-shell[data-universe="cyberpunk"] .nav-link.active { color: #f5b8bf; background: rgba(201, 44, 69, .13); }
+#echoes-shell[data-universe="cyberpunk"] .eyebrow { font-family: "Rajdhani", "Arial Narrow", sans-serif; font-weight: 600; font-size: .8rem; }
+.echoes-intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr);
+  align-items: center;
+  gap: 35px;
+  overflow: hidden;
+  margin-top: 40px;
+  padding: clamp(32px, 5vw, 66px);
+  border: 1px solid var(--line);
+  border-radius: var(--panel-radius);
+  background-color: #0b0f16;
+  background-image: linear-gradient(90deg, rgba(7, 11, 18, .96), rgba(7, 11, 18, .82) 42%, rgba(7, 11, 18, .28) 76%, rgba(7, 11, 18, .22)), url("assets/echoes/echoes-premise-header.png");
+  /* Shade the border area too, so the image cannot leave bright edge seams. */
+  background-origin: border-box;
+  background-clip: border-box;
+  background-size: 100% 100%, cover;
+  background-position: center 48%;
+  background-repeat: no-repeat;
+}
+.echoes-intro::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(188, 171, 136, .075); border-radius: 15px; pointer-events: none; }
+.echoes-intro-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.echoes-intro-meta .eyebrow { margin: 0; }
+.echoes-intro h1 { margin: 30px 0 22px; font-family: "Cinzel", Georgia, serif; font-weight: 500; font-size: clamp(2.7rem, 5.8vw, 5.3rem); line-height: 1.08; letter-spacing: -.03em; }
+.echoes-intro h1 em { font-style: normal; color: #d9c499; }
+.echoes-intro-credit { margin: 0; color: #c5c3ca; font-size: .8rem; }
+.echoes-intro-credit span { color: #d9cdbb; }
+.echoes-intro-emblem { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #b9a781; }
+.echoes-intro-emblem .echoes-medallion { width: min(100%, 290px); }
+.echoes-intro-emblem > span { margin-top: 17px; text-transform: uppercase; font-size: .6rem; letter-spacing: .24em; color: #aea397; }
+.echoes-worlds { margin: 42px 0; }
+.echoes-section-label { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 17px; }
+.echoes-section-label h2 { margin: 0; font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: #cdc1aa; }
+.echoes-section-label > span { color: #98959f; font-size: .71rem; }
+.echoes-world-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.echoes-world-link {
+  --world-rgb: 201, 168, 106;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 27px;
+  border: 1px solid rgba(var(--world-rgb), .3);
+  border-radius: 18px;
+  background-color: #101822;
+  background-image: linear-gradient(90deg, rgba(5, 9, 15, .82), rgba(5, 9, 15, .70) 60%, rgba(5, 9, 15, .55)), var(--world-image);
+  /* Shade the border area too, so the image cannot leave bright edge seams. */
+  background-origin: border-box;
+  background-clip: border-box;
+  background-size: 100% 100%, cover;
+  background-position: var(--world-image-position, center);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+  color: #e7ddcb;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.echoes-world-link:hover { border-color: rgba(var(--world-rgb), .8); background-color: #17202b; }
+.echoes-world-pirate { --world-image: url("assets/echoes/universes/pirate.jpg"); --world-image-position: 42% 50%; }
+.echoes-world-cyberpunk { --world-image: url("assets/echoes/universes/cyberpunk.jpg"); --world-image-position: 50% 45%; }
+.echoes-world-fantasy { --world-image: url("assets/echoes/universes/fantasy.jpg"); --world-image-position: 50% 55%; }
+.echoes-world-cyberpunk { --world-rgb: 235, 105, 114; background-color: #171117; border-radius: 5px; }
+.echoes-world-cyberpunk:hover { background-color: #22151d; }
+.echoes-world-fantasy { --world-rgb: 176, 194, 147; background-color: #101d18; }
+.echoes-world-fantasy:hover { background-color: #192b22; }
+.echoes-world-mark { display: block; width: 38px; margin-bottom: 23px; }
+.echoes-world-mark svg, .echoes-world-seal svg { display: block; width: 100%; height: auto; stroke: rgb(var(--world-rgb, var(--chronicle-accent))); stroke-width: 1.15; }
+.echoes-world-link-copy { display: flex; flex-direction: column; gap: 9px; }
+.echoes-world-number { color: rgb(var(--world-rgb)); font-size: .58rem; text-transform: uppercase; letter-spacing: .18em; }
+.echoes-world-link-copy strong { font-size: 1.6rem; font-family: "IM Fell English", Georgia, serif; font-weight: 400; line-height: 1.15; }
+.echoes-world-cyberpunk .echoes-world-link-copy strong { font-family: "Rajdhani", "Arial Narrow", sans-serif; font-weight: 600; font-size: 1.75rem; }
+.echoes-world-fantasy .echoes-world-link-copy strong { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 1.8rem; }
+.echoes-world-link-copy > span:last-child { font-size: .74rem; color: #b5b3b5; }
+.echoes-world-link-tail { display: flex; width: 100%; justify-content: space-between; align-items: center; margin-top: 25px; padding-top: 17px; border-top: 1px solid rgba(var(--world-rgb), .18); color: #b8b1a6; font-size: .68rem; }
+.echoes-world-link-tail i { font-size: 1rem; color: rgb(var(--world-rgb)); font-style: normal; }
+.echoes-premise-panel { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(35px, 5vw, 68px); padding: clamp(28px, 4.4vw, 54px); border: 1px solid var(--line-soft); border-radius: var(--panel-radius); background: linear-gradient(135deg, #13151d, #0c1018); }
+.echoes-premise-heading { align-self: start; }
+.echoes-premise-heading .eyebrow { margin: 0 0 24px; }
+.echoes-premise-heading h2 { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 500; line-height: 1.3; color: #eee8dc; }
+.echoes-premise-heading h2 em { color: #cdb589; font-style: italic; }
+.echoes-premise-ornament { display: flex; align-items: center; gap: 16px; width: 135px; margin-top: 30px; color: #9e8a64; font-size: .65rem; }
+.echoes-premise-ornament span { height: 1px; width: 42px; background: var(--line); }
+.echoes-premise-prose { min-width: 0; max-width: 68ch; }
+.echoes-premise-prose p { margin: 0 0 22px; color: #bdbac0; font-size: .93rem; line-height: 1.9; }
+.echoes-premise-prose p:last-child { margin-bottom: 0; padding-top: 19px; border-top: 1px solid var(--line-soft); color: #e3d5b7; }
+.echoes-world-heading { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 27px 0 32px; margin: 16px 0 30px; border-bottom: 1px solid var(--line); }
+.echoes-world-heading .eyebrow { margin: 0 0 15px; }
+.echoes-world-heading h2 { margin: 0; font-family: var(--echoes-heading); font-weight: var(--echoes-title-weight); font-size: clamp(2.8rem, 5.6vw, 5.1rem); line-height: 1.1; letter-spacing: -.025em; color: var(--ink); }
+.echoes-world-seal { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 66px; flex: 0 0 66px; color: var(--gold); font-family: "Cinzel", Georgia, serif; font-size: .75rem; }
+.echoes-world-seal svg { width: 53px; }
+.echoes-cast-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 24px; }
+.echoes-cast-heading h3 { font-weight: 500; font-size: .8rem; letter-spacing: .06em; margin: 0; color: var(--ink); }
+.echoes-cast-heading > span { font-size: .72rem; color: var(--muted); }
+.echoes-character-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 26px; width: 100%; }
+.echoes-character-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 866px; margin: 0 auto; }
+.echoes-character-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid rgba(var(--accent-rgb), .36);
+  border-radius: var(--panel-radius);
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  box-shadow: 0 20px 52px rgba(0, 0, 0, .28);
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.echoes-character-card:hover,
+.echoes-character-card:focus-visible { border-color: rgb(var(--accent-rgb)); box-shadow: 0 20px 54px rgba(0, 0, 0, .36), 0 0 25px rgba(var(--accent-rgb), .12); }
+.echoes-character-art { display: block; width: 100%; background: var(--surface-deep); }
+.echoes-character-art img { display: block; width: 100%; height: auto; object-fit: contain; }
+.echoes-character-copy { display: flex; flex-direction: column; width: 100%; padding: 25px 24px 22px; border-top: 1px solid rgba(var(--accent-rgb), .22); }
+.echoes-character-name { display: block; font-family: var(--echoes-heading); font-size: clamp(1.6rem, 2.25vw, 2rem); font-weight: var(--echoes-title-weight); line-height: 1.15; overflow-wrap: break-word; }
+.echoes-character-player { display: block; margin-top: 11px; font-size: .73rem; line-height: 1.6; color: var(--muted); }
+.echoes-character-open { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 24px; color: #d3d0cb; color: color-mix(in srgb, rgb(var(--accent-rgb)) 55%, white); font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
+.echoes-character-open > span { font-size: 1rem; }
+#echoes-shell[data-universe="cyberpunk"] .echoes-world-heading { position: relative; border-bottom-color: #ae394b; }
+#echoes-shell[data-universe="cyberpunk"] .echoes-world-heading::after { content: ""; position: absolute; width: 110px; height: 3px; bottom: -2px; left: 0; background: #d45264; }
+#echoes-shell[data-universe="cyberpunk"] .echoes-world-heading h2 { text-transform: uppercase; letter-spacing: .015em; }
+#echoes-shell[data-universe="cyberpunk"] .echoes-world-seal { color: #79cbd7; }
+#echoes-shell[data-universe="cyberpunk"] .echoes-world-seal svg { stroke: #79cbd7; }
+#echoes-shell[data-universe="cyberpunk"] .echoes-character-copy { background: linear-gradient(120deg, rgba(204, 40, 71, .065), transparent 65%), #131019; }
+#echoes-shell[data-universe="cyberpunk"] .echoes-character-name { letter-spacing: .015em; }
+.echoes-detail-page { padding-top: 12px; }
+.echoes-profile { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; overflow: hidden; border: 2px solid rgba(var(--accent-rgb), .55); border-radius: var(--panel-radius); background: radial-gradient(ellipse at 100% 0, rgba(var(--accent-rgb), .06), transparent 70%), var(--surface); box-shadow: var(--shadow); }
+.echoes-profile-art { display: flex; align-items: center; justify-content: center; min-width: 0; margin: 0; padding: 26px; border-right: 1px solid rgba(var(--accent-rgb), .15); background: var(--surface-deep); }
+.echoes-profile-art img { display: block; width: auto; height: auto; max-width: 100%; max-height: 740px; border-radius: 12px; }
+.echoes-profile-copy { min-width: 0; padding: clamp(28px, 4vw, 54px); }
+.echoes-profile-copy > .eyebrow { margin: 0 0 23px; }
+.echoes-profile-copy h2 { margin: 0 0 21px; font-family: var(--echoes-heading); font-weight: var(--echoes-title-weight); font-size: clamp(2.3rem, 4.25vw, 4rem); line-height: 1.1; letter-spacing: -.02em; color: var(--ink); overflow-wrap: break-word; }
+.echoes-player-credit { margin: 0; font-size: .87rem; line-height: 1.7; color: #dedad3; color: color-mix(in srgb, rgb(var(--accent-rgb)) 55%, white); }
+.echoes-profile-rule { height: 1px; width: 75px; background: rgba(var(--accent-rgb), .55); margin: 33px 0 25px; }
+.echoes-profile-facts { margin: 0; }
+.echoes-profile-facts > div + div { margin-top: 20px; }
+.echoes-profile-facts dt { color: var(--muted); font-size: .64rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 7px; }
+.echoes-profile-facts dd { margin: 0; font-family: var(--echoes-heading); font-size: 1.45rem; color: var(--ink); }
+.echoes-biography { margin-top: 28px; }
+.echoes-biography p { color: var(--muted); font-size: .93rem; line-height: 1.9; }
+#echoes-shell .character-browse-button strong { font-family: var(--echoes-heading); font-size: 1.05rem; font-weight: var(--echoes-title-weight); }
+#echoes-shell .character-browse-button { border-radius: var(--inner-radius); background: var(--surface-deep); }
+#echoes-shell button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 4px; }
+#echoes-shell .echoes-character-card:focus-visible { outline-color: rgb(var(--accent-rgb)); }
+#echoes-shell h1:focus, #echoes-shell h2:focus { outline: none; }
+#chronicle-tools-modal[data-chronicle="echoes"] { --tools-accent: var(--chronicle-accent); }
+#chronicle-tools-modal[data-chronicle="echoes"] .chronicle-tools-panel { background: var(--surface-deep); border-color: var(--line); }
+#chronicle-tools-modal[data-chronicle="echoes"] .chronicle-tools-heading h2 { font-family: var(--echoes-heading); }
+#chronicle-tools-modal[data-chronicle="echoes"] .chronicle-search-result { background: var(--surface); border-color: var(--line-soft); }
+#chronicle-tools-modal[data-chronicle="echoes"] .chronicle-search-result:hover { border-color: var(--gold); }
+#chronicle-tools-modal[data-chronicle="echoes"] .chronicle-search-type { color: var(--gold-2); }
+#chronicle-tools-modal[data-chronicle="echoes"] .chronicle-search-result strong { font-family: var(--echoes-heading); }
+#chronicle-tools-modal[data-chronicle="echoes"] .chronicle-search-result mark { background: rgba(var(--chronicle-accent), .2); color: var(--ink); }
+
+/* The shared player follows the active world's colours and typography. */
+body.chronicle-echoes-active .music-player {
+  --music-accent: var(--chronicle-accent);
+  border-radius: var(--inner-radius);
+  background: rgba(var(--surface-rgb), .96);
+}
+body.chronicle-echoes-active .music-track > strong {
+  font-family: var(--echoes-heading);
+  font-size: 1.02rem;
+  font-weight: var(--echoes-title-weight);
+}
+
+@media (max-width: 1000px) {
+  .echoes-world-links { gap: 13px; }
+  .echoes-world-link { padding: 22px; }
+  .echoes-world-link-copy strong { font-size: 1.45rem; }
+  .echoes-world-cyberpunk .echoes-world-link-copy strong { font-size: 1.6rem; }
+  .echoes-world-fantasy .echoes-world-link-copy strong { font-size: 1.65rem; }
+  .echoes-character-grid { gap: 18px; }
+  .echoes-character-copy { padding: 21px 19px; }
+  .echoes-profile-copy { padding: 32px; }
+  .echoes-profile-art { padding: 20px; }
+}
+@media (max-width: 760px) {
+  .chronicle-card-echoes { grid-template-columns: minmax(0, 1fr); }
+  .chronicle-card-echoes .chronicle-card-copy { padding: 24px; }
+  .echoes-cover { min-height: 245px; }
+  .echoes-intro { grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); padding: 32px 26px; gap: 18px; margin-top: 25px; }
+  .echoes-intro h1 { font-size: clamp(2.4rem, 7.5vw, 3.6rem); }
+  .echoes-intro-emblem > span { font-size: .48rem; letter-spacing: .12em; }
+  .echoes-intro-meta { gap: 8px; }
+  .echoes-intro-meta .eyebrow { font-size: .58rem; letter-spacing: .1em; }
+  .echoes-world-links { grid-template-columns: minmax(0, 1fr); }
+  .echoes-world-link { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; align-items: center; gap: 20px; padding: 22px; }
+  .echoes-world-mark { margin: 0; width: 36px; }
+  .echoes-world-link-tail { display: flex; flex-direction: column; gap: 12px; border: 0; margin: 0; padding: 0; width: auto; }
+  .echoes-world-link-copy strong { font-size: 1.65rem; }
+  .echoes-premise-panel { grid-template-columns: minmax(0, 1fr); gap: 30px; padding: 29px 25px; }
+  .echoes-premise-heading h2 { font-size: 2.2rem; }
+  .echoes-premise-prose { max-width: none; }
+  .echoes-character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .echoes-character-grid-3 .echoes-character-card:last-child { grid-column: 1 / -1; width: calc((100% - 18px) / 2); justify-self: center; }
+  .echoes-profile { grid-template-columns: minmax(0, 1fr); }
+  .echoes-profile-art { border-right: 0; border-bottom: 1px solid rgba(var(--accent-rgb), .15); }
+  .echoes-profile-art img { max-height: 700px; }
+  .echoes-profile-copy { padding: 32px 28px; }
+  .echoes-world-heading { padding-top: 17px; }
+  .echoes-world-heading h2 { font-size: clamp(2.3rem, 7vw, 3.7rem); }
+}
+@media (max-width: 500px) {
+  #echoes-shell .topbar { align-items: stretch; }
+  #echoes-shell .echoes-nav { justify-content: center; gap: 3px; }
+  #echoes-shell .echoes-nav .nav-link { font-size: .69rem; padding: 9px 10px; }
+  #echoes-shell .echoes-nav .chronicle-search-button { padding: 9px 11px; }
+  .echoes-intro { grid-template-columns: minmax(0, 1fr); padding: 31px 25px; }
+  .echoes-intro h1 { font-size: 2.9rem; }
+  .echoes-intro-emblem { position: absolute; width: 158px; right: -52px; bottom: -27px; opacity: .2; pointer-events: none; }
+  .echoes-intro-emblem > span { display: none; }
+  .echoes-intro-copy { position: relative; z-index: 1; }
+  .echoes-world-link { grid-template-columns: 32px minmax(0, 1fr); gap: 16px; padding: 21px; }
+  .echoes-world-mark { width: 31px; }
+  .echoes-world-link-tail { grid-column: 2; flex-direction: row; align-items: center; width: 100%; margin-top: 2px; }
+  .echoes-world-heading { gap: 12px; }
+  .echoes-world-heading .eyebrow { font-size: .58rem; }
+  .echoes-world-heading h2 { font-size: 2.4rem; }
+  .echoes-world-seal { width: 42px; flex-basis: 42px; }
+  .echoes-world-seal svg { width: 38px; }
+  .echoes-character-grid { grid-template-columns: minmax(0, 1fr); max-width: 390px; margin: 0 auto; gap: 25px; }
+  .echoes-character-grid-3 .echoes-character-card:last-child { grid-column: auto; width: 100%; }
+  .echoes-character-name { font-size: 1.9rem; }
+  .echoes-profile-art { padding: 15px; }
+  #echoes-shell .character-browse-button strong { font-size: .87rem; }
+  .echoes-premise-prose p { font-size: .9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .echoes-world-link, .echoes-character-card { transition: none; }
+}
+
+/* Scenic backdrops with still, lightweight world-specific ornament. */
+body.chronicle-echoes-active[data-echoes-universe="pirate"] .world-bg::before {
+  content: "";
+  position: absolute;
+  width: min(54vw, 640px);
+  aspect-ratio: 1;
+  left: -130px;
+  bottom: -100px;
+  background: url("assets/echoes/universes/pirate-chart.svg") center / contain no-repeat;
+  opacity: .32;
+}
+body.chronicle-echoes-active[data-echoes-universe="pirate"] .world-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 95% 12%, rgba(190, 132, 56, .13), transparent 45%),
+    repeating-linear-gradient(0deg, transparent 0 79px, rgba(201, 168, 106, .025) 79px 80px);
+}
+body.chronicle-echoes-active[data-echoes-universe="fantasy"] .world-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/echoes/universes/fantasy-canopy.svg") center / cover no-repeat;
+  opacity: .38;
+}
+body.chronicle-echoes-active[data-echoes-universe="fantasy"] .world-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 0 50%, rgba(40, 150, 125, .15), transparent 40%),
+    radial-gradient(ellipse at 95% 20%, rgba(116, 143, 66, .12), transparent 40%);
+}
+#echoes-shell:is([data-universe="pirate"], [data-universe="fantasy"]) .echoes-world-heading {
+  padding: clamp(22px, 3vw, 38px);
+  border: 1px solid var(--line);
+  border-radius: var(--panel-radius);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .18);
+}
+#echoes-shell[data-universe="pirate"] .echoes-world-heading {
+  background: linear-gradient(110deg, rgba(18, 27, 31, .97), rgba(12, 30, 37, .88));
+  border-top: 2px solid rgba(201, 168, 106, .5);
+}
+#echoes-shell[data-universe="pirate"] .topbar {
+  background: linear-gradient(110deg, rgba(27, 25, 21, .97), rgba(9, 24, 30, .97));
+  border-color: rgba(201, 168, 106, .32);
+}
+#echoes-shell[data-universe="fantasy"] .echoes-world-heading {
+  background: radial-gradient(ellipse at 100% 0, rgba(94, 132, 73, .14), transparent 70%), rgba(7, 28, 23, .93);
+  border-top: 2px solid rgba(153, 191, 136, .48);
+}
+#echoes-shell[data-universe="fantasy"] .topbar {
+  background: linear-gradient(110deg, rgba(10, 34, 28, .97), rgba(9, 23, 21, .97));
+  border-color: rgba(153, 191, 136, .32);
+}
+
+/* Keep the header title legible when the artwork spans a narrow screen. */
+@media (max-width: 540px) {
+  .echoes-intro {
+    background-image: linear-gradient(90deg, rgba(7, 11, 18, .91), rgba(7, 11, 18, .75)), url("assets/echoes/echoes-premise-header.png");
+  }
+}

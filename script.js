@@ -382,6 +382,7 @@ const chronicleSelector = document.getElementById('chronicle-selector');
 const chronicleButtons = [...document.querySelectorAll('[data-chronicle]')];
 const siteShell = document.getElementById('site-shell');
 const grimwoodShell = document.getElementById('grimwood-shell');
+const echoesShell = document.getElementById('echoes-shell');
 const switchChronicleButtons = [...document.querySelectorAll('[data-switch-chronicle]')];
 const pages = [...siteShell.querySelectorAll('.page')];
 const navButtons = [...siteShell.querySelectorAll('.nav-link[data-page], .nav-dropdown-item[data-page]')];
@@ -397,7 +398,10 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 const chronicleMusic = new window.ChronicleMusic(document.getElementById('chronicle-music-player'), {
   trr: { title: 'The Roots Remember', element: document.getElementById('chronicle-audio-trr') },
-  grimwood: { title: 'Into the Grimwood Manor', element: document.getElementById('chronicle-audio-grimwood') }
+  grimwood: { title: 'Into the Grimwood Manor', element: document.getElementById('chronicle-audio-grimwood') },
+  'echoes-pirate': { title: 'Pirate Universe', element: document.getElementById('chronicle-audio-echoes-pirate') },
+  'echoes-cyberpunk': { title: 'Cyberpunk Universe', element: document.getElementById('chronicle-audio-echoes-cyberpunk') },
+  'echoes-fantasy': { title: 'Fantasy Universe', element: document.getElementById('chronicle-audio-echoes-fantasy') }
 });
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -410,6 +414,7 @@ document.body.classList.add('intro-open');
 let currentChronicle = null;
 
 function hideChronicleSelector() {
+  chronicleSelector.inert = true;
   chronicleSelector.classList.add('dismissed');
   chronicleSelector.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('intro-open');
@@ -418,27 +423,42 @@ function hideChronicleSelector() {
 }
 
 function showChronicleSelector() {
+  const previousChronicle = currentChronicle;
   window.ChronicleTools?.close({ restoreFocus: false });
   chronicleMusic.leave();
-  document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active');
+  document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active','chronicle-echoes-active');
   currentChronicle = null;
   siteShell.hidden = true;
   grimwoodShell.hidden = true;
+  echoesShell.hidden = true;
+  chronicleSelector.inert = false;
   chronicleSelector.classList.remove('dismissed');
   chronicleSelector.removeAttribute('aria-hidden');
   document.body.classList.add('intro-open');
   document.body.classList.remove('site-entered');
   history.replaceState(null, '', location.pathname + location.search);
   window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  chronicleSelector.querySelector(`[data-chronicle="${previousChronicle}"]`)?.focus({ preventScroll: true });
 }
 
 function selectChronicle(chronicle) {
-  if (!['trr', 'grimwood'].includes(chronicle)) return;
-  chronicleMusic.enter(chronicle);
+  if (!['trr', 'grimwood', 'echoes'].includes(chronicle)) return;
+  window.ChronicleTools?.close({ restoreFocus: false });
+  if (chronicle === 'echoes') chronicleMusic.leave();
+  else chronicleMusic.enter(chronicle);
   currentChronicle = chronicle;
   document.body.classList.toggle('chronicle-trr-active', chronicle === 'trr');
   document.body.classList.toggle('chronicle-grimwood-active', chronicle === 'grimwood');
+  document.body.classList.toggle('chronicle-echoes-active', chronicle === 'echoes');
+  echoesShell.hidden = chronicle !== 'echoes';
   hideChronicleSelector();
+
+  if (chronicle === 'echoes') {
+    siteShell.hidden = true;
+    grimwoodShell.hidden = true;
+    window.EchoesChronicle.enter();
+    return;
+  }
 
   if (chronicle === 'trr') {
     grimwoodShell.hidden = true;
@@ -1308,6 +1328,11 @@ syncParticleMotion();
 function renderFromHash({ immediate = true } = {}) {
   const rawHash = location.hash.slice(1);
   const hash = rawHash.startsWith('/') ? rawHash.slice(1) : rawHash;
+
+  if (currentChronicle === 'echoes') {
+    window.EchoesChronicle.renderFromHash(hash);
+    return;
+  }
 
   if (currentChronicle === 'grimwood') {
     const grimwoodHash = hash.startsWith('grimwood/') ? hash.slice('grimwood/'.length) : 'characters';

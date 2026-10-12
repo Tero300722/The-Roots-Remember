@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#07090f" />
-  <meta name="description" content="The Roots Remember — player campaign archive." />
+  <meta name="theme-color" content="#080b09" />
+  <meta name="description" content="Main Manual Campaigns — the player archives for The Roots Remember, Into the Grimwood Manor and Echoes of Eternity." />
 
-  <meta property="og:title" content="The Roots Remember" />
-  <meta property="og:description" content="The official player archive for The Roots Remember campaign." />
+  <meta property="og:title" content="Main Manual Campaigns" />
+  <meta property="og:description" content="Explore The Roots Remember, Into the Grimwood Manor and Echoes of Eternity." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tero300722.github.io/The-Roots-Remember/" />
   <meta property="og:image" content="https://tero300722.github.io/The-Roots-Remember/assets/share-preview.jpg?v=20260919-layout2" />
@@ -15,7 +15,7 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <title>The Roots Remember</title>
+  <title>Main Manual Campaigns</title>
   <script>
     // Prevent browsers from restoring a previous scroll position or treating page routes as anchors.
     try {
@@ -38,7 +38,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20261011-artwork-volume" />
+  <link rel="stylesheet" href="style.css?v=20261012-echoes-music" />
+  <link rel="stylesheet" href="design.css?v=20261012-echoes-music" />
+  <link rel="stylesheet" href="echoes.css?v=20261012-world-atmosphere" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=IM+Fell+English&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -58,21 +61,19 @@
     <div class="chronicle-selector-inner">
       <header class="chronicle-selector-heading">
         <div class="chronicle-selector-emblem" aria-hidden="true"><img src="assets/site-logo.webp?v=20261005-chronicles-polish" alt="" width="96" height="96"></div>
-        <p class="eyebrow">Campaign Chronicles</p>
-        <h1>Choose a Chronicle</h1>
-        <p class="chronicle-selector-lead">Choose the story you wish to enter.</p>
+        <h1><span class="wordmark-main">Main Manual</span><span class="wordmark-sub">Campaigns</span></h1>
         <div class="chronicle-heading-ornament" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+        <p class="chronicle-selector-lead">Choose your chronicle.</p>
       </header>
 
       <div class="chronicle-grid">
-        <button class="chronicle-card" type="button" data-chronicle="trr" aria-label="Enter The Roots Remember, ongoing campaign created by Mikael Delia">
+        <button class="chronicle-card chronicle-card-featured" type="button" data-chronicle="trr" aria-label="Enter The Roots Remember, ongoing campaign created by Mikael Delia">
           <span class="chronicle-card-art-wrap">
             <img class="chronicle-card-art" src="assets/campaign-hero.webp?v=20261005-chronicles1" width="1672" height="941" alt="The Roots Remember campaign artwork" fetchpriority="high" decoding="async" />
-            <span class="chronicle-card-shade"></span>
           </span>
           <span class="chronicle-card-copy">
             <span class="chronicle-card-meta">
-              <span class="chronicle-type">Main Campaign</span>
+              <span class="chronicle-type"><svg class="chronicle-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 3 8 0-1 6 4 4v2H5v-2l4-4-1-6ZM12 15v6"/></svg>Main Campaign</span>
               <span class="chronicle-status chronicle-status-ongoing">On going</span>
             </span>
             <strong>The Roots Remember</strong>
@@ -81,10 +82,11 @@
           </span>
         </button>
 
+        <div class="chronicle-section-label"><span>Coming next</span><i aria-hidden="true"></i></div>
+
         <button class="chronicle-card chronicle-card-grimwood" type="button" data-chronicle="grimwood" aria-label="Enter Into the Grimwood Manor, created by Gianluca Amato. Starts 24 October 2026">
           <span class="chronicle-card-art-wrap">
             <img class="chronicle-card-art" src="assets/grimwood-manor-title.png" width="1672" height="941" alt="An Invitation to Grimwood Manor, a shadowed estate beyond ornate gates" fetchpriority="high" decoding="async" />
-            <span class="chronicle-card-shade"></span>
           </span>
           <span class="chronicle-card-copy">
             <span class="chronicle-card-meta">
@@ -93,6 +95,19 @@
             </span>
             <strong>Into the Grimwood Manor</strong>
             <span class="chronicle-creator">Created by <span>Gianluca Amato</span></span>
+            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
+          </span>
+        </button>
+
+        <div class="chronicle-section-label"><span>Archived chronicles</span><i aria-hidden="true"></i></div>
+        <button class="chronicle-card chronicle-card-echoes" type="button" data-chronicle="echoes" aria-label="Enter Echoes of Eternity, cancelled campaign created by Mikael Delia">
+          <span class="chronicle-card-art-wrap">
+            <img class="chronicle-card-art" src="assets/echoes/echoes-title-cover.png" width="2048" height="1152" alt="Echoes of Eternity: a pirate ship, a neon city and a fantasy realm divided by shattered glass" loading="lazy" decoding="async" />
+          </span>
+          <span class="chronicle-card-copy">
+            <span class="chronicle-card-meta"><span class="chronicle-type">Multiverse Campaign</span><span class="chronicle-status chronicle-status-archived">Cancelled</span></span>
+            <strong>Echoes of Eternity</strong>
+            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
             <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
           </span>
         </button>
@@ -139,7 +154,8 @@
           <span class="intro-line"></span>
         </div>
 
-        <div class="hero-card reveal-cinematic delay-a" aria-label="Chronicle artwork from Session VI">
+        <article class="hero-card chapter-feature reveal-cinematic delay-a" aria-labelledby="latest-chapter-title">
+          <figure class="chapter-illustration">
             <img
               class="hero-art hero-art-session6"
               src="assets/session-6-home.png"
@@ -149,19 +165,22 @@
               fetchpriority="high"
               decoding="async"
             />
-          <div class="hero-vignette"></div>
-          <div class="hero-glow"></div>
+            <figcaption class="hero-art-caption">Artwork from Session VI</figcaption>
+          </figure>
           <div class="hero-content">
-            <p class="eyebrow">Session VI</p>
-            <h1>Ashes<br />and Old Trails</h1>
-            <p class="lead">Reunited in Thornwood Village, the party faces the aftermath of a bloody battle, reconnects with an old friend, and finds a promising lead in the search for Orthen’s missing brother.</p>
-            <div class="hero-actions">
-              <button class="btn btn-primary" data-jump="sessions" type="button">Read Full Recap</button>
-              <button class="btn btn-ghost" data-jump="quests" type="button">View Current Quest</button>
+            <div class="chapter-heading">
+              <p class="eyebrow">Session VI</p>
+              <h1 id="latest-chapter-title">Ashes and Old Trails</h1>
             </div>
-            <p class="hero-art-caption">Artwork from Session VI</p>
+            <div class="chapter-summary">
+              <p class="lead">Reunited in Thornwood Village, the party faces the aftermath of a bloody battle, reconnects with an old friend, and finds a promising lead in the search for Orthen’s missing brother.</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" data-jump="sessions" type="button">Read Full Recap</button>
+                <button class="btn btn-ghost" data-jump="quests" type="button">View Current Quest</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </article>
 
         <section class="story-panel reveal-cinematic delay-b">
           <div class="section-title-row">
@@ -441,6 +460,107 @@
     <footer><span>INTO THE GRIMWOOD MANOR</span><small>Canon Halloween One-Shot Chronicle</small></footer>
   </div>
 
+
+  <div class="page-shell echoes-shell" id="echoes-shell" data-universe="premise" hidden>
+    <header class="topbar compact-topbar">
+      <button class="brand brand-chronicle-switch echoes-brand" type="button" data-switch-chronicle aria-label="Switch Chronicle" title="Switch Chronicle">
+        <span class="echoes-brand-mark" aria-hidden="true"><svg class="echoes-medallion" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+  <circle cx="120" cy="120" r="106" stroke="currentColor" stroke-opacity=".17"/>
+  <circle cx="120" cy="120" r="94" stroke="currentColor" stroke-opacity=".28" stroke-dasharray="1 9"/>
+  <path d="M112 39 112 98 60 127 48 91Z" fill="#c8a568" fill-opacity=".10" stroke="#c8a568"/>
+  <path d="m128 39 64 52-12 36-52-29Z" fill="#d65c66" fill-opacity=".10" stroke="#d65c66"/>
+  <path d="m120 116 53 29-25 54H92l-25-54Z" fill="#75acb6" fill-opacity=".10" stroke="#75acb6"/>
+  <path d="m120 92 13 23-13 23-13-23Z" stroke="#e3d4b2"/>
+  <path d="M120 4v15m0 202v15M4 120h15m202 0h15" stroke="currentColor" stroke-opacity=".5"/>
+  <circle cx="120" cy="115" r="3" fill="#f1dfb9"/>
+</svg></span>
+        <span><strong>Echoes of Eternity</strong><small>Archived Chronicle</small></span>
+        <span class="brand-switch-glyph" aria-hidden="true">↩</span>
+      </button>
+      <nav class="nav echoes-nav" aria-label="Echoes of Eternity navigation">
+        <button class="nav-link active" type="button" data-echoes-page="premise" aria-current="page">Premise</button>
+        <button class="nav-link" type="button" data-echoes-page="pirate">Pirate Universe</button>
+        <button class="nav-link" type="button" data-echoes-page="cyberpunk">Cyberpunk Universe</button>
+        <button class="nav-link" type="button" data-echoes-page="fantasy">Fantasy Universe</button>
+        <button class="chronicle-search-button" type="button" data-chronicle-search="echoes" aria-label="Search Echoes of Eternity" title="Search this chronicle" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
+      </nav>
+    </header>
+    <main>
+      <section class="echoes-page active" id="echoes-premise">
+        <header class="echoes-intro">
+          <div class="echoes-intro-copy">
+            <div class="echoes-intro-meta"><span class="eyebrow">An archived chronicle</span><span class="chronicle-status chronicle-status-archived">Cancelled</span></div>
+            <h1>Echoes of<br><em>Eternity</em></h1>
+            <p class="echoes-intro-credit">Created by <span>Mikael Delia</span></p>
+          </div>
+        </header>
+        <section class="echoes-worlds" aria-labelledby="echoes-worlds-title">
+          <div class="echoes-section-label"><h2 id="echoes-worlds-title">Explore the three universes</h2><span>Seven intertwined lives</span></div>
+          <div class="echoes-world-links">
+            <button class="echoes-world-link echoes-world-pirate" type="button" data-echoes-page="pirate">
+              <span class="echoes-world-mark"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="m24 8 6 22-6-6-6 6Zm0 16 6 6-6 10-6-10ZM24 2v6m0 32v6M2 24h6m32 0h6"/></svg></span>
+              <span class="echoes-world-link-copy"><span class="echoes-world-number">Universe I</span><strong>Pirate Universe</strong><span>The Pirate World</span></span>
+              <span class="echoes-world-link-tail"><span>2 characters</span><i aria-hidden="true">↗</i></span>
+            </button>
+            <button class="echoes-world-link echoes-world-cyberpunk" type="button" data-echoes-page="cyberpunk">
+              <span class="echoes-world-mark"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m13 7 22 0 6 6v22l-6 6H13l-6-6V13ZM17 15h14v18H17ZM24 1v6m0 34v6M1 24h6m34 0h6"/><path d="m21 20 6 4-6 4"/></svg></span>
+              <span class="echoes-world-link-copy"><span class="echoes-world-number">Universe II</span><strong>Cyberpunk Universe</strong><span>Night City</span></span>
+              <span class="echoes-world-link-tail"><span>2 characters</span><i aria-hidden="true">↗</i></span>
+            </button>
+            <button class="echoes-world-link echoes-world-fantasy" type="button" data-echoes-page="fantasy">
+              <span class="echoes-world-mark"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m24 4 5 15 15 5-15 5-5 15-5-15-15-5 15-5Z"/><circle cx="24" cy="24" r="17"/><path d="m24 16 3 5 5 3-5 3-3 5-3-5-5-3 5-3Z"/></svg></span>
+              <span class="echoes-world-link-copy"><span class="echoes-world-number">Universe III</span><strong>Fantasy Universe</strong><span>Elysia</span></span>
+              <span class="echoes-world-link-tail"><span>3 characters</span><i aria-hidden="true">↗</i></span>
+            </button>
+          </div>
+        </section>
+        <article class="echoes-premise-panel" aria-labelledby="echoes-premise-title">
+          <div class="echoes-premise-heading"><p class="eyebrow">Campaign Premise</p><h2 id="echoes-premise-title">Three worlds.<br>Seven strangers.<br><em>One shattered reality.</em></h2><div class="echoes-premise-ornament" aria-hidden="true"><span></span>✦<span></span></div></div>
+          <div class="echoes-premise-prose">
+              <p>Across three vastly different universes, seven individuals find themselves bound by an extraordinary phenomenon known as the Shattering. From the treacherous seas of the Pirate World to the technologically advanced streets of Night City and the magical lands of Elysia, their lives become intertwined by forces beyond their understanding.</p>
+              <p>Each bears a mysterious arcane scar, a mark that grants them the ability to defy death itself. When tragedy strikes, time can rewind, allowing them to change their fate. Yet this extraordinary gift comes at a terrible cost. Every revival weakens the boundaries separating the worlds, bringing reality closer to complete collapse.</p>
+              <p>Their journey leads them to discover the existence of a shattered medallion, its fragments scattered across the three universes. As they search for these pieces, they encounter powerful corporations, ancient magical civilizations, mysterious merchants, forgotten gods, and individuals whose ambitions threaten the very fabric of existence.</p>
+              <p>But beneath the chaos lies a far older mystery.</p>
+              <p>Long before their arrival, seven champions stood against Ithilia, a goddess consumed by her desire to rule the realms. Their battle reshaped existence and gave rise to the world now known as Elysia. History has forgotten their names, yet the pattern of their existence appears to be repeating.</p>
+              <p>As the boundaries between worlds deteriorate, the seven adventurers must confront an increasingly devastating truth: the very power keeping them alive may be responsible for destroying everything around them.</p>
+              <p>Every death presents a choice. Every revival carries consequences. And every decision brings them closer to discovering whether they are destined to save reality or repeat the catastrophe that once destroyed it.</p>
+              <p>For the world has broken before. And this time, it may not survive being rewritten.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="echoes-page echoes-world-page" id="echoes-pirate" hidden>
+        <header class="echoes-world-heading">
+          <div><p class="eyebrow">Across the treacherous seas</p><h2>Pirate Universe</h2></div>
+          <span class="echoes-world-seal" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="m24 8 6 22-6-6-6 6Zm0 16 6 6-6 10-6-10ZM24 2v6m0 32v6M2 24h6m32 0h6"/></svg><span>I</span></span>
+        </header>
+        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>2 of the seven</span></div>
+        <div class="echoes-character-grid echoes-character-grid-2" id="echoes-pirate-grid"></div>
+      </section>
+      <section class="echoes-page echoes-world-page" id="echoes-cyberpunk" hidden>
+        <header class="echoes-world-heading">
+          <div><p class="eyebrow">Through the streets of Night City</p><h2>Cyberpunk Universe</h2></div>
+          <span class="echoes-world-seal" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m13 7 22 0 6 6v22l-6 6H13l-6-6V13ZM17 15h14v18H17ZM24 1v6m0 34v6M1 24h6m34 0h6"/><path d="m21 20 6 4-6 4"/></svg><span>II</span></span>
+        </header>
+        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>2 of the seven</span></div>
+        <div class="echoes-character-grid echoes-character-grid-2" id="echoes-cyberpunk-grid"></div>
+      </section>
+      <section class="echoes-page echoes-world-page" id="echoes-fantasy" hidden>
+        <header class="echoes-world-heading">
+          <div><p class="eyebrow">Within the magical lands of Elysia</p><h2>Fantasy Universe</h2></div>
+          <span class="echoes-world-seal" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m24 4 5 15 15 5-15 5-5 15-5-15-15-5 15-5Z"/><circle cx="24" cy="24" r="17"/><path d="m24 16 3 5 5 3-5 3-3 5-3-5-5-3 5-3Z"/></svg><span>III</span></span>
+        </header>
+        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>3 of the seven</span></div>
+        <div class="echoes-character-grid echoes-character-grid-3" id="echoes-fantasy-grid"></div>
+      </section>
+      <section class="echoes-page echoes-detail-page" id="echoes-character-detail" hidden>
+        <button class="back-btn" id="echoes-character-back" type="button">← Return to the universe</button>
+        <div id="echoes-character-detail-content"></div>
+      </section>
+    </main>
+    <footer><span>ECHOES OF ETERNITY</span><small>Created by Mikael Delia · Archived Chronicle</small></footer>
+  </div>
+
   <div class="map-modal" id="map-modal" aria-hidden="true">
     <div class="map-modal-backdrop" data-map-close></div>
     <section class="map-modal-panel" role="dialog" aria-modal="true" aria-label="Kingdom of Valemere map viewer">
@@ -475,6 +595,10 @@
   <audio id="chronicle-audio-trr" data-chronicle-audio="trr" data-duration="185.904" src="assets/audio/the-roots-remember.mp3" preload="auto" playsinline hidden></audio>
   <audio id="chronicle-audio-grimwood" data-chronicle-audio="grimwood" data-duration="187.128" src="assets/audio/grimwood-manor.mp3" preload="auto" playsinline hidden></audio>
 
+  <audio id="chronicle-audio-echoes-pirate" data-chronicle-audio="echoes-pirate" data-duration="140.59102" src="assets/audio/echoes-pirate.mp3" preload="none" playsinline hidden></audio>
+  <audio id="chronicle-audio-echoes-cyberpunk" data-chronicle-audio="echoes-cyberpunk" data-duration="250.992" src="assets/audio/echoes-cyberpunk.mp3" preload="none" playsinline hidden></audio>
+  <audio id="chronicle-audio-echoes-fantasy" data-chronicle-audio="echoes-fantasy" data-duration="140.146939" src="assets/audio/echoes-fantasy-down-by-the-river.mp3" preload="none" playsinline hidden></audio>
+
   <section class="music-player" id="chronicle-music-player" aria-label="Chronicle music player" data-state="playing" hidden>
     <button class="music-toggle" type="button" data-music-toggle aria-label="Pause music" title="Pause music">
       <svg class="music-icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg>
@@ -506,8 +630,9 @@
     </section>
   </div>
 
-  <script src="music.js?v=20261011-artwork-volume"></script>
-  <script src="script.js?v=20261011-artwork-volume"></script>
-  <script src="chronicle-tools.js?v=20261011-artwork-volume"></script>
+  <script src="music.js?v=20261012-echoes-music"></script>
+  <script src="script.js?v=20261012-echoes-music"></script>
+  <script src="echoes.js?v=20261012-new-portraits"></script>
+  <script src="chronicle-tools.js?v=20261012-echoes-music"></script>
 </body>
 </html>

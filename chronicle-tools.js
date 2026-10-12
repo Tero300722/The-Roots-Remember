@@ -2,15 +2,15 @@
 (() => {
   'use strict';
 
-  const names = { trr: 'The Roots Remember', grimwood: 'Into the Grimwood Manor' };
-  const rosters = { trr: DATA.characters, grimwood: GRIMWOOD_CHARACTERS };
-  const shells = { trr: siteShell, grimwood: grimwoodShell };
+  const names = { trr: 'The Roots Remember', grimwood: 'Into the Grimwood Manor', echoes: 'Echoes of Eternity' };
+  const rosters = { trr: DATA.characters, grimwood: GRIMWOOD_CHARACTERS, echoes: window.EchoesChronicle.characters };
+  const shells = { trr: siteShell, grimwood: grimwoodShell, echoes: echoesShell };
   const modal = document.getElementById('chronicle-tools-modal');
   const panel = modal.querySelector('.chronicle-tools-panel');
   const heading = document.getElementById('chronicle-tools-title');
   const kicker = document.getElementById('chronicle-tools-kicker');
   const content = document.getElementById('chronicle-tools-content');
-  const queries = { trr: '', grimwood: '' };
+  const queries = { trr: '', grimwood: '', echoes: '' };
   let returnFocus = null;
   let inertElements = [];
 
@@ -29,6 +29,7 @@
   const npcs = {
     trr: DATA.npcs.map(npc => ({ ...npc, paragraphs: Array.isArray(npc.description) ? npc.description : [npc.description],
       target: [...siteShell.querySelectorAll('.npc-card')].find(card => card.querySelector('h3').textContent === npc.name) })),
+    echoes: [],
     grimwood: [...grimwoodShell.querySelectorAll('.npc-card')].map(card => ({
       name: card.querySelector('.npc-copy h3').textContent,
       role: card.querySelector('.npc-role').textContent,
@@ -62,7 +63,7 @@
     modal.hidden = false;
     document.body.classList.add('chronicle-tools-open');
     // Keep keyboard and assistive-technology navigation inside the open dialog.
-    inertElements = [siteShell, grimwoodShell, chronicleSelector,
+    inertElements = [siteShell, grimwoodShell, echoesShell, chronicleSelector,
       document.getElementById('chronicle-music-player'), document.getElementById('map-modal')]
       .map(node => [node, node.inert]);
     inertElements.forEach(([node]) => { node.inert = true; });
@@ -180,14 +181,15 @@
 
   function visitCharacter(chronicle, character) {
     if (currentChronicle !== chronicle) return;
-    if (chronicle === 'grimwood') openGrimwoodCharacter(character);
+    if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(character);
+    else if (chronicle === 'grimwood') openGrimwoodCharacter(character);
     else if (character.deceased) {
       navigateTo('remembered');
       const index = DATA.characters.filter(item => item.deceased && item.death).indexOf(character);
       focusTarget(rememberedPlayerList.children[index]);
       return;
     } else openCharacter(character);
-    const container = chronicle === 'grimwood' ? grimwoodCharacterDetailContent : characterDetailContent;
+    const container = chronicle === 'echoes' ? window.EchoesChronicle.detail : chronicle === 'grimwood' ? grimwoodCharacterDetailContent : characterDetailContent;
     const title = container.querySelector('h2');
     title.tabIndex = -1;
     title.focus({ preventScroll: true });
@@ -195,18 +197,19 @@
 
   function visitPage(chronicle, page, target) {
     if (currentChronicle !== chronicle) return;
-    if (chronicle === 'grimwood') showGrimwoodPage(page);
+    if (chronicle === 'echoes') window.EchoesChronicle.showPage(page);
+    else if (chronicle === 'grimwood') showGrimwoodPage(page);
     else navigateTo(page);
     focusTarget(target);
   }
 
-  const index = { trr: [], grimwood: [] };
+  const index = { trr: [], grimwood: [], echoes: [] };
   function addEntry(chronicle, title, type, text, visit) {
     index[chronicle].push({ title, type, text, visit, titleKey: normalize(title), key: normalize(`${title} ${type} ${text}`) });
   }
   Object.keys(names).forEach(chronicle => {
     rosters[chronicle].forEach(person => addEntry(chronicle, person.name, person.deceased ? 'The Remembered' : 'Character',
-      [person.player, person.className, person.subclass, person.cardDescription, ...(person.description || []),
+      [person.player, person.universeName, person.className, person.subclass, person.cardDescription, ...(person.description || []),
         ...(person.death ? Object.values(person.death) : [])].filter(Boolean).join(' · '),
       () => visitCharacter(chronicle, person)));
     npcs[chronicle].forEach(person => addEntry(chronicle, person.name, 'NPC',
@@ -226,6 +229,12 @@
     });
     linkRecaps(chronicle);
   });
+  addEntry('echoes', 'Campaign Premise', 'Premise', window.EchoesChronicle.premise.join(' '),
+    () => visitPage('echoes', 'premise', document.getElementById('echoes-premise-title')));
+  window.EchoesChronicle.universes.forEach(universe => addEntry('echoes', universe.name, 'Universe',
+    `${universe.place} · ${universe.label}`,
+    () => visitPage('echoes', universe.id, document.getElementById(`echoes-${universe.id}`).querySelector('h2'))));
+
   DATA.quests.forEach(quest => {
     const target = [...siteShell.querySelectorAll('.quest-feature-card, .ledger-card')]
       .find(card => card.querySelector('h3, h4')?.textContent === quest.title);
@@ -263,12 +272,14 @@
 
   function showSearch(chronicle, trigger) {
     if (!open(chronicle, 'Search the Chronicle', names[chronicle], trigger)) return;
-    const label = element('label', 'chronicle-search-label', 'Search names, players, classes, places or recaps');
+    const label = element('label', 'chronicle-search-label', chronicle === 'echoes'
+      ? 'Search characters, players, universes or the premise' : 'Search names, players, classes, places or recaps');
     label.htmlFor = 'chronicle-search-input';
     const input = element('input', 'chronicle-search-input');
     input.id = 'chronicle-search-input';
     input.type = 'search';
-    input.placeholder = chronicle === 'trr' ? 'Try Orthen, Veridium or Session V…' : 'Try Edwin, Druid or Grimwood…';
+    input.placeholder = chronicle === 'echoes' ? 'Try Genesis, Solange or the Shattering…'
+      : chronicle === 'trr' ? 'Try Orthen, Veridium or Session V…' : 'Try Edwin, Druid or Grimwood…';
     input.autocomplete = 'off';
     input.spellcheck = false;
     input.maxLength = 120;
@@ -334,7 +345,7 @@
   });
 
   function updateCharacterNavigation(chronicle, character) {
-    const container = chronicle === 'trr' ? characterDetailContent : grimwoodCharacterDetailContent;
+    const container = chronicle === 'echoes' ? window.EchoesChronicle.detail : chronicle === 'trr' ? characterDetailContent : grimwoodCharacterDetailContent;
     const roster = rosters[chronicle].filter(person => Boolean(person.deceased) === Boolean(character.deceased));
     const position = roster.indexOf(character);
     if (position < 0 || roster.length < 2) return;
@@ -351,7 +362,8 @@
         element('strong', '', next.name));
       button.addEventListener('click', () => {
         if (currentChronicle !== chronicle) return;
-        if (chronicle === 'trr') openCharacter(next);
+        if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(next);
+        else if (chronicle === 'trr') openCharacter(next);
         else openGrimwoodCharacter(next);
         container.querySelector(`[data-character-step="${direction}"]`).focus({ preventScroll: true });
       });

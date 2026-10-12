@@ -1,0 +1,469 @@
+/* Main Manual Campaigns — shared visual system, October 2026.
+   Campaign records, character accents, and playback remain in their existing files. */
+
+:root {
+  --bg: #070a08;
+  --ink: #eee8dc;
+  --muted: #b8b8ab;
+  --gold: #cdb079;
+  --gold-2: #ead4a4;
+  --chronicle-accent: 205, 176, 121;
+  --surface: #101612;
+  --surface-deep: #0a100d;
+  --surface-rgb: 13, 20, 16;
+  --line: rgba(205, 176, 121, .24);
+  --line-soft: rgba(205, 176, 121, .12);
+  --panel-radius: 24px;
+  --inner-radius: 16px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, .28);
+}
+
+/* Two palettes, one structure. Character-specific colours stay independent. */
+body.chronicle-trr-active,
+#site-shell {
+  --chronicle-accent: 205, 176, 121;
+  --surface: #101812;
+  --surface-deep: #0a110e;
+  --surface-rgb: 13, 21, 16;
+  --ink: #eee9dc;
+  --muted: #b8bbae;
+  --gold: #cdb079;
+  --gold-2: #ead4a4;
+  --line: rgba(205, 176, 121, .24);
+  --line-soft: rgba(205, 176, 121, .12);
+}
+body.chronicle-grimwood-active,
+#grimwood-shell {
+  --chronicle-accent: 205, 145, 110;
+  --surface: #191214;
+  --surface-deep: #100c0e;
+  --surface-rgb: 22, 15, 18;
+  --ink: #f0e4da;
+  --muted: #bfb1ad;
+  --gold: #cd916e;
+  --gold-2: #e8b797;
+  --line: rgba(205, 145, 110, .25);
+  --line-soft: rgba(205, 145, 110, .13);
+}
+body.chronicle-trr-active .world-bg {
+  background: radial-gradient(ellipse at 0 8%, rgba(43, 77, 55, .26), transparent 52%),
+    radial-gradient(ellipse at 100% 85%, rgba(136, 106, 57, .075), transparent 42%),
+    linear-gradient(180deg, #070d09, #0a100d 58%, #070b09);
+}
+body.chronicle-grimwood-active .world-bg {
+  background: radial-gradient(ellipse at 0 12%, rgba(99, 41, 50, .22), transparent 52%),
+    radial-gradient(ellipse at 100% 85%, rgba(130, 76, 47, .10), transparent 44%),
+    linear-gradient(180deg, #0a080a, #120d10 58%, #09080a);
+}
+body.chronicle-trr-active .aurora-a { background: #456047; opacity: .07; }
+body.chronicle-trr-active .aurora-b { background: #a68a4d; opacity: .045; }
+body.chronicle-grimwood-active .aurora-a { background: #a16945; opacity: .055; }
+body.chronicle-grimwood-active .aurora-b { background: #733744; opacity: .09; }
+.world-bg .rune { opacity: .35; }
+#magic-canvas { opacity: .24; }
+
+/* The collection entrance. The active campaign always occupies the first row. */
+.chronicle-selector {
+  display: block;
+  padding: 38px clamp(18px, 4vw, 64px) 64px;
+  overscroll-behavior: contain;
+  background: radial-gradient(ellipse at 50% 0, rgba(158, 122, 60, .07), transparent 43%), #060707;
+}
+.chronicle-selector::before {
+  position: fixed;
+  inset: 22px;
+  border: 1px solid rgba(205, 176, 121, .08);
+  border-radius: 4px;
+  background: none;
+  opacity: 1;
+}
+.chronicle-selector::after { display: none; }
+.chronicle-selector-inner { width: min(1160px, 100%); margin: 0 auto; }
+.chronicle-selector-heading { margin: 0 auto 30px; text-align: center; }
+.chronicle-selector-emblem {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+}
+.chronicle-selector-emblem img { border-radius: 50%; }
+.chronicle-selector-heading h1 { margin: 0; color: #e6ce99; text-shadow: none; }
+.wordmark-main {
+  display: block;
+  font-size: clamp(2.5rem, 5.4vw, 4.65rem);
+  font-weight: 500;
+  line-height: 1.13;
+  letter-spacing: -.025em;
+}
+.wordmark-sub {
+  display: block;
+  margin-top: 10px;
+  padding-left: .42em;
+  color: #b99a63;
+  font-size: .88rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: .42em;
+}
+@supports (background-clip: text) {
+  .wordmark-main {
+    background: linear-gradient(180deg, #f7e9c7 12%, #d4b47c 58%, #ae8950);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+.chronicle-heading-ornament { margin: 16px auto 13px; gap: 16px; font-size: .55rem; }
+.chronicle-heading-ornament span { width: 82px; }
+.chronicle-heading-ornament i { filter: none; }
+.chronicle-selector-lead { margin: 0 auto; color: #aaa495; font-size: .8rem; letter-spacing: .025em; }
+.chronicle-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.chronicle-card {
+  --cover-accent: 205, 176, 121;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(var(--cover-accent), .26);
+  border-radius: var(--panel-radius);
+  background: #0e120f;
+  box-shadow: 0 22px 65px rgba(0, 0, 0, .30);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.chronicle-card::before { display: none; }
+.chronicle-card-featured { border-color: rgba(var(--cover-accent), .43); }
+.chronicle-card .chronicle-card-art-wrap {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-width: 0;
+  aspect-ratio: auto;
+  background: #080b08;
+}
+.chronicle-card .chronicle-card-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  transform: none;
+}
+.chronicle-card .chronicle-card-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  padding: 28px 30px;
+  border-top: 0;
+  border-left: 1px solid rgba(var(--cover-accent), .15);
+  background: linear-gradient(135deg, rgba(205, 176, 121, .035), transparent 62%), #0e1410;
+}
+.chronicle-card-copy::before { display: none; }
+.chronicle-card-meta { width: 100%; gap: 9px 12px; margin: 0 0 17px; }
+.chronicle-card-meta .chronicle-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgb(var(--cover-accent));
+  font-size: .66rem;
+  line-height: 1.5;
+  letter-spacing: .11em;
+}
+.chronicle-pin { width: 13px; height: 13px; flex: 0 0 auto; }
+.chronicle-card .chronicle-status { padding: 4px 9px; font-size: .69rem; }
+.chronicle-status-ongoing {
+  border-color: rgba(148, 179, 128, .25);
+  background: rgba(104, 140, 88, .07);
+  color: #bed2ae;
+}
+.chronicle-card .chronicle-card-copy strong {
+  font-size: clamp(2rem, 3.15vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -.025em;
+  color: #f0e8d7;
+  text-wrap: balance;
+}
+.chronicle-card .chronicle-creator { margin-top: 12px; color: #a29f90; font-size: .77rem; }
+.chronicle-creator > span { color: #d8cbb2; }
+.chronicle-card .chronicle-card-enter {
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 22px;
+  min-height: 42px;
+  margin-top: 24px;
+  padding: 11px 16px;
+  border: 1px solid rgba(var(--cover-accent), .29);
+  border-radius: 10px;
+  background: rgba(var(--cover-accent), .055);
+  color: #e2d4b7;
+  font-size: .7rem;
+  letter-spacing: .10em;
+}
+.chronicle-card-enter i { color: rgb(var(--cover-accent)); }
+.chronicle-card:hover,
+.chronicle-card:focus-visible {
+  border-color: rgba(var(--cover-accent), .7);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .4), 0 0 0 1px rgba(var(--cover-accent), .08);
+  transform: translateY(-2px);
+}
+.chronicle-card:focus-visible { outline: 2px solid rgb(var(--cover-accent)); outline-offset: 5px; }
+.chronicle-card:hover .chronicle-card-art,
+.chronicle-card:focus-visible .chronicle-card-art { transform: none; filter: none; }
+.chronicle-card:hover .chronicle-card-enter,
+.chronicle-card:focus-visible .chronicle-card-enter { gap: 22px; color: #fff0d4; background: rgba(var(--cover-accent), .10); }
+.chronicle-section-label { display: flex; align-items: center; gap: 18px; padding: 4px 2px 0; }
+.chronicle-section-label span { color: #938d80; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; }
+.chronicle-section-label i { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(205, 176, 121, .17), transparent); }
+.chronicle-card-grimwood {
+  --cover-accent: 205, 145, 110;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  background: #151014;
+}
+.chronicle-card-grimwood .chronicle-card-art-wrap { background: #0b0a0c; }
+.chronicle-card-grimwood .chronicle-card-copy { padding: 25px 30px; background: linear-gradient(135deg, rgba(112, 47, 57, .10), transparent 65%), #151014; }
+.chronicle-card-grimwood .chronicle-card-copy strong { font-size: clamp(1.55rem, 2.55vw, 2.15rem); }
+.chronicle-card-grimwood .chronicle-card-meta { margin-bottom: 13px; }
+.chronicle-card-grimwood .chronicle-card-enter { margin-top: 20px; }
+
+/* Shared page rhythm and a quiet, compact navigation bar. */
+.page-shell { width: min(1260px, calc(100% - 48px)); }
+.page-shell .topbar {
+  margin-bottom: 34px;
+  border-color: var(--line);
+  border-radius: var(--inner-radius);
+  background: rgba(var(--surface-rgb), .94);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .23);
+}
+.page-shell .brand-logo-wrap { box-shadow: none; }
+.page-shell .brand strong { font-size: .82rem; letter-spacing: .025em; }
+.page-shell .brand small { color: var(--muted); font-size: .62rem; }
+.page-shell .nav-link:not(.brand) { border-radius: 10px; font-size: .79rem; color: var(--muted); }
+.page-shell .nav-link:not(.brand):hover,
+.page-shell .nav-link:not(.brand).active {
+  color: var(--ink);
+  border-color: var(--line);
+  background: rgba(var(--chronicle-accent), .075);
+  box-shadow: none;
+}
+.page-shell .nav-dropdown-menu { border-color: var(--line); background: var(--surface-deep); border-radius: var(--inner-radius); box-shadow: var(--shadow); }
+.page-shell .nav-dropdown-item:hover,
+.page-shell .nav-dropdown-item:focus-visible,
+.page-shell .nav-dropdown-item.active { color: var(--ink); border-color: var(--line); background: rgba(var(--chronicle-accent), .07); }
+.page-shell .chronicle-search-button { border-color: var(--line); background: rgba(var(--chronicle-accent), .045); color: var(--gold-2); border-radius: 10px; }
+.page-shell .chronicle-search-button:hover { background: rgba(var(--chronicle-accent), .12); }
+.page-shell .eyebrow { color: rgb(var(--chronicle-accent)); font-size: .66rem; line-height: 1.6; letter-spacing: .19em; }
+.page-shell .section-header { margin: 42px 0 30px; padding-bottom: 25px; border-bottom: 1px solid var(--line-soft); }
+.page-shell .section-header h2 { font-size: clamp(2rem, 4.3vw, 3.8rem); font-weight: 500; line-height: 1.14; letter-spacing: -.03em; color: var(--ink); text-shadow: none; }
+.page-shell .section-header > p:last-child:not(.eyebrow) { color: var(--muted); font-size: .9rem; line-height: 1.8; }
+.page-shell footer { margin-top: 54px; padding-top: 24px; border-top: 1px solid var(--line-soft); color: var(--muted); }
+
+/* Previously On: a complete illustration, then the chapter introduction. */
+.home-intro { margin: 36px 0 22px; }
+.intro-line { width: 86px; }
+.chapter-feature { min-height: 0; border-radius: var(--panel-radius); border-color: var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.chapter-illustration { position: relative; margin: 0; border-bottom: 1px solid var(--line-soft); background: #090e0b; }
+.chapter-illustration .hero-art {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+}
+.chapter-illustration .hero-art-caption {
+  position: relative;
+  margin: 0;
+  padding: 12px 30px;
+  color: var(--muted);
+  font-size: .64rem;
+  letter-spacing: .09em;
+  text-align: right;
+}
+.chapter-feature .hero-content {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 58px);
+  width: 100%;
+  min-height: 0;
+  padding: clamp(28px, 4vw, 50px);
+  background: linear-gradient(120deg, rgba(var(--chronicle-accent), .04), transparent 58%);
+}
+.chapter-heading, .chapter-summary { min-width: 0; }
+.chapter-feature .hero-content h1 { margin: 0; font-size: clamp(2.1rem, 4.5vw, 3.9rem); font-weight: 500; line-height: 1.12; letter-spacing: -.035em; color: var(--ink); text-wrap: balance; }
+.chapter-feature .lead { max-width: 62ch; font-size: .93rem; line-height: 1.85; color: var(--muted); }
+.chapter-feature .hero-actions { margin-top: 22px; gap: 10px; }
+.page-shell .btn { min-height: 42px; padding: 11px 16px; border-radius: 10px; font-size: .76rem; line-height: 1.5; }
+.page-shell .btn-primary { color: var(--gold-2); border-color: rgba(var(--chronicle-accent), .38); background: rgba(var(--chronicle-accent), .085); box-shadow: none; }
+.page-shell .btn-primary:hover { border-color: rgba(var(--chronicle-accent), .7); background: rgba(var(--chronicle-accent), .14); }
+.page-shell .btn-ghost { color: var(--muted); border-color: var(--line-soft); background: transparent; }
+.page-shell .btn-ghost:hover { color: var(--ink); border-color: var(--line); background: rgba(var(--chronicle-accent), .035); }
+.story-panel { margin-top: 30px; padding: clamp(26px, 4vw, 46px); border-radius: var(--panel-radius); border-color: var(--line-soft); background: linear-gradient(135deg, var(--surface), var(--surface-deep)); box-shadow: var(--shadow); }
+.story-panel .section-title-row { align-items: center; gap: 20px; padding-bottom: 25px; border-color: var(--line-soft); }
+.story-panel h3 { font-size: clamp(1.55rem, 2.9vw, 2.5rem); font-weight: 500; line-height: 1.3; }
+.story-panel .chapter-mark { font-size: 3rem; color: rgba(var(--chronicle-accent), .25); }
+.story-panel .prose { column-gap: 42px; }
+.story-panel .prose p { margin-top: 22px; font-size: .96rem; line-height: 1.9; color: var(--muted); }
+
+/* Portraits retain their own proportions and rounding in both archives. */
+.page-shell .npc-grid { gap: 26px; }
+.page-shell .npc-grid .npc-card { grid-template-columns: minmax(300px, 35%) minmax(0, 1fr); min-height: 0; border-radius: var(--panel-radius); border-color: var(--line-soft); background: linear-gradient(130deg, var(--surface), var(--surface-deep)); box-shadow: var(--shadow); }
+.page-shell .npc-grid .npc-card-major { grid-template-columns: minmax(320px, 38%) minmax(0, 1fr); border-color: var(--line); }
+.page-shell .npc-card .npc-portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  margin: 0;
+  padding: 22px;
+  border: 0;
+  border-right: 1px solid var(--line-soft);
+  background: radial-gradient(ellipse at center, rgba(var(--chronicle-accent), .055), transparent 72%), var(--surface-deep);
+}
+.page-shell .npc-card .npc-portrait::before { display: none; }
+#npc-major-list .npc-portrait img,
+.page-shell .npc-card .npc-portrait img { display: block; width: auto; height: auto; max-width: 100%; max-height: 680px; border-radius: var(--inner-radius); object-fit: contain; box-shadow: 0 12px 30px rgba(0, 0, 0, .18); }
+.page-shell .npc-card .npc-copy { align-self: center; min-width: 0; padding: clamp(26px, 3.4vw, 44px); }
+.page-shell .npc-card .npc-copy h3 { margin-bottom: 10px; font-size: clamp(1.65rem, 2.7vw, 2.3rem); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; color: var(--ink); text-wrap: balance; }
+.page-shell .npc-card .npc-role { display: block; margin-bottom: 21px; padding-bottom: 17px; border-bottom: 1px solid var(--line-soft); color: rgb(var(--chronicle-accent)); font-size: .76rem; line-height: 1.7; letter-spacing: .025em; }
+.page-shell .npc-card .npc-copy p { max-width: 72ch; color: var(--muted); font-size: .95rem; line-height: 1.86; }
+.page-shell .npc-card .npc-copy p + p { margin-top: 17px; }
+.page-shell .npc-tier-heading { margin-bottom: 20px; }
+.page-shell .npc-tier-heading h3 { font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 500; }
+.page-shell .npc-tier-mark { width: 34px; height: 34px; border-color: var(--line); background: rgba(var(--chronicle-accent), .035); color: var(--gold); box-shadow: none; }
+.page-shell .npc-supporting-block { margin-top: 42px; }
+
+/* Consistent panel shapes and reading rhythm throughout the existing pages. */
+.page-shell .character-grid { gap: 22px; }
+.page-shell .character-card,
+.page-shell .character-detail-wrap,
+.page-shell .remembered-card { border-radius: var(--panel-radius); }
+.page-shell .character-card .character-info { left: 24px; right: 24px; bottom: 24px; }
+.page-shell .character-info h3 { font-size: 1.34rem; line-height: 1.24; font-weight: 500; }
+.page-shell .character-card .tag { border-radius: 8px; padding: 6px 9px; font-size: .7rem; }
+.page-shell .character-detail-copy { padding: clamp(28px, 3.8vw, 48px); }
+.page-shell .character-detail-copy h2 { font-size: clamp(2.3rem, 3.8vw, 3.75rem); font-weight: 500; line-height: 1.12; letter-spacing: -.03em; }
+.page-shell .character-profile-description p { font-size: .95rem; line-height: 1.86; }
+.page-shell .detail-row { border-radius: 12px; }
+.page-shell .back-btn { border-radius: 10px; font-size: .78rem; }
+.page-shell .remembered-copy h3 { font-weight: 500; line-height: 1.15; }
+.page-shell .quest-feature-card,
+.page-shell .quest-ledger,
+.page-shell .map-card,
+.page-shell .chronicle-empty { border-radius: var(--panel-radius); border-color: var(--line); background: linear-gradient(135deg, var(--surface), var(--surface-deep)); box-shadow: var(--shadow); }
+.page-shell .quest-feature-card h3 { font-size: clamp(1.8rem, 3.3vw, 2.8rem); font-weight: 500; line-height: 1.18; }
+.page-shell .quest-ledger-head h3 { font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 500; }
+.page-shell .quest-description,
+.page-shell .ledger-card-details > p { color: var(--muted); line-height: 1.85; }
+.page-shell .ledger-card { border-radius: var(--inner-radius); }
+.page-shell .session-card { border-radius: var(--inner-radius); border-color: var(--line-soft); background: linear-gradient(130deg, var(--surface), var(--surface-deep)); box-shadow: 0 10px 30px rgba(0, 0, 0, .15); }
+.page-shell .session-card.open { border-color: var(--line); }
+.page-shell .session-head { padding: 25px 28px; }
+.page-shell .session-head h3 { font-weight: 500; line-height: 1.35; }
+.page-shell .session-number { color: var(--gold); font-size: .62rem; }
+.page-shell .session-body-inner { padding-left: 28px; padding-right: 28px; }
+.page-shell .session-body-inner p { max-width: 78ch; color: var(--muted); font-size: .96rem; line-height: 1.9; }
+.page-shell .map-card-heading { padding: 26px 30px; border-color: var(--line-soft); }
+.page-shell .map-card-heading h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 500; }
+.page-shell .map-preview { background: var(--surface-deep); }
+.page-shell .chronicle-empty > span { color: var(--gold); }
+.page-shell .chronicle-empty strong { color: var(--ink); font-weight: 500; }
+.page-shell .chronicle-empty p { color: var(--muted); }
+.page-shell .recap-name { color: var(--gold-2); text-decoration-color: rgba(var(--chronicle-accent), .55); }
+.page-shell .recap-name:hover { color: var(--ink); }
+
+/* The utility overlays follow the same materials without altering controls. */
+.chronicle-tools-modal { --tools-accent: 205, 176, 121; }
+.chronicle-tools-modal[data-chronicle="grimwood"] { --tools-accent: 205, 145, 110; }
+.chronicle-tools-panel { border-radius: var(--panel-radius); background: linear-gradient(140deg, var(--surface), var(--surface-deep)); border-color: rgba(var(--tools-accent), .3); }
+.chronicle-tools-heading { border-bottom-color: rgba(var(--tools-accent), .13); }
+.chronicle-search-result { border-radius: 12px; }
+.recap-person-portrait { border-radius: var(--inner-radius); }
+.recap-person-portrait img { border-radius: 12px; }
+.music-player { border-radius: 18px; border-color: rgba(var(--music-accent), .24); background: rgba(var(--surface-rgb), .96); box-shadow: 0 12px 45px rgba(0, 0, 0, .4); }
+.music-caption { font-size: .58rem; letter-spacing: .10em; }
+.music-volume-heading { font-size: .62rem; }
+.music-player.is-collapsed { border-radius: 14px; }
+
+@media (min-width: 1051px) {
+  #character-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  #character-grid > .character-card { grid-column: span 2; }
+  #character-grid > .character-card:nth-child(4):nth-last-child(2) { grid-column: 2 / span 2; }
+  #character-grid > .character-card:nth-child(5):last-child { grid-column: 4 / span 2; }
+}
+
+@media (max-width: 1050px) {
+  .chronicle-card { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .chronicle-card .chronicle-card-copy { padding: 25px; }
+  .chronicle-card .chronicle-card-copy strong { font-size: clamp(1.8rem, 3.7vw, 2.5rem); }
+  .chronicle-card-grimwood { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .chronicle-card-grimwood .chronicle-card-copy strong { font-size: 1.75rem; }
+  .page-shell .npc-grid .npc-card { grid-template-columns: minmax(240px, 34%) minmax(0, 1fr); }
+  .page-shell .npc-card .npc-copy { padding: 28px; }
+  .chapter-feature .hero-content { gap: 30px; }
+}
+
+@media (max-width: 760px) {
+  .chronicle-selector { padding: 28px 18px 40px; }
+  .chronicle-selector::before { inset: 9px; }
+  .chronicle-selector-heading { margin-bottom: 26px; }
+  .chronicle-selector-emblem { width: 40px; height: 40px; }
+  .chronicle-card,
+  .chronicle-card-grimwood { grid-template-columns: minmax(0, 1fr); }
+  .chronicle-card .chronicle-card-art-wrap { height: auto; }
+  .chronicle-card .chronicle-card-copy { padding: 24px; border-left: 0; border-top: 1px solid rgba(var(--cover-accent), .15); }
+  .chronicle-card .chronicle-card-copy strong { font-size: clamp(1.65rem, 5.8vw, 2.4rem); }
+  .chronicle-card-grimwood .chronicle-card-copy strong { font-size: clamp(1.55rem, 5vw, 2rem); }
+  .chronicle-card .chronicle-card-enter { margin-top: 20px; }
+  .chronicle-section-label { padding-top: 3px; }
+  .chapter-feature .hero-content { grid-template-columns: minmax(0, 1fr); gap: 22px; padding: 28px; }
+  .chapter-feature .hero-content h1 { font-size: clamp(2rem, 6.7vw, 3.3rem); }
+  .chapter-illustration .hero-art-caption { padding: 11px 22px; font-size: .59rem; }
+  .page-shell .section-header { margin-top: 30px; }
+}
+
+@media (max-width: 700px) {
+  :root { --panel-radius: 20px; --inner-radius: 14px; }
+  .page-shell { width: calc(100% - 24px); }
+  .page-shell .topbar { margin-bottom: 25px; }
+  .page-shell .nav { gap: 4px; }
+  .page-shell .nav-link:not(.brand) { font-size: .74rem; }
+  .page-shell .section-header { padding-bottom: 21px; margin-bottom: 24px; }
+  .page-shell .section-header h2 { font-size: clamp(1.85rem, 7.5vw, 2.8rem); }
+  .home-intro { margin: 28px 0 18px; }
+  .chapter-feature .hero-content { padding: 24px; }
+  .chapter-feature .hero-actions .btn { flex: 1 1 auto; }
+  .story-panel { padding: 25px 24px; }
+  .story-panel .chapter-mark { font-size: 2.2rem; }
+  .page-shell .npc-grid .npc-card { grid-template-columns: minmax(0, 1fr); }
+  .page-shell .npc-card .npc-portrait { padding: 20px; border-right: 0; border-bottom: 1px solid var(--line-soft); }
+  #npc-major-list .npc-portrait img,
+  .page-shell .npc-card .npc-portrait img { max-height: 460px; }
+  .page-shell .npc-card .npc-copy { padding: 26px 24px 30px; }
+  .page-shell .npc-card .npc-copy h3 { font-size: clamp(1.6rem, 6.8vw, 2.15rem); }
+  .page-shell .npc-card .npc-copy p { font-size: .92rem; }
+  .page-shell .character-grid { gap: 18px; }
+  .page-shell .character-detail-copy { padding: 30px 24px; }
+  .page-shell .character-detail-copy h2 { font-size: clamp(2rem, 8vw, 3rem); }
+  .page-shell .session-head { padding: 22px 20px; gap: 12px; }
+  .page-shell .session-body-inner { padding-left: 20px; padding-right: 20px; }
+  .page-shell .map-card-heading { padding: 23px 22px; }
+  .music-caption { font-size: .5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chronicle-card, .chronicle-card-art, .chronicle-card-enter { transition: none; }
+  .chronicle-card:hover, .chronicle-card:focus-visible { transform: none; }
+}
