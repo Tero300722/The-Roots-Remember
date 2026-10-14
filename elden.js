@@ -22,7 +22,9 @@ const ELDEN_DATA = {
         "And as the flames consumed him, Goku held onto one final, impossible wish: that he had been strong enough to reach into the heavens, seize the sun with his bare hands, and snuff out its flame."
       ],
       "cardImage": "assets/elden/characters/son-goku-card.webp",
-      "variantCardImage": "assets/elden/characters/son-goku-godly-card.webp"
+      "variantCardImage": "assets/elden/characters/son-goku-godly-card.webp",
+      "className": "Monk",
+      "subclass": "Warrior of the Open Hand"
     },
     {
       "name": "Zevlor",
@@ -40,7 +42,9 @@ const ELDEN_DATA = {
         "Though often lighthearted and prone to mischief, beneath his charming exterior lay a fiercely loyal companion who would go to extraordinary lengths to protect those he held dear."
       ],
       "cardImage": "assets/elden/characters/zevlor-card.webp",
-      "variantCardImage": "assets/elden/characters/zevlor-variant-card.webp"
+      "variantCardImage": "assets/elden/characters/zevlor-variant-card.webp",
+      "className": "Sorcerer",
+      "subclass": "Draconic Ancestry (Fire)"
     },
     {
       "name": "Corvan Nightbane",
@@ -69,20 +73,21 @@ const ELDEN_DATA = {
       "player": "Remsi Agius",
       "slug": "ragnaurak",
       "accent": "205, 174, 109",
-      "fullImage": "assets/elden/characters/ragnaurak.webp",
-      "variantImage": "assets/elden/characters/ragnaurak-godly.webp",
+      "fullImage": "assets/elden/characters/ragnaurak-20261014.webp",
+      "variantImage": "assets/elden/characters/ragnaurak-godly-20261014.webp",
       "variantLabel": "Godly Form",
       "width": 1024,
       "height": 1536,
-      "variantWidth": 1086,
-      "variantHeight": 1448,
+      "variantWidth": 1024,
+      "variantHeight": 1536,
       "className": "Barbarian",
       "description": [
         "Ragnaurak is a 5'5\" half-orc barbarian whose short stature hides an incredibly powerful and battle-hardened warrior. Despite his intimidating appearance, he is calm, collected, and rarely speaks more than necessary. Often underestimated because of his height, Ragnaurak lets his actions speak for themselves.",
         "He is fiercely loyal to those he considers friends, placing their safety above his own. Though normally patient and difficult to provoke, threatening his companions unleashes the terrifying fury of a berserker. Beneath his tough exterior lies a surprisingly gentle soul who values loyalty, friendship, and protection above glory or power."
       ],
-      "cardImage": "assets/elden/characters/ragnaurak-card.webp",
-      "variantCardImage": "assets/elden/characters/ragnaurak-godly-card.webp"
+      "cardImage": "assets/elden/characters/ragnaurak-20261014-card.webp",
+      "variantCardImage": "assets/elden/characters/ragnaurak-godly-20261014-card.webp",
+      "subclass": "Berserker"
     },
     {
       "name": "Morten",
@@ -125,6 +130,26 @@ const ELDEN_DATA = {
       "subclass": "Scholar",
       "cardImage": "assets/elden/characters/slyren-card.webp",
       "variantCardImage": "assets/elden/characters/slyren-godly-card.webp"
+    },
+    {
+      "name": "Shalashaska Drahaka",
+      "player": "James Bianco",
+      "slug": "shalashaska-drahaka",
+      "accent": "205, 174, 109",
+      "className": "Barbarian",
+      "subclass": "Wild Magic",
+      "variantLabel": "Godly Form",
+      "description": [
+        "A dragonborn soon to be reawakened by Melina to take down the new Frenzied Flame of Madness, cursed with visions of the forecoming fight, the betrayal by an ally, and the final battle against their newly emerged foe. What the visions failed to show was Miquella pulling the strings of him and his allies to succeed for his own benefit."
+      ],
+      "width": 1024,
+      "height": 1536,
+      "fullImage": "assets/elden/characters/shalashaska-drahaka-20261014.webp",
+      "cardImage": "assets/elden/characters/shalashaska-drahaka-20261014-card.webp",
+      "variantWidth": 1024,
+      "variantHeight": 1536,
+      "variantImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014.webp",
+      "variantCardImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014-card.webp"
     }
   ]
 };
@@ -192,7 +217,7 @@ const ELDEN_DATA = {
   ELDEN_DATA.characters.forEach(character => document.getElementById('elden-character-grid').appendChild(makeCard(character)));
   const pending = document.getElementById('elden-pending-grid');
   const pendingCount = Math.max(0, ELDEN_DATA.totalPlayers - ELDEN_DATA.characters.length);
-  document.getElementById('elden-pending-label').textContent = `${pendingCount === 1 ? 'One character' : pendingCount + ' characters'} still to be added`;
+  document.getElementById('elden-pending-label').textContent = pendingCount === 0 ? 'All seven characters added' : `${pendingCount === 1 ? 'One character' : pendingCount + ' characters'} still to be added`;
   pending.parentElement.hidden = pendingCount === 0;
   for (let i = ELDEN_DATA.characters.length; i < ELDEN_DATA.totalPlayers; i++) {
     const slot = element('div', 'elden-pending-slot');

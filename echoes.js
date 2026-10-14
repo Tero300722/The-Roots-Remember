@@ -104,7 +104,7 @@ const ECHOES_DATA = {
       "width": 1024,
       "height": 1535,
       "description": [
-        "Lyrielle, is an elf living in the Luminaria Wilds, though at first she appears to be shy, her love for healing, animals and nature outgrows any shyness she has. She is the next heir to the thrown of Luminaria Wilds, and the wielder of the Morwyn Cantorae book of spells. Her goal is peace within the world, and to heal the world herself with her own powers."
+        "Lyrielle, is an elf living in the Luminaria Wilds, though at first she appears to be shy, her love for healing, animals and nature outgrows any shyness she has. She is the next heir to the throne of Luminaria Wilds, and the wielder of the Morwyn Cantorae book of spells. Her goal is peace within the world, and to heal the world herself with her own powers."
       ],
       "className": "Cleric",
       "subclass": "Life"

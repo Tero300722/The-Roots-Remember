@@ -52,3 +52,11 @@
 @media (prefers-reduced-motion: reduce) {
   .chronicle-character-card .form-image, .character-portrait-stage .form-portrait .form-image { transition: none; }
 }
+
+/* Centre the seventh character without widening the portrait. */
+@media (min-width: 901px) {
+  #elden-shell .elden-character-grid > .chronicle-character-card:last-child:nth-child(3n + 1) { grid-column: 2; }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  #elden-shell .elden-character-grid > .chronicle-character-card:last-child:nth-child(2n + 1) { grid-column: 1 / -1; width: calc((100% - 22px) / 2); justify-self: center; }
+}
