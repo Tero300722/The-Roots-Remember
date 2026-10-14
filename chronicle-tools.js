@@ -2,15 +2,15 @@
 (() => {
   'use strict';
 
-  const names = { trr: 'The Roots Remember', grimwood: 'Into the Grimwood Manor', echoes: 'Echoes of Eternity' };
-  const rosters = { trr: DATA.characters, grimwood: GRIMWOOD_CHARACTERS, echoes: window.EchoesChronicle.characters };
-  const shells = { trr: siteShell, grimwood: grimwoodShell, echoes: echoesShell };
+  const names = { trr: 'The Roots Remember', grimwood: 'Into the Grimwood Manor', echoes: 'Echoes of Eternity', elden: 'Elden Ring: Beyond the Frenzied Flame' };
+  const rosters = { trr: DATA.characters, grimwood: GRIMWOOD_CHARACTERS, echoes: window.EchoesChronicle.characters, elden: window.EldenChronicle.characters };
+  const shells = { trr: siteShell, grimwood: grimwoodShell, echoes: echoesShell, elden: eldenShell };
   const modal = document.getElementById('chronicle-tools-modal');
   const panel = modal.querySelector('.chronicle-tools-panel');
   const heading = document.getElementById('chronicle-tools-title');
   const kicker = document.getElementById('chronicle-tools-kicker');
   const content = document.getElementById('chronicle-tools-content');
-  const queries = { trr: '', grimwood: '', echoes: '' };
+  const queries = { trr: '', grimwood: '', echoes: '', elden: '' };
   let returnFocus = null;
   let inertElements = [];
 
@@ -30,6 +30,7 @@
     trr: DATA.npcs.map(npc => ({ ...npc, paragraphs: Array.isArray(npc.description) ? npc.description : [npc.description],
       target: [...siteShell.querySelectorAll('.npc-card')].find(card => card.querySelector('h3').textContent === npc.name) })),
     echoes: [],
+    elden: [],
     grimwood: [...grimwoodShell.querySelectorAll('.npc-card')].map(card => ({
       name: card.querySelector('.npc-copy h3').textContent,
       role: card.querySelector('.npc-role').textContent,
@@ -63,7 +64,7 @@
     modal.hidden = false;
     document.body.classList.add('chronicle-tools-open');
     // Keep keyboard and assistive-technology navigation inside the open dialog.
-    inertElements = [siteShell, grimwoodShell, echoesShell, chronicleSelector,
+    inertElements = [siteShell, grimwoodShell, echoesShell, eldenShell, chronicleSelector,
       document.getElementById('chronicle-music-player'), document.getElementById('map-modal')]
       .map(node => [node, node.inert]);
     inertElements.forEach(([node]) => { node.inert = true; });
@@ -119,6 +120,7 @@
     }
     profile.append(portrait, copy);
     content.appendChild(profile);
+    window.ChronicleBiography?.prepare(content);
   }
 
   // Link full names and unambiguous first names; leave the recap text exactly as written.
@@ -181,7 +183,8 @@
 
   function visitCharacter(chronicle, character) {
     if (currentChronicle !== chronicle) return;
-    if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(character);
+    if (chronicle === 'elden') window.EldenChronicle.openCharacter(character);
+    else if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(character);
     else if (chronicle === 'grimwood') openGrimwoodCharacter(character);
     else if (character.deceased) {
       navigateTo('remembered');
@@ -189,7 +192,7 @@
       focusTarget(rememberedPlayerList.children[index]);
       return;
     } else openCharacter(character);
-    const container = chronicle === 'echoes' ? window.EchoesChronicle.detail : chronicle === 'grimwood' ? grimwoodCharacterDetailContent : characterDetailContent;
+    const container = chronicle === 'elden' ? window.EldenChronicle.detail : chronicle === 'echoes' ? window.EchoesChronicle.detail : chronicle === 'grimwood' ? grimwoodCharacterDetailContent : characterDetailContent;
     const title = container.querySelector('h2');
     title.tabIndex = -1;
     title.focus({ preventScroll: true });
@@ -197,19 +200,20 @@
 
   function visitPage(chronicle, page, target) {
     if (currentChronicle !== chronicle) return;
-    if (chronicle === 'echoes') window.EchoesChronicle.showPage(page);
+    if (chronicle === 'elden') window.EldenChronicle.showPage(page);
+    else if (chronicle === 'echoes') window.EchoesChronicle.showPage(page);
     else if (chronicle === 'grimwood') showGrimwoodPage(page);
     else navigateTo(page);
     focusTarget(target);
   }
 
-  const index = { trr: [], grimwood: [], echoes: [] };
+  const index = { trr: [], grimwood: [], echoes: [], elden: [] };
   function addEntry(chronicle, title, type, text, visit) {
     index[chronicle].push({ title, type, text, visit, titleKey: normalize(title), key: normalize(`${title} ${type} ${text}`) });
   }
   Object.keys(names).forEach(chronicle => {
     rosters[chronicle].forEach(person => addEntry(chronicle, person.name, person.deceased ? 'The Remembered' : 'Character',
-      [person.player, person.universeName, person.className, person.subclass, person.cardDescription, ...(person.description || []),
+      [person.player, person.universeName, person.variantLabel, person.className, person.subclass, person.cardDescription, ...(person.description || []),
         ...(person.death ? Object.values(person.death) : [])].filter(Boolean).join(' · '),
       () => visitCharacter(chronicle, person)));
     npcs[chronicle].forEach(person => addEntry(chronicle, person.name, 'NPC',
@@ -229,6 +233,11 @@
     });
     linkRecaps(chronicle);
   });
+  window.EchoesChronicle.npcs.forEach(person => addEntry('echoes', person.name, person.role === 'Merchant' ? 'Merchant' : 'NPC',
+    [person.role, person.slug.replace(/-/g, ' '), ...person.universes.map(id => `${id} Universe`), ...person.paragraphs].join(' · '),
+    () => window.EchoesChronicle.visitNpc(person)));
+  addEntry('elden', 'Campaign Premise', 'Premise', window.EldenChronicle.premise,
+    () => visitPage('elden', 'premise', document.getElementById('elden-premise-title')));
   addEntry('echoes', 'Campaign Premise', 'Premise', window.EchoesChronicle.premise.join(' '),
     () => visitPage('echoes', 'premise', document.getElementById('echoes-premise-title')));
   window.EchoesChronicle.universes.forEach(universe => addEntry('echoes', universe.name, 'Universe',
@@ -272,13 +281,13 @@
 
   function showSearch(chronicle, trigger) {
     if (!open(chronicle, 'Search the Chronicle', names[chronicle], trigger)) return;
-    const label = element('label', 'chronicle-search-label', chronicle === 'echoes'
-      ? 'Search characters, players, universes or the premise' : 'Search names, players, classes, places or recaps');
+    const label = element('label', 'chronicle-search-label', chronicle === 'elden' ? 'Search characters, players or the premise' : chronicle === 'echoes'
+      ? 'Search characters, NPCs, players, universes or the premise' : 'Search names, players, classes, places or recaps');
     label.htmlFor = 'chronicle-search-input';
     const input = element('input', 'chronicle-search-input');
     input.id = 'chronicle-search-input';
     input.type = 'search';
-    input.placeholder = chronicle === 'echoes' ? 'Try Genesis, Solange or the Shattering…'
+    input.placeholder = chronicle === 'elden' ? 'Try Goku, Zevlor, Melina or Vyke…' : chronicle === 'echoes' ? 'Try Mave, Valen, Weapon X or Genesis…'
       : chronicle === 'trr' ? 'Try Orthen, Veridium or Session V…' : 'Try Edwin, Druid or Grimwood…';
     input.autocomplete = 'off';
     input.spellcheck = false;
@@ -345,7 +354,8 @@
   });
 
   function updateCharacterNavigation(chronicle, character) {
-    const container = chronicle === 'echoes' ? window.EchoesChronicle.detail : chronicle === 'trr' ? characterDetailContent : grimwoodCharacterDetailContent;
+    const container = chronicle === 'elden' ? window.EldenChronicle.detail : chronicle === 'echoes' ? window.EchoesChronicle.detail : chronicle === 'trr' ? characterDetailContent : grimwoodCharacterDetailContent;
+    window.ChronicleBiography?.prepare(container);
     const roster = rosters[chronicle].filter(person => Boolean(person.deceased) === Boolean(character.deceased));
     const position = roster.indexOf(character);
     if (position < 0 || roster.length < 2) return;
@@ -362,7 +372,8 @@
         element('strong', '', next.name));
       button.addEventListener('click', () => {
         if (currentChronicle !== chronicle) return;
-        if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(next);
+        if (chronicle === 'elden') window.EldenChronicle.openCharacter(next);
+        else if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(next);
         else if (chronicle === 'trr') openCharacter(next);
         else openGrimwoodCharacter(next);
         container.querySelector(`[data-character-step="${direction}"]`).focus({ preventScroll: true });

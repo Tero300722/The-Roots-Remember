@@ -294,43 +294,43 @@ const DATA = {
 
 const GRIMWOOD_CHARACTERS = [
   {
-    slug: "elior-ilphelkiir",
-    name: "Elior Ilphelkiir",
-    player: "Mikael Delia",
-    cardImage: "assets/grimwood/characters/cards/elior-ilphelkiir.webp",
-    fullImage: "assets/grimwood/characters/full/elior-ilphelkiir.webp",
-    className: "Wizard",
-    subclass: "Diviner",
-    accent: "221, 178, 90",
-    description: [
+    "slug": "elior-ilphelkiir",
+    "name": "Elior Ilphelkiir",
+    "player": "Mikael Delia",
+    "cardImage": "assets/grimwood/characters/cards/elior-ilphelkiir.webp",
+    "fullImage": "assets/grimwood/characters/full/elior-ilphelkiir.webp",
+    "className": "Wizard",
+    "subclass": "Diviner",
+    "accent": "221, 178, 90",
+    "description": [
       "Standing at six feet two inches, Elior is an automaton forged by his own brother in the aftermath of a tragic accident. Possessing a deep fascination with the arcane, he has devoted himself to the study of divination, driven by a desire to understand what lies beyond the present and uncover the mysteries of the future.",
       "Despite his pursuit of knowledge and magical mastery, Elior’s greatest priority remains far more personal. Above all else, he wishes to remain by his brother’s side, following him wherever their journey may lead."
     ]
   },
   {
-    slug: "theodas-ilphelkiir",
-    name: "Theodas Ilphelkiir",
-    player: "Matthias Martino",
-    cardImage: "assets/grimwood/characters/cards/theodas-ilphelkiir.webp",
-    fullImage: "assets/grimwood/characters/full/theodas-ilphelkiir.webp",
-    className: "Rogue",
-    subclass: "Misfortune Bringer",
-    accent: "210, 68, 61",
-    description: [
+    "slug": "theodas-ilphelkiir",
+    "name": "Theodas Ilphelkiir",
+    "player": "Matthias Martino",
+    "cardImage": "assets/grimwood/characters/cards/theodas-ilphelkiir.webp",
+    "fullImage": "assets/grimwood/characters/full/theodas-ilphelkiir.webp",
+    "className": "Rogue",
+    "subclass": "Misfortune Bringer",
+    "accent": "210, 68, 61",
+    "description": [
       "He is a quiet, observant wood elf who feels most at home in the wilderness, spending much of his life hunting beneath the trees. Exceptionally skilled with a bow, he relies on patience, precision, and stealth, often watching from a distance before deciding when to act. Though he can appear cold or unsettling to strangers, he is deeply loyal to those he cares about, especially his brother.",
       "His greatest goal is to find a way to restore his brother, driven by an overwhelming sense of guilt over what happened to him. He carries that guilt quietly, rarely speaking about it, but almost everything he does is ultimately tied to the hope that one day he can make things right."
     ]
   },
   {
-    slug: "vaelis-rimehart",
-    name: "Vaelis Rimehart",
-    player: "Dathan Baldacchino",
-    cardImage: "assets/grimwood/characters/cards/unnamed-sorcerer.webp",
-    fullImage: "assets/grimwood/characters/full/unnamed-sorcerer.webp",
-    className: "Sorcerer",
-    subclass: "Frost",
-    accent: "143, 208, 242",
-    description: [
+    "slug": "vaelis-rimehart",
+    "name": "Vaelis Rimehart",
+    "player": "Dathan Baldacchino",
+    "cardImage": "assets/grimwood/characters/cards/unnamed-sorcerer.webp",
+    "fullImage": "assets/grimwood/characters/full/unnamed-sorcerer.webp",
+    "className": "Sorcerer",
+    "subclass": "Frost",
+    "accent": "143, 208, 242",
+    "description": [
       "Vaelis Rimehart was born in the frozen reaches of the Iron Peak Mountains, where he learned to read the strange signs hidden within blizzards, frost, and shifting mountain winds. His unusual gift for interpreting omens eventually led him to train under the Seers of Sea and Sky, studying the natural world for glimpses of what fate might bring.",
       "During his training, Vaelis discovered that frost did more than surround him—it answered him. His innate sorcery manifested through ice and bitter cold, showing his gift for Cryomancy",
       "At some point in his travels, Vaelis lost his right arm. Rather than accept the loss, he shaped his magic into a permanent prosthetic arm of living ice, one he can move as naturally as flesh.",
@@ -338,40 +338,48 @@ const GRIMWOOD_CHARACTERS = [
     ]
   },
   {
-    slug: "lucien-veyr",
-    name: "Lucien Veyr",
-    player: "Remsi Agius",
-    cardImage: "assets/grimwood/characters/cards/lucien-veyr.webp",
-    fullImage: "assets/grimwood/characters/full/lucien-veyr.webp",
-    className: "Rogue",
-    subclass: "Soulknife",
-    accent: "166, 96, 218"
+    "slug": "lucien-veyr",
+    "name": "Lucien Veyr",
+    "player": "Remsi Agius",
+    "cardImage": "assets/grimwood/characters/cards/lucien-veyr.webp",
+    "fullImage": "assets/grimwood/characters/full/lucien-veyr.webp",
+    "className": "Rogue",
+    "subclass": "Soulknife",
+    "accent": "166, 96, 218",
+    "description": [
+      "Lucien Veyr is a quiet, sharp-eyed High Elf rogue who works as an infiltrator and scout for adventuring parties. Calm, observant, and hard to read, he prefers precision over brute force, using stealth, psychic blades, and subtle illusions to control a fight before his enemies even realize he is there. Beneath the polished manners and dark clothing is a seasoned adventurer who notices everything and trusts very little."
+    ]
   },
   {
-    slug: "xavier-serahart",
-    name: "Xavier Serahart",
-    player: "James Bianco",
-    cardImage: "assets/grimwood/characters/cards/xavier-serahart.webp",
-    fullImage: "assets/grimwood/characters/full/xavier-serahart.webp",
-    className: "Paladin",
-    subclass: "Oath of the Slaughter",
-    accent: "104, 110, 122",
-    description: [
+    "slug": "xavier-serahart",
+    "name": "Xavier Serahart",
+    "player": "James Bianco",
+    "cardImage": "assets/grimwood/characters/cards/xavier-serahart.webp",
+    "fullImage": "assets/grimwood/characters/full/xavier-serahart.webp",
+    "className": "Paladin",
+    "subclass": "Oath of the Slaughter",
+    "accent": "104, 110, 122",
+    "description": [
       "A human with the past of a raider, pillaging alongside his former tribe when the need arose. Although for him it was something more, it was a joy, a pleasure to shed blood, both his own and of others. After a few years he left his tribe due to disgust of them not enjoying the violence and killing only when necessary.",
       "He made the decision to join an army of mercenaries to fight in plenty of wars and battles where he got what he wished... blood, screams and death. This devotion to the slaughter started to gift him with magical power which he used to increase his kill count. After concerns of his bloodlust started to arise throughout the regiment of the mercenary band, he was secretly laid off, leaving Xavier to fend for himself.",
       "Later he came upon the adventuring guild where he saw an opportunity to hone his skills, take jobs and shed more blood. Nowadays he takes care to hide his true persona of a bloodthirsty maniac but when he smells or sees a bloody figure, the bloodhound is released..."
     ]
   },
   {
-    slug: "edwin-everbane",
-    name: "Edwin Everbane",
-    player: "Daniel Mercieca",
-    sheetImage: "assets/grimwood/characters/full/edwin-everbane.png",
-    cardImage: "assets/grimwood/characters/cards/edwin-everbane.png",
-    fullImage: "assets/grimwood/characters/full/edwin-everbane.png",
-    className: "Druid",
-    subclass: "Entropy",
-    accent: "34, 139, 34"
+    "slug": "edwin-everbane",
+    "name": "Edwin Everbane",
+    "player": "Daniel Mercieca",
+    "sheetImage": "assets/grimwood/characters/full/edwin-everbane.png",
+    "cardImage": "assets/grimwood/characters/cards/edwin-everbane.png",
+    "fullImage": "assets/grimwood/characters/full/edwin-everbane.png",
+    "className": "Druid",
+    "subclass": "Entropy",
+    "accent": "34, 139, 34",
+    "description": [
+      "Edwin is a cheerful, carefree wanderer with a contagious laugh, a mischievous grin, and a rather unusual fascination with death and decay. While most druids celebrate life and growth, Edwin embraces the beauty of things falling apart. To him, rot is simply nature making room for something new.",
+      "He firmly believes that everything has its time, and there's no point worrying about the inevitable. Whether he's watching a flower bloom or an ancient tree crumble into dust, he greets both with the same childlike wonder.",
+      "Despite wielding unsettling magic that withers plants, spreads decay, and hastens the inevitable, Edwin is genuinely kindhearted and always eager to make friends."
+    ]
   }
 ];
 
@@ -383,6 +391,7 @@ const chronicleButtons = [...document.querySelectorAll('[data-chronicle]')];
 const siteShell = document.getElementById('site-shell');
 const grimwoodShell = document.getElementById('grimwood-shell');
 const echoesShell = document.getElementById('echoes-shell');
+const eldenShell = document.getElementById('elden-shell');
 const switchChronicleButtons = [...document.querySelectorAll('[data-switch-chronicle]')];
 const pages = [...siteShell.querySelectorAll('.page')];
 const navButtons = [...siteShell.querySelectorAll('.nav-link[data-page], .nav-dropdown-item[data-page]')];
@@ -401,7 +410,8 @@ const chronicleMusic = new window.ChronicleMusic(document.getElementById('chroni
   grimwood: { title: 'Into the Grimwood Manor', element: document.getElementById('chronicle-audio-grimwood') },
   'echoes-pirate': { title: 'Pirate Universe', element: document.getElementById('chronicle-audio-echoes-pirate') },
   'echoes-cyberpunk': { title: 'Cyberpunk Universe', element: document.getElementById('chronicle-audio-echoes-cyberpunk') },
-  'echoes-fantasy': { title: 'Fantasy Universe', element: document.getElementById('chronicle-audio-echoes-fantasy') }
+  'echoes-fantasy': { title: 'Fantasy Universe', element: document.getElementById('chronicle-audio-echoes-fantasy') },
+  elden: { title: 'Elden Ring · Beyond the Frenzied Flame', element: document.getElementById('chronicle-audio-elden') }
 });
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -426,11 +436,12 @@ function showChronicleSelector() {
   const previousChronicle = currentChronicle;
   window.ChronicleTools?.close({ restoreFocus: false });
   chronicleMusic.leave();
-  document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active','chronicle-echoes-active');
+  document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active','chronicle-echoes-active','chronicle-elden-active');
   currentChronicle = null;
   siteShell.hidden = true;
   grimwoodShell.hidden = true;
   echoesShell.hidden = true;
+  eldenShell.hidden = true;
   chronicleSelector.inert = false;
   chronicleSelector.classList.remove('dismissed');
   chronicleSelector.removeAttribute('aria-hidden');
@@ -442,7 +453,7 @@ function showChronicleSelector() {
 }
 
 function selectChronicle(chronicle) {
-  if (!['trr', 'grimwood', 'echoes'].includes(chronicle)) return;
+  if (!['trr', 'grimwood', 'echoes', 'elden'].includes(chronicle)) return;
   window.ChronicleTools?.close({ restoreFocus: false });
   if (chronicle === 'echoes') chronicleMusic.leave();
   else chronicleMusic.enter(chronicle);
@@ -451,7 +462,16 @@ function selectChronicle(chronicle) {
   document.body.classList.toggle('chronicle-grimwood-active', chronicle === 'grimwood');
   document.body.classList.toggle('chronicle-echoes-active', chronicle === 'echoes');
   echoesShell.hidden = chronicle !== 'echoes';
+  eldenShell.hidden = chronicle !== 'elden';
+  document.body.classList.toggle('chronicle-elden-active', chronicle === 'elden');
   hideChronicleSelector();
+
+  if (chronicle === 'elden') {
+    siteShell.hidden = true;
+    grimwoodShell.hidden = true;
+    window.EldenChronicle.enter();
+    return;
+  }
 
   if (chronicle === 'echoes') {
     siteShell.hidden = true;
@@ -1328,6 +1348,11 @@ syncParticleMotion();
 function renderFromHash({ immediate = true } = {}) {
   const rawHash = location.hash.slice(1);
   const hash = rawHash.startsWith('/') ? rawHash.slice(1) : rawHash;
+
+  if (currentChronicle === 'elden') {
+    window.EldenChronicle.renderFromHash(hash);
+    return;
+  }
 
   if (currentChronicle === 'echoes') {
     window.EchoesChronicle.renderFromHash(hash);

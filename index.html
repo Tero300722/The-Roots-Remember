@@ -40,7 +40,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=20261012-echoes-music" />
   <link rel="stylesheet" href="design.css?v=20261012-echoes-music" />
-  <link rel="stylesheet" href="echoes.css?v=20261012-world-atmosphere" />
+  <link rel="stylesheet" href="echoes.css?v=20261013-even-portraits" />
+  <link rel="stylesheet" href="elden.css?v=20261013-elden" />
+  <link rel="stylesheet" href="character-presentation.css?v=20261014-consistent" />
+  <link rel="stylesheet" href="biographies.css?v=20261014-bios" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=IM+Fell+English&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -107,6 +110,16 @@
           <span class="chronicle-card-copy">
             <span class="chronicle-card-meta"><span class="chronicle-type">Multiverse Campaign</span><span class="chronicle-status chronicle-status-archived">Cancelled</span></span>
             <strong>Echoes of Eternity</strong>
+            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
+            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
+          </span>
+        </button>
+
+        <button class="chronicle-card chronicle-card-elden" type="button" data-chronicle="elden" aria-label="Enter Elden Ring: Beyond the Frenzied Flame, completed mini campaign created by Mikael Delia">
+          <span class="chronicle-card-art-wrap"><img class="chronicle-card-art" src="assets/elden/cover.png" width="1920" height="1080" alt="The burning Erdtree above the Lands Between" loading="lazy" decoding="async"></span>
+          <span class="chronicle-card-copy">
+            <span class="chronicle-card-meta"><span class="chronicle-type">Mini Campaign</span><span class="chronicle-status chronicle-status-completed">Completed</span></span>
+            <strong>Elden Ring</strong><span class="chronicle-card-subtitle">Beyond the Frenzied Flame</span>
             <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
             <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
           </span>
@@ -534,24 +547,36 @@
           <div><p class="eyebrow">Across the treacherous seas</p><h2>Pirate Universe</h2></div>
           <span class="echoes-world-seal" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="m24 8 6 22-6-6-6 6Zm0 16 6 6-6 10-6-10ZM24 2v6m0 32v6M2 24h6m32 0h6"/></svg><span>I</span></span>
         </header>
-        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>2 of the seven</span></div>
+        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>2 of the seven</span><button class="echoes-npc-jump" type="button" data-echoes-npcs="pirate">Meet the NPCs ↓</button></div>
         <div class="echoes-character-grid echoes-character-grid-2" id="echoes-pirate-grid"></div>
+        <section class="echoes-npc-section" aria-labelledby="echoes-pirate-npcs-title">
+          <div class="echoes-cast-heading"><h2 id="echoes-pirate-npcs-title">People of this Universe</h2><span>3 NPCs · including the Multiversal Merchant</span></div>
+          <div class="npc-grid echoes-npc-grid" id="echoes-pirate-npcs"></div>
+        </section>
       </section>
       <section class="echoes-page echoes-world-page" id="echoes-cyberpunk" hidden>
         <header class="echoes-world-heading">
           <div><p class="eyebrow">Through the streets of Night City</p><h2>Cyberpunk Universe</h2></div>
           <span class="echoes-world-seal" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m13 7 22 0 6 6v22l-6 6H13l-6-6V13ZM17 15h14v18H17ZM24 1v6m0 34v6M1 24h6m34 0h6"/><path d="m21 20 6 4-6 4"/></svg><span>II</span></span>
         </header>
-        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>2 of the seven</span></div>
+        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>2 of the seven</span><button class="echoes-npc-jump" type="button" data-echoes-npcs="cyberpunk">Meet the NPCs ↓</button></div>
         <div class="echoes-character-grid echoes-character-grid-2" id="echoes-cyberpunk-grid"></div>
+        <section class="echoes-npc-section" aria-labelledby="echoes-cyberpunk-npcs-title">
+          <div class="echoes-cast-heading"><h2 id="echoes-cyberpunk-npcs-title">People of this Universe</h2><span>4 NPCs · including the Multiversal Merchant</span></div>
+          <div class="npc-grid echoes-npc-grid" id="echoes-cyberpunk-npcs"></div>
+        </section>
       </section>
       <section class="echoes-page echoes-world-page" id="echoes-fantasy" hidden>
         <header class="echoes-world-heading">
           <div><p class="eyebrow">Within the magical lands of Elysia</p><h2>Fantasy Universe</h2></div>
           <span class="echoes-world-seal" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m24 4 5 15 15 5-15 5-5 15-5-15-15-5 15-5Z"/><circle cx="24" cy="24" r="17"/><path d="m24 16 3 5 5 3-5 3-3 5-3-5-5-3 5-3Z"/></svg><span>III</span></span>
         </header>
-        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>3 of the seven</span></div>
+        <div class="echoes-cast-heading"><h3>Meet the Characters</h3><span>3 of the seven</span><button class="echoes-npc-jump" type="button" data-echoes-npcs="fantasy">Meet the NPCs ↓</button></div>
         <div class="echoes-character-grid echoes-character-grid-3" id="echoes-fantasy-grid"></div>
+        <section class="echoes-npc-section" aria-labelledby="echoes-fantasy-npcs-title">
+          <div class="echoes-cast-heading"><h2 id="echoes-fantasy-npcs-title">People of this Universe</h2><span>3 NPCs · including the Multiversal Merchant</span></div>
+          <div class="npc-grid echoes-npc-grid" id="echoes-fantasy-npcs"></div>
+        </section>
       </section>
       <section class="echoes-page echoes-detail-page" id="echoes-character-detail" hidden>
         <button class="back-btn" id="echoes-character-back" type="button">← Return to the universe</button>
@@ -595,6 +620,7 @@
   <audio id="chronicle-audio-trr" data-chronicle-audio="trr" data-duration="185.904" src="assets/audio/the-roots-remember.mp3" preload="auto" playsinline hidden></audio>
   <audio id="chronicle-audio-grimwood" data-chronicle-audio="grimwood" data-duration="187.128" src="assets/audio/grimwood-manor.mp3" preload="auto" playsinline hidden></audio>
 
+  <audio id="chronicle-audio-elden" data-chronicle-audio="elden" data-duration="334.106122" src="assets/audio/elden-ring.mp3" preload="none" playsinline hidden></audio>
   <audio id="chronicle-audio-echoes-pirate" data-chronicle-audio="echoes-pirate" data-duration="140.59102" src="assets/audio/echoes-pirate.mp3" preload="none" playsinline hidden></audio>
   <audio id="chronicle-audio-echoes-cyberpunk" data-chronicle-audio="echoes-cyberpunk" data-duration="250.992" src="assets/audio/echoes-cyberpunk.mp3" preload="none" playsinline hidden></audio>
   <audio id="chronicle-audio-echoes-fantasy" data-chronicle-audio="echoes-fantasy" data-duration="140.146939" src="assets/audio/echoes-fantasy-down-by-the-river.mp3" preload="none" playsinline hidden></audio>
@@ -619,6 +645,50 @@
     </button>
   </section>
 
+  <div class="page-shell elden-shell" id="elden-shell" hidden>
+    <header class="topbar compact-topbar">
+      <button class="brand brand-chronicle-switch" type="button" data-switch-chronicle aria-label="Switch Chronicle" title="Switch Chronicle">
+        <span class="elden-brand-mark" aria-hidden="true">✧</span>
+        <span><strong>Elden Ring</strong><small>Beyond the Frenzied Flame</small></span>
+        <span class="brand-switch-glyph" aria-hidden="true">↩</span>
+      </button>
+      <nav class="nav elden-nav" aria-label="Elden Ring navigation">
+        <button class="nav-link active" type="button" data-elden-page="premise" aria-current="page">Premise</button>
+        <button class="nav-link" type="button" data-elden-page="characters">Characters</button>
+        <button class="chronicle-search-button" type="button" data-chronicle-search="elden" aria-label="Search Elden Ring" title="Search this chronicle" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
+      </nav>
+    </header>
+    <main>
+      <section class="elden-page active" id="elden-premise">
+        <header class="elden-hero">
+          <img src="assets/elden/cover.png" width="1920" height="1080" alt="The Erdtree engulfed in flame" loading="lazy" decoding="async">
+          <div class="elden-hero-copy">
+            <div class="elden-meta"><span class="eyebrow">Mini Campaign</span><span class="chronicle-status-completed">Completed</span></div>
+            <h1>Elden Ring<span>Beyond the Frenzied Flame</span></h1>
+            <p class="elden-creator">Created by Mikael Delia</p>
+          </div>
+        </header>
+        <article class="elden-premise" aria-labelledby="elden-premise-title">
+          <p class="eyebrow">Campaign Premise</p>
+          <h2 id="elden-premise-title">The Lands Between are burning.</h2>
+          <p>Vyke, he who embraced the Frenzied Flame (the Lord of Chaos) has begun to unravel reality itself. The Erdtree is ash, Leyndell is fire-choked rubble, and madness spreads like a plague.</p>
+          <p>Melina, broken yet defiant, gathers the last champions — powerful Tarnished and forgotten Lords — and hurls them on a desperate mission: <strong>hunt down and slay the Lord of Frenzied Flame before the world is consumed.</strong></p>
+          <button type="button" class="btn btn-primary" data-elden-page="characters">Meet the Characters →</button>
+        </article>
+      </section>
+      <section class="elden-page" id="elden-characters" hidden>
+        <header class="elden-cast-header"><p class="eyebrow">Seven players · One desperate mission</p><h2>Meet the Characters</h2><p>Hover over a portrait to glimpse another form. Open a character to switch forms with a click.</p></header>
+        <div class="elden-character-grid" id="elden-character-grid"></div>
+        <section class="elden-pending" aria-label="Characters to be added"><p id="elden-pending-label">One character still to be added</p><div class="elden-pending-grid" id="elden-pending-grid"></div></section>
+      </section>
+      <section class="elden-page" id="elden-character-detail" hidden>
+        <button class="back-btn" id="elden-character-back" type="button">← Return to the characters</button>
+        <div id="elden-character-detail-content"></div>
+      </section>
+    </main>
+    <footer><span>ELDEN RING · BEYOND THE FRENZIED FLAME</span><small>Created by Mikael Delia · Completed Mini Campaign</small></footer>
+  </div>
+
   <div class="chronicle-tools-modal" id="chronicle-tools-modal" hidden>
     <div class="chronicle-tools-backdrop" data-tools-close aria-hidden="true"></div>
     <section class="chronicle-tools-panel" role="dialog" aria-modal="true" aria-labelledby="chronicle-tools-title" tabindex="-1">
@@ -631,8 +701,11 @@
   </div>
 
   <script src="music.js?v=20261012-echoes-music"></script>
-  <script src="script.js?v=20261012-echoes-music"></script>
-  <script src="echoes.js?v=20261012-new-portraits"></script>
-  <script src="chronicle-tools.js?v=20261012-echoes-music"></script>
+  <script src="script.js?v=20261014-consistent"></script>
+  <script src="character-presentation.js?v=20261014-consistent"></script>
+  <script src="echoes.js?v=20261014-consistent"></script>
+  <script src="elden.js?v=20261014-consistent"></script>
+  <script src="biographies.js?v=20261014-bios"></script>
+  <script src="chronicle-tools.js?v=20261014-consistent"></script>
 </body>
 </html>

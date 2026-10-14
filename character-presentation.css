@@ -1,0 +1,54 @@
+/* The established character layout, shared by the two newer chronicles. */
+#elden-shell .elden-character-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; gap: 22px; }
+#echoes-shell .echoes-character-grid { gap: 22px; }
+#echoes-shell .echoes-character-grid-2 { max-width: 832px; }
+.chronicle-character-card { min-height: 520px; height: 100%; padding: 0; text-align: left; }
+.chronicle-character-card .character-info { color: #f6f0e5; }
+.chronicle-character-card .character-player { color: rgb(var(--accent-rgb)); color: color-mix(in srgb, rgb(var(--accent-rgb)) 70%, white); }
+.chronicle-character-card .character-info h3 { overflow-wrap: break-word; }
+.chronicle-character-card .form-image { object-position: center 25%; transition: opacity .65s ease; }
+.chronicle-character-card .form-image-godly { opacity: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .chronicle-character-card.variant-ready:hover .form-image-godly { opacity: 1; }
+  .chronicle-character-card.variant-ready:hover .form-image-original { opacity: 0; }
+}
+.chronicle-character-card.variant-ready:focus-visible .form-image-godly { opacity: 1; }
+.chronicle-character-card.variant-ready:focus-visible .form-image-original { opacity: 0; }
+.chronicle-character-profile { background: linear-gradient(140deg, var(--surface), var(--surface-deep)); }
+.chronicle-character-profile .character-detail-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.chronicle-character-profile .character-portrait-stage { min-width: 0; align-self: stretch; }
+.chronicle-character-profile .character-detail-copy h2 { overflow-wrap: break-word; }
+.chronicle-character-profile .detail-row span { color: rgb(var(--char-rgb)); }
+.form-portrait { display: grid; place-items: center; width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.character-portrait-stage .form-portrait .form-image { grid-area: 1 / 1; position: relative; min-width: 0; width: auto; height: auto; max-width: 96%; max-height: 710px; transition: opacity .65s ease; }
+.form-portrait .form-image-godly { opacity: 0; }
+.show-godly .form-portrait .form-image-original { opacity: 0; }
+.show-godly .form-portrait .form-image-godly { opacity: 1; }
+.form-portrait:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 5px; border-radius: 24px; }
+.form-controls { margin: 0 0 6px; }
+.form-toggle { width: fit-content; }
+.form-toggle:disabled { opacity: .5; cursor: wait; }
+.form-portrait:disabled { cursor: default; }
+.form-status { margin: 10px 0 0; color: var(--gold-2); font-size: .75rem; line-height: 1.6; }
+.form-help { margin: 5px 0 0; color: var(--muted); font-size: .74rem; line-height: 1.7; }
+#echoes-shell .chronicle-character-card h3, #echoes-shell .chronicle-character-profile h2 { font-family: var(--echoes-heading); }
+@media (max-width: 1050px) {
+  .chronicle-character-profile .character-detail-grid { grid-template-columns: minmax(0, 1fr); }
+  .character-portrait-stage .form-portrait .form-image { max-height: 630px; }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  #elden-shell .elden-character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) and (min-width: 561px) {
+  #echoes-shell .echoes-character-grid-3 .chronicle-character-card:last-child { grid-column: 1 / -1; width: calc((100% - 22px) / 2); justify-self: center; }
+}
+@media (max-width: 700px) {
+  #elden-shell .elden-character-grid { grid-template-columns: minmax(0, 1fr); max-width: 440px; margin: 0 auto; }
+}
+@media (max-width: 560px) {
+  #echoes-shell .echoes-character-grid { grid-template-columns: minmax(0, 1fr); max-width: 440px; margin: 0 auto; }
+  .character-portrait-stage .form-portrait .form-image { max-height: 540px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chronicle-character-card .form-image, .character-portrait-stage .form-portrait .form-image { transition: none; }
+}
