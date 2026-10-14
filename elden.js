@@ -111,6 +111,26 @@ const ELDEN_DATA = {
       "variantCardImage": "assets/elden/characters/morten-godly-card.webp"
     },
     {
+      "name": "Shalashaska Drahaka",
+      "player": "James Bianco",
+      "slug": "shalashaska-drahaka",
+      "accent": "205, 174, 109",
+      "className": "Barbarian",
+      "subclass": "Wild Magic",
+      "variantLabel": "Godly Form",
+      "description": [
+        "A dragonborn soon to be reawakened by Melina to take down the new Frenzied Flame of Madness, cursed with visions of the forecoming fight, the betrayal by an ally, and the final battle against their newly emerged foe. What the visions failed to show was Miquella pulling the strings of him and his allies to succeed for his own benefit."
+      ],
+      "width": 1024,
+      "height": 1536,
+      "fullImage": "assets/elden/characters/shalashaska-drahaka-20261014-v3.webp",
+      "cardImage": "assets/elden/characters/shalashaska-drahaka-20261014-v3-card.webp",
+      "variantWidth": 1024,
+      "variantHeight": 1536,
+      "variantImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014-v2.webp",
+      "variantCardImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014-v2-card.webp"
+    },
+    {
       "name": "Slyren",
       "player": "Daniel Mercieca",
       "slug": "slyren",
@@ -130,26 +150,65 @@ const ELDEN_DATA = {
       "subclass": "Scholar",
       "cardImage": "assets/elden/characters/slyren-card.webp",
       "variantCardImage": "assets/elden/characters/slyren-godly-card.webp"
+    }
+  ],
+  "npcs": [
+    {
+      "slug": "roundtable-knight-vyke",
+      "name": "Roundtable Knight Vyke",
+      "role": "Main Villain",
+      "image": "assets/elden/npcs/roundtable-knight-vyke.webp",
+      "width": 1398,
+      "height": 2048,
+      "paragraphs": []
     },
     {
-      "name": "Shalashaska Drahaka",
-      "player": "James Bianco",
-      "slug": "shalashaska-drahaka",
-      "accent": "205, 174, 109",
-      "className": "Barbarian",
-      "subclass": "Wild Magic",
-      "variantLabel": "Godly Form",
-      "description": [
-        "A dragonborn soon to be reawakened by Melina to take down the new Frenzied Flame of Madness, cursed with visions of the forecoming fight, the betrayal by an ally, and the final battle against their newly emerged foe. What the visions failed to show was Miquella pulling the strings of him and his allies to succeed for his own benefit."
-      ],
-      "width": 1024,
-      "height": 1536,
-      "fullImage": "assets/elden/characters/shalashaska-drahaka-20261014.webp",
-      "cardImage": "assets/elden/characters/shalashaska-drahaka-20261014-card.webp",
-      "variantWidth": 1024,
-      "variantHeight": 1536,
-      "variantImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014.webp",
-      "variantCardImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014-card.webp"
+      "slug": "melina",
+      "name": "Melina",
+      "role": "Major NPC",
+      "image": "assets/elden/npcs/melina.webp",
+      "width": 1000,
+      "height": 563,
+      "paragraphs": [
+        "Once, Melina was destined to offer herself as kindling for the Tarnished closest to claiming the title of Elden Lord. His name was **Vyke**.",
+        "Yet Vyke, unwilling to surrender her to the flame, defied the fate laid before him. In his desperation to spare one life, he embraced the **Frenzied Flame**, and condemned countless others.",
+        "The Lands Between were swallowed by madness. The Erdtree burned, not with the flame of destined sacrifice, but with the chaos of a Lord who would see all existence reduced to ash.",
+        "But Melina endured.",
+        "Denied her purpose, and unwilling to let the world perish beneath the madness of the man she once guided, Melina gathered the **seven remaining shards of Grace**. With their fading power, she reached beyond the boundaries of the Lands Between, across seven different planes of existence, and called forth seven fallen champions.",
+        "Seven souls, torn from their worlds. Seven warriors, granted life anew. Seven final embers of a dying world's hope.",
+        "Their purpose was not to claim the Elden Throne, nor to inherit the Golden Order.",
+        "**Their purpose was to slay a Lord.**",
+        "For Melina had made a vow. The Frenzied Flame would be extinguished, and the man who brought ruin upon the Lands Between would answer for his defiance.",
+        "Vyke had once refused to let Melina become his sacrifice.",
+        "**Now, Vyke himself would become hers.**"
+      ]
+    },
+    {
+      "slug": "miquella",
+      "name": "Miquella",
+      "role": "Major NPC",
+      "image": "assets/elden/npcs/miquella.webp",
+      "width": 1122,
+      "height": 1402,
+      "paragraphs": [
+        "It was Miquella who had woven the threads of fate from the very beginning.",
+        "The resurrection of the seven champions. Their journey through the Lands Between. Their suffering, their triumphs, and ultimately, their betrayal.",
+        "**All had unfolded according to his design.**",
+        "For Miquella had foreseen what none of them could. That a mortal who inherited the Frenzied Flame would be consumed by the very power they sought to command. And so, he allowed Slyren to embrace the madness, knowing that such immeasurable power would blind him to the purpose he was truly serving.",
+        "Miquella had never intended for all seven champions to survive.",
+        "He had intended for **Slyren to slaughter the six he once called his friends.**",
+        "For only through their deaths could the final act of his design begin.",
+        "And so, beyond the reach of Grace, where even the light of the Erdtree dared not tread, the six fallen champions awakened within the **Sanctum of Night's End**.",
+        "There, upon the threshold between death and divinity, Miquella awaited them.",
+        "No longer would they rise as mere Tarnished, bound by the feeble remnants of Grace. Before them lay the forsaken powers of fallen Gods, divinities long since erased from the annals of the Lands Between.",
+        "And Miquella would bestow those powers upon the six.",
+        "Not as a gift.",
+        "**But as the final instruments of his will.**",
+        "For the friend who had sent them to their graves now sat upon a throne of madness, bearing the title of Lord of Frenzied Flame.",
+        "And the six who had fallen by his hand would rise once more, no longer as his companions, but as his executioners.",
+        "**Slyren had slain six mortals.**",
+        "**Miquella would send back six Gods.**"
+      ]
     }
   ]
 };
@@ -194,10 +253,11 @@ const ELDEN_DATA = {
   }
   function showPage(id, { replace = false, focus = true } = {}) {
     if (currentChronicle !== 'elden') return;
-    if (!['premise', 'characters'].includes(id)) id = 'premise';
+    if (!['premise', 'characters', 'npcs'].includes(id)) id = 'premise';
     setActive(id);
     route(id, replace);
     if (focus) focusTitle(document.getElementById(`elden-${id}`).querySelector('h1, h2'));
+    if (id === 'npcs') window.ChronicleBiography?.prepare(document.getElementById('elden-npcs'));
   }
   function makeCard(character) {
     return window.CharacterPresentation.card(character, openCharacter);
@@ -227,6 +287,60 @@ const ELDEN_DATA = {
     slot.append(mark, element('span', '', 'To be added'));
     pending.appendChild(slot);
   }
+  // Render lore as text and emphasis nodes, never executable markup.
+  function loreParagraph(text) {
+    const paragraph = element('p');
+    text.split(/(\*\*.*?\*\*)/g).filter(Boolean).forEach(part => {
+      paragraph.appendChild(part.startsWith('**')
+        ? element('strong', '', part.slice(2, -2)) : document.createTextNode(part));
+    });
+    return paragraph;
+  }
+  function makeNpc(person) {
+    const villain = person.role === 'Main Villain';
+    const card = element('article', 'npc-card npc-card-major elden-npc-card' + (villain ? ' elden-villain-card' : ''));
+    card.id = `elden-npc-${person.slug}`;
+    card.setAttribute('aria-labelledby', `${card.id}-name`);
+    const figure = element('figure', 'npc-portrait');
+    const image = element('img');
+    image.src = person.image;
+    image.alt = person.name;
+    image.width = person.width;
+    image.height = person.height;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    if (person.slug === 'melina') figure.classList.add('elden-melina-portrait');
+    figure.appendChild(image);
+    const copy = element('div', 'npc-copy');
+    const title = element('h3', '', person.name);
+    title.id = `${card.id}-name`;
+    if (villain) {
+      copy.appendChild(element('p', 'eyebrow elden-villain-label', person.role));
+      copy.appendChild(title);
+      const ornament = element('span', 'elden-villain-ornament', '✧');
+      ornament.setAttribute('aria-hidden', 'true');
+      copy.appendChild(ornament);
+    } else {
+      copy.append(title, element('p', 'npc-role', person.role));
+    }
+    person.paragraphs.forEach(text => copy.appendChild(loreParagraph(text)));
+    card.append(figure, copy);
+    return card;
+  }
+  ELDEN_DATA.npcs.forEach(person => {
+    document.getElementById(person.role === 'Main Villain' ? 'elden-villain-list' : 'elden-major-list').appendChild(makeNpc(person));
+  });
+  function visitNpc(person, { replace = false } = {}) {
+    if (currentChronicle !== 'elden' || !ELDEN_DATA.npcs.includes(person)) return;
+    setActive('npcs');
+    route(`npc-${person.slug}`, replace);
+    window.ChronicleBiography?.prepare(document.getElementById('elden-npcs'));
+    requestAnimationFrame(() => {
+      const card = document.getElementById(`elden-npc-${person.slug}`);
+      card.scrollIntoView({ block: 'start', behavior: 'auto' });
+      focusTitle(card.querySelector('h3'));
+    });
+  }
   nav.forEach(button => button.addEventListener('click', () => showPage(button.dataset.eldenPage)));
   back.addEventListener('click', () => {
     showPage('characters', { replace: true, focus: false });
@@ -237,13 +351,17 @@ const ELDEN_DATA = {
     });
   });
   window.EldenChronicle = {
-    characters: ELDEN_DATA.characters, premise: ELDEN_DATA.premise, shell, detail, showPage, openCharacter,
+    npcs: ELDEN_DATA.npcs, visitNpc, characters: ELDEN_DATA.characters, premise: ELDEN_DATA.premise, shell, detail, showPage, openCharacter,
     enter() { showPage('premise', { replace: true }); },
     renderFromHash(hash) {
       const path = hash.startsWith('elden/') ? hash.slice(6) : 'premise';
       if (path.startsWith('character-')) {
         const character = ELDEN_DATA.characters.find(person => person.slug === path.slice(10));
         if (character) { openCharacter(character, { replace: true }); return; }
+      }
+      if (path.startsWith('npc-')) {
+        const person = ELDEN_DATA.npcs.find(npc => npc.slug === path.slice(4));
+        if (person) { visitNpc(person, { replace: true }); return; }
       }
       showPage(path, { replace: true });
     }

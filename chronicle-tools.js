@@ -236,6 +236,9 @@
   window.EchoesChronicle.npcs.forEach(person => addEntry('echoes', person.name, person.role === 'Merchant' ? 'Merchant' : 'NPC',
     [person.role, person.slug.replace(/-/g, ' '), ...person.universes.map(id => `${id} Universe`), ...person.paragraphs].join(' · '),
     () => window.EchoesChronicle.visitNpc(person)));
+  window.EldenChronicle.npcs.forEach(person => addEntry('elden', person.name, person.role,
+    [person.role, ...person.paragraphs].join(' · ').replace(/\*\*/g, ''),
+    () => window.EldenChronicle.visitNpc(person)));
   addEntry('elden', 'Campaign Premise', 'Premise', window.EldenChronicle.premise,
     () => visitPage('elden', 'premise', document.getElementById('elden-premise-title')));
   addEntry('echoes', 'Campaign Premise', 'Premise', window.EchoesChronicle.premise.join(' '),
@@ -281,7 +284,7 @@
 
   function showSearch(chronicle, trigger) {
     if (!open(chronicle, 'Search the Chronicle', names[chronicle], trigger)) return;
-    const label = element('label', 'chronicle-search-label', chronicle === 'elden' ? 'Search characters, players or the premise' : chronicle === 'echoes'
+    const label = element('label', 'chronicle-search-label', chronicle === 'elden' ? 'Search characters, NPCs, players or the premise' : chronicle === 'echoes'
       ? 'Search characters, NPCs, players, universes or the premise' : 'Search names, players, classes, places or recaps');
     label.htmlFor = 'chronicle-search-input';
     const input = element('input', 'chronicle-search-input');
