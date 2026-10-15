@@ -8,6 +8,47 @@
 .chronicle-character-card .character-info h3 { overflow-wrap: break-word; }
 .chronicle-character-card .form-image { object-position: center 25%; transition: opacity .65s ease; }
 .chronicle-character-card .form-image-godly { opacity: 0; }
+@property --slyren-flame-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+#elden-shell .holy-form-profile[data-character="slyren"].show-godly {
+  --slyren-flame-angle: 0deg;
+  isolation: isolate;
+  border-color: #ff8a002e;
+  box-shadow: 0 36px 90px #0000007a, 0 0 30px #ff5a0038, 0 0 58px #ffc40016;
+}
+#elden-shell .holy-form-profile[data-character="slyren"].show-godly::before {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  padding: 4px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    conic-gradient(from var(--slyren-flame-angle),
+      #571000 0deg, #ff4a00 18deg, #ffe928 32deg, #fff7a0 39deg,
+      #ff9d00 48deg, #8c1900 69deg, #ff5a00 94deg, #fff238 111deg,
+      #ef3a00 132deg, #651000 155deg, #ffb000 181deg, #fff36a 194deg,
+      #ff5200 211deg, #781200 237deg, #ffd51f 264deg, #fff6a4 276deg,
+      #e83a00 296deg, #ff8b00 327deg, #571000 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: saturate(1.45) drop-shadow(0 0 5px #ff5a00) drop-shadow(0 0 11px #ffb3008c);
+  animation: slyren-border-flow 7.5s linear infinite, slyren-border-breathe 4.6s ease-in-out infinite alternate;
+}
+@keyframes slyren-border-flow {
+  to { --slyren-flame-angle: 360deg; }
+}
+@keyframes slyren-border-breathe {
+  0% { opacity: .7; filter: saturate(1.25) brightness(.82) drop-shadow(0 0 3px #ff4600) drop-shadow(0 0 8px #ff9d006b); }
+  45% { opacity: 1; }
+  100% { opacity: .9; filter: saturate(1.6) brightness(1.22) drop-shadow(0 0 6px #ff5a00) drop-shadow(0 0 14px #ffd000a3); }
+}
 @media (hover: hover) and (pointer: fine) {
   .chronicle-character-card.variant-ready:hover .form-image-godly { opacity: 1; }
   .chronicle-character-card.variant-ready:hover .form-image-original { opacity: 0; }
@@ -53,6 +94,57 @@
   inset: 0;
   opacity: 0;
 }
+.form-holy-sigil {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: clamp(240px, 44vw, 560px);
+  max-height: 82%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.7) rotate(-10deg);
+  transform-origin: 50% 50%;
+  filter: sepia(.2) saturate(1.25) brightness(.72) drop-shadow(0 0 4px #f5bf55) drop-shadow(0 0 20px #d8962a73);
+  mix-blend-mode: screen;
+  will-change: transform, opacity, filter;
+}
+.form-holy-sigil-fragments {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+}
+.form-holy-sigil-shard {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(240px, 44vw, 560px);
+  max-height: 82%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  filter: sepia(0) saturate(1.4) brightness(1.2) drop-shadow(0 0 8px #ffe193);
+  mix-blend-mode: screen;
+  will-change: transform, opacity, filter;
+}
+.form-holy-sigil-shard:nth-child(1) { clip-path: polygon(0 0, 46% 0, 39% 31%, 15% 43%); }
+.form-holy-sigil-shard:nth-child(2) { clip-path: polygon(46% 0, 100% 0, 85% 39%, 59% 30%); }
+.form-holy-sigil-shard:nth-child(3) { clip-path: polygon(15% 43%, 39% 31%, 50% 51%, 25% 65%, 0 59%); }
+.form-holy-sigil-shard:nth-child(4) { clip-path: polygon(39% 31%, 59% 30%, 71% 51%, 50% 51%); }
+.form-holy-sigil-shard:nth-child(5) { clip-path: polygon(59% 30%, 85% 39%, 100% 58%, 71% 51%); }
+.form-holy-sigil-shard:nth-child(6) { clip-path: polygon(0 59%, 25% 65%, 43% 100%, 0 100%); }
+.form-holy-sigil-shard:nth-child(7) { clip-path: polygon(25% 65%, 50% 51%, 71% 51%, 61% 100%, 43% 100%); }
+.form-holy-sigil-shard:nth-child(8) { clip-path: polygon(71% 51%, 100% 58%, 100% 100%, 61% 100%); }
+.form-holy-webgl {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
 .form-holy-rays {
   background: repeating-conic-gradient(from 8deg at 50% 50%, transparent 0deg 16deg, #ffedac55 17deg, transparent 19deg 30deg);
   -webkit-mask-image: radial-gradient(circle, transparent 2%, #000 18%, #000 48%, transparent 72%);
@@ -66,6 +158,145 @@
     radial-gradient(circle at 42% 67%, #fff8db 0 1px, #eeca7966 2px, transparent 4px),
     radial-gradient(circle at 24% 61%, #fff8db 0 1px, #eeca7966 2px, transparent 4px),
     radial-gradient(circle at 57% 45%, #fff8db 0 1px, #eeca7966 2px, transparent 5px);
+}
+.form-frenzied-flame {
+  --frenzy-x: 50%;
+  --frenzy-y: 50%;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at var(--frenzy-x) var(--frenzy-y), transparent 0 7%, #7d25002e 27%, #170300c4 72%),
+    linear-gradient(180deg, #080100b8, transparent 42%, #130100d6);
+  animation: frenzy-vignette 1.9s cubic-bezier(.2, .8, .2, 1) both;
+}
+.form-frenzy-reference {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: #060201;
+  transform-origin: 50% 50%;
+}
+.form-frenzy-heat {
+  position: absolute;
+  inset: -8%;
+  z-index: 1;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at var(--frenzy-x) var(--frenzy-y), #ffd9002e 0 8%, #ff5a001f 20%, transparent 43%);
+  -webkit-backdrop-filter: blur(4px) saturate(1.5);
+  backdrop-filter: blur(4px) saturate(1.5);
+  -webkit-mask-image: radial-gradient(ellipse at var(--frenzy-x) var(--frenzy-y), #000 3%, #000c 25%, transparent 55%);
+  mask-image: radial-gradient(ellipse at var(--frenzy-x) var(--frenzy-y), #000 3%, #000c 25%, transparent 55%);
+}
+.form-frenzy-core {
+  position: absolute;
+  left: var(--frenzy-x);
+  top: var(--frenzy-y);
+  width: var(--frenzy-diameter);
+  height: var(--frenzy-diameter);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(.015);
+  opacity: 0;
+  z-index: 3;
+  background: radial-gradient(circle closest-side,
+    #090100 0 1.8%, #381000 2.4%, #fffbd1 3.5%, #fff327 5.4%,
+    #ffc400 8%, #ff6a00 14%, #c92d00e8 24%, #5e0900c9 37%, #210300e8 55%, #0c0100 78%, #030000 100%);
+  filter: contrast(1.12) saturate(1.35);
+}
+.form-frenzy-ring {
+  position: absolute;
+  left: var(--frenzy-x);
+  top: var(--frenzy-y);
+  z-index: 4;
+  width: clamp(120px, 20vw, 250px);
+  aspect-ratio: 1;
+  border-radius: 44% 56% 51% 49% / 52% 45% 55% 48%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.1);
+  background:
+    radial-gradient(circle, #080100 0 20%, transparent 24%),
+    conic-gradient(from 12deg, #ffec35, #ff8a00 14%, #fff75b 25%, #d73300 39%, #ffe921 52%, #ff6800 68%, #fff56a 82%, #e63b00 94%, #ffec35);
+  box-shadow: 0 0 18px #fff04acc, 0 0 54px #ff7a00c7, 0 0 105px #e43a0078;
+  filter: blur(.5px) saturate(1.5);
+}
+.form-frenzy-ring::before,
+.form-frenzy-ring::after {
+  content: '';
+  position: absolute;
+  inset: -19%;
+  border-radius: 57% 43% 61% 39% / 42% 58% 45% 55%;
+  background: conic-gradient(from 55deg, transparent 0 7%, #fff13d 9% 12%, transparent 15% 27%, #ff6200 30% 36%, transparent 40% 57%, #ffd900 61% 65%, transparent 69% 84%, #e63800 88% 94%, transparent);
+  filter: blur(8px);
+  transform: rotate(17deg) scaleY(.84);
+}
+.form-frenzy-ring::after { inset: -32%; transform: rotate(-31deg) scaleX(.83); filter: blur(14px); opacity: .78; }
+.form-frenzy-tendrils {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.form-frenzy-tendrils {
+  z-index: 2;
+  inset: -24%;
+  background: conic-gradient(from 20deg at var(--frenzy-x) var(--frenzy-y), transparent 0 5%, #ffec3d9e 7%, transparent 12% 22%, #ff5d007d 26%, transparent 34% 47%, #ffe42999 51%, transparent 58% 72%, #e5340073 77%, transparent 84% 94%, #ffc4008c);
+  filter: blur(9px) drop-shadow(0 0 18px #ff3c00);
+  -webkit-mask-image: radial-gradient(ellipse at var(--frenzy-x) var(--frenzy-y), transparent 0 3%, #000 8% 28%, transparent 52%);
+  mask-image: radial-gradient(ellipse at var(--frenzy-x) var(--frenzy-y), transparent 0 3%, #000 8% 28%, transparent 52%);
+  mix-blend-mode: screen;
+}
+.form-frenzy-maelstrom {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+.form-frenzy-wisp {
+  position: absolute;
+  left: var(--frenzy-x);
+  top: var(--frenzy-y);
+  width: clamp(120px, 20vw, 260px);
+  height: clamp(38px, 6vw, 82px);
+  margin-top: calc(clamp(65px, 10vw, 130px) * -1);
+  border-radius: 68% 32% 72% 28% / 54% 68% 32% 46%;
+  opacity: 0;
+  transform-origin: 0 clamp(65px, 10vw, 130px);
+  transform: translate(-4%, 0) rotate(0deg) scale(.25);
+  background: radial-gradient(ellipse at 18% 58%, #fffbd0 0 4%, #ffed28 12%, #ff9b00 34%, #e83d00a8 58%, transparent 76%);
+  box-shadow: inset 18px 0 18px #fff12e4d, 0 0 24px #ff610099;
+  filter: blur(3px) saturate(1.45);
+}
+.form-frenzy-wisp:nth-child(2n) { width: clamp(90px, 16vw, 210px); filter: blur(6px) saturate(1.55); }
+.form-frenzy-wisp:nth-child(3n) { height: clamp(52px, 8vw, 105px); margin-top: calc(clamp(78px, 12vw, 155px) * -1); }
+.form-frenzy-aura {
+  position: absolute;
+  z-index: 1;
+  left: var(--frenzy-x);
+  top: var(--frenzy-y);
+  width: clamp(260px, 42vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.25);
+  background: radial-gradient(circle, transparent 0 17%, #ffec2d5c 23%, #ff84003f 35%, #db290021 51%, transparent 70%);
+  filter: blur(13px);
+  mix-blend-mode: screen;
+}
+@keyframes frenzy-vignette {
+  0% { opacity: 0; }
+  18% { opacity: 1; }
+  82% { opacity: 1; }
+  100% { opacity: 0; }
 }
 #elden-shell .holy-form-profile.is-transforming .form-image { transition: none; }
 #elden-shell .holy-form-profile.show-godly .character-detail-copy h2 { color: #e4be64; }
@@ -88,6 +319,31 @@
 @keyframes godly-name-foil {
   0%, 12% { background-position: 150% 0, 0 0; }
   70%, 100% { background-position: -150% 0, 0 0; }
+}
+#elden-shell .holy-form-profile[data-character="slyren"].show-godly .character-detail-copy h2 {
+  color: #ffd42a;
+  text-shadow: 0 0 12px #ff630070, 0 0 28px #ffb30035;
+}
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  #elden-shell .holy-form-profile[data-character="slyren"].show-godly .character-detail-copy h2 {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-image:
+      linear-gradient(96deg, transparent 38%, #fffbd066 46%, #fff 50%, #fff36a8c 54%, transparent 62%),
+      repeating-linear-gradient(118deg, #651000 0%, #e63800 9%, #ff8700 17%, #ffe42b 24%, #fff4a0 28%, #ffc000 33%, #ff5700 43%, #8c1600 54%);
+    background-size: 240% 100%, 320% 100%;
+    background-position: 150% 0, 0 0;
+    background-repeat: no-repeat, repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 1px 1px #3d0900) drop-shadow(0 0 9px #ff5a006b) drop-shadow(0 0 20px #ffc4002e);
+    animation: slyren-title-flame 8.5s ease-in-out infinite;
+  }
+}
+@keyframes slyren-title-flame {
+  0%, 10% { background-position: 150% 0, 0% 0; filter: drop-shadow(0 1px 1px #3d0900) drop-shadow(0 0 7px #ff4a005c) drop-shadow(0 0 16px #ffc40026); }
+  48% { background-position: 30% 0, 52% 0; filter: drop-shadow(0 1px 1px #3d0900) drop-shadow(0 0 12px #ff650087) drop-shadow(0 0 25px #ffd00045); }
+  90%, 100% { background-position: -150% 0, 100% 0; filter: drop-shadow(0 1px 1px #3d0900) drop-shadow(0 0 8px #ff4a0066) drop-shadow(0 0 18px #ffc40030); }
 }
 .chronicle-character-profile .character-detail-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
 .chronicle-character-profile .character-portrait-stage { min-width: 0; align-self: stretch; }
@@ -125,13 +381,20 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .chronicle-character-card .form-image, .character-portrait-stage .form-portrait .form-image { transition: none; }
+  #elden-shell .holy-form-profile[data-character="slyren"].show-godly::before { animation: none; }
+  #elden-shell .holy-form-profile[data-character="slyren"].show-godly::before { --slyren-flame-angle: 42deg; opacity: .9; }
   #elden-shell .holy-form-profile.show-godly .character-detail-copy h2 {
     animation: none;
     background-position: 50% 0, 0 0;
   }
+  #elden-shell .holy-form-profile[data-character="slyren"].show-godly .character-detail-copy h2 {
+    animation: none;
+    background-position: 50% 0, 45% 0;
+  }
 }
 @media (forced-colors: active) {
-  #elden-shell .holy-form-profile.show-godly .character-detail-copy h2 {
+  #elden-shell .holy-form-profile.show-godly .character-detail-copy h2,
+  #elden-shell .holy-form-profile[data-character="slyren"].show-godly .character-detail-copy h2 {
     color: CanvasText;
     -webkit-text-fill-color: CanvasText;
     background: none;
