@@ -7,6 +7,7 @@ const ELDEN_DATA = {
   "characters": [
     {
       "name": "Son Goku",
+      "variantName": "Son Goku — Godly Form",
       "player": "Gianluca Amato",
       "slug": "son-goku",
       "accent": "205, 174, 109",
@@ -28,6 +29,7 @@ const ELDEN_DATA = {
     },
     {
       "name": "Zevlor",
+      "variantName": "Zevlor — Godly Form",
       "player": "Matthias Martino",
       "slug": "zevlor",
       "accent": "205, 174, 109",
@@ -48,6 +50,7 @@ const ELDEN_DATA = {
     },
     {
       "name": "Corvan Nightbane",
+      "variantName": "Avatar of Morgott, Corvan Nightbane",
       "player": "Denzel Baldacchino",
       "slug": "corvan-nightbane",
       "accent": "205, 174, 109",
@@ -70,6 +73,7 @@ const ELDEN_DATA = {
     },
     {
       "name": "Ragnaurak",
+      "variantName": "Ragnaurak — Godly Form",
       "player": "Remsi Agius",
       "slug": "ragnaurak",
       "accent": "205, 174, 109",
@@ -91,6 +95,7 @@ const ELDEN_DATA = {
     },
     {
       "name": "Morten",
+      "variantName": "Morten — Godly Form",
       "player": "Dathan Baldacchino",
       "slug": "morten",
       "accent": "205, 174, 109",
@@ -112,6 +117,7 @@ const ELDEN_DATA = {
     },
     {
       "name": "Slyren",
+      "variantName": "Slyren — Godly Form",
       "player": "Daniel Mercieca",
       "slug": "slyren",
       "accent": "205, 174, 109",
@@ -133,6 +139,7 @@ const ELDEN_DATA = {
     },
     {
       "name": "Shalashaska Drahaka",
+      "variantName": "Shalashaska Drahaka — Godly Form",
       "player": "James Bianco",
       "slug": "shalashaska-drahaka",
       "accent": "205, 174, 109",
@@ -203,7 +210,7 @@ const ELDEN_DATA = {
     return window.CharacterPresentation.card(character, openCharacter);
   }
   function renderCharacter(character) {
-    detail.replaceChildren(window.CharacterPresentation.profile(character, 'Beyond the Frenzied Flame'));
+    detail.replaceChildren(window.CharacterPresentation.profile(character, 'Beyond the Frenzied Flame', { holyTransformation: true }));
     window.ChronicleTools?.updateCharacterNavigation('elden', character);
   }
   function openCharacter(character, { replace = false } = {}) {

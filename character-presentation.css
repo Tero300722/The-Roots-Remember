@@ -15,6 +15,80 @@
 .chronicle-character-card.variant-ready:focus-visible .form-image-godly { opacity: 1; }
 .chronicle-character-card.variant-ready:focus-visible .form-image-original { opacity: 0; }
 .chronicle-character-profile { background: linear-gradient(140deg, var(--surface), var(--surface-deep)); }
+.holy-form-profile { isolation: isolate; }
+.form-holy-light {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+}
+.form-holy-bloom, .form-holy-halo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--holy-diameter);
+  height: var(--holy-diameter);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(.015);
+  opacity: 0;
+}
+.form-holy-bloom {
+  background: radial-gradient(circle closest-side, #fffdf0 0%, #fff9de 36%, #fbeab5 62%, #f0d189 77%, #dbab5880 86%, transparent 100%);
+}
+.form-holy-halo {
+  border: 2px solid #fff3c8cc;
+  box-shadow: 0 0 22px #ffdd8599, inset 0 0 22px #ffdd8555;
+}
+.form-holy-halo::before {
+  content: '';
+  position: absolute;
+  inset: 3%;
+  border: 1px solid #ffe6a366;
+  border-radius: inherit;
+}
+.form-holy-rays, .form-holy-motes {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.form-holy-rays {
+  background: repeating-conic-gradient(from 8deg at 50% 50%, transparent 0deg 16deg, #ffedac55 17deg, transparent 19deg 30deg);
+  -webkit-mask-image: radial-gradient(circle, transparent 2%, #000 18%, #000 48%, transparent 72%);
+  mask-image: radial-gradient(circle, transparent 2%, #000 18%, #000 48%, transparent 72%);
+}
+.form-holy-motes {
+  background:
+    radial-gradient(circle at 32% 38%, #fff8db 0 1px, #eeca7966 2px, transparent 5px),
+    radial-gradient(circle at 63% 29%, #fff8db 0 1px, #eeca7966 2px, transparent 4px),
+    radial-gradient(circle at 72% 52%, #fff8db 0 1px, #eeca7966 2px, transparent 5px),
+    radial-gradient(circle at 42% 67%, #fff8db 0 1px, #eeca7966 2px, transparent 4px),
+    radial-gradient(circle at 24% 61%, #fff8db 0 1px, #eeca7966 2px, transparent 4px),
+    radial-gradient(circle at 57% 45%, #fff8db 0 1px, #eeca7966 2px, transparent 5px);
+}
+#elden-shell .holy-form-profile.is-transforming .form-image { transition: none; }
+#elden-shell .holy-form-profile.show-godly .character-detail-copy h2 { color: #e4be64; }
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  #elden-shell .holy-form-profile.show-godly .character-detail-copy h2 {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-image:
+      linear-gradient(110deg, transparent 42%, #fff9df33 46%, #fffbedf2 50%, #fff9df33 54%, transparent 58%),
+      linear-gradient(175deg, #fff7cf 0%, #dab464 20%, #a67a2e 30%, #fce4a1 47%, #fffae6 58%, #b88934 64%, #e4be64 78%, #fff2b2 100%);
+    background-size: 240% 100%, 100% 100%;
+    background-position: 150% 0, 0 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 1px 1px #3b230b) drop-shadow(0 0 10px #edc76c26);
+    animation: godly-name-foil 6s ease-in-out infinite;
+  }
+}
+@keyframes godly-name-foil {
+  0%, 12% { background-position: 150% 0, 0 0; }
+  70%, 100% { background-position: -150% 0, 0 0; }
+}
 .chronicle-character-profile .character-detail-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
 .chronicle-character-profile .character-portrait-stage { min-width: 0; align-self: stretch; }
 .chronicle-character-profile .character-detail-copy h2 { overflow-wrap: break-word; }
@@ -51,6 +125,19 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .chronicle-character-card .form-image, .character-portrait-stage .form-portrait .form-image { transition: none; }
+  #elden-shell .holy-form-profile.show-godly .character-detail-copy h2 {
+    animation: none;
+    background-position: 50% 0, 0 0;
+  }
+}
+@media (forced-colors: active) {
+  #elden-shell .holy-form-profile.show-godly .character-detail-copy h2 {
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+    background: none;
+    filter: none;
+    animation: none;
+  }
 }
 
 /* Centre the seventh character without widening the portrait. */
