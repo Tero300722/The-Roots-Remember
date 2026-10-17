@@ -44,6 +44,8 @@
   <link rel="stylesheet" href="elden.css?v=20261014-cinematic-premise" />
   <link rel="stylesheet" href="character-presentation.css?v=20261014-three-four" />
   <link rel="stylesheet" href="biographies.css?v=20261014-bios" />
+  <link rel="stylesheet" href="chronicle-menu.css?v=20261015-menu-only" />
+  <link rel="stylesheet" href="navbar-icons.css?v=20261015-icons" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=IM+Fell+English&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -63,29 +65,33 @@
   <section class="chronicle-selector" id="chronicle-selector" aria-label="Choose a campaign chronicle">
     <div class="chronicle-selector-inner">
       <header class="chronicle-selector-heading">
+        <span class="collection-kicker">The shared worlds of our table</span>
         <div class="chronicle-selector-emblem" aria-hidden="true"><img src="assets/site-logo.webp?v=20261005-chronicles-polish" alt="" width="96" height="96"></div>
         <h1><span class="wordmark-main">Main Manual</span><span class="wordmark-sub">Campaigns</span></h1>
         <div class="chronicle-heading-ornament" aria-hidden="true"><span></span><i>✦</i><span></span></div>
-        <p class="chronicle-selector-lead">Choose your chronicle.</p>
+        <p class="chronicle-selector-lead">Every world has a story. Step into yours.</p>
       </header>
 
+      <div class="collection-toolbar"><h2>Choose a chronicle</h2></div>
       <div class="chronicle-grid">
+        <div class="chronicle-section-label collection-current-label"><span>I · The ongoing chronicle</span><i aria-hidden="true"></i></div>
         <button class="chronicle-card chronicle-card-featured" type="button" data-chronicle="trr" aria-label="Enter The Roots Remember, ongoing campaign created by Mikael Delia">
           <span class="chronicle-card-art-wrap">
             <img class="chronicle-card-art" src="assets/campaign-hero.webp?v=20261005-chronicles1" width="1672" height="941" alt="The Roots Remember campaign artwork" fetchpriority="high" decoding="async" />
           </span>
           <span class="chronicle-card-copy">
             <span class="chronicle-card-meta">
-              <span class="chronicle-type"><svg class="chronicle-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 3 8 0-1 6 4 4v2H5v-2l4-4-1-6ZM12 15v6"/></svg>Main Campaign</span>
-              <span class="chronicle-status chronicle-status-ongoing">On going</span>
+              <span class="chronicle-type"><svg class="chronicle-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 3 8 0-1 6 4 4v2H5v-2l4-4-1-6ZM12 15v6"/></svg>Pinned · Main Campaign</span>
+              <span class="chronicle-status chronicle-status-ongoing">Ongoing</span>
             </span>
             <strong>The Roots Remember</strong>
+            <span class="collection-card-note">The story continues.</span>
             <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
             <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
           </span>
         </button>
 
-        <div class="chronicle-section-label"><span>Coming next</span><i aria-hidden="true"></i></div>
+        <div class="chronicle-section-label"><span>II · Coming next</span><i aria-hidden="true"></i></div>
 
         <button class="chronicle-card chronicle-card-grimwood" type="button" data-chronicle="grimwood" aria-label="Enter Into the Grimwood Manor, created by Gianluca Amato. Starts 24 October 2026">
           <span class="chronicle-card-art-wrap">
@@ -97,12 +103,13 @@
               <span class="chronicle-status chronicle-status-upcoming">Starts <time datetime="2026-10-24">24 October</time></span>
             </span>
             <strong>Into the Grimwood Manor</strong>
+            <span class="collection-card-note">An invitation awaits.</span>
             <span class="chronicle-creator">Created by <span>Gianluca Amato</span></span>
             <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
           </span>
         </button>
 
-        <div class="chronicle-section-label"><span>Archived chronicles</span><i aria-hidden="true"></i></div>
+        <div class="chronicle-section-label"><span>III · Archived chronicles</span><i aria-hidden="true"></i></div>
         <button class="chronicle-card chronicle-card-echoes" type="button" data-chronicle="echoes" aria-label="Enter Echoes of Eternity, cancelled campaign created by Mikael Delia">
           <span class="chronicle-card-art-wrap">
             <img class="chronicle-card-art" src="assets/echoes/echoes-title-cover.png" width="2048" height="1152" alt="Echoes of Eternity: a pirate ship, a neon city and a fantasy realm divided by shattered glass" loading="lazy" decoding="async" />
@@ -125,6 +132,7 @@
           </span>
         </button>
       </div>
+      <p class="collection-colophon"><span aria-hidden="true">✦</span> Main Manual Campaigns <span aria-hidden="true">✦</span></p>
     </div>
   </section>
 
@@ -339,7 +347,7 @@
   <div class="page-shell grimwood-shell" id="grimwood-shell" hidden>
     <header class="topbar compact-topbar">
       <button class="brand grimwood-brand brand-chronicle-switch" type="button" data-switch-chronicle aria-label="Switch Chronicle" title="Switch Chronicle">
-        <span class="brand-logo-wrap grimwood-brand-art"><img class="brand-logo" src="assets/grimwood-manor-hero.webp?v=20261005-grimwood2" width="1536" height="1024" alt="" aria-hidden="true" decoding="async" /></span>
+        <span class="chronicle-nav-icon chronicle-nav-icon-grimwood" aria-hidden="true"><img src="assets/nav-icons/grimwood.webp" width="384" height="384" alt="" decoding="async"></span>
         <span>
           <strong>Into the Grimwood Manor</strong>
           <small>Canon Halloween One-Shot</small>
@@ -477,16 +485,7 @@
   <div class="page-shell echoes-shell" id="echoes-shell" data-universe="premise" hidden>
     <header class="topbar compact-topbar">
       <button class="brand brand-chronicle-switch echoes-brand" type="button" data-switch-chronicle aria-label="Switch Chronicle" title="Switch Chronicle">
-        <span class="echoes-brand-mark" aria-hidden="true"><svg class="echoes-medallion" viewBox="0 0 240 240" fill="none" aria-hidden="true">
-  <circle cx="120" cy="120" r="106" stroke="currentColor" stroke-opacity=".17"/>
-  <circle cx="120" cy="120" r="94" stroke="currentColor" stroke-opacity=".28" stroke-dasharray="1 9"/>
-  <path d="M112 39 112 98 60 127 48 91Z" fill="#c8a568" fill-opacity=".10" stroke="#c8a568"/>
-  <path d="m128 39 64 52-12 36-52-29Z" fill="#d65c66" fill-opacity=".10" stroke="#d65c66"/>
-  <path d="m120 116 53 29-25 54H92l-25-54Z" fill="#75acb6" fill-opacity=".10" stroke="#75acb6"/>
-  <path d="m120 92 13 23-13 23-13-23Z" stroke="#e3d4b2"/>
-  <path d="M120 4v15m0 202v15M4 120h15m202 0h15" stroke="currentColor" stroke-opacity=".5"/>
-  <circle cx="120" cy="115" r="3" fill="#f1dfb9"/>
-</svg></span>
+        <span class="chronicle-nav-icon chronicle-nav-icon-echoes" aria-hidden="true"><img src="assets/nav-icons/echoes.webp" width="384" height="384" alt="" decoding="async"></span>
         <span><strong>Echoes of Eternity</strong><small>Archived Chronicle</small></span>
         <span class="brand-switch-glyph" aria-hidden="true">↩</span>
       </button>
@@ -648,7 +647,7 @@
   <div class="page-shell elden-shell" id="elden-shell" hidden>
     <header class="topbar compact-topbar">
       <button class="brand brand-chronicle-switch" type="button" data-switch-chronicle aria-label="Switch Chronicle" title="Switch Chronicle">
-        <span class="elden-brand-mark" aria-hidden="true">✧</span>
+        <span class="chronicle-nav-icon chronicle-nav-icon-elden" aria-hidden="true"><img src="assets/nav-icons/elden.webp" width="384" height="288" alt="" decoding="async"></span>
         <span><strong>Elden Ring</strong><small>Beyond the Frenzied Flame</small></span>
         <span class="brand-switch-glyph" aria-hidden="true">↩</span>
       </button>
@@ -745,7 +744,7 @@
   </div>
 
   <script src="music.js?v=20261012-echoes-music"></script>
-  <script src="script.js?v=20261014-three-four"></script>
+  <script src="script.js?v=20261017-gerxis-portrait"></script>
   <script src="character-presentation.js?v=20261014-three-four"></script>
   <script src="echoes.js?v=20261014-three-four"></script>
   <script src="elden.js?v=20261014-npc-archive"></script>

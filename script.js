@@ -142,8 +142,8 @@ const DATA = {
       name: "Gerxis Solaris",
       role: "Missing • House Solaris",
       importance: "major",
-      image: "assets/npcs/gerxis-solaris-placeholder.png",
-      imageSize: [1654, 1654],
+      image: "assets/npcs/gerxis-solaris-silhouette.webp",
+      imageSize: [1024, 1536],
       description: [
         "Gerxis Solaris was last seen by his brother, Orthen Solaris, eighteen years ago. He had been sent away on a mission, but after leaving, he was never seen or heard from again. No letters returned, no word reached the family, and no one was ever able to confirm what had happened to him. For nearly two decades, Orthen has continued searching for any clue that could lead him closer to the truth.",
         "A new lead was finally uncovered in Thornwood Village, where Amanita the Tailor found Gerxis’ name written in one of her old customer ledgers. The record confirmed that he had passed through the village many years ago, and more importantly, it revealed the direction he had been travelling.",

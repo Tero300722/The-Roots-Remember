@@ -1,0 +1,25 @@
+/* User-supplied chronicle emblems, contained in a consistent compact navbar frame. */
+.page-shell .chronicle-nav-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 7px;
+  background: #030303;
+}
+.page-shell .chronicle-nav-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* The supplied Elden artwork has generous black margins around its emblem. */
+.page-shell .chronicle-nav-icon-elden img {
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: scale(1.3);
+}
+.page-shell .chronicle-nav-icon-grimwood { background: #d6b27a; }
