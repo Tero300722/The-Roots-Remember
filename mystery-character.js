@@ -17,13 +17,13 @@
     return choices[Math.floor(Math.random() * choices.length)];
   }
 
-  function field(element, label, lengths) {
+  function field(element, label, lengths, canRun) {
     const wrapper = document.createElement('span');
     wrapper.className = 'mystery-symbols';
     wrapper.setAttribute('role', 'img');
     wrapper.setAttribute('aria-label', label);
     const cells = [];
-    let animations = [];
+    let running = false;
     lengths.forEach(length => {
       const line = document.createElement('span');
       line.className = 'mystery-symbol-line';
@@ -40,39 +40,60 @@
           slot.appendChild(layer);
           return layer;
         });
-        cells.push({ layers, current: 0 });
+        cells.push({ layers, current: 0, timer: null, animations: [] });
         line.appendChild(slot);
       }
       wrapper.appendChild(line);
     });
     element.replaceChildren(wrapper);
     function stop() {
-      animations.forEach(animation => animation.cancel());
-      animations = [];
+      running = false;
+      cells.forEach(cell => {
+        if (cell.timer !== null) window.clearTimeout(cell.timer);
+        cell.timer = null;
+        cell.animations.forEach(animation => animation.cancel());
+        cell.animations = [];
+      });
+    }
+    function turn(cell) {
+      cell.timer = null;
+      if (!running) return;
+      if (!canRun()) { stop(); return; }
+      cell.animations.forEach(animation => animation.cancel());
+      cell.animations = [];
+      const outgoing = cell.layers[cell.current];
+      const incoming = cell.layers[1 - cell.current];
+      const direction = Math.random() < .5 ? -1 : 1;
+      const exit = `translateY(${direction * 110}%)`;
+      const enter = `translateY(${-direction * 110}%)`;
+      incoming.textContent = randomSymbol(outgoing.textContent);
+      // Re-roll the pace after EVERY turn, independently for every glyph.
+      // Rapid bursts, quick turns and slower rolls mingle without a shared cycle.
+      const pace = Math.random();
+      const duration = pace < .3 ? 140 + Math.random() * 100
+        : pace < .75 ? 250 + Math.random() * 170 : 500 + Math.random() * 350;
+      const pause = pace < .3 ? 60 + Math.random() * 120
+        : pace < .75 ? 80 + Math.random() * 140 : 180 + Math.random() * 270;
+      const timing = { duration, easing: 'cubic-bezier(.22,.7,.25,1)', fill: 'backwards' };
+      outgoing.style.transform = exit;
+      outgoing.style.opacity = '0';
+      incoming.style.transform = 'translateY(0)';
+      incoming.style.opacity = '1';
+      if (typeof outgoing.animate === 'function') {
+        cell.animations.push(outgoing.animate([{ transform: 'translateY(0)', opacity: 1 }, { transform: exit, opacity: 0 }], timing));
+        cell.animations.push(incoming.animate([{ transform: enter, opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], timing));
+      }
+      cell.current = 1 - cell.current;
+      cell.timer = window.setTimeout(() => turn(cell), duration + pause);
     }
     return {
       stop,
-      change() {
-        stop();
-        cells.forEach(cell => {
-          const outgoing = cell.layers[cell.current];
-          const incoming = cell.layers[1 - cell.current];
-          const direction = Math.random() < .5 ? -1 : 1;
-          const exit = `translateY(${direction * 110}%)`;
-          const enter = `translateY(${-direction * 110}%)`;
-          incoming.textContent = randomSymbol(outgoing.textContent);
-          // Each glyph has its own direction, delay and speed; all settle before the next 1.2s cycle.
-          const timing = { duration: 280 + Math.random() * 140, delay: Math.random() * 650,
-            easing: 'cubic-bezier(.22,.7,.25,1)', fill: 'backwards' };
-          outgoing.style.transform = exit;
-          outgoing.style.opacity = '0';
-          incoming.style.transform = 'translateY(0)';
-          incoming.style.opacity = '1';
-          if (typeof outgoing.animate === 'function') {
-            animations.push(outgoing.animate([{ transform: 'translateY(0)', opacity: 1 }, { transform: exit, opacity: 0 }], timing));
-            animations.push(incoming.animate([{ transform: enter, opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], timing));
-          }
-          cell.current = 1 - cell.current;
+      start() {
+        if (running) return;
+        running = true;
+        cells.forEach((cell, index) => {
+          if (index === 0) turn(cell);
+          else cell.timer = window.setTimeout(() => turn(cell), Math.random() * 140);
         });
       }
     };
@@ -83,7 +104,7 @@
     root.classList.add('mystery-character');
     const fields = [];
     const add = (selector, label, lengths) => {
-      root.querySelectorAll(selector).forEach(el => fields.push(field(el, label, lengths)));
+      root.querySelectorAll(selector).forEach(el => fields.push(field(el, label, lengths, () => root.isConnected && !document.hidden && !reducedMotion.matches)));
     };
     add(profile ? 'h2' : 'h3', 'Identity concealed', [7]);
     add(profile ? '.detail-row:first-child strong' : '.tag:first-child', 'Class concealed', [4]);
@@ -92,37 +113,17 @@
     const portrait = root.querySelector('img');
     if (portrait) portrait.alt = 'Silhouetted adventurer — identity concealed';
     if (!profile) root.setAttribute('aria-label', 'Open the mysterious adventurer, played by Daniel Mercieca');
-    let timer = null;
-    let hovering = false;
-    let focused = false;
-    const bindings = [];
     const controller = {
       visible: false,
       sync() {
-        const active = root.isConnected && this.visible && !document.hidden && !reducedMotion.matches && (profile || hovering || focused);
-        if (active && timer === null) timer = window.setInterval(() => {
-          if (!root.isConnected) { unmount(root); return; }
-          fields.forEach(field => field.change());
-        }, 1200);
-        if (!active) {
-          if (timer !== null) { window.clearInterval(timer); timer = null; }
-          fields.forEach(field => field.stop());
-        }
+        const active = root.isConnected && this.visible && !document.hidden && !reducedMotion.matches;
+        fields.forEach(field => active ? field.start() : field.stop());
       },
       dispose() {
         fields.forEach(field => field.stop());
-        if (timer !== null) window.clearInterval(timer);
-        bindings.forEach(([event, callback]) => root.removeEventListener(event, callback));
         observer.unobserve(root);
       }
     };
-    function listen(event, callback) { root.addEventListener(event, callback); bindings.push([event, callback]); }
-    if (!profile) {
-      listen('pointerenter', event => { hovering = event.pointerType !== 'touch'; controller.sync(); });
-      listen('pointerleave', () => { hovering = false; controller.sync(); });
-      listen('focusin', () => { focused = true; controller.sync(); });
-      listen('focusout', event => { focused = root.contains(event.relatedTarget); controller.sync(); });
-    }
     mounted.set(root, controller);
     controllers.add(controller);
     observer.observe(root);
