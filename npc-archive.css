@@ -1,0 +1,45 @@
+.npc-directory { margin-top: 26px; }
+.npc-directory-toolbar { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 22px; border: 1px solid rgba(211,173,103,.18); border-radius: 16px; background: rgba(12,17,19,.8); }
+.npc-directory-search { position: relative; flex: 1 1 300px; max-width: 500px; }
+.npc-directory-label { display: block; margin-bottom: 9px; font-size: .73rem; letter-spacing: .08em; color: #d9c397; }
+.npc-directory-input { display: block; width: 100%; min-height: 46px; padding: 11px 66px 11px 14px; color: #ece6db; background: #0a0e12; border: 1px solid rgba(211,173,103,.28); border-radius: 9px; font: inherit; font-size: .87rem; }
+.npc-directory-input::placeholder { color: #9c9b99; }
+.npc-directory-clear { position: absolute; right: 9px; bottom: 7px; min-height: 32px; border: 0; padding: 4px 7px; background: transparent; color: #dfc38c; font: inherit; font-size: .75rem; cursor: pointer; }
+.npc-directory-clear:disabled { opacity: .35; cursor: default; }
+.npc-directory-filters { display: flex; flex-wrap: wrap; gap: 7px; }
+.npc-directory-filter, .npc-directory-page { min-height: 43px; padding: 10px 15px; border: 1px solid rgba(211,173,103,.24); border-radius: 8px; background: transparent; color: #bdb7ab; font: inherit; font-size: .8rem; cursor: pointer; }
+.npc-directory-filter[aria-pressed="true"] { border-color: #b89b65; background: rgba(211,173,103,.12); color: #f2ddb6; }
+.npc-directory-summary { margin: 19px 2px; font-size: .78rem; color: #aaa69b; }
+.npc-directory-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.npc-directory-card { display: flex; align-items: center; gap: 17px; width: 100%; min-height: 200px; padding: 22px 19px; border: 1px solid rgba(211,173,103,.22); border-radius: 17px; text-align: left; color: #e9e0ce; background: linear-gradient(140deg,rgba(22,26,27,.95),rgba(9,13,16,.97)); font: inherit; cursor: pointer; transition: border-color .2s, background .2s; }
+.npc-directory-card:hover { border-color: rgba(226,196,139,.7); background: linear-gradient(140deg,#1d2423,#0c1116); }
+.npc-directory-portrait { position: relative; display: block; overflow: hidden; flex: 0 0 88px; width: 88px; height: 88px; border: 1px solid rgba(211,173,103,.44); border-radius: 50%; background: #0a0d10; }
+.npc-directory-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.npc-directory-portrait[data-focus="true"] img { position: absolute; left: 50%; top: 50%; max-width: none; height: auto; object-fit: initial; }
+.npc-directory-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; align-items: start; }
+.npc-directory-tier { margin-bottom: 10px; color: #b49b6d; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
+.npc-directory-name { color: #eee1c7; font-family: 'Cinzel',serif; font-size: 1.05rem; line-height: 1.35; }
+.npc-directory-epithet { margin-top: 5px; color: #b9ac93; font-family: 'Cormorant Garamond',serif; font-style: italic; font-size: 1rem; line-height: 1.25; }
+.npc-directory-role { margin-top: 9px; color: #a6a5a2; font-size: .73rem; line-height: 1.5; }
+.npc-directory-read { margin-top: 14px; color: #d5b87c; font-size: .68rem; letter-spacing: .03em; }
+.npc-directory-pagination { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 24px; }
+.npc-directory-position { font-size: .78rem; color: #bfb39b; }
+.npc-directory-page:disabled { opacity: .35; cursor: default; }
+.npc-directory-empty { padding: 45px 24px; text-align: center; border: 1px dashed rgba(211,173,103,.3); border-radius: 16px; color: #bdb7ab; }
+.npc-directory-empty h3 { font-family: 'Cinzel',serif; color: #e2ceb0; }
+.npc-directory-empty p { margin: 12px 0 22px; }
+.npc-directory [hidden] { display: none; }
+.npc-directory :is(button,input):focus-visible { outline: 2px solid #d9bd83; outline-offset: 4px; }
+.chronicle-tools-modal[data-chronicle="trr"][data-profile-type="npc"] .chronicle-tools-panel { width: min(1000px,100%); }
+.chronicle-tools-modal[data-chronicle="trr"][data-profile-type="npc"] .recap-person-portrait img { max-height: 570px; }
+.recap-person-copy .npc-profile-epithet { margin: 0 0 12px; color: #dfc58f; font-family: 'Cormorant Garamond',serif; font-size: 1.5rem; font-weight: 500; line-height: 1.3; }
+.recap-person-copy strong { color: #e8d6b5; font-weight: 600; }
+@media(max-width:1100px) { .npc-directory-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:620px) {
+  .npc-directory-grid { grid-template-columns: 1fr; }
+  .npc-directory-card { min-height: 174px; }
+  .npc-directory-toolbar { padding: 16px; }
+  .npc-directory-search { max-width: none; }
+  .npc-directory-filter { padding: 9px 12px; }
+  .npc-directory-pagination { gap: 12px; }
+}

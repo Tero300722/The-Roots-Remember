@@ -38,7 +38,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20261012-echoes-music" />
+  <link rel="stylesheet" href="style.css?v=20261018-npc-runes" />
   <link rel="stylesheet" href="design.css?v=20261012-echoes-music" />
   <link rel="stylesheet" href="echoes.css?v=20261013-even-portraits" />
   <link rel="stylesheet" href="elden.css?v=20261014-cinematic-premise" />
@@ -47,7 +47,8 @@
   <link rel="stylesheet" href="chronicle-menu.css?v=20261015-menu-only" />
   <link rel="stylesheet" href="navbar-icons.css?v=20261015-icons" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=IM+Fell+English&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="mystery-character.css?v=20261018-flippers" />
+  <link rel="stylesheet" href="mystery-character.css?v=20261018-runes" />
+  <link rel="stylesheet" href="npc-archive.css?v=20261018-faces" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -303,30 +304,10 @@
         <header class="section-header page-reveal-item">
           <p class="eyebrow">People Met Along the Road</p>
           <h2>NPC Archive</h2>
-          <p>Known faces from the campaign, separated by how important they currently are to the party's story.</p>
+          <p>Familiar faces, enduring stories. Find someone below and open their portrait to read more.</p>
         </header>
 
-        <div class="npc-section-block page-reveal-item">
-          <div class="npc-tier-heading">
-            <span class="npc-tier-mark npc-tier-mark-high" aria-hidden="true">◆</span>
-            <div>
-              <p class="eyebrow">High Importance</p>
-              <h3>Major NPCs</h3>
-            </div>
-          </div>
-          <div class="npc-grid npc-grid-major" id="npc-major-list"></div>
-        </div>
-
-        <div class="npc-section-block page-reveal-item npc-supporting-block">
-          <div class="npc-tier-heading">
-            <span class="npc-tier-mark" aria-hidden="true">◇</span>
-            <div>
-              <p class="eyebrow">Low Importance</p>
-              <h3>Supporting NPCs</h3>
-            </div>
-          </div>
-          <div class="npc-grid" id="npc-supporting-list"></div>
-        </div>
+        <div id="roots-npc-directory" class="npc-directory"></div>
       </section>
 
       <section class="page" id="sessions">
@@ -745,12 +726,13 @@
   </div>
 
   <script src="music.js?v=20261012-echoes-music"></script>
-  <script src="mystery-character.js?v=20261018-independent"></script>
-  <script src="script.js?v=20261018-mystery"></script>
+  <script src="npc-archive.js?v=20261018-faces"></script>
+  <script src="mystery-character.js?v=20261018-runes"></script>
+  <script src="script.js?v=20261018-npc-faces"></script>
   <script src="character-presentation.js?v=20261014-three-four"></script>
   <script src="echoes.js?v=20261014-three-four"></script>
   <script src="elden.js?v=20261014-npc-archive"></script>
   <script src="biographies.js?v=20261014-bios"></script>
-  <script src="chronicle-tools.js?v=20261014-npc-archive"></script>
+  <script src="chronicle-tools.js?v=20261018-npc-directory"></script>
 </body>
 </html>

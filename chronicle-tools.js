@@ -27,8 +27,7 @@
 
   // Existing NPC records are the source of truth, including Grimwood's HTML records.
   const npcs = {
-    trr: DATA.npcs.map(npc => ({ ...npc, paragraphs: Array.isArray(npc.description) ? npc.description : [npc.description],
-      target: [...siteShell.querySelectorAll('.npc-card')].find(card => card.querySelector('h3').textContent === npc.name) })),
+    trr: DATA.npcs.map(npc => ({ ...npc, paragraphs: Array.isArray(npc.description) ? npc.description : [npc.description] })),
     echoes: [],
     elden: [],
     grimwood: [...grimwoodShell.querySelectorAll('.npc-card')].map(card => ({
@@ -56,6 +55,7 @@
     close({ restoreFocus: false });
     returnFocus = trigger || document.activeElement;
     modal.dataset.chronicle = chronicle;
+    modal.dataset.profileType = "";
     heading.textContent = title;
     kicker.textContent = category;
     content.replaceChildren();
@@ -94,6 +94,7 @@
 
   function showPerson(chronicle, person, type, trigger) {
     if (!open(chronicle, person.name, type === 'character' ? 'Character Profile' : 'NPC Archive', trigger)) return;
+    modal.dataset.profileType = type;
     panel.style.setProperty('--person-accent', person.deceased ? '156, 156, 156' : person.accent || (chronicle === 'grimwood' ? '221, 126, 86' : '212, 173, 103'));
     const profile = element('article', 'recap-person' + (person.deceased ? ' is-deceased' : ''));
     const portrait = element('div', 'recap-person-portrait');
@@ -103,11 +104,25 @@
     img.decoding = 'async';
     portrait.appendChild(img);
     const copy = element('div', 'recap-person-copy');
+    if (person.epithet) copy.appendChild(element('h3', 'npc-profile-epithet', person.epithet));
     if (person.player) copy.appendChild(element('p', 'recap-person-credit', `Played by ${person.player}`));
     copy.appendChild(element('p', 'recap-person-role', type === 'character'
       ? `${person.className} · ${person.subclass}` : person.role));
     const paragraphs = type === 'character' ? person.description || [] : person.paragraphs;
-    paragraphs.forEach(text => copy.appendChild(element('p', '', text)));
+    paragraphs.forEach(text => {
+      const paragraph = element('p', '');
+      if (person.highlights?.length) {
+        const pattern = new RegExp(person.highlights.map(escapeRegex).join('|'), 'g');
+        let end = 0;
+        for (const match of text.matchAll(pattern)) {
+          paragraph.appendChild(document.createTextNode(text.slice(end, match.index)));
+          paragraph.appendChild(element('strong', '', match[0]));
+          end = match.index + match[0].length;
+        }
+        paragraph.appendChild(document.createTextNode(text.slice(end)));
+      } else paragraph.textContent = text;
+      copy.appendChild(paragraph);
+    });
     if (person.deceased && person.death) copy.appendChild(element('p', 'recap-person-memorial', `Fell during ${person.death.session}`));
     if (type === 'character') {
       const button = element('button', 'btn btn-primary recap-person-full', person.deceased ? 'View memorial' : 'View full profile');
@@ -217,7 +232,8 @@
         ...(person.death ? Object.values(person.death) : [])].filter(Boolean).join(' · '),
       () => visitCharacter(chronicle, person)));
     npcs[chronicle].forEach(person => addEntry(chronicle, person.name, 'NPC',
-      [person.role, ...person.paragraphs].join(' · '), () => visitPage(chronicle, 'npcs', person.target)));
+      [person.role, person.epithet, ...person.paragraphs].filter(Boolean).join(' · '), () => chronicle === 'trr'
+        ? showPerson('trr', person, 'npc', returnFocus) : visitPage(chronicle, 'npcs', person.target)));
     shells[chronicle].querySelectorAll('.session-card').forEach(card => {
       const head = card.querySelector('.session-head');
       const body = card.querySelector('.session-body-inner');
@@ -402,5 +418,9 @@
     collapse.title = collapsed ? 'Expand music player' : 'Minimise music player';
   });
 
-  window.ChronicleTools = { close, updateCharacterNavigation };
+  function openNpc(chronicle, name, trigger) {
+    const person = npcs[chronicle]?.find(person => person.name === name);
+    if (person) showPerson(chronicle, person, 'npc', trigger);
+  }
+  window.ChronicleTools = { close, updateCharacterNavigation, openNpc };
 })();

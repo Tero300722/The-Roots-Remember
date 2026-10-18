@@ -108,17 +108,19 @@ const DATA = {
     },
     {
       "slug": "unknown-adventurer",
-      "name": "⋄ ⊗ ∴ ⌖ ∿ ⊹ ◇",
+      "name": "ᚱ ᚼ ᚾ ᛁ ᛅ ᛋ ᛦ",
       "player": "Daniel Mercieca",
       "mystery": true,
       "sheetImage": "assets/characters/full/unknown-adventurer.webp",
       "cardImage": "assets/characters/cards/unknown-adventurer.webp",
       "fullImage": "assets/characters/full/unknown-adventurer.webp",
-      "className": "⊙ ∷ ⋈ ⌁",
-      "subclass": "⌖ ⊹ ◇ ∴ ⊥ ∿",
+      "className": "ᚠ ᚢ ᚦ ᚬ",
+      "subclass": "ᚴ ᚼ ᚾ ᛏ ᛒ ᛘ",
       "accent": "255, 255, 255",
       "description": [
-        "∴ ⌖ ◇ ⊥ ∿ ⊙ ⋄ ⌁ ⊹ ⋈"
+        "ᚼᛋᚦᛚᚬ ᚾᚢᛁᛁᚴᚢ ᚾᚱ ᚬ ᚦᚾᚼᚦᚬᛦᚠᚦᚬᚴᚦ ᚢᚢᛋᚬ ᛅᚬᚢᚦᛚ ᚾᛦᛦᛘ ᚼᚠ ᛦᚼᚼ ᚠᚱᚬᛅᛒᚼᚢ ᚠᛏ ᛏᛚᚼ ᚬᚦᚾᚱᚼᚦᛏ ᚼᛘᛒᚴᛚ ᛚᚼᛁ ᛒᛦᛋᚦᚠᚾᚾᚢᛋᚱ ᛁᛒᚢ ᛦᛒᛘᛒᚾᛏᚬ ᛚᚾᚱᚱᚬᛘᚼᚱᚴ ᚢᚢᛒᚴᛁ ᛁᛒᛁᛒᛋᛒᚼ ᚢᚴᛋ ᛅᚢᛋᚢᛚ ᚼᚼᚱᚾ ᛏᛒᚢ ᚱᛁᛁᛋᛅᛚᚢ ᛁᚠ ᚾᚱᚢ ᚢᚦᚠᛁᛁᚱᚬᛒᛒ ᛒᚴ ᚱ ᚼᛒᚴᚱᚱ ᚠᛚᚬ ᛦᚢᚬᛏᚴᚬᛏᛅ ᚾᚬᛏ ᚬᛚᛘᚠᛦ ᚼᚴᛁᚬᚱ ᛅᛋᚢᚴᚴ ᚠᚬᛒ ᚢᚴᛁᚱᛚ ᚬᚴᚾᛒᚬ ᚠᛏᚼᚠᚠᛅ ᛚᚠ ᛚᚠᚱᛚ ᛏᚴᛒ ᚠᚴ ᛅᚢᛚᛁᛒᚢᛒᛅ",
+        "ᚦᛘᛅ ᛁᛦᚠᛅᚱᛁᛋᚱᚼ ᛘᚾᛒᚱᛚᚼᚦ ᛦᛒ ᚾ ᛦᛘᛅᚱ ᛘᚴᚾᛚᛋᛏᛅ ᚾᚢᚠᛘᛒᚱᛒᛚᚴᛁᛏ ᚠᛦ ᚼᚼᚱᚾᛁᚠᚦᚬᛏᚠ ᚴᛋᛋᛋᚾᛒ ᚠᚠᚠ ᚬᚾᚠᚦᚱᛁᛒᛋᛏ ᚾᛚ ᛅᚴᚼᚠ ᚼᛚᛦ ᛒᛋᛅ ᚼᚱᚼᛦᚱ ᚢᚴᚠᚠᚬ ᚾᚦᛘᛋᚠ ᛏᚢᚦᛏᚴ ᛋᛚᚱᛚᚦ ᚦᚢᚠ ᚾᚾᚠᚼ ᛚᛁ ᛚᛋ ᛋᚢᛋᚬᚬᚾ ᛒᛦᛁᛚᛒᚱᛦᛏᚠ ᚬᛅ ᚬᚠᚴᚾᚬ ᚱᚼ ᛚᛏᛅᛚᛅᚼᛦᛚᚦᛒ ᚼᚠᚦᚬᛚ ᛋᛚᚠ ᚦᚢᚦᚱᛁᚼᛘᚢᛚ ᛒᛦ ᚾᛚᚬᚴ ᛁᛒᛒ ᛏᚴᛏᚴᛋᚼ ᚢᚢᚦᚼ ᚢᚱᛁ ᚢᛏ ᛏᚠᛘᛏᛚ ᛒᚠᚦᚴᚾᚬᛅᛦᚢᛚ",
+        "ᛚᛦᛋᛏᛅ ᚴᚦ ᛏᚬᚠᛅ ᚢᚼᛘᛘᛘ ᛁᛒᚴᚱ ᚱᚬ ᛒᛘᚾᚦᛋᛅᚦᚴ ᛋᚠᛅ ᛁᚠᛦᛦᚦᚠ ᛅᛚ ᚢᚦᚾᛘᚴᛒ"
       ]
     }
   ],
@@ -140,12 +142,16 @@ const DATA = {
   ],
   npcs: [
     {
-      name: "Orthen Solaris",
-      role: "Quest Giver • House Solaris",
-      importance: "major",
-      image: "assets/npcs/orthen-solaris.webp",
-      imageSize: [825, 1100],
-      description: [
+      "name": "Orthen Solaris",
+      "portraitCrop": { "x": 49, "y": 17, "scale": 2.5 },
+      "role": "Quest Giver • House Solaris",
+      "importance": "major",
+      "image": "assets/npcs/orthen-solaris.webp",
+      "imageSize": [
+        825,
+        1100
+      ],
+      "description": [
         "Orthen Solaris is the last remaining member of the Solaris bloodline. After his brother, Gerxis Solaris, disappeared eighteen years ago while on a mission, Orthen began to lay low, stepping away from the dangerous assignments that had once defined his family. Despite the years that have passed, he has never stopped searching for Gerxis, holding onto the hope that somewhere, somehow, his brother may still be alive.",
         "The name Solaris is known throughout the continent. For generations, the family dedicated themselves to protecting ordinary people, often stepping in when the Crown and its authorities refused—or failed—to act. Orthen continued that legacy, earning a reputation for accomplishing more for the people than the Crown ever would. To some, he is a respected protector and a man willing to do what others will not. To others, he is nothing more than a vigilante, interfering with the law and taking justice into his own hands.",
         "Now older and far more cautious than he once was, Orthen serves as a mentor and quest giver to the party, providing them with missions, guidance, and whatever wisdom his years of experience can offer. Yet behind his welcoming nature and countless stories lies the same unanswered question that has haunted him for eighteen years.",
@@ -154,12 +160,16 @@ const DATA = {
       ]
     },
     {
-      name: "Gerxis Solaris",
-      role: "Missing • House Solaris",
-      importance: "major",
-      image: "assets/npcs/gerxis-solaris-silhouette.webp",
-      imageSize: [1024, 1536],
-      description: [
+      "name": "Gerxis Solaris",
+      "portraitCrop": { "x": 49.8, "y": 16.3, "scale": 2.2 },
+      "role": "Missing • House Solaris",
+      "importance": "major",
+      "image": "assets/npcs/gerxis-solaris-silhouette.webp",
+      "imageSize": [
+        1024,
+        1536
+      ],
+      "description": [
         "Gerxis Solaris was last seen by his brother, Orthen Solaris, eighteen years ago. He had been sent away on a mission, but after leaving, he was never seen or heard from again. No letters returned, no word reached the family, and no one was ever able to confirm what had happened to him. For nearly two decades, Orthen has continued searching for any clue that could lead him closer to the truth.",
         "A new lead was finally uncovered in Thornwood Village, where Amanita the Tailor found Gerxis’ name written in one of her old customer ledgers. The record confirmed that he had passed through the village many years ago, and more importantly, it revealed the direction he had been travelling.",
         "His last recorded destination was the Ironpeak Mountains.",
@@ -167,20 +177,79 @@ const DATA = {
       ]
     },
     {
-      name: "Pip",
-      role: "Owner • The Middle Fiddler Tavern/Inn",
-      importance: "supporting",
-      image: "assets/npcs/pip.webp",
-      imageSize: [917, 1100],
-      description: "Pip owns and runs The Middle Fiddler Tavern/Inn. She keeps the entire business moving and, as part of the job, deals with drunkards on a daily basis."
+      "name": "Pip",
+      "portraitCrop": { "x": 52, "y": 20, "scale": 2.3 },
+      "role": "Owner • The Middle Fiddler Tavern/Inn",
+      "importance": "supporting",
+      "image": "assets/npcs/pip.webp",
+      "imageSize": [
+        917,
+        1100
+      ],
+      "description": [
+        "Within the bustling streets of Elaris stands The Middle Fiddler, a lively tavern and inn owned and operated by Pip. Known for her hardworking nature and ability to keep the establishment running smoothly, Pip has become a familiar face to travellers, merchants, and locals seeking a warm meal, a comfortable bed, or a drink after a long day.",
+        "Running such a lively establishment is no easy task, especially when dealing with the countless drunkards and troublesome patrons who pass through her doors. Yet Pip has learned to handle even the rowdiest customers with a mixture of patience, sharp wit, and a firm hand when necessary.",
+        "Though the Middle Fiddler welcomes all manner of visitors, Pip has heard more drunken confessions, whispered rumours, and peculiar stories than most would care to remember. Whether she chooses to share them, however, is another matter entirely."
+      ],
+      "epithet": "The Heart of the Middle Fiddler",
+      "highlights": [
+        "The Middle Fiddler",
+        "Pip has heard more drunken confessions, whispered rumours, and peculiar stories than most would care to remember."
+      ]
     },
     {
-      name: "Sebastian",
-      role: "Orthen Solaris' Butler",
-      importance: "supporting",
-      image: "assets/npcs/sebastian.webp",
-      imageSize: [733, 1100],
-      description: "Sebastian is Orthen's butler and has remained by his side for many years, becoming a familiar and dependable presence in the Solaris household."
+      "name": "Sebastian",
+      "portraitCrop": { "x": 50, "y": 17, "scale": 2.1 },
+      "role": "Orthen Solaris' Butler",
+      "importance": "supporting",
+      "image": "assets/npcs/sebastian.webp",
+      "imageSize": [
+        733,
+        1100
+      ],
+      "description": "Sebastian is Orthen's butler and has remained by his side for many years, becoming a familiar and dependable presence in the Solaris household."
+    },
+    {
+      "name": "Tornhornn",
+      "portraitCrop": { "x": 56, "y": 27, "scale": 2.8 },
+      "epithet": "The Hammer of the West",
+      "role": "Blacksmith • Thornwatch Village",
+      "importance": "supporting",
+      "image": "assets/npcs/tornhornn.webp",
+      "description": [
+        "Hailing from the humble Thornwatch Village, Tornhornn is a dwarven blacksmith whose craftsmanship has earned him the title of the finest smith in the West. With his fiery red hair, enormous braided beard, and strength to rival the very steel he forges, Tornhornn has spent countless years perfecting his craft. From the simplest farming tools to weapons worthy of kings, few can match the skill of his hammer.",
+        "Yet whispers surround the old smith's reputation. Some claim that Tornhornn was once responsible for designing the legendary Veridium weapons wielded by the Royal Army, though no official record has ever confirmed such tales.",
+        "Whether these rumours hold any truth remains a mystery, for Tornhornn rarely speaks of his past. To the villagers of Thornwatch, he is simply their trusted blacksmith, a dwarf who lets his hammer do the talking."
+      ],
+      "highlights": [
+        "the finest smith in the West",
+        "Veridium weapons wielded by the Royal Army"
+      ],
+      "imageSize": [
+        1087,
+        1447
+      ]
+    },
+    {
+      "name": "Amanita",
+      "portraitCrop": { "x": 55.3, "y": 28, "scale": 2.74 },
+      "epithet": "The Seamstress of Thornwatch",
+      "role": "Tailor • Thornwatch Village",
+      "importance": "supporting",
+      "image": "assets/npcs/amanita.webp",
+      "description": [
+        "Nestled within the peaceful village of Thornwatch, Amanita is a gifted tailor whose extraordinary craftsmanship is rivalled only by her remarkable speed. With a needle in hand and an eye for the finest details, she can transform even the simplest fabrics into beautiful garments in astonishingly little time. Whether mending a traveller's worn cloak or crafting an elaborate gown fit for nobility, Amanita takes pride in ensuring that every stitch is nothing short of perfection.",
+        "Yet her greatest treasure is not found among her silks and fabrics, but within an enormous book of ledgers, meticulously documenting every transaction made in her shop over the past thirty years. Every customer, every purchase, and every commission has been carefully recorded, with not a single page seemingly out of place.",
+        "To most, these records are merely the habits of a diligent merchant. But in a village where memories fade and stories change, Amanita's ledgers may remember what others have long forgotten."
+      ],
+      "highlights": [
+        "enormous book of ledgers",
+        "Amanita's ledgers may remember what others have long forgotten."
+      ],
+      "imageSize": [
+        1122,
+        1402
+      ]
     }
   ],
   sessions: [
@@ -1016,38 +1085,7 @@ questBoard.innerHTML = `
 `;
 
 /* -------------------- NPC archive -------------------- */
-const majorNpcList = document.getElementById('npc-major-list');
-const supportingNpcList = document.getElementById('npc-supporting-list');
-
-function buildNpcCard(npc, index) {
-  const card = document.createElement('article');
-  card.className = `npc-card ${npc.importance === 'major' ? 'npc-card-major' : ''}`;
-  card.style.animationDelay = `${index * 80}ms`;
-  card.innerHTML = `
-    <div class="npc-portrait">
-      <img src="${asset(npc.image)}" alt="${npc.name}" ${npc.imageSize ? `width="${npc.imageSize[0]}" height="${npc.imageSize[1]}"` : ''} loading="lazy" decoding="async">
-    </div>
-    <div class="npc-copy">
-      <h3>${npc.name}</h3>
-      <div class="npc-role">${npc.role}</div>
-    </div>
-  `;
-  const copy = card.querySelector('.npc-copy');
-  const paragraphs = Array.isArray(npc.description) ? npc.description : [npc.description];
-  paragraphs.forEach(text => {
-    const paragraph = document.createElement('p');
-    paragraph.textContent = text;
-    copy.appendChild(paragraph);
-  });
-  return card;
-}
-
-DATA.npcs.filter(npc => npc.importance === 'major').forEach((npc, index) => {
-  majorNpcList.appendChild(buildNpcCard(npc, index));
-});
-DATA.npcs.filter(npc => npc.importance === 'supporting').forEach((npc, index) => {
-  supportingNpcList.appendChild(buildNpcCard(npc, index));
-});
+window.NpcArchive.mount(document.getElementById('roots-npc-directory'), DATA.npcs);
 
 /* -------------------- Session archive -------------------- */
 function buildSessionCard(session, index) {

@@ -1,7 +1,7 @@
 /* Decorative, randomly generated symbols. No concealed identity or cipher key. */
 (() => {
   'use strict';
-  const symbols = Array.from('∴∵⋄◇⊙⊗⋈⌁⊹⊥∷⊕∿⌖');
+  const symbols = Array.from('ᚠᚢᚦᚬᚱᚴᚼᚾᛁᛅᛋᛏᛒᛘᛚᛦ');
   const mounted = new WeakMap();
   const controllers = new Set();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -17,16 +17,16 @@
     return choices[Math.floor(Math.random() * choices.length)];
   }
 
-  function field(element, label, lengths, canRun) {
+  function field(element, label, lengths, canRun, prose = false) {
     const wrapper = document.createElement('span');
-    wrapper.className = 'mystery-symbols';
+    wrapper.className = 'mystery-symbols' + (prose ? ' mystery-prose' : '');
     wrapper.setAttribute('role', 'img');
     wrapper.setAttribute('aria-label', label);
     const cells = [];
     let running = false;
     lengths.forEach(length => {
       const line = document.createElement('span');
-      line.className = 'mystery-symbol-line';
+      line.className = prose ? 'mystery-symbol-word' : 'mystery-symbol-line';
       line.setAttribute('aria-hidden', 'true');
       for (let i = 0; i < length; i++) {
         const slot = document.createElement('span');
@@ -109,7 +109,11 @@
     add(profile ? 'h2' : 'h3', 'Identity concealed', [7]);
     add(profile ? '.detail-row:first-child strong' : '.tag:first-child', 'Class concealed', [4]);
     add(profile ? '.detail-row:last-child strong' : '.tag:last-child', 'Subclass concealed', [6]);
-    if (profile) add('.character-profile-description p', 'Description concealed', [10, 9, 10, 7]);
+    if (profile) root.querySelectorAll('.character-profile-description p').forEach(el => {
+      const lengths = el.textContent.trim().split(/\s+/).map(word => Array.from(word).length);
+      fields.push(field(el, 'Description concealed', lengths,
+        () => root.isConnected && !document.hidden && !reducedMotion.matches, true));
+    });
     const portrait = root.querySelector('img');
     if (portrait) portrait.alt = 'Silhouetted adventurer — identity concealed';
     if (!profile) root.setAttribute('aria-label', 'Open the mysterious adventurer, played by Daniel Mercieca');

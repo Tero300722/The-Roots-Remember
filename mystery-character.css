@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Chronicle Runic';
+  src: url('assets/fonts/NotoSansRunic-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 /* This character alone carries the white accent and shifting inscriptions. */
 .mystery-character .character-player,
 .mystery-character .player-credit,
@@ -8,7 +15,7 @@
   display: inline-grid;
   max-width: 100%;
   vertical-align: middle;
-  font-family: 'DejaVu Sans', 'Segoe UI Symbol', 'Apple Symbols', sans-serif;
+  font-family: 'Chronicle Runic', 'Segoe UI Historic', 'Segoe UI Symbol', sans-serif;
   font-size: .85em;
   font-weight: 400;
   line-height: 1.6;
@@ -37,3 +44,13 @@
 @media (prefers-reduced-motion: reduce) {
   .mystery-symbol-glyph { animation: none; }
 }
+
+/* Keep nested rune cells independent of the labels in the facts panels. */
+.mystery-character .detail-row > strong { display: block; min-width: 0; }
+.mystery-character .detail-row .mystery-symbols { display: inline-grid; margin: 0; font-size: .85em; color: #fff; letter-spacing: .035em; }
+.mystery-character .detail-row .mystery-symbol-line { display: flex; flex-direction: row; flex-wrap: nowrap; margin: 0; }
+.mystery-character .detail-row .mystery-symbol-slot,
+.mystery-character .detail-row .mystery-symbol-glyph { margin: 0; color: inherit; font-size: inherit; letter-spacing: inherit; }
+.mystery-character .character-profile-description .mystery-prose { display: block; font-size: 1em; line-height: 1.85; }
+.mystery-prose .mystery-symbol-word { display: inline-flex; gap: 0; margin: 0 .32em .15em 0; vertical-align: middle; }
+.mystery-prose .mystery-symbol-slot { flex-basis: .62em; width: .62em; height: 1.7em; }

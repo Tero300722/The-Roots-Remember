@@ -216,7 +216,7 @@ main{min-height:75vh}
 .player-credit{margin-bottom:24px;color:rgb(var(--char-rgb));font-size:1.05rem}
 .detail-stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
 .detail-row{padding:16px 18px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.025)}
-.detail-row span{display:block;margin-bottom:6px;color:#8e887d;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.detail-row > span{display:block;margin-bottom:6px;color:#8e887d;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
 .detail-row strong{color:#f4ecdf;font-size:1rem}
 .character-profile-description{margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07)}
 .character-profile-description>span{display:block;margin-bottom:10px;color:#e0c180;font-family:"Cinzel",serif;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase}
@@ -1038,7 +1038,7 @@ body.chronicle-grimwood-active .custom-cursor.active .cursor-ring{border-color:r
 /* ---------- Grimwood character accents ---------- */
 .grimwood-character-card .character-player{color:rgb(var(--accent-rgb));text-shadow:0 0 16px rgba(var(--accent-rgb),.10)}
 .grimwood-character-card .tag{border-color:rgba(var(--accent-rgb),.24);background:rgba(var(--accent-rgb),.055);color:#ded7cf}
-.grimwood-character-detail-wrap .detail-row span{color:rgba(var(--char-rgb),.82)}
+.grimwood-character-detail-wrap .detail-row > span{color:rgba(var(--char-rgb),.82)}
 .grimwood-character-detail-wrap .detail-row{border-color:rgba(var(--char-rgb),.14)}
 
 /* ---------- Shared NPC archive: Grimwood's layout in both chronicles ---------- */
