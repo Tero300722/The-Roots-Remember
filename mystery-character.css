@@ -1,0 +1,39 @@
+/* This character alone carries the white accent and shifting inscriptions. */
+.mystery-character .character-player,
+.mystery-character .player-credit,
+.mystery-character .tag,
+.mystery-character .detail-row strong { color: #fff; }
+.mystery-character .tag { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.045); }
+.mystery-symbols {
+  display: inline-grid;
+  max-width: 100%;
+  vertical-align: middle;
+  font-family: 'DejaVu Sans', 'Segoe UI Symbol', 'Apple Symbols', sans-serif;
+  font-size: .85em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: .035em;
+  color: inherit;
+}
+.mystery-symbol-line { display: flex; gap: .14em; white-space: nowrap; }
+.mystery-symbol-slot {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 1.2em;
+  width: 1.2em;
+  height: 1.6em;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.mystery-symbol-glyph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  line-height: 1.6;
+}
+.mystery-character .character-profile-description .mystery-symbols { row-gap: .65em; color: #d9d9df; }
+.mystery-character .character-detail-copy h2 .mystery-symbols { font-size: .65em; }
+@media (prefers-reduced-motion: reduce) {
+  .mystery-symbol-glyph { animation: none; }
+}

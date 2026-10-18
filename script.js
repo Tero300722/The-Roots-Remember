@@ -105,6 +105,21 @@ const DATA = {
         "Bold, confident, and possessed of a heroic ego to match, Vaeloryn is always the first to throw himself into danger and often assumes everyone else will follow. He carries himself like the hero of a story already being written, meeting impossible odds with bravado, determination, and an almost reckless eagerness to prove himself.",
         "In battle, he fights on the front lines, weaving martial skill and magic together while calling upon the Vestiges—souls of the departed that manifest through him as spectral pact weapons with mystical abilities."
       ],
+    },
+    {
+      "slug": "unknown-adventurer",
+      "name": "⋄ ⊗ ∴ ⌖ ∿ ⊹ ◇",
+      "player": "Daniel Mercieca",
+      "mystery": true,
+      "sheetImage": "assets/characters/full/unknown-adventurer.webp",
+      "cardImage": "assets/characters/cards/unknown-adventurer.webp",
+      "fullImage": "assets/characters/full/unknown-adventurer.webp",
+      "className": "⊙ ∷ ⋈ ⌁",
+      "subclass": "⌖ ⊹ ◇ ∴ ⊥ ∿",
+      "accent": "255, 255, 255",
+      "description": [
+        "∴ ⌖ ◇ ⊥ ∿ ⊙ ⋄ ⌁ ⊹ ⋈"
+      ]
     }
   ],
   quests: [
@@ -749,6 +764,8 @@ function makeCharacterCard(character, index) {
     </div>
   `;
 
+  if (character.mystery) window.MysteryCharacter.mount(card);
+
   const open = () => openCharacter(character);
   card.addEventListener('click', open);
   card.addEventListener('keydown', event => {
@@ -802,6 +819,7 @@ DATA.characters
   .forEach(character => rememberedPlayerList.appendChild(makeRememberedCard(character)));
 
 function renderCharacterDetail(character) {
+  window.MysteryCharacter.unmount(characterDetailContent.querySelector(".mystery-character"));
   characterDetailContent.innerHTML = `
     <article class="character-detail-wrap${character.deceased ? ' is-deceased' : ''}" style="--char-rgb:${character.accent}; --detail-bg:url('${asset(character.sheetImage)}')">
       <div class="character-detail-bg" aria-hidden="true"></div>
@@ -828,6 +846,7 @@ function renderCharacterDetail(character) {
       </div>
     </article>
   `;
+  if (character.mystery) window.MysteryCharacter.mount(characterDetailContent.querySelector('.character-detail-wrap'), true);
   window.ChronicleTools?.updateCharacterNavigation('trr', character);
 }
 
