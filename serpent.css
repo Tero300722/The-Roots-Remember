@@ -1,0 +1,78 @@
+/* Realm of Shadow: charcoal, tarnished gold, ash and Messmer's crimson.
+   Scoped to this chronicle; no visual changes to existing chronicles. */
+#chronicle-selector .chronicle-card-serpent{--cover-accent:179,151,92;grid-column:1/-1;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+#chronicle-selector .chronicle-card-serpent .chronicle-card-art{object-fit:cover}
+#chronicle-selector .chronicle-card-serpent .chronicle-card-copy{background:radial-gradient(ellipse at top right,#69332a25,transparent 70%),#171610}
+#chronicle-selector .chronicle-card-serpent .chronicle-card-copy>strong{font-size:clamp(2rem,3.4vw,3rem)}
+#chronicle-selector .chronicle-card-serpent .chronicle-card-subtitle{color:#d2ba80;font-size:clamp(.85rem,1.5vw,1.1rem);letter-spacing:.1em}
+body.chronicle-serpent-active{--bg:#11120f;--ink:#eee7d8;--muted:#b5afa0;--gold:#bca36c;--line:#a58c533d;background:#11120f}
+body.chronicle-serpent-active .world-bg{background:radial-gradient(ellipse at 50% 8%,#72623a22,transparent 55%),linear-gradient(#161711,#0d0e0c)}
+body.chronicle-serpent-active .world-bg .aurora,body.chronicle-serpent-active .world-bg .rune{display:none;animation:none}
+.serpent-shell{max-width:1260px}
+.serpent-shell[hidden]{display:none!important}
+.serpent-shell .serpent-topbar{background:#12130feF;border-color:#ad94573b;gap:22px;margin-bottom:24px}
+.serpent-shell .brand strong{color:#dbc595}
+.serpent-shell .brand small{color:#b2a991}
+.serpent-nav{gap:5px}
+.serpent-nav a{text-decoration:none}
+.serpent-nav .nav-link{white-space:nowrap}
+.serpent-shell .nav-link.active,.serpent-shell .nav-link:hover{background:#9b84401a;color:#e2d3b1;border-color:#b69b5c44}
+.serpent-shell button:focus-visible,.serpent-shell a:focus-visible,.serpent-trailer button:focus-visible,.serpent-trailer input:focus-visible{outline:2px solid #ead29c;outline-offset:5px}
+.serpent-hero{position:relative;isolation:isolate;min-height:540px;display:grid;align-items:center;text-align:center;overflow:hidden;border:1px solid #b49a603f;background:#22231a}
+.serpent-hero::after{content:'';position:absolute;inset:12px;z-index:-1;border:1px solid #d1b7772b;pointer-events:none}
+.serpent-hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;z-index:-3}
+.serpent-hero::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#11120f63 0%,#11120f4d 30%,#11120f9c 63%,#11120ff0 100%),linear-gradient(90deg,#11120f12,#11120f45)}
+.serpent-hero-meta{position:absolute;top:31px;left:35px;right:35px;display:flex;justify-content:space-between;gap:12px;color:#e0d0a8;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 2px 9px #000}
+.serpent-hero-meta>span:last-child{border:1px solid #b59a5e70;padding:6px 10px;background:#15160fc9}
+.serpent-hero-copy{padding:100px 24px 84px;text-shadow:0 3px 22px #0009}
+.serpent-kicker{color:#bca36c;font-size:.67rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin:0 0 22px}
+.serpent-hero .serpent-kicker{color:#ead8a5}
+.serpent-hero h1{font-family:Cinzel,Georgia,serif;font-size:clamp(3rem,7vw,6rem);line-height:1.12;font-weight:500;letter-spacing:.05em;color:#f2e6c5;margin:0;outline:none}
+.serpent-hero h1 span{display:block;font-size:clamp(1.1rem,2.9vw,2.1rem);letter-spacing:.12em;margin-top:19px;color:#e6d5ad}
+.serpent-ornament{display:flex;gap:18px;align-items:center;justify-content:center;margin:28px auto 20px;color:#d1b675}
+.serpent-ornament span{width:95px;height:1px;background:linear-gradient(90deg,transparent,#bd9f63)}
+.serpent-ornament span:last-child{transform:rotate(180deg)}
+.serpent-credit{color:#c8c1af;font-size:.75rem;letter-spacing:.045em}.serpent-credit strong{color:#e0c78d;font-weight:500}
+.serpent-sequel{position:absolute;bottom:25px;left:25px;right:25px;margin:0;color:#b5ab90;font:italic 1.1rem 'Cormorant Garamond',Georgia,serif}
+.serpent-invocation{text-align:center;margin:0;padding:54px 20px;border-bottom:1px solid #b79a5b2d}
+.serpent-invocation p{margin:0;color:#d2c5a6;font:italic clamp(1.4rem,2.5vw,1.85rem)/1.55 'Cormorant Garamond',Georgia,serif}
+.serpent-prologue{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.5fr);gap:clamp(35px,7vw,100px);padding:70px clamp(20px,4vw,65px) 55px}
+.serpent-prologue-heading h2{color:#d5c08d;font:500 clamp(2.7rem,5vw,4.2rem)/1.12 'Cormorant Garamond',Georgia,serif;margin:0}
+.serpent-heading-line{display:block;width:60px;height:2px;margin:28px 0 20px;background:#995240}
+.serpent-location{font:.65rem/1.7 Cinzel,Georgia,serif;letter-spacing:.13em;color:#a59d87}
+.serpent-replay-link{background:transparent;border:0;border-bottom:1px solid #aa92574f;color:#d1b67a;padding:14px 0;display:inline-flex;align-items:center;gap:12px;cursor:pointer;font-size:.76rem;margin-top:22px}
+.serpent-replay-link:hover{color:#f4dda3;border-color:#f4dda3}
+.serpent-prologue-copy{color:#c8c4b8;font-size:.95rem;line-height:1.95;max-width:720px}
+.serpent-prologue-copy p{margin:0 0 22px}.serpent-prologue-copy strong{color:#e0c58e;font-weight:600}
+.serpent-prologue-copy .serpent-opening{color:#e0d6c0;font:1.5rem/1.6 'Cormorant Garamond',Georgia,serif}
+.serpent-prologue-copy .serpent-opening::first-letter{float:left;font:3.8rem/.85 'Cormorant Garamond',Georgia,serif;padding:9px 10px 0 0;color:#c0a367}
+.serpent-prologue-copy .serpent-turning-point{border-left:2px solid #9c5144;padding:8px 0 8px 20px;margin:30px 0;background:linear-gradient(90deg,#6c292816,transparent)}
+.serpent-turning-point strong{font:500 1.55rem 'Cormorant Garamond',Georgia,serif!important;color:#d7a18b!important}
+.serpent-prologue-copy .serpent-final-name{font:500 clamp(1.7rem,3vw,2.4rem)/1.4 Cinzel,Georgia,serif;padding-top:4px}.serpent-final-name strong{color:#c88b71;font-weight:500}
+.serpent-benediction{text-align:center;padding:45px 20px 65px;border-top:1px solid #b79a5b2d;background:radial-gradient(ellipse at top,#8e793714,transparent 65%)}
+.serpent-benediction>span{color:#ae9153;font-size:1.4rem}.serpent-benediction p{color:#b9b29e;font:italic 1.5rem/1.5 'Cormorant Garamond',Georgia,serif;margin:20px 0 0}
+.serpent-shell .serpent-footer{border-top-color:#b79a5b2d;display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 16px 36px;text-align:center;color:#aa9976}.serpent-footer small:last-child{font-size:.58rem;color:#858274;max-width:650px}
+.serpent-trailer{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#efe4cb;overflow:hidden}
+.serpent-trailer:not([open]){display:none}.serpent-trailer::backdrop{background:#000}
+.serpent-trailer video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+body.serpent-trailer-open{overflow:hidden}
+.serpent-trailer .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.serpent-trailer-message{position:absolute;inset:35% 15% auto;display:grid;justify-items:center;text-align:center;pointer-events:none;text-shadow:0 2px 6px #000}
+.serpent-trailer-message[hidden]{display:none}
+.serpent-trailer-message p{padding:12px 20px;background:#000b;border-radius:3px;font-size:.9rem;margin:0 0 12px}
+.serpent-trailer-message button{pointer-events:auto;background:#1d1b12f2;border:1px solid #bca36c;color:#f0dfb2;padding:13px 25px;cursor:pointer}
+.serpent-trailer-controls{position:absolute;left:0;right:0;bottom:0;padding:42px clamp(18px,4vw,55px) max(24px,env(safe-area-inset-bottom));background:linear-gradient(transparent,#000c 45%,#000f);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.serpent-playback-controls{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:.7rem;color:#c7bea7}
+.serpent-trailer-controls button{border:1px solid #baa57570;background:#0b0c0bbf;color:#eee0bc;cursor:pointer;min-height:43px;padding:10px 17px;font-size:.75rem}
+.serpent-trailer-controls button:hover{background:#b59b5c24;border-color:#d9be7b}
+.serpent-trailer-volume{display:flex;align-items:center;gap:9px;font-size:.68rem}.serpent-trailer-volume input{width:100px;accent-color:#c9ac6c}.serpent-trailer-volume output{min-width:3ch}
+.serpent-trailer-controls .serpent-trailer-skip{display:flex;gap:24px;align-items:center;white-space:nowrap;font-family:Cinzel,Georgia,serif;letter-spacing:.04em;border-color:#c9ab66ab;flex-shrink:0}
+@media(max-width:850px){#chronicle-selector .chronicle-card-serpent{grid-template-columns:minmax(0,1fr)}#chronicle-selector .chronicle-card-serpent .chronicle-card-art-wrap{aspect-ratio:16/9;max-height:360px}#chronicle-selector .chronicle-card-serpent .chronicle-card-copy{border-left:0;border-top:1px solid #ad94573b}.serpent-hero{min-height:470px}.serpent-prologue{grid-template-columns:1fr;gap:30px;padding:45px 24px}.serpent-prologue-heading h2 br{display:none}.serpent-prologue-heading h2{font-size:2.7rem}.serpent-replay-link{margin-top:5px}}
+@media(max-width:600px){.serpent-shell .serpent-topbar{gap:10px;grid-template-columns:1fr;width:100%}.serpent-nav{flex-wrap:wrap}.serpent-hero{min-height:400px}.serpent-hero-meta{top:24px;left:24px;right:24px;font-size:.5rem;letter-spacing:.08em}.serpent-hero h1{font-size:2.8rem}.serpent-hero h1 span{font-size:1rem;letter-spacing:.06em}.serpent-sequel{font-size:.9rem}.serpent-invocation{padding:34px 15px}.serpent-trailer-controls{padding:40px 14px 20px;gap:12px}.serpent-playback-controls{gap:9px;max-width:60%}.serpent-trailer-volume{gap:5px}.serpent-trailer-volume input{width:65px}#serpent-trailer-time{display:none}.serpent-trailer-controls .serpent-trailer-skip{gap:10px;padding:10px 12px;font-size:.65rem}.serpent-trailer-message{inset:30% 10% auto}}
+
+/* Native dialogs sit above the decorative cursor; restore the OS pointer. */
+body.serpent-trailer-open #serpent-trailer,
+body.serpent-trailer-open #serpent-trailer * { cursor: default !important; }
+body.serpent-trailer-open #serpent-trailer button,
+body.serpent-trailer-open #serpent-trailer input[type="range"] { cursor: pointer !important; }
+body.serpent-trailer-open .custom-cursor { visibility: hidden; }

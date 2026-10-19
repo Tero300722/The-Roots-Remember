@@ -47,8 +47,9 @@
   <link rel="stylesheet" href="chronicle-menu.css?v=20261015-menu-only" />
   <link rel="stylesheet" href="navbar-icons.css?v=20261015-icons" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=IM+Fell+English&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="mystery-character.css?v=20261018-runes" />
+  <link rel="stylesheet" href="mystery-character.css?v=20261019-short-bio" />
   <link rel="stylesheet" href="npc-archive.css?v=20261018-faces" />
+  <link rel="stylesheet" href="serpent.css?v=20261019-controls2" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -107,6 +108,17 @@
             <strong>Into the Grimwood Manor</strong>
             <span class="collection-card-note">An invitation awaits.</span>
             <span class="chronicle-creator">Created by <span>Gianluca Amato</span></span>
+            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
+          </span>
+        </button>
+
+        <button class="chronicle-card chronicle-card-serpent" type="button" data-chronicle="serpent" aria-label="Enter Elden Ring: The Serpent’s Lament, upcoming mini campaign created by Mikael Delia. Plays an opening trailer.">
+          <span class="chronicle-card-art-wrap"><img class="chronicle-card-art" src="assets/serpent/shadow-realm.webp" width="1280" height="720" alt="The Scadutree above a mist-covered field of gold" loading="lazy" decoding="async"></span>
+          <span class="chronicle-card-copy">
+            <span class="chronicle-card-meta"><span class="chronicle-type">Sequel · Mini Campaign</span><span class="chronicle-status chronicle-status-upcoming">Coming soon</span></span>
+            <strong>Elden Ring</strong><span class="chronicle-card-subtitle">The Serpent’s Lament</span>
+            <span class="collection-card-note">Beyond the sight of the Erdtree.</span>
+            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
             <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
           </span>
         </button>
@@ -714,6 +726,70 @@
     <footer><span>ELDEN RING · BEYOND THE FRENZIED FLAME</span><small>Created by Mikael Delia · Completed Mini Campaign</small></footer>
   </div>
 
+  <div class="page-shell serpent-shell" id="serpent-shell" hidden>
+    <header class="topbar compact-topbar serpent-topbar">
+      <button class="brand brand-chronicle-switch" type="button" data-switch-chronicle aria-label="Return to chronicle selection" title="Switch Chronicle">
+        <span class="chronicle-nav-icon" aria-hidden="true"><img src="assets/nav-icons/elden.webp" width="384" height="288" alt="" decoding="async"></span>
+        <span><strong>Elden Ring</strong><small>The Serpent’s Lament</small></span><span class="brand-switch-glyph" aria-hidden="true">↩</span>
+      </button>
+      <nav class="nav serpent-nav" aria-label="The Serpent’s Lament navigation">
+        <a class="nav-link active" href="#/serpent/premise" aria-current="page">Premise</a>
+        <button class="nav-link" type="button" data-serpent-replay><span aria-hidden="true">▷</span> Replay trailer</button>
+      </nav>
+    </header>
+    <main>
+      <header class="serpent-hero" aria-labelledby="serpent-title">
+        <img class="serpent-hero-art" src="assets/serpent/shadow-realm.webp" width="1280" height="720" alt="The Scadutree rises through the dark skies of the Realm of Shadow" loading="lazy" decoding="async">
+        <div class="serpent-hero-meta"><span>Sequel · Mini Campaign</span><span>Coming soon</span></div>
+        <div class="serpent-hero-copy">
+          <p class="serpent-kicker">Beneath the Scadutree</p>
+          <h1 id="serpent-title" tabindex="-1">Elden Ring<span>The Serpent’s Lament</span></h1>
+          <div class="serpent-ornament" aria-hidden="true"><span></span>✧<span></span></div>
+          <p class="serpent-credit">Created by <strong>Mikael Delia</strong></p>
+        </div>
+        <p class="serpent-sequel">A sequel to Beyond the Frenzied Flame</p>
+      </header>
+      <blockquote class="serpent-invocation"><p>“Where the light of gold does not reach,<br>the flames of a forsaken lord still burn.”</p></blockquote>
+      <article class="serpent-prologue" aria-labelledby="serpent-premise-title">
+        <header class="serpent-prologue-heading">
+          <p class="serpent-kicker">I · Campaign Premise</p>
+          <h2 id="serpent-premise-title">A realm<br>forsaken.</h2>
+          <span class="serpent-heading-line" aria-hidden="true"></span>
+          <p class="serpent-location">The Realm of Shadow</p>
+          <button class="serpent-replay-link" type="button" data-serpent-replay><span aria-hidden="true">▷</span> Watch the trailer</button>
+        </header>
+        <div class="serpent-prologue-copy">
+          <p class="serpent-opening">Beyond the sight of the Erdtree lies a forgotten realm, concealed from the Lands Between and erased from history. A land beneath the towering Scadutree, scarred by an ancient and merciless crusade.</p>
+          <p>Long ago, <strong>Messmer the Impaler</strong>, forsaken son of Queen Marika, led his armies through the Realm of Shadow, bringing fire and slaughter upon its inhabitants. Kingdoms fell, civilizations crumbled, and countless souls perished beneath his crimson banners.</p>
+          <p>Yet the passage of time has brought no peace.</p>
+          <p>Whispers of unrest spread across the land. Forgotten battlefields stir, settlements fall silent, and the flames of Messmer's crusade threaten to consume what little remains.</p>
+          <p class="serpent-turning-point"><strong>Something has changed.</strong></p>
+          <p>Now, warriors, wanderers, and outcasts find themselves drawn into this forsaken realm. Some seek vengeance, others redemption, forgotten knowledge, or glory. Whatever their purpose, their paths shall intertwine beneath the Scadutree.</p>
+          <p>Their journey will lead through ruined kingdoms, ancient strongholds, and lands haunted by the sins of gods.</p>
+          <p>And at the end of that road awaits a demigod.</p>
+          <p class="serpent-final-name"><strong>Messmer the Impaler.</strong></p>
+        </div>
+      </article>
+      <div class="serpent-benediction"><span aria-hidden="true">✧</span><p>May the fallen find solace,<br>and may the forsaken find their rest.</p></div>
+    </main>
+    <footer class="serpent-footer"><span>ELDEN RING · THE SERPENT’S LAMENT</span><small>Created by Mikael Delia · An upcoming mini campaign</small><small>Fan campaign · Elden Ring artwork and trailer ©Bandai Namco Entertainment Inc. / ©FromSoftware, Inc.</small></footer>
+  </div>
+
+  <dialog class="serpent-trailer" id="serpent-trailer" aria-labelledby="serpent-trailer-title" aria-describedby="serpent-trailer-help">
+    <h2 class="sr-only" id="serpent-trailer-title">The Serpent’s Lament · Opening trailer</h2>
+    <p class="sr-only" id="serpent-trailer-help">The chronicle opens when the trailer ends. Use Skip trailer or Escape to enter immediately.</p>
+    <video id="serpent-video" preload="none" playsinline aria-label="Elden Ring opening trailer" poster="assets/serpent/shadow-realm.webp"></video>
+    <div class="serpent-trailer-message" id="serpent-trailer-message"><p id="serpent-trailer-status" role="status" aria-live="polite">Loading trailer…</p><button type="button" id="serpent-trailer-retry" hidden>Play trailer</button></div>
+    <div class="serpent-trailer-controls">
+      <div class="serpent-playback-controls">
+        <button type="button" id="serpent-trailer-toggle" aria-label="Pause trailer">Pause</button>
+        <label class="serpent-trailer-volume">Volume <input id="serpent-trailer-volume" type="range" min="0" max="100" value="50" step="1" aria-label="Trailer volume"><output id="serpent-trailer-volume-label">50%</output></label>
+        <span id="serpent-trailer-time" aria-hidden="true">0:00 / 1:43</span>
+      </div>
+      <button type="button" class="serpent-trailer-skip" id="serpent-trailer-skip">Skip trailer <span aria-hidden="true">→</span></button>
+    </div>
+  </dialog>
+
   <div class="chronicle-tools-modal" id="chronicle-tools-modal" hidden>
     <div class="chronicle-tools-backdrop" data-tools-close aria-hidden="true"></div>
     <section class="chronicle-tools-panel" role="dialog" aria-modal="true" aria-labelledby="chronicle-tools-title" tabindex="-1">
@@ -728,7 +804,8 @@
   <script src="music.js?v=20261012-echoes-music"></script>
   <script src="npc-archive.js?v=20261018-faces"></script>
   <script src="mystery-character.js?v=20261018-runes"></script>
-  <script src="script.js?v=20261018-npc-faces"></script>
+  <script src="serpent.js?v=20261019-controls2"></script>
+  <script src="script.js?v=20261019-serpent1"></script>
   <script src="character-presentation.js?v=20261014-three-four"></script>
   <script src="echoes.js?v=20261014-three-four"></script>
   <script src="elden.js?v=20261014-npc-archive"></script>

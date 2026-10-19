@@ -7,7 +7,7 @@
 }
 /* This character alone carries the white accent and shifting inscriptions. */
 .mystery-character .character-player,
-.mystery-character .player-credit,
+.mystery-character .player-credit { color: #e1c584; }
 .mystery-character .tag,
 .mystery-character .detail-row strong { color: #fff; }
 .mystery-character .tag { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.045); }

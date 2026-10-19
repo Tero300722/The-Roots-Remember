@@ -118,10 +118,8 @@ const DATA = {
       "subclass": "ᚴ ᚼ ᚾ ᛏ ᛒ ᛘ",
       "accent": "255, 255, 255",
       "description": [
-        "ᚼᛋᚦᛚᚬ ᚾᚢᛁᛁᚴᚢ ᚾᚱ ᚬ ᚦᚾᚼᚦᚬᛦᚠᚦᚬᚴᚦ ᚢᚢᛋᚬ ᛅᚬᚢᚦᛚ ᚾᛦᛦᛘ ᚼᚠ ᛦᚼᚼ ᚠᚱᚬᛅᛒᚼᚢ ᚠᛏ ᛏᛚᚼ ᚬᚦᚾᚱᚼᚦᛏ ᚼᛘᛒᚴᛚ ᛚᚼᛁ ᛒᛦᛋᚦᚠᚾᚾᚢᛋᚱ ᛁᛒᚢ ᛦᛒᛘᛒᚾᛏᚬ ᛚᚾᚱᚱᚬᛘᚼᚱᚴ ᚢᚢᛒᚴᛁ ᛁᛒᛁᛒᛋᛒᚼ ᚢᚴᛋ ᛅᚢᛋᚢᛚ ᚼᚼᚱᚾ ᛏᛒᚢ ᚱᛁᛁᛋᛅᛚᚢ ᛁᚠ ᚾᚱᚢ ᚢᚦᚠᛁᛁᚱᚬᛒᛒ ᛒᚴ ᚱ ᚼᛒᚴᚱᚱ ᚠᛚᚬ ᛦᚢᚬᛏᚴᚬᛏᛅ ᚾᚬᛏ ᚬᛚᛘᚠᛦ ᚼᚴᛁᚬᚱ ᛅᛋᚢᚴᚴ ᚠᚬᛒ ᚢᚴᛁᚱᛚ ᚬᚴᚾᛒᚬ ᚠᛏᚼᚠᚠᛅ ᛚᚠ ᛚᚠᚱᛚ ᛏᚴᛒ ᚠᚴ ᛅᚢᛚᛁᛒᚢᛒᛅ",
-        "ᚦᛘᛅ ᛁᛦᚠᛅᚱᛁᛋᚱᚼ ᛘᚾᛒᚱᛚᚼᚦ ᛦᛒ ᚾ ᛦᛘᛅᚱ ᛘᚴᚾᛚᛋᛏᛅ ᚾᚢᚠᛘᛒᚱᛒᛚᚴᛁᛏ ᚠᛦ ᚼᚼᚱᚾᛁᚠᚦᚬᛏᚠ ᚴᛋᛋᛋᚾᛒ ᚠᚠᚠ ᚬᚾᚠᚦᚱᛁᛒᛋᛏ ᚾᛚ ᛅᚴᚼᚠ ᚼᛚᛦ ᛒᛋᛅ ᚼᚱᚼᛦᚱ ᚢᚴᚠᚠᚬ ᚾᚦᛘᛋᚠ ᛏᚢᚦᛏᚴ ᛋᛚᚱᛚᚦ ᚦᚢᚠ ᚾᚾᚠᚼ ᛚᛁ ᛚᛋ ᛋᚢᛋᚬᚬᚾ ᛒᛦᛁᛚᛒᚱᛦᛏᚠ ᚬᛅ ᚬᚠᚴᚾᚬ ᚱᚼ ᛚᛏᛅᛚᛅᚼᛦᛚᚦᛒ ᚼᚠᚦᚬᛚ ᛋᛚᚠ ᚦᚢᚦᚱᛁᚼᛘᚢᛚ ᛒᛦ ᚾᛚᚬᚴ ᛁᛒᛒ ᛏᚴᛏᚴᛋᚼ ᚢᚢᚦᚼ ᚢᚱᛁ ᚢᛏ ᛏᚠᛘᛏᛚ ᛒᚠᚦᚴᚾᚬᛅᛦᚢᛚ",
-        "ᛚᛦᛋᛏᛅ ᚴᚦ ᛏᚬᚠᛅ ᚢᚼᛘᛘᛘ ᛁᛒᚴᚱ ᚱᚬ ᛒᛘᚾᚦᛋᛅᚦᚴ ᛋᚠᛅ ᛁᚠᛦᛦᚦᚠ ᛅᛚ ᚢᚦᚾᛘᚴᛒ"
-      ]
+  "ᚼᛋᚦᛚᚬ ᚾᚢᛁᛁᚴᚢ ᚾᚱ ᚬᚦᚾᚼ ᚢᚢᛋᚬ ᛅᚬᚢᚦᛚ ᚾᛦᛦᛘ ᚼᚠᛦ ᚠᚱᚬᛅᛒ ᛏᛚᚼ"
+]
     }
   ],
   quests: [
@@ -476,6 +474,7 @@ const siteShell = document.getElementById('site-shell');
 const grimwoodShell = document.getElementById('grimwood-shell');
 const echoesShell = document.getElementById('echoes-shell');
 const eldenShell = document.getElementById('elden-shell');
+const serpentShell = document.getElementById('serpent-shell');
 const switchChronicleButtons = [...document.querySelectorAll('[data-switch-chronicle]')];
 const pages = [...siteShell.querySelectorAll('.page')];
 const navButtons = [...siteShell.querySelectorAll('.nav-link[data-page], .nav-dropdown-item[data-page]')];
@@ -518,14 +517,17 @@ function hideChronicleSelector() {
 
 function showChronicleSelector() {
   const previousChronicle = currentChronicle;
+  window.SerpentChronicle.leave();
   window.ChronicleTools?.close({ restoreFocus: false });
   chronicleMusic.leave();
-  document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active','chronicle-echoes-active','chronicle-elden-active');
+  document.body.classList.remove('chronicle-trr-active','chronicle-grimwood-active','chronicle-echoes-active','chronicle-elden-active','chronicle-serpent-active');
   currentChronicle = null;
   siteShell.hidden = true;
   grimwoodShell.hidden = true;
   echoesShell.hidden = true;
   eldenShell.hidden = true;
+  serpentShell.hidden = true;
+  syncParticleMotion();
   chronicleSelector.inert = false;
   chronicleSelector.classList.remove('dismissed');
   chronicleSelector.removeAttribute('aria-hidden');
@@ -537,9 +539,11 @@ function showChronicleSelector() {
 }
 
 function selectChronicle(chronicle) {
-  if (!['trr', 'grimwood', 'echoes', 'elden'].includes(chronicle)) return;
+  if (!['trr', 'grimwood', 'echoes', 'elden', 'serpent'].includes(chronicle)) return;
+  window.SerpentChronicle.leave();
   window.ChronicleTools?.close({ restoreFocus: false });
-  if (chronicle === 'echoes') chronicleMusic.leave();
+  if (chronicle === 'serpent') chronicleMusic.destroy();
+  else if (chronicle === 'echoes') chronicleMusic.leave();
   else chronicleMusic.enter(chronicle);
   currentChronicle = chronicle;
   document.body.classList.toggle('chronicle-trr-active', chronicle === 'trr');
@@ -548,7 +552,17 @@ function selectChronicle(chronicle) {
   echoesShell.hidden = chronicle !== 'echoes';
   eldenShell.hidden = chronicle !== 'elden';
   document.body.classList.toggle('chronicle-elden-active', chronicle === 'elden');
+  document.body.classList.toggle('chronicle-serpent-active', chronicle === 'serpent');
+  serpentShell.hidden = chronicle !== 'serpent';
+  syncParticleMotion();
   hideChronicleSelector();
+
+  if (chronicle === 'serpent') {
+    siteShell.hidden = true;
+    grimwoodShell.hidden = true;
+    window.SerpentChronicle.enter();
+    return;
+  }
 
   if (chronicle === 'elden') {
     siteShell.hidden = true;
@@ -1385,7 +1399,7 @@ function drawParticles(time = 0) {
 }
 
 function syncParticleMotion() {
-  const shouldPause = reducedMotion.matches || document.visibilityState !== 'visible';
+  const shouldPause = reducedMotion.matches || document.visibilityState !== 'visible' || currentChronicle === 'serpent';
   if (shouldPause) {
     if (animationFrame) cancelAnimationFrame(animationFrame);
     animationFrame = null;
@@ -1405,6 +1419,11 @@ syncParticleMotion();
 function renderFromHash({ immediate = true } = {}) {
   const rawHash = location.hash.slice(1);
   const hash = rawHash.startsWith('/') ? rawHash.slice(1) : rawHash;
+
+  if (currentChronicle === 'serpent') {
+    window.SerpentChronicle.renderFromHash();
+    return;
+  }
 
   if (currentChronicle === 'elden') {
     window.EldenChronicle.renderFromHash(hash);
