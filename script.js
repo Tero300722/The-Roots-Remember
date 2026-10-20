@@ -75,22 +75,6 @@ const DATA = {
       ],
     },
     {
-      slug: "syrsa-orsona",
-      name: "Syrsa Orsona",
-      player: "James Bianco",
-      sheetImage: "assets/characters/full/syrsa-orsona.webp",
-      cardImage: "assets/characters/cards/syrsa-orsona.webp",
-      fullImage: "assets/characters/full/syrsa-orsona.webp",
-      className: "Bard",
-      subclass: "College of the Unbound Song",
-      accent: "255, 220, 58",
-      description: [
-        "Syrsa Orsona is a 25-year-old Wood Elven Bard of the College of the Unbound Song. She discovered her magical abilities while playing the lute, when she learned of her potential as a Bard. She supports her party using magic and music while trying to stay out of trouble.",
-        "She describes herself as a free spirit, adventuring to experience events and conflicts so that she can later write songs about them. Her hope is to become famous—or at least be remembered after her death—and to show her family that she is worth something.",
-        "Syrsa is also quite fond of pipeweed and smokes it often."
-      ],
-    },
-    {
       slug: "vaeloryn-starsong",
       name: "Vaeloryn Starsong",
       player: "Gianluca Amato",
@@ -256,12 +240,12 @@ const DATA = {
       title: "A New Beginning in Valemere",
       paragraphs: [
         "Aurelius Tempestine arrived in the Kingdom of Valemere for the first time, unaware that the guards at the gate had quietly stolen his coin. Still, the lively streets ahead filled him with hope for a fresh beginning.",
-        "His first stop was the Middle Fiddler Tavern, packed with people celebrating the upcoming 10-Year Veridium Anniversary. Inside, Syrsa Orsona’s music had the entire tavern captivated, while childhood brothers Cassian Caelaris and Leoric Everheart relaxed together at the back.",
+        "His first stop was the Middle Fiddler Tavern, packed with people celebrating the upcoming 10-Year Veridium Anniversary. Inside, lively conversation filled the tavern, while childhood brothers Cassian Caelaris and Leoric Everheart relaxed together at the back.",
         "Elsewhere, Vaeloryn Starsong found himself chasing a young white vulpin who had stolen his gold. The chase ended when the cub crashed into the mysterious Morvan Nyx. After a tearful confession—and the unfortunate revelation that the gold had been thrown somewhere into the market—Vaeloryn accepted his loss and headed toward the anniversary celebrations alongside Morvan.",
         "At the plaza, the King unveiled Valemere’s future: Veridium, an endless source of energy for the kingdom. Then everything went wrong. The machine overloaded, sending strange energy across the plaza. Copper statues and armor came alive, attacking civilians as panic spread through the streets.",
-        "Six strangers stood together and fought back. After Leoric discovered that destroying the machine was the only way to stop the constructs, a Leonin warrior descended from the rooftops—Orthen Solaris—hurling his lance into the battle. Together, they destroyed the machine.",
-        "Instead of being celebrated as heroes, however, the six were blamed for the disaster. Orthen defended them, saving them from imprisonment, but they were placed under house arrest beneath his supervision.",
-        "And so, six strangers ended the night beneath Orthen’s roof, unaware that this was only the beginning of their journey."
+        "Five strangers stood together and fought back. After Leoric discovered that destroying the machine was the only way to stop the constructs, a Leonin warrior descended from the rooftops—Orthen Solaris—hurling his lance into the battle. Together, they destroyed the machine.",
+        "Instead of being celebrated as heroes, however, the five were blamed for the disaster. Orthen defended them, saving them from imprisonment, but they were placed under house arrest beneath his supervision.",
+        "And so, five strangers ended the night beneath Orthen’s roof, unaware that this was only the beginning of their journey."
       ]
     },
     {
@@ -269,14 +253,14 @@ const DATA = {
       title: "The Lion's Trial",
       paragraphs: [
         "The group arrived at Orthen Solaris' home, where they finally had the chance to speak about everything that had happened. But Orthen had something else in mind.",
-        "While his butler, Sebastian, prepared dinner, Orthen brought the six into his training room and challenged them himself. Six against one. Despite being a 64-year-old Leonin and admittedly rusty, Orthen fought with a grin on his face, constantly pushing them to stop holding back. As they listened, the sparring quickly became far more aggressive, with both sides throwing everything they had into the fight.",
+        "While his butler, Sebastian, prepared dinner, Orthen brought the five into his training room and challenged them himself. Five against one. Despite being a 64-year-old Leonin and admittedly rusty, Orthen fought with a grin on his face, constantly pushing them to stop holding back. As they listened, the sparring quickly became far more aggressive, with both sides throwing everything they had into the fight.",
         "The battle only ended when Sebastian calmly entered the room to announce that dinner was ready.",
         "Around the table, Orthen revealed the truth: the fight was never about winning. He wanted to understand who they were through the way they fought. As the setting sun filled the room with a golden light, Orthen critiqued each of them and asked a much bigger question: What do you want from your life?",
         "One by one, they answered honestly, and Orthen offered what advice he could. Eventually, he pulled out several mission requests and chose one for the group. A mineral shop had been robbed, and their task was simple: investigate the theft, find whoever was responsible, and bring them in.",
         "But Orthen had one personal request. While investigating, he asked them to keep an eye out for a Leonin who looked very much like him. His brother. He had been sent on a mission long ago... and never returned.",
         "Before beginning their adventure, the group decided to write letters to their loved ones. Meanwhile, Orthen began disabling the many traps scattered throughout his home so they could safely sleep in the guest rooms.",
         "Leoric, naturally, asked about books. Orthen showed him his study, with Morvan and Vaeloryn following close behind. The three searched through shelves of old books and scrolls, with Leoric eventually discovering a Misty Step spell scroll. Hours later, Orthen practically had to drag them out.",
-        "Before heading to bed, he went around wishing everyone goodnight. Unfortunately for him, when Syrsa opened her door, Orthen found himself staring at far more than he expected. After several seconds of completely losing the ability to form a sentence, the old Leonin finally composed himself, said goodnight, and escaped."
+        "Before heading to bed, Orthen went around wishing everyone goodnight. With the house finally quiet, the group settled into the guest rooms to rest before their first assignment."
       ]
     },
     {
@@ -287,9 +271,9 @@ const DATA = {
         "Orthen revealed why the Solaris name carried so much weight. His family had helped found part of the Royal Academy, with an entire school house—Solaris—named in their honour. For generations, the family had sworn to protect the innocent, though many viewed them less as heroes and more as vigilantes.",
         "Before sending the group out, Orthen gave one warning: Do not use his name. Too much attention could ruin the investigation. To keep them unnoticed, Sebastian prepared an ordinary commoner’s carriage.",
         "After sending their letters at the post office, the group reached the city gates, where guards searched both them and the carriage. Everything was cleared. But before they left, the guards gave them one final warning. Travellers and supply caravans using this road had been disappearing.",
-        "And so, their first true journey began. Aurelius played his lyre, Syrsa joined with her lute, and the others talked, joked, and slowly began learning more about one another.",
+        "And so, their first true journey began. Aurelius played his lyre while the others talked, joked, and slowly began learning more about one another.",
         "Until Vaeloryn spotted something strange beside the road. What initially looked like a pile of wood turned out to be a destroyed carriage, surrounded by worn clothing and the unmistakable stench of death.",
-        "While Morvan turned invisible and scouted ahead, Syrsa, Vaeloryn, and Cassian investigated. Then came the growl. A grey wolf watched them from the rocks above. Then another appeared behind them. The group quickly regrouped and fought them off—but the forest had something much worse waiting.",
+        "While Morvan turned invisible and scouted ahead, Vaeloryn and Cassian investigated. Then came the growl. A grey wolf watched them from the rocks above. Then another appeared behind them. The group quickly regrouped and fought them off—but the forest had something much worse waiting.",
         "A massive shadow passed overhead. One of the dead wolves suddenly vanished, leaving only enormous claw marks behind. Then, with a violent crash, a winged owlbear descended.",
         "The battle was brutal. Eventually, Morvan ended it by driving a lance straight through the creature’s heart, pinning it against a nearby tree. But during the fight, Leoric had learned the truth. The owlbear was a mother. She had young nearby.",
         "Unable to leave them to starve, the group cut meat from their fallen mother and brought it to the cubs. Most accepted it. One did not. It stared directly at Leoric with hatred, promising that they would meet again. And next time, it would not be peacefully.",
@@ -324,7 +308,7 @@ const DATA = {
       paragraphs: [
         "The night carried on, but for the group, everything had stopped. Leoric Everheart was dead. For a time, nobody knew what to say. Cassian’s grief quickly turned to fury, his anger consuming him as he struck the earth again and again, powerless to change what had happened. Vaeloryn could not accept it either. Desperate for another answer, he stepped away from the others and called upon one of his vestiges, demanding to know if Leoric could be brought back. The warning he received was clear: death and fate were not forces to be interfered with. Yet Vaeloryn continued to insist. Eventually, the vestige offered only one possibility—the Feywild, a realm where perhaps something capable of defying death could be found.",
         "As the vestige disappeared and Vaeloryn began making his way back, darkness suddenly swallowed everything around him. Black feathers drifted from above, and from beside him passed a faceless figure: the Queen of Ravens, deity of death. She spoke no words. She did not need to. A single expression directed toward Vaeloryn sent a chill through his entire body. Then, just as suddenly as it had appeared, the darkness tore away, leaving him standing once again beneath the night sky.",
-        "The group ultimately decided that Leoric needed to be returned to Silvercrest. Cassian believed his father deserved to hear what had happened and to receive his son himself. Morvan, however, had noticed two suspicious individuals travelling northwest toward Thornwatch Village. With a possible lead slipping away, the group made the difficult decision to split. Morvan and Vaeloryn would pursue the trail toward Thornwatch, while Cassian, Aurelius and Syrsa carried Leoric home.",
+        "The group ultimately decided that Leoric needed to be returned to Silvercrest. Cassian believed his father deserved to hear what had happened and to receive his son himself. Morvan, however, had noticed two suspicious individuals travelling northwest toward Thornwatch Village. With a possible lead slipping away, the group made the difficult decision to split. Morvan and Vaeloryn would pursue the trail toward Thornwatch, while Cassian and Aurelius carried Leoric home.",
         "With the help of Orina, they preserved Leoric’s body as best they could throughout the journey. Upon entering Silvercrest, the familiar sight of the Solaris Mansion was one of the first things they saw. Sebastian answered their knock, and one look at their faces was enough for him to know that something had gone terribly wrong. He immediately went to fetch Orthen. Heavy footsteps eventually echoed through the mansion as the old Leonin entered with his usual welcoming smile—but the moment he saw them, it vanished. Cassian explained what had happened. For a moment, Orthen seemed to shrink beneath the weight of the news. He struggled to contain the anxiety and grief building inside him before quietly offering a short prayer for Leoric.",
         "Then came the part Cassian had been dreading. They travelled to the home of Leoric’s father. When he opened the door and saw Cassian standing there, his first thought was that Leoric had gotten himself into trouble—or perhaps ended up in prison. He had no idea that his son’s body rested inside the carriage behind them. When he finally saw Leoric, he said nothing. Minutes passed in complete silence. Without a word, he magically lifted his son from the carriage, carried him inside, and closed the door.",
         "Meanwhile, Morvan and Vaeloryn had reached Thornwatch Village, where their search led them into a local tavern. Inside, unexpectedly, sat Gymerra, the owner of Stardust and Slag. She immediately recognized the two from the previous night. Her initial happiness quickly faded into unease, something Morvan immediately noticed. He grabbed three pints of beer, sat beside her, and turned the conversation into a drinking contest. Morvan came out victorious—and with Gymerra’s guard lowered, information began to spill. She spoke suspiciously of the Crown and of unusual purchases being made by the King through her establishment. Eventually, claiming exhaustion, Gymerra excused herself and returned to her room.",
@@ -345,17 +329,17 @@ const DATA = {
       number: "Session VI",
       title: "Ashes and Old Trails",
       paragraphs: [
-        "Cassian, Syrsa, and Aurelius finally arrived in Thornwood Village, where their first sight was the local tavern—and their first encounter was considerably stranger. Two dwarves came barging through its doors, one completely drunk, covered in dirt and still carrying his filthy pickaxe, while the other desperately tried to drag him toward work without touching so much as a speck of grime. Taking pity on the germophobic dwarf, Syrsa magically cleaned his companion before the group stepped inside.",
-        "The tavernkeep was already drunk despite it still being afternoon. He welcomed the unfamiliar faces before Syrsa reminded him that she was hardly unfamiliar at all. After taking a closer look, recognition struck him immediately. Syrsa had been here before. After an enthusiastic reunion, the group asked where Morvan and Vaeloryn were staying. Unfortunately, the tavernkeep was far too drunk to be useful and jokingly sent them to Room Four instead of Room Ten.",
+        "Cassian and Aurelius finally arrived in Thornwood Village, where their first sight was the local tavern—and their first encounter was considerably stranger. Two dwarves came barging through its doors, one completely drunk, covered in dirt and still carrying his filthy pickaxe, while the other desperately tried to drag him toward work without touching so much as a speck of grime. The pair waited for the commotion to pass before stepping inside.",
+        "The tavernkeep was already drunk despite it still being afternoon. He welcomed the unfamiliar faces, and the pair asked where Morvan and Vaeloryn were staying. Unfortunately, the tavernkeep was far too drunk to be useful and jokingly sent them to Room Four instead of Room Ten.",
         "Cassian knocked repeatedly before finally opening the door—and immediately regretted doing so. What followed was an extremely awkward confrontation with a maid who had most certainly not been expecting visitors. The argument became loud enough that Vaeloryn eventually threw open the door to Room Ten and shouted for everyone to keep quiet.",
         "The moment the others entered the correct room, the humour disappeared.",
-        "The stench of death filled the air. Gymerra’s corpse remained inside, dried blood staining the floor, walls, and carpet, with even more seeping from the wardrobe. Morvan and Vaeloryn were still asleep among the aftermath, utterly exhausted from the battle that had nearly killed them. Once awakened and cleaned up, they explained everything: Gymerra’s involvement, the goblin attack, Grimnak’s escape, and perhaps most painfully, the pride the goblins had taken in Leoric’s death.",
-        "Syrsa contacted the tavernkeep through magic and called him upstairs. The sight nearly broke him. Pale and shaken, he had to be seated while the group explained what had happened. Eventually, a decision was made. The bodies could not remain. They would be taken into the forest and burned, while Room Ten would remain closed until the damage could be repaired.",
-        "Before leaving, however, Syrsa heard something familiar from downstairs.",
+        "The stench of death filled the air. Gymerra’s corpse remained inside, dried blood staining the floor, walls, and carpet, with even more seeping from the wardrobe. Morvan was still asleep among the aftermath, and both men were utterly exhausted from the battle that had nearly killed them. Once Morvan had been awakened and the pair had cleaned themselves up, they explained everything: Gymerra’s involvement, the goblin attack, Grimnak’s escape, and perhaps most painfully, the pride the goblins had taken in Leoric’s death.",
+        "The group called the tavernkeep upstairs. The sight nearly broke him. Pale and shaken, he had to be seated while they explained what had happened. Eventually, a decision was made. The bodies could not remain. They would be taken into the forest and burned, while Room Ten would remain closed until the damage could be repaired.",
+        "Before leaving, however, the group heard music drifting up from downstairs.",
         "A lute.",
-        "The musician performing inside the tavern was Jack Vinland, a man who had once been something of a father figure to her. Months had passed since they had last seen one another, and their reunion brought a rare moment of genuine happiness into what had otherwise been a grim few days.",
+        "The musician performing inside the tavern was Jack Vinland. The group stopped to speak with him, and his music brought a rare moment of warmth into what had otherwise been a grim few days.",
         "The group eventually carried the bodies into the forest and set them alight. As flames consumed the evidence, reality itself suddenly tore open beside them. A portal appeared, and a man came hurtling through it at tremendous speed, crashing directly into a tree before collapsing unconscious.",
-        "Syrsa healed him.",
+        "The party rushed to his side and tended to his injuries.",
         "When the stranger awoke, he introduced himself as Valen, a multiversal merchant who travelled between worlds selling rare and unusual items. He explained that he came from another universe entirely—and that somewhere beyond their world, he was following another group of adventurers much like them. After thanking the party for saving him, Valen disappeared once again, leaving behind considerably more questions than answers.",
         "With the bodies gone, the party originally planned to return to Silvercrest and report everything to Orthen. Then they remembered the promise they had made him.",
         "His missing brother.",
@@ -365,7 +349,7 @@ const DATA = {
         "A Leonin.",
         "Gerxis.",
         "It was the first genuine lead they had found regarding Orthen’s missing brother.",
-        "With their search finally bearing fruit, Syrsa celebrated in her own way—by relentlessly flirting with Amanita until the poor tailor became so flustered that she began walking into nearly every corner of her own shop.",
+        "With their search finally bearing fruit, the group thanked Amanita and left her shop with renewed hope.",
         "Night had settled over Thornwood by the time they finished. Rather than return to the road, the group accepted Jack Vinland’s hospitality and stayed at his home for the evening.",
         "For the first time since Leoric’s death, the group had found something they desperately needed.",
         "A trail worth following."
@@ -430,21 +414,6 @@ const GRIMWOOD_CHARACTERS = [
     "accent": "166, 96, 218",
     "description": [
       "Lucien Veyr is a quiet, sharp-eyed High Elf rogue who works as an infiltrator and scout for adventuring parties. Calm, observant, and hard to read, he prefers precision over brute force, using stealth, psychic blades, and subtle illusions to control a fight before his enemies even realize he is there. Beneath the polished manners and dark clothing is a seasoned adventurer who notices everything and trusts very little."
-    ]
-  },
-  {
-    "slug": "xavier-serahart",
-    "name": "Xavier Serahart",
-    "player": "James Bianco",
-    "cardImage": "assets/grimwood/characters/cards/xavier-serahart.webp",
-    "fullImage": "assets/grimwood/characters/full/xavier-serahart.webp",
-    "className": "Paladin",
-    "subclass": "Oath of the Slaughter",
-    "accent": "104, 110, 122",
-    "description": [
-      "A human with the past of a raider, pillaging alongside his former tribe when the need arose. Although for him it was something more, it was a joy, a pleasure to shed blood, both his own and of others. After a few years he left his tribe due to disgust of them not enjoying the violence and killing only when necessary.",
-      "He made the decision to join an army of mercenaries to fight in plenty of wars and battles where he got what he wished... blood, screams and death. This devotion to the slaughter started to gift him with magical power which he used to increase his kill count. After concerns of his bloodlust started to arise throughout the regiment of the mercenary band, he was secretly laid off, leaving Xavier to fend for himself.",
-      "Later he came upon the adventuring guild where he saw an opportunity to hone his skills, take jobs and shed more blood. Nowadays he takes care to hide his true persona of a bloodthirsty maniac but when he smells or sees a bloody figure, the bloodhound is released..."
     ]
   },
   {
