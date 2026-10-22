@@ -1,7 +1,7 @@
 /* Realm of Shadow: charcoal, tarnished gold, ash and Messmer's crimson.
    Scoped to this chronicle; no visual changes to existing chronicles. */
 #chronicle-selector .chronicle-card-serpent{--cover-accent:179,151,92;grid-column:1/-1;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
-#chronicle-selector .chronicle-card-serpent .chronicle-card-art{object-fit:cover}
+#chronicle-selector .chronicle-card-serpent .chronicle-card-art{object-fit:contain}
 #chronicle-selector .chronicle-card-serpent .chronicle-card-copy{background:radial-gradient(ellipse at top right,#69332a25,transparent 70%),#171610}
 #chronicle-selector .chronicle-card-serpent .chronicle-card-copy>strong{font-size:clamp(2rem,3.4vw,3rem)}
 #chronicle-selector .chronicle-card-serpent .chronicle-card-subtitle{color:#d2ba80;font-size:clamp(.85rem,1.5vw,1.1rem);letter-spacing:.1em}
