@@ -64,17 +64,9 @@
     }
   ];
 
-  // Only archive thumbnails use a face crop; profiles show the complete artwork.
-  const crops = [
-    { x: 60, y: 25, scale: 1.35 },
-    { x: 66, y: 25, scale: 1.45 },
-    { x: 50, y: 24, scale: 1.12 },
-    { x: 50, y: 25, scale: 1.35 },
-    { x: 50, y: 25, scale: 1.45 },
-    { x: 52, y: 25, scale: 1.35 }
-  ];
-  people.forEach((person, index) => {
-    person.portraitCrop = crops[index];
+  // Supplied circular artwork is displayed whole; profiles retain their full portraits.
+  people.forEach(person => {
+    person.cardImage = person.image.replace('/portraits/', '/tokens/').replace('.webp', '.png');
     person.description = person.paragraphs;
     person.aliases = person.shortName ? [person.shortName] : [];
   });

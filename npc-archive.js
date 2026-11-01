@@ -96,7 +96,7 @@
         button.setAttribute('aria-label', `Read about ${person.name}, ${person.role}`);
         const frame = el('span', 'npc-directory-portrait');
         const image = el('img', '');
-        image.src = person.image;
+        image.src = person.cardImage || person.image;
         image.alt = '';
         image.width = person.imageSize?.[0] || 96;
         image.height = person.imageSize?.[1] || 96;
