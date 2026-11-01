@@ -30,13 +30,7 @@
     trr: DATA.npcs.map(npc => ({ ...npc, paragraphs: Array.isArray(npc.description) ? npc.description : [npc.description] })),
     echoes: [],
     elden: [],
-    grimwood: [...grimwoodShell.querySelectorAll('.npc-card')].map(card => ({
-      name: card.querySelector('.npc-copy h3').textContent,
-      role: card.querySelector('.npc-role').textContent,
-      image: card.querySelector('.npc-portrait img').getAttribute('src'),
-      paragraphs: [...card.querySelectorAll('.npc-copy p')].map(p => p.textContent),
-      target: card
-    }))
+    grimwood: window.GrimwoodArchive.npcs
   };
 
   function close({ restoreFocus = true } = {}) {
@@ -102,6 +96,12 @@
     img.src = person.fullImage || person.image;
     img.alt = person.name;
     img.decoding = 'async';
+    if (chronicle === 'grimwood' && type === 'npc' && person.portraitCrop) {
+      const { x, y, scale } = person.portraitCrop;
+      portrait.classList.add('grimwood-profile-face');
+      img.style.width = `${scale * 100}%`;
+      img.style.transform = `translate(-${x}%, -${y}%)`;
+    }
     portrait.appendChild(img);
     const copy = element('div', 'recap-person-copy');
     if (person.epithet) copy.appendChild(element('h3', 'npc-profile-epithet', person.epithet));
@@ -148,7 +148,7 @@
     people.forEach(entry => {
       const words = entry.person.name.split(/\s+/);
       const first = /^(baron|lady|lord|sir)$/i.test(words[0]) ? words[1] : words[0];
-      [entry.person.name, first].forEach(alias => {
+      [entry.person.name, first, ...(entry.person.aliases || [])].forEach(alias => {
         if (!alias) return;
         const key = alias.toLocaleLowerCase();
         if (!aliases.has(key)) aliases.set(key, entry);
@@ -232,8 +232,7 @@
         ...(person.death ? Object.values(person.death) : [])].filter(Boolean).join(' · '),
       () => visitCharacter(chronicle, person)));
     npcs[chronicle].forEach(person => addEntry(chronicle, person.name, 'NPC',
-      [person.role, person.epithet, ...person.paragraphs].filter(Boolean).join(' · '), () => chronicle === 'trr'
-        ? showPerson('trr', person, 'npc', returnFocus) : visitPage(chronicle, 'npcs', person.target)));
+      [person.role, person.epithet, ...(person.aliases || []), ...person.paragraphs].filter(Boolean).join(' · '), trigger => showPerson(chronicle, person, 'npc', trigger || returnFocus)));
     shells[chronicle].querySelectorAll('.session-card').forEach(card => {
       const head = card.querySelector('.session-head');
       const body = card.querySelector('.session-body-inner');
@@ -342,7 +341,7 @@
         const snippet = element('span', 'chronicle-search-snippet');
         highlight(snippet, excerpt(entry.text, input.value), input.value);
         button.append(title, snippet);
-        button.addEventListener('click', () => { close({ restoreFocus: false }); entry.visit(); });
+        button.addEventListener('click', () => { const trigger = returnFocus; close({ restoreFocus: false }); entry.visit(trigger); });
         results.appendChild(button);
       });
     }

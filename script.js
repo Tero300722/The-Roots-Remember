@@ -1059,9 +1059,9 @@ questBoard.innerHTML = `
 window.NpcArchive.mount(document.getElementById('roots-npc-directory'), DATA.npcs);
 
 /* -------------------- Session archive -------------------- */
-function buildSessionCard(session, index) {
+function buildSessionCard(session, index, chronicle = 'trr') {
   const card = document.createElement('article');
-  const bodyId = `session-body-${index + 1}`;
+  const bodyId = `${chronicle}-session-body-${index + 1}`;
   card.className = 'session-card';
   card.style.animationDelay = `${index * 80}ms`;
   card.innerHTML = `

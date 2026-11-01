@@ -28,13 +28,13 @@
     if (text !== undefined) node.textContent = text;
     return node;
   }
-  function mount(root, records) {
+  function mount(root, records, { chronicle = 'trr' } = {}) {
     if (!root) return;
     let query = '', filter = 'all', page = 1;
     const toolbar = el('div', 'npc-directory-toolbar');
     const search = el('div', 'npc-directory-search');
     const label = el('label', 'npc-directory-label', 'Find a familiar face');
-    label.htmlFor = 'roots-npc-search';
+    label.htmlFor = `${chronicle}-npc-search`;
     const input = el('input', 'npc-directory-input');
     input.id = label.htmlFor;
     input.type = 'search';
@@ -61,7 +61,7 @@
     summary.setAttribute('aria-live', 'polite');
     summary.setAttribute('aria-atomic', 'true');
     const grid = el('div', 'npc-directory-grid');
-    grid.id = 'roots-npc-results';
+    grid.id = `${chronicle}-npc-results`;
     const empty = el('div', 'npc-directory-empty');
     empty.append(el('h3', '', 'No familiar faces found'), el('p', '', 'Try another name or clear the filters.'));
     const reset = el('button', 'btn btn-secondary', 'Show all NPCs');
@@ -110,12 +110,12 @@
         image.loading = 'lazy';
         image.decoding = 'async';
         const copy = el('span', 'npc-directory-copy');
-        copy.append(el('span', 'npc-directory-tier', person.importance === 'major' ? 'Major NPC' : 'Supporting NPC'),
+        copy.append(el('span', 'npc-directory-tier', person.tier || (person.importance === 'major' ? 'Major NPC' : 'Supporting NPC')),
           el('span', 'npc-directory-name', person.name));
         if (person.epithet) copy.appendChild(el('span', 'npc-directory-epithet', person.epithet));
         copy.append(el('span', 'npc-directory-role', person.role), el('span', 'npc-directory-read', 'Read profile →'));
         button.append(frame, copy);
-        button.addEventListener('click', () => window.ChronicleTools.openNpc('trr', person.name, button));
+        button.addEventListener('click', () => window.ChronicleTools.openNpc(chronicle, person.name, button));
         return button;
       }));
     }
