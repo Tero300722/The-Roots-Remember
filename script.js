@@ -403,19 +403,7 @@ const GRIMWOOD_CHARACTERS = [
       "Now he wanders beyond the Iron Peaks, following omens wherever they lead in hopes of uncovering the greater purpose behind his visions and finding where fate truly intends him to go."
     ]
   },
-  {
-    "slug": "lucien-veyr",
-    "name": "Lucien Veyr",
-    "player": "Remsi Agius",
-    "cardImage": "assets/grimwood/characters/cards/lucien-veyr.webp",
-    "fullImage": "assets/grimwood/characters/full/lucien-veyr.webp",
-    "className": "Rogue",
-    "subclass": "Soulknife",
-    "accent": "166, 96, 218",
-    "description": [
-      "Lucien Veyr is a quiet, sharp-eyed High Elf rogue who works as an infiltrator and scout for adventuring parties. Calm, observant, and hard to read, he prefers precision over brute force, using stealth, psychic blades, and subtle illusions to control a fight before his enemies even realize he is there. Beneath the polished manners and dark clothing is a seasoned adventurer who notices everything and trusts very little."
-    ]
-  },
+
   {
     "slug": "edwin-everbane",
     "name": "Edwin Everbane",
@@ -434,7 +422,7 @@ const GRIMWOOD_CHARACTERS = [
   }
 ];
 
-const ASSET_VERSION = '20261005-lucienpose1';
+const ASSET_VERSION = '20261101-grimwoodroster';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const chronicleSelector = document.getElementById('chronicle-selector');
