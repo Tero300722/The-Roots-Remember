@@ -96,11 +96,8 @@
     img.src = person.fullImage || person.image;
     img.alt = person.name;
     img.decoding = 'async';
-    if (chronicle === 'grimwood' && type === 'npc' && person.portraitCrop) {
-      const { x, y, scale } = person.portraitCrop;
-      portrait.classList.add('grimwood-profile-face');
-      img.style.width = `${scale * 100}%`;
-      img.style.transform = `translate(-${x}%, -${y}%)`;
+    if (chronicle === 'grimwood' && type === 'npc') {
+      portrait.classList.add('grimwood-profile-art');
     }
     portrait.appendChild(img);
     const copy = element('div', 'recap-person-copy');

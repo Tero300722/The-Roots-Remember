@@ -4,7 +4,7 @@
   const people = [
     {
       name: 'Baron Vane Grimwood', role: 'Baron of Grimwood Manor', tier: 'Manor Host', importance: 'major',
-      image: 'assets/grimwood/npcs/full/baron-vane-grimwood.webp', focus: 'center 25%',
+      image: 'assets/grimwood/npcs/portraits/baron-vane-grimwood.webp', focus: 'center 25%',
       paragraphs: [
         'Few had heard the name Vane Grimwood until recent years.',
         "Then, seemingly from nowhere, came the estate, the wealth, and the title. Grimwood's name began appearing among merchants and nobility alike, accompanied by stories of extravagant purchases, valuable holdings, and a fortune whose true extent remains a matter of speculation.",
@@ -14,7 +14,7 @@
     },
     {
       name: 'Alistair Percival Bartholomew Wrennington', shortName: 'Al', role: 'Former royal advisor · Scholar and statesman', tier: 'Major NPC', importance: 'major',
-      image: 'assets/grimwood/npcs/full/alistair-percival-bartholomew-wrennington.webp', focus: 'center 24%',
+      image: 'assets/grimwood/npcs/portraits/alistair-percival-bartholomew-wrennington.webp', focus: 'center 24%',
       paragraphs: [
         'Alistair Percival Bartholomew Wrennington, more commonly known as Al, was a respected scholar, statesman, and royal advisor who served King Aurelius II during the early years of his reign. Known for his sharp intellect, meticulous nature, and dry wit, Al was frequently entrusted with investigating matters deemed too unusual or sensitive for the Crown’s ordinary officials.',
         'In CR 260, reports reached the royal court of a manor that had appeared seemingly overnight where no estate had previously stood. With no records of its construction and little known of its owner, the sudden appearance of Grimwood Manor quickly attracted the Crown’s attention.',
@@ -24,7 +24,7 @@
     },
     {
       name: 'Vice Emberclaw', role: 'Mining magnate', tier: 'Guest of Note', importance: 'supporting',
-      image: 'assets/grimwood/npcs/full/vice-emberclaw.webp', focus: 'center 24%',
+      image: 'assets/grimwood/npcs/portraits/vice-emberclaw.webp', focus: 'center 24%',
       paragraphs: [
         'Vice Emberclaw built his fortune beneath the Ironpeak Mountains, where his mining company extracts iron, coal, and smaller quantities of precious metals. His wealth has earned him a place among respectable society, though older noble families sometimes regard him more as a businessman than a true aristocrat.',
         'Vice is broad and imposing, with dull black scales and several old scars across his hands and snout. Unlike many of the guests, he dresses practically: a well-tailored dark coat, heavy boots, and only enough jewelry to demonstrate that he can afford it.',
@@ -33,7 +33,7 @@
     },
     {
       name: 'Charlotte Fleaklight', role: 'Noble widow of the Verdant Reach', tier: 'Guest of Note', importance: 'supporting',
-      image: 'assets/grimwood/npcs/full/charlotte-fleaklight.webp', focus: 'center 22%',
+      image: 'assets/grimwood/npcs/portraits/charlotte-fleaklight.webp', focus: 'center 22%',
       paragraphs: [
         'Charlotte Fleaklight is the widow of a prominent nobleman from the Verdant Reach, a man remembered as one of the region’s strongest advocates for druidic rights and protections. His considerable fortune funded sanctuaries, legal campaigns, protected woodland, and efforts to curb the exploitation of druidic communities.',
         'Following his death, that fortune passed almost entirely to Charlotte.',
@@ -43,7 +43,7 @@
     },
     {
       name: 'Empior Windveil', role: 'Royal Academy patron · Admissions council member', tier: 'Guest of Note', importance: 'supporting',
-      image: 'assets/grimwood/npcs/full/empior-windveil.webp', focus: 'center 23%',
+      image: 'assets/grimwood/npcs/portraits/empior-windveil.webp', focus: 'center 23%',
       paragraphs: [
         'Empior Windveil is one of the most influential figures associated with the prestigious Royal Academy of Valemere. Though not primarily known as a scholar himself, his extensive financial contributions have funded new wings, research programs, scholarships, and the acquisition of rare magical texts and artifacts.',
         'More importantly, Windveil holds a powerful position on the Academy’s admissions council. Few students enter the Academy without his approval.',
@@ -53,7 +53,7 @@
     },
     {
       name: 'Adam Newport', role: 'Independent porter of the Emberford Docks', tier: 'Guest of Note', importance: 'supporting',
-      image: 'assets/grimwood/npcs/full/adam-newport.webp', focus: 'center 22%',
+      image: 'assets/grimwood/npcs/portraits/adam-newport.webp', focus: 'center 22%',
       paragraphs: [
         'Adam Newport is one of the most successful independent porters operating from the Emberford Docks. For decades, his ships have carried cargo between distant ports and the markets of Valemere, earning him both considerable wealth and a reputation for getting valuable goods where they need to go.',
         'Spices, medicines, foreign textiles, enchanted materials, rare wines, and countless mundane necessities have passed through Newport’s hands. Many merchants throughout Valemere owe at least some portion of their success to his trade routes.',
@@ -64,14 +64,14 @@
     }
   ];
 
-  // Face-centred crops, shared by the directory and the large profile portrait.
+  // Only archive thumbnails use a face crop; profiles show the complete artwork.
   const crops = [
-    { x: 51, y: 12, scale: 3 },
-    { x: 59, y: 19, scale: 2.8 },
-    { x: 50, y: 11, scale: 2.6 },
-    { x: 48, y: 11, scale: 3 },
-    { x: 50, y: 10, scale: 3 },
-    { x: 50, y: 10, scale: 2.8 }
+    { x: 60, y: 25, scale: 1.35 },
+    { x: 66, y: 25, scale: 1.45 },
+    { x: 50, y: 24, scale: 1.12 },
+    { x: 50, y: 25, scale: 1.35 },
+    { x: 50, y: 25, scale: 1.45 },
+    { x: 52, y: 25, scale: 1.35 }
   ];
   people.forEach((person, index) => {
     person.portraitCrop = crops[index];

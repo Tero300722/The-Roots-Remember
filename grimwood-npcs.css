@@ -9,6 +9,8 @@
 .grimwood-directory .npc-directory-tier,.grimwood-directory .npc-directory-read { color: #d5aa8b; }
 .grimwood-directory .npc-directory-filter[aria-pressed="true"] { color: #f0d3bc; border-color: #be8b69; background: #37221e; }
 .chronicle-tools-modal[data-chronicle="grimwood"][data-profile-type="npc"] .chronicle-tools-panel { width: min(1000px,100%); }
-.chronicle-tools-modal .grimwood-profile-face { position: relative; display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; }
-.chronicle-tools-modal .grimwood-profile-face img { position: absolute; left: 50%; top: 50%; max-width: none; max-height: none; height: auto; object-fit: initial; }
 @media(max-width:620px) { .grimwood-directory .npc-directory-card { padding: 18px 14px; gap: 14px; } }
+
+/* Large rectangular artwork in the profile; preserve the complete supplied image. */
+.chronicle-tools-modal .grimwood-profile-art { display: block; width: 100%; border-radius: 12px; overflow: hidden; }
+.chronicle-tools-modal .grimwood-profile-art img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
