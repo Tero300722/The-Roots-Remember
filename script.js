@@ -450,7 +450,7 @@ const GRIMWOOD_REMEMBERED = [
   }
 ];
 
-const ASSET_VERSION = '20261108-finale';
+const ASSET_VERSION = '20261109-elior-portrait';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const chronicleSelector = document.getElementById('chronicle-selector');
