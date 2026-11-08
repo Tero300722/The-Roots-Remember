@@ -3,7 +3,7 @@
   'use strict';
 
   const names = { trr: 'The Roots Remember', grimwood: 'Into the Grimwood Manor', echoes: 'Echoes of Eternity', elden: 'Elden Ring: Beyond the Frenzied Flame' };
-  const rosters = { trr: DATA.characters, grimwood: GRIMWOOD_CHARACTERS, echoes: window.EchoesChronicle.characters, elden: window.EldenChronicle.characters };
+  const rosters = { trr: DATA.characters, grimwood: [...GRIMWOOD_CHARACTERS, ...GRIMWOOD_REMEMBERED], echoes: window.EchoesChronicle.characters, elden: window.EldenChronicle.characters };
   const shells = { trr: siteShell, grimwood: grimwoodShell, echoes: echoesShell, elden: eldenShell };
   const modal = document.getElementById('chronicle-tools-modal');
   const panel = modal.querySelector('.chronicle-tools-panel');
@@ -139,7 +139,7 @@
   function linkRecaps(chronicle) {
     const aliases = new Map();
     const people = [
-      ...rosters[chronicle].map(person => ({ person, type: 'character' })),
+      ...rosters[chronicle].filter(person => chronicle !== 'grimwood' || person !== GRIMWOOD_CHARACTERS[0]).map(person => ({ person, type: 'character' })),
       ...npcs[chronicle].map(person => ({ person, type: 'npc' }))
     ];
     people.forEach(entry => {
@@ -197,7 +197,11 @@
     if (currentChronicle !== chronicle) return;
     if (chronicle === 'elden') window.EldenChronicle.openCharacter(character);
     else if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(character);
-    else if (chronicle === 'grimwood') openGrimwoodCharacter(character);
+    else if (chronicle === 'grimwood' && character.deceased) {
+      showGrimwoodPage('remembered');
+      focusTarget(document.getElementById(character.slug));
+      return;
+    } else if (chronicle === 'grimwood') openGrimwoodCharacter(character);
     else if (character.deceased) {
       navigateTo('remembered');
       const index = DATA.characters.filter(item => item.deceased && item.death).indexOf(character);

@@ -361,16 +361,16 @@ const DATA = {
 const GRIMWOOD_CHARACTERS = [
   {
     "slug": "elior-ilphelkiir",
-    "name": "Elior Ilphelkiir",
+    "name": "Elior Ilphelkiir (resurrected)",
     "player": "Mikael Delia",
-    "cardImage": "assets/grimwood/characters/cards/elior-ilphelkiir.webp",
-    "fullImage": "assets/grimwood/characters/full/elior-ilphelkiir.webp",
+    "cardImage": "assets/grimwood/characters/cards/elior-resurrected.png",
+    "fullImage": "assets/grimwood/characters/full/elior-resurrected.png",
     "className": "Wizard",
     "subclass": "Diviner",
     "accent": "221, 178, 90",
     "description": [
-      "Standing at six feet two inches, Elior is an automaton forged by his own brother in the aftermath of a tragic accident. Possessing a deep fascination with the arcane, he has devoted himself to the study of divination, driven by a desire to understand what lies beyond the present and uncover the mysteries of the future.",
-      "Despite his pursuit of knowledge and magical mastery, Elior’s greatest priority remains far more personal. Above all else, he wishes to remain by his brother’s side, following him wherever their journey may lead."
+      "Once an automaton forged by his brother after a tragic accident, Elior sacrificed his mechanical body beneath Grimwood Manor. He overloaded his core with radiant energy, teleported behind Vane Grimwood, and detonated himself to protect his companions.",
+      "Following Theodas’s bargain with Almoreith, Elior has been resurrected in human form. His fascination with divination and the mysteries of the future endures, as does his deepest wish: to remain by his brother’s side."
     ]
   },
   {
@@ -403,7 +403,6 @@ const GRIMWOOD_CHARACTERS = [
       "Now he wanders beyond the Iron Peaks, following omens wherever they lead in hopes of uncovering the greater purpose behind his visions and finding where fate truly intends him to go."
     ]
   },
-
   {
     "slug": "edwin-everbane",
     "name": "Edwin Everbane",
@@ -422,7 +421,36 @@ const GRIMWOOD_CHARACTERS = [
   }
 ];
 
-const ASSET_VERSION = '20261101-grimwoodroster';
+const GRIMWOOD_REMEMBERED = [
+  {
+    "slug": "elior-ilphelkiir-automaton",
+    "name": "Elior Ilphelkiir (automaton)",
+    "player": "Mikael Delia",
+    "cardImage": "assets/grimwood/characters/cards/elior-ilphelkiir.webp",
+    "fullImage": "assets/grimwood/characters/full/elior-ilphelkiir.webp",
+    "className": "Wizard",
+    "subclass": "Diviner",
+    "accent": "221, 178, 90",
+    "description": [
+      "Standing at six feet two inches, Elior is an automaton forged by his own brother in the aftermath of a tragic accident. Possessing a deep fascination with the arcane, he has devoted himself to the study of divination, driven by a desire to understand what lies beyond the present and uncover the mysteries of the future.",
+      "Despite his pursuit of knowledge and magical mastery, Elior’s greatest priority remains far more personal. Above all else, he wishes to remain by his brother’s side, following him wherever their journey may lead."
+    ],
+    "race": "Automaton",
+    "deceased": true,
+    "aliases": [
+      "Elior Ilphelkiir",
+      "Elior"
+    ],
+    "death": {
+      "session": "Session 2 — The Last Bargain",
+      "cause": "Sacrificed himself by overloading his core with radiant energy.",
+      "location": "Vane Grimwood’s ritual chamber, beneath Grimwood Manor.",
+      "circumstances": "With the party being overwhelmed, Elior teleported behind Vane and detonated his core. The explosion brought the Baron to the brink of death and destroyed Elior’s automaton body. Theodas later accepted Almoreith’s bargain to restore his brother. Elior has since returned to life in human form; this memorial honours the automaton and his sacrifice."
+    }
+  }
+];
+
+const ASSET_VERSION = '20261108-finale';
 const asset = path => `${path}?v=${ASSET_VERSION}`;
 
 const chronicleSelector = document.getElementById('chronicle-selector');
@@ -770,6 +798,18 @@ function openGrimwoodCharacter(character, { replace = false } = {}) {
 }
 
 grimwoodCharacterBack?.addEventListener('click', () => showGrimwoodPage('characters', { replace: true }));
+
+// The memorial preserves Elior's original artwork and sacrifice independently of his return.
+GRIMWOOD_REMEMBERED.forEach(character => {
+  const card = makeRememberedCard(character);
+  card.id = character.slug;
+  const button = document.createElement('button');
+  button.className = 'btn btn-primary';
+  button.textContent = 'Meet Elior (resurrected) →';
+  button.addEventListener('click', () => openGrimwoodCharacter(GRIMWOOD_CHARACTERS[0]));
+  card.querySelector('.remembered-copy').appendChild(button);
+  document.getElementById('grimwood-remembered-list').appendChild(card);
+});
 
 /* -------------------- Latest recap -------------------- */
 DATA.sessions.at(-1).paragraphs.forEach(text => {

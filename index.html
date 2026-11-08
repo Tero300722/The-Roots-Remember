@@ -51,6 +51,8 @@
   <link rel="stylesheet" href="npc-archive.css?v=20261101-v43" />
   <link rel="stylesheet" href="grimwood-npcs.css?v=20261101-v45" />
   <link rel="stylesheet" href="serpent.css?v=20261022-covers" />
+  <link rel="stylesheet" href="collection.css?v=47" />
+  <link rel="stylesheet" href="responsive-scale.css?v=47" />
 </head>
 <body>
   <div class="world-bg" aria-hidden="true">
@@ -67,87 +69,27 @@
   </div>
 
   <section class="chronicle-selector" id="chronicle-selector" aria-label="Choose a campaign chronicle">
-    <div class="chronicle-selector-inner">
-      <header class="chronicle-selector-heading">
-        <span class="collection-kicker">The shared worlds of our table</span>
-        <div class="chronicle-selector-emblem" aria-hidden="true"><img src="assets/site-logo.webp?v=20261005-chronicles-polish" alt="" width="96" height="96"></div>
-        <h1><span class="wordmark-main">Main Manual</span><span class="wordmark-sub">Campaigns</span></h1>
-        <div class="chronicle-heading-ornament" aria-hidden="true"><span></span><i>✦</i><span></span></div>
-        <p class="chronicle-selector-lead">Every world has a story. Step into yours.</p>
+    <div class="library-inner">
+      <header class="library-masthead">
+        <div class="library-brand"><img src="assets/site-logo.webp" alt="" width="64" height="64"><div><p>The shared worlds of our table</p><h1>Main Manual <span>Campaigns</span></h1></div></div>
+        <span class="library-seal">THE CHRONICLE COLLECTION<br><b>VOLUMES I—V</b></span>
       </header>
-
-      <div class="collection-toolbar"><h2>Choose a chronicle</h2></div>
-      <div class="chronicle-grid">
-        <div class="chronicle-section-label collection-current-label"><span>I · The ongoing chronicle</span><i aria-hidden="true"></i></div>
-        <button class="chronicle-card chronicle-card-featured" type="button" data-chronicle="trr" aria-label="Enter The Roots Remember, ongoing campaign created by Mikael Delia">
-          <span class="chronicle-card-art-wrap">
-            <img class="chronicle-card-art" src="assets/campaign-hero.webp?v=20261020-roster" width="1672" height="941" alt="The Roots Remember campaign artwork" fetchpriority="high" decoding="async" />
-          </span>
-          <span class="chronicle-card-copy">
-            <span class="chronicle-card-meta">
-              <span class="chronicle-type"><svg class="chronicle-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 3 8 0-1 6 4 4v2H5v-2l4-4-1-6ZM12 15v6"/></svg>Pinned · Main Campaign</span>
-              <span class="chronicle-status chronicle-status-ongoing">Ongoing</span>
-            </span>
-            <strong>The Roots Remember</strong>
-            <span class="collection-card-note">The story continues.</span>
-            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
-            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
-          </span>
-        </button>
-
-        <div class="chronicle-section-label"><span>II · Coming next</span><i aria-hidden="true"></i></div>
-
-        <button class="chronicle-card chronicle-card-grimwood" type="button" data-chronicle="grimwood" aria-label="Enter Into the Grimwood Manor ongoing mini campaign, created by Gianluca Amato">
-          <span class="chronicle-card-art-wrap">
-            <img class="chronicle-card-art" src="assets/grimwood-manor-title.png" width="1672" height="941" alt="An Invitation to Grimwood Manor, a shadowed estate beyond ornate gates" fetchpriority="high" decoding="async" />
-          </span>
-          <span class="chronicle-card-copy">
-            <span class="chronicle-card-meta">
-              <span class="chronicle-type">Mini Campaign</span>
-              <span class="chronicle-status chronicle-status-ongoing">Ongoing</span>
-            </span>
-            <strong>Into the Grimwood Manor</strong>
-            <span class="collection-card-note">An invitation awaits.</span>
-            <span class="chronicle-creator">Created by <span>Gianluca Amato</span></span>
-            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
-          </span>
-        </button>
-
-        <button class="chronicle-card chronicle-card-serpent" type="button" data-chronicle="serpent" aria-label="Enter Elden Ring: The Serpent’s Lament, planned mini campaign created by Mikael Delia. Plays an opening trailer.">
-          <span class="chronicle-card-art-wrap"><img class="chronicle-card-art" src="assets/serpent/chronicle-cover-v38.png" width="1672" height="941" alt="Elden Ring: The Serpent’s Lament — the Scadutree above the Realm of Shadow" loading="lazy" decoding="async"></span>
-          <span class="chronicle-card-copy">
-            <span class="chronicle-card-meta"><span class="chronicle-type">Sequel · Mini Campaign</span><span class="chronicle-status chronicle-status-upcoming">Planned</span></span>
-            <strong>Elden Ring</strong><span class="chronicle-card-subtitle">The Serpent’s Lament</span>
-            <span class="collection-card-note">Beyond the sight of the Erdtree.</span>
-            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
-            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
-          </span>
-        </button>
-
-        <div class="chronicle-section-label"><span>III · Archived chronicles</span><i aria-hidden="true"></i></div>
-        <button class="chronicle-card chronicle-card-echoes" type="button" data-chronicle="echoes" aria-label="Enter Echoes of Eternity, cancelled campaign created by Mikael Delia">
-          <span class="chronicle-card-art-wrap">
-            <img class="chronicle-card-art" src="assets/echoes/echoes-title-cover.png" width="2048" height="1152" alt="Echoes of Eternity: a pirate ship, a neon city and a fantasy realm divided by shattered glass" loading="lazy" decoding="async" />
-          </span>
-          <span class="chronicle-card-copy">
-            <span class="chronicle-card-meta"><span class="chronicle-type">Multiverse Campaign</span><span class="chronicle-status chronicle-status-archived">Cancelled</span></span>
-            <strong>Echoes of Eternity</strong>
-            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
-            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
-          </span>
-        </button>
-
-        <button class="chronicle-card chronicle-card-elden" type="button" data-chronicle="elden" aria-label="Enter Elden Ring: Beyond the Frenzied Flame, completed mini campaign created by Mikael Delia">
-          <span class="chronicle-card-art-wrap"><img class="chronicle-card-art" src="assets/elden/chronicle-cover-v38.png" width="1672" height="941" alt="Elden Ring: Beyond the Frenzied Flame — the Lands Between beneath a burning sky" loading="lazy" decoding="async"></span>
-          <span class="chronicle-card-copy">
-            <span class="chronicle-card-meta"><span class="chronicle-type">Mini Campaign</span><span class="chronicle-status chronicle-status-completed">Completed</span></span>
-            <strong>Elden Ring</strong><span class="chronicle-card-subtitle">Beyond the Frenzied Flame</span>
-            <span class="chronicle-creator">Created by <span>Mikael Delia</span></span>
-            <span class="chronicle-card-enter">Enter Chronicle <i aria-hidden="true">→</i></span>
-          </span>
-        </button>
+      <div class="library-heading"><div><p class="library-kicker">The archive</p><h2>Every book, another world.</h2></div><p>Choose a volume.<br>Step into its story.</p></div>
+      <div class="library-feature" id="library-feature" aria-labelledby="library-title">
+        <div class="library-feature-art"><img id="library-art" src="assets/campaign-hero.webp" alt="The Roots Remember cover artwork" fetchpriority="high"></div>
+        <div class="library-feature-copy" aria-live="polite" aria-atomic="true">
+          <p class="library-kicker" id="library-type">Volume I · Main Campaign</p>
+          <span class="library-status" id="library-status">Ongoing · Pinned</span>
+          <h3 id="library-title">The Roots Remember</h3>
+          <p class="library-description" id="library-description">The story continues. Return to the party, follow the latest leads, and revisit the adventures that brought them here.</p>
+          <p class="library-credit">Created by <strong id="library-creator">Mikael Delia</strong></p>
+          <button type="button" class="library-enter" id="library-enter" data-chronicle="trr">Open chronicle <span aria-hidden="true">↗</span></button>
+          <p class="library-trailer" id="library-trailer" hidden>Opens with a trailer · Skip at any time</p>
+        </div>
       </div>
-      <p class="collection-colophon"><span aria-hidden="true">✦</span> Main Manual Campaigns <span aria-hidden="true">✦</span></p>
+      <div class="library-shelf-heading"><h2>Your chronicles <span>05 volumes</span></h2><div class="library-paging"><button type="button" id="library-prev" aria-label="Previous chronicle">←</button><span id="library-position">01 / 05</span><button type="button" id="library-next" aria-label="Next chronicle">→</button></div></div>
+      <div class="library-shelf" id="library-shelf" role="group" aria-label="Select a chronicle"></div>
+      <p class="library-colophon">Five worlds. One table. Countless stories.</p>
     </div>
   </section>
 
@@ -345,7 +287,7 @@
         <span class="chronicle-nav-icon chronicle-nav-icon-grimwood" aria-hidden="true"><img src="assets/nav-icons/grimwood.webp" width="384" height="384" alt="" decoding="async"></span>
         <span>
           <strong>Into the Grimwood Manor</strong>
-          <small>Mini Campaign</small>
+          <small>Completed · Mini Campaign</small>
         </span>
         <span class="brand-switch-glyph" aria-hidden="true">↩</span>
       </button>
@@ -382,7 +324,7 @@
 
       <section class="grimwood-page" id="grimwood-remembered">
         <header class="section-header grimwood-reveal"><p class="eyebrow">In Memoriam</p><h2>The Remembered</h2></header>
-        <div class="chronicle-empty grimwood-reveal"><span>◇</span><strong>No Names Recorded</strong><p>No fallen adventurers or important figures have been recorded for this chronicle.</p></div>
+        <div id="grimwood-remembered-list" class="remembered-list"></div>
       </section>
 
       <section class="grimwood-page grimwood-npc-page" id="grimwood-npcs">
@@ -396,12 +338,12 @@
       </section>
 
       <section class="grimwood-page grimwood-session-page" id="grimwood-sessions">
-        <header class="section-header grimwood-reveal"><p class="eyebrow">The story so far</p><h2>Session Archive</h2></header>
+        <header class="section-header grimwood-reveal"><p class="eyebrow">The complete chronicle · Two sessions</p><h2>Session Archive</h2></header>
         <div class="session-timeline" id="grimwood-session-list"></div>
       </section>
     </main>
 
-    <footer><span>INTO THE GRIMWOOD MANOR</span><small>Mini Campaign Chronicle</small></footer>
+    <footer><span>INTO THE GRIMWOOD MANOR</span><small>Completed · Mini Campaign Chronicle</small></footer>
   </div>
 
 
@@ -730,16 +672,17 @@
     </section>
   </div>
 
+  <script src="collection.js?v=47"></script>
   <script src="music.js?v=20261012-echoes-music"></script>
   <script src="npc-archive.js?v=20261101-v45"></script>
   <script src="mystery-character.js?v=20261018-runes"></script>
   <script src="serpent.js?v=20261019-controls2"></script>
-  <script src="script.js?v=20261101-v43"></script>
-  <script src="grimwood-npcs.js?v=20261101-v45"></script>
+  <script src="script.js?v=20261108-v47"></script>
+  <script src="grimwood-npcs.js?v=20261108-v47"></script>
   <script src="character-presentation.js?v=20261014-three-four"></script>
   <script src="echoes.js?v=20261014-three-four"></script>
   <script src="elden.js?v=20261014-npc-archive"></script>
   <script src="biographies.js?v=20261014-bios"></script>
-  <script src="chronicle-tools.js?v=20261101-v44"></script>
+  <script src="chronicle-tools.js?v=20261108-v47"></script>
 </body>
 </html>

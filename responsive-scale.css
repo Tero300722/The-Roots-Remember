@@ -1,0 +1,16 @@
+/* Use the available CSS viewport, respecting browser zoom and user font settings. */
+@media(min-width:1600px){
+ html{font-size:clamp(100%,1.05vw,250%)}
+ body .page-shell{width:min(88vw,100rem)}
+ body .character-card{min-height:clamp(32.5rem,34vw,42rem)}
+ body .topbar{gap:1.1rem;padding-block:1.2rem}
+ body .nav-link,body .nav-dropdown-item{padding:.7rem .9rem}
+ body .npc-directory-grid{gap:1.1rem}
+ body .character-portrait-stage{min-height:36rem}
+ body .remembered-card{min-height:30rem}
+}
+#grimwood-remembered .remembered-card{margin-bottom:2rem}
+#grimwood-remembered .remembered-copy .btn{margin-top:1rem}
+#grimwood-remembered .remembered-portrait{object-position:center top}
+#grimwood-character-detail .character-portrait-stage img[src*="elior-resurrected"]{object-fit:contain;object-position:center}
+@media(min-width:1000px){#grimwood-character-grid{grid-template-columns:repeat(4,minmax(0,1fr))}#grimwood-character-grid .grimwood-character-card{grid-column:auto}}
