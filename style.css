@@ -926,7 +926,7 @@ body.chronicle-grimwood-active .custom-cursor.active .cursor-ring{border-color:r
 .grimwood-character-card:hover,.grimwood-character-card:focus-visible{border-color:rgba(var(--accent-rgb,223,111,55),.92);box-shadow:0 24px 64px rgba(0,0,0,.52),0 0 34px rgba(var(--accent-rgb,223,111,55),.18)}
 .grimwood-character-card::after{background:linear-gradient(180deg,rgba(8,4,7,.01) 0%,rgba(8,4,7,.12) 44%,rgba(8,4,7,.94) 100%)}
 .grimwood-character-card .tag{border-color:rgba(223,111,55,.24);background:rgba(223,88,42,.055);color:#e7c6ae}
-.grimwood-character-card .character-player{color:#c28b76}
+.grimwood-character-card .character-player{color:#e1c584}
 .grimwood-character-detail-page{padding-top:20px}
 .grimwood-character-detail-wrap{border-color:rgba(var(--char-rgb),.40);background:linear-gradient(145deg,rgba(20,8,15,.97),rgba(7,7,12,.96));box-shadow:0 36px 90px rgba(0,0,0,.52),0 0 65px rgba(var(--char-rgb),.07)}
 .grimwood-character-detail-wrap .character-detail-bg{background-image:linear-gradient(90deg,rgba(10,4,8,.18),rgba(10,4,8,.91) 55%,rgba(7,6,10,.99)),var(--detail-bg);filter:saturate(.62) blur(2px);opacity:.14}
@@ -1036,7 +1036,7 @@ body.chronicle-grimwood-active .custom-cursor.active .cursor-ring{border-color:r
 .chronicle-creator>span{color:#dfd3bf}
 
 /* ---------- Grimwood character accents ---------- */
-.grimwood-character-card .character-player{color:rgb(var(--accent-rgb));text-shadow:0 0 16px rgba(var(--accent-rgb),.10)}
+.grimwood-character-card .character-player{color:#e1c584;text-shadow:none}
 .grimwood-character-card .tag{border-color:rgba(var(--accent-rgb),.24);background:rgba(var(--accent-rgb),.055);color:#ded7cf}
 .grimwood-character-detail-wrap .detail-row > span{color:rgba(var(--char-rgb),.82)}
 .grimwood-character-detail-wrap .detail-row{border-color:rgba(var(--char-rgb),.14)}

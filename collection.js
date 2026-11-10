@@ -43,5 +43,36 @@
   }
   document.getElementById('library-prev').addEventListener('click',()=>choose((selected+4)%5));
   document.getElementById('library-next').addEventListener('click',()=>choose((selected+1)%5));
+  // Measure every preview at the actual available width, so changing volumes
+  // cannot move the shelf. Recompute only when its width or fonts change.
+  const copy=selector.querySelector('.library-feature-copy');
+  let measuredWidth=0;
+  function reservePreviewHeight(force=false){
+    const width=copy.getBoundingClientRect().width;
+    if(!width || (!force && Math.abs(width-measuredWidth)<0.5)) return;
+    measuredWidth=width;
+    const previews=volumes.map((v,i)=>{
+      const preview=copy.cloneNode(true);
+      preview.classList.add('library-measure');
+      preview.removeAttribute('aria-live');preview.removeAttribute('aria-atomic');
+      preview.setAttribute('aria-hidden','true');preview.inert=true;
+      preview.style.width=`${width}px`;
+      preview.querySelector('#library-title').textContent=v.title;
+      preview.querySelector('#library-type').textContent=`Volume ${numerals[i]} · ${v.series||v.type}`;
+      preview.querySelector('#library-status').textContent=v.status;
+      preview.querySelector('#library-description').textContent=v.note;
+      preview.querySelector('#library-creator').textContent=v.creator;
+      preview.querySelector('#library-trailer').hidden=v.id!=='serpent';
+      preview.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+      copy.parentElement.appendChild(preview);
+      return preview;
+    });
+    const height=Math.ceil(Math.max(...previews.map(el=>el.getBoundingClientRect().height)));
+    previews.forEach(el=>el.remove());
+    selector.style.setProperty('--library-copy-height',`${height}px`);
+  }
   choose(0);
+  reservePreviewHeight();
+  new ResizeObserver(()=>reservePreviewHeight()).observe(copy);
+  document.fonts?.ready.then(()=>reservePreviewHeight(true));
 })();

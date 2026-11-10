@@ -757,32 +757,7 @@ GRIMWOOD_CHARACTERS.forEach((character, index) => {
 
 function renderGrimwoodCharacterDetail(character) {
   if (!grimwoodCharacterDetailContent) return;
-  grimwoodCharacterDetailContent.innerHTML = `
-    <article class="character-detail-wrap grimwood-character-detail-wrap" style="--char-rgb:${character.accent}; --detail-bg:url('${asset(character.fullImage)}')">
-      <div class="character-detail-bg" aria-hidden="true"></div>
-      <div class="character-detail-rune" aria-hidden="true"></div>
-      <div class="character-detail-grid">
-        <div class="character-portrait-stage">
-          <img src="${asset(character.fullImage)}" alt="${character.name}" decoding="async">
-        </div>
-        <div class="character-detail-copy">
-          <p class="eyebrow">Grimwood Manor Guest</p>
-          <h2>${character.name}</h2>
-          <div class="player-credit">Played by ${character.player}</div>
-          <div class="detail-stack">
-            <div class="detail-row"><span>Class</span><strong>${character.className}</strong></div>
-            <div class="detail-row"><span>Subclass</span><strong>${character.subclass}</strong></div>
-          </div>
-          ${character.description ? `
-            <div class="character-profile-description">
-              <span>Character Description</span>
-              ${character.description.map(paragraph => `<p>${paragraph}</p>`).join("")}
-            </div>
-          ` : ""}
-        </div>
-      </div>
-    </article>
-  `;
+  grimwoodCharacterDetailContent.innerHTML = window.GrimwoodSheet.render(character, asset);
   window.ChronicleTools?.updateCharacterNavigation('grimwood', character);
 }
 
