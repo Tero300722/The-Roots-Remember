@@ -1,0 +1,3 @@
+v56 — Mystery portrait correction
+Restored the original mystery-character close-up from v54.
+Kept the new landscape and animated stats. All other v55 changes remain.

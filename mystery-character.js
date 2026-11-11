@@ -17,9 +17,10 @@
     return choices[Math.floor(Math.random() * choices.length)];
   }
 
-  function field(element, label, lengths, canRun, prose = false) {
+  function field(element, label, lengths, canRun, prose = false, numeric = false) {
+    const nextGlyph = previous => numeric ? String((Number(previous || 0) + 1 + Math.floor(Math.random() * 9)) % 10) : randomSymbol(previous);
     const wrapper = document.createElement('span');
-    wrapper.className = 'mystery-symbols' + (prose ? ' mystery-prose' : '');
+    wrapper.className = 'mystery-symbols' + (prose ? ' mystery-prose' : '') + (numeric ? ' mystery-digits' : '');
     wrapper.setAttribute('role', 'img');
     wrapper.setAttribute('aria-label', label);
     const cells = [];
@@ -34,7 +35,7 @@
         const layers = [0, 1].map(index => {
           const layer = document.createElement('span');
           layer.className = 'mystery-symbol-glyph';
-          layer.textContent = randomSymbol();
+          layer.textContent = numeric && reducedMotion.matches ? '?' : nextGlyph();
           layer.style.transform = index ? 'translateY(110%)' : 'translateY(0)';
           layer.style.opacity = index ? '0' : '1';
           slot.appendChild(layer);
@@ -66,7 +67,7 @@
       const direction = Math.random() < .5 ? -1 : 1;
       const exit = `translateY(${direction * 110}%)`;
       const enter = `translateY(${-direction * 110}%)`;
-      incoming.textContent = randomSymbol(outgoing.textContent);
+      incoming.textContent = nextGlyph(outgoing.textContent);
       // Re-roll the pace after EVERY turn, independently for every glyph.
       // Rapid bursts, quick turns and slower rolls mingle without a shared cycle.
       const pace = Math.random();
@@ -107,12 +108,17 @@
       root.querySelectorAll(selector).forEach(el => fields.push(field(el, label, lengths, () => root.isConnected && !document.hidden && !reducedMotion.matches)));
     };
     add(profile ? 'h2' : 'h3', 'Identity concealed', [7]);
-    add(profile ? '.detail-row:first-child strong' : '.tag:first-child', 'Class concealed', [4]);
-    add(profile ? '.detail-row:last-child strong' : '.tag:last-child', 'Subclass concealed', [6]);
+    add(profile ? '.detail-row:first-child strong, .grimwood-sheet-identity dl div:first-child dd, .grimoire-stats h3' : '.tag:first-child', 'Class concealed', [4]);
+    add(profile ? '.detail-row:last-child strong, .grimwood-sheet-identity dl div:last-child dd, .grimoire-specialty' : '.tag:last-child', 'Subclass concealed', [6]);
     if (profile) root.querySelectorAll('.character-profile-description p').forEach(el => {
       const lengths = el.textContent.trim().split(/\s+/).map(word => Array.from(word).length);
       fields.push(field(el, 'Description concealed', lengths,
         () => root.isConnected && !document.hidden && !reducedMotion.matches, true));
+    });
+    if (profile) root.querySelectorAll('.grimoire-ability dd').forEach(el => {
+      const label = el.parentElement.querySelector('abbr').title;
+      fields.push(field(el, label + ' concealed', [2],
+        () => root.isConnected && !document.hidden && !reducedMotion.matches, false, true));
     });
     const portrait = root.querySelector('img');
     if (portrait) portrait.alt = 'Silhouetted adventurer — identity concealed';

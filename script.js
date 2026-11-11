@@ -2,11 +2,13 @@ const DATA = {
   characters: [
     {
       slug: "aurelius-tempestine",
+      level: 4,
+      abilityScores: [8, 18, 14, 8, 16, 10],
       name: "Aurelius Tempestine",
       player: "Dathan Baldacchino",
-      sheetImage: "assets/characters/full/aurelius-tempestine.webp",
-      cardImage: "assets/characters/cards/aurelius-tempestine.webp",
-      fullImage: "assets/characters/full/aurelius-tempestine.webp",
+      sheetImage: "assets/characters/sheets/aurelius-tempestine-landscape.webp",
+      cardImage: "assets/characters/sheets/aurelius-tempestine-card.webp",
+      fullImage: "assets/characters/sheets/aurelius-tempestine-landscape.webp",
       className: "Monk",
       subclass: "Warrior of the Storm Dragon",
       accent: "151, 113, 255",
@@ -19,11 +21,13 @@ const DATA = {
     },
     {
       slug: "cassian-caelaris",
+      level: 4,
+      abilityScores: [16, 14, 12, 8, 10, 16],
       name: "Cassian Caelaris",
       player: "Matthias Martino",
-      sheetImage: "assets/characters/full/cassian-caelaris.webp",
-      cardImage: "assets/characters/cards/cassian-caelaris.webp",
-      fullImage: "assets/characters/full/cassian-caelaris.webp",
+      sheetImage: "assets/characters/sheets/cassian-caelaris-landscape.webp",
+      cardImage: "assets/characters/sheets/cassian-caelaris-card.webp",
+      fullImage: "assets/characters/sheets/cassian-caelaris-landscape.webp",
       className: "Paladin",
       subclass: "Oath of the Noble Genies",
       accent: "218, 68, 61",
@@ -61,11 +65,13 @@ const DATA = {
     },
     {
       slug: "morvan-nyx",
+      level: 4,
+      abilityScores: [20, 15, 16, 6, 14, 6],
       name: "Morvan Nyx",
       player: "Remsi Agius",
-      sheetImage: "assets/characters/full/morvan-nyx.webp",
-      cardImage: "assets/characters/cards/morvan-nyx.webp",
-      fullImage: "assets/characters/full/morvan-nyx.webp",
+      sheetImage: "assets/characters/sheets/morvan-nyx-landscape.webp",
+      cardImage: "assets/characters/sheets/morvan-nyx-card.webp",
+      fullImage: "assets/characters/sheets/morvan-nyx-landscape.webp",
       className: "Fighter",
       subclass: "Umbral Tempest",
       accent: "49, 78, 175",
@@ -76,11 +82,13 @@ const DATA = {
     },
     {
       slug: "vaeloryn-starsong",
+      level: 4,
+      abilityScores: [8, 14, 16, 8, 10, 18],
       name: "Vaeloryn Starsong",
       player: "Gianluca Amato",
-      sheetImage: "assets/characters/full/vaeloryn-starsong.webp",
-      cardImage: "assets/characters/cards/vaeloryn-starsong.webp",
-      fullImage: "assets/characters/full/vaeloryn-starsong.webp",
+      sheetImage: "assets/characters/sheets/vaeloryn-starsong-landscape.webp",
+      cardImage: "assets/characters/sheets/vaeloryn-starsong-card.webp",
+      fullImage: "assets/characters/sheets/vaeloryn-starsong-landscape.webp",
       className: "Warlock",
       subclass: "Eightfold Covenant",
       accent: "237, 132, 45",
@@ -92,12 +100,14 @@ const DATA = {
     },
     {
       "slug": "unknown-adventurer",
+      level: 4,
+      abilityScores: null,
       "name": "ᚱ ᚼ ᚾ ᛁ ᛅ ᛋ ᛦ",
       "player": "Daniel Mercieca",
       "mystery": true,
-      "sheetImage": "assets/characters/full/unknown-adventurer.webp",
+      "sheetImage": "assets/characters/sheets/unknown-adventurer-landscape.webp",
       "cardImage": "assets/characters/cards/unknown-adventurer.webp",
-      "fullImage": "assets/characters/full/unknown-adventurer.webp",
+      "fullImage": "assets/characters/sheets/unknown-adventurer-landscape.webp",
       "className": "ᚠ ᚢ ᚦ ᚬ",
       "subclass": "ᚴ ᚼ ᚾ ᛏ ᛒ ᛘ",
       "accent": "255, 255, 255",
@@ -876,33 +886,8 @@ DATA.characters
 
 function renderCharacterDetail(character) {
   window.MysteryCharacter.unmount(characterDetailContent.querySelector(".mystery-character"));
-  characterDetailContent.innerHTML = `
-    <article class="character-detail-wrap${character.deceased ? ' is-deceased' : ''}" style="--char-rgb:${character.accent}; --detail-bg:url('${asset(character.sheetImage)}')">
-      <div class="character-detail-bg" aria-hidden="true"></div>
-      <div class="character-detail-rune" aria-hidden="true"></div>
-      <div class="character-detail-grid">
-        <div class="character-portrait-stage">
-          <img src="${asset(character.fullImage)}" alt="${character.name}" decoding="async">
-        </div>
-        <div class="character-detail-copy">
-          <p class="eyebrow">Character Profile</p>
-          <h2>${character.name}</h2>
-          <div class="player-credit">Played by ${character.player}</div>
-          <div class="detail-stack">
-            <div class="detail-row"><span>Class</span><strong>${character.className}</strong></div>
-            <div class="detail-row"><span>Subclass</span><strong>${character.subclass}</strong></div>
-          </div>
-          ${character.description ? `
-            <div class="character-profile-description">
-              <span>Character Description</span>
-              ${character.description.map(paragraph => `<p>${paragraph}</p>`).join("")}
-            </div>
-          ` : ""}
-        </div>
-      </div>
-    </article>
-  `;
-  if (character.mystery) window.MysteryCharacter.mount(characterDetailContent.querySelector('.character-detail-wrap'), true);
+  characterDetailContent.innerHTML = window.RootsSheet.render(character, asset);
+  if (character.mystery) window.MysteryCharacter.mount(characterDetailContent.querySelector('.roots-sheet'), true);
   window.ChronicleTools?.updateCharacterNavigation('trr', character);
 }
 

@@ -1,0 +1,14 @@
+The Roots Remember — v55
+New portraits and widescreen Level 4 stat panels for Aurelius, Cassian, Morvan and Vaeloryn.
+Mystery adventurer: new silhouette and continuously flipping ability-score digits.
+Existing mystery runes, lore, memorials and scroll preservation retained.
+Replace the website files with this complete package. Remove these superseded assets from an existing deployment:
+assets/characters/cards/aurelius-tempestine.webp
+assets/characters/full/aurelius-tempestine.webp
+assets/characters/cards/cassian-caelaris.webp
+assets/characters/full/cassian-caelaris.webp
+assets/characters/cards/morvan-nyx.webp
+assets/characters/full/morvan-nyx.webp
+assets/characters/cards/vaeloryn-starsong.webp
+assets/characters/full/vaeloryn-starsong.webp
+assets/characters/full/unknown-adventurer.webp
