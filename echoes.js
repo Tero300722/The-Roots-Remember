@@ -346,10 +346,10 @@ const ECHOES_UNIVERSES = [
     syncUniverseMusic(universe);
   }
 
-  function route(path, replace) {
+  function route(path, replace, preserveScroll = false) {
     const hash = `#/echoes/${path}`;
     if (location.hash !== hash) history[replace ? 'replaceState' : 'pushState'](null, '', hash);
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    if (!preserveScroll) window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }
 
   function showPage(id, { replace = false, focus = true } = {}) {
@@ -364,13 +364,14 @@ const ECHOES_UNIVERSES = [
     window.ChronicleTools?.updateCharacterNavigation('echoes', character);
   }
 
-  function openCharacter(character, { replace = false } = {}) {
+  function openCharacter(character, { replace = false, preserveScroll = false } = {}) {
     if (currentChronicle !== 'echoes' || !ECHOES_DATA.characters.includes(character)) return;
+    if (!preserveScroll) detail.style.minHeight = '';
     lastCharacter = character;
     setActive('character-detail', character.universe);
     renderCharacter(character);
     back.textContent = `← Return to ${character.universeName}`;
-    route(`character-${character.slug}`, replace);
+    route(`character-${character.slug}`, replace, preserveScroll);
     focusTitle(detail.querySelector('h2'));
   }
 

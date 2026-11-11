@@ -391,10 +391,15 @@
         element('strong', '', next.name));
       button.addEventListener('click', () => {
         if (currentChronicle !== chronicle) return;
-        if (chronicle === 'elden') window.EldenChronicle.openCharacter(next);
-        else if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(next);
-        else if (chronicle === 'trr') openCharacter(next);
-        else openGrimwoodCharacter(next);
+        const position = { top: window.scrollY, left: window.scrollX };
+        // Keep enough space during replacement, including when the next story is shorter.
+        container.style.minHeight = `${container.getBoundingClientRect().height}px`;
+        const options = { preserveScroll: true };
+        if (chronicle === 'elden') window.EldenChronicle.openCharacter(next, options);
+        else if (chronicle === 'echoes') window.EchoesChronicle.openCharacter(next, options);
+        else if (chronicle === 'trr') openCharacter(next, options);
+        else openGrimwoodCharacter(next, options);
+        window.scrollTo({ ...position, behavior: 'instant' });
         container.querySelector(`[data-character-step="${direction}"]`).focus({ preventScroll: true });
       });
       nav.appendChild(button);

@@ -599,14 +599,14 @@ function setActiveNav(id) {
   else charactersNavToggle.removeAttribute('aria-current');
 }
 
-function actuallyShowPage(id) {
+function actuallyShowPage(id, { preserveScroll = false } = {}) {
   pages.forEach(page => page.classList.toggle('active', page.id === id));
   setActiveNav(id);
   currentPage = id;
-  window.scrollTo({ top: 0, behavior: 'auto' });
+  if (!preserveScroll) window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
-function navigateTo(id, { immediate = false, replace = false, hash = null } = {}) {
+function navigateTo(id, { immediate = false, replace = false, hash = null, preserveScroll = false } = {}) {
   if (!document.getElementById(id)) return;
 
   const targetHash = hash ?? `#/${id}`;
@@ -621,7 +621,7 @@ function navigateTo(id, { immediate = false, replace = false, hash = null } = {}
     return;
   }
 
-  actuallyShowPage(id);
+  actuallyShowPage(id, { preserveScroll });
   if (location.hash !== targetHash) applyHistory();
 }
 
@@ -761,7 +761,8 @@ function renderGrimwoodCharacterDetail(character) {
   window.ChronicleTools?.updateCharacterNavigation('grimwood', character);
 }
 
-function openGrimwoodCharacter(character, { replace = false } = {}) {
+function openGrimwoodCharacter(character, { replace = false, preserveScroll = false } = {}) {
+  if (!preserveScroll) grimwoodCharacterDetailContent.style.minHeight = '';
   renderGrimwoodCharacterDetail(character);
   grimwoodPages.forEach(page => page.classList.toggle('active', page.id === 'grimwood-character-detail'));
   setGrimwoodActiveNav('character-detail');
@@ -769,7 +770,7 @@ function openGrimwoodCharacter(character, { replace = false } = {}) {
   const method = replace ? 'replaceState' : 'pushState';
   const targetHash = `#/grimwood/character-${character.slug}`;
   if (location.hash !== targetHash) history[method](null, '', targetHash);
-  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  if (!preserveScroll) window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 }
 
 grimwoodCharacterBack?.addEventListener('click', () => showGrimwoodPage('characters', { replace: true }));
@@ -905,11 +906,13 @@ function renderCharacterDetail(character) {
   window.ChronicleTools?.updateCharacterNavigation('trr', character);
 }
 
-function openCharacter(character, { immediate = false, replace = false } = {}) {
+function openCharacter(character, { immediate = false, replace = false, preserveScroll = false } = {}) {
+  if (!preserveScroll) characterDetailContent.style.minHeight = '';
   renderCharacterDetail(character);
   navigateTo('character-detail', {
     immediate,
     replace,
+    preserveScroll,
     hash: `#/character-${character.slug}`
   });
 }

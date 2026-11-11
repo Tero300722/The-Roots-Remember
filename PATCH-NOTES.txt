@@ -1,0 +1,15 @@
+WEBSITE PATCH NOTES
+
+ELDEN RING — BEYOND THE FRENZIED FLAME
+• Updated all seven champions with new original and godly close-ups and widescreen portraits: Son Goku, Zevlor, Corvan Nightbane, Ragnaurak, Morten, Shalashaska Drahaka and Slyren.
+• Added ornate stat blocks for Son Goku, Zevlor, Corvan, Ragnaurak, Morten and Slyren.
+• Original forms show their final level 9 stats; godly forms show their level 20 stats. Switching forms updates the artwork, level and ability scores together.
+• Drahaka’s stat area remains completely blank until his stats are available.
+• Kept the godly portrait reveal on roster hover and removed the replaced image files from the website package.
+
+GRIMWOOD MANOR
+• All four character sheets now display the campaign’s final level: level 6.
+• Added Elior’s and Edwin’s ability scores, replacing their Work in Progress stamps with complete stat blocks.
+
+FIXES
+• Previous/next character buttons now preserve your scroll position across Elden Ring, Grimwood Manor, The Roots Remember and Echoes of Eternity, including when switching to a shorter profile.

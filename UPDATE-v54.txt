@@ -1,0 +1,38 @@
+CHARACTER PORTRAITS, STATS AND SCROLL FIX — v54
+
+This ZIP contains the complete website. Extract it before use.
+
+Update your website files using this package. Replace the entire assets/elden/characters folder with the folder from this ZIP, rather than merging folders, so obsolete portraits are removed too. Remove assets/grimwood/characters/sheets/work-in-progress.png if it remains in your existing installation.
+
+All supplied artwork keeps its original pixel dimensions and is stored as lossless WebP.
+
+Removed files across this update and the preceding Elden portrait update:
+assets/elden/characters/son-goku.webp
+assets/elden/characters/son-goku-godly.webp
+assets/elden/characters/son-goku-card.webp
+assets/elden/characters/son-goku-godly-card.webp
+assets/elden/characters/zevlor.webp
+assets/elden/characters/zevlor-variant.webp
+assets/elden/characters/zevlor-card.webp
+assets/elden/characters/zevlor-variant-card.webp
+assets/elden/characters/corvan-nightbane.webp
+assets/elden/characters/corvan-nightbane-godly.webp
+assets/elden/characters/corvan-nightbane-card.webp
+assets/elden/characters/corvan-nightbane-godly-card.webp
+assets/elden/characters/ragnaurak-20261014.webp
+assets/elden/characters/ragnaurak-godly-20261014.webp
+assets/elden/characters/ragnaurak-20261014-card.webp
+assets/elden/characters/ragnaurak-godly-20261014-card.webp
+assets/elden/characters/morten.webp
+assets/elden/characters/morten-godly.webp
+assets/elden/characters/morten-card.webp
+assets/elden/characters/morten-godly-card.webp
+assets/elden/characters/shalashaska-drahaka-20261014-v3-card.webp
+assets/elden/characters/shalashaska-drahaka-godly-20261014-v2-card.webp
+assets/elden/characters/shalashaska-drahaka-20261014-v3.webp
+assets/elden/characters/shalashaska-drahaka-godly-20261014-v2.webp
+assets/elden/characters/slyren-card.webp
+assets/elden/characters/slyren-godly-card.webp
+assets/elden/characters/slyren.webp
+assets/elden/characters/slyren-godly.webp
+assets/grimwood/characters/sheets/work-in-progress.png

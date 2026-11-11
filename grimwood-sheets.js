@@ -2,10 +2,10 @@
 (() => {
   'use strict';
   const sheets = {
-    'elior-ilphelkiir': { art: 'elior' },
+    'elior-ilphelkiir': { art: 'elior', scores: [8, 14, 16, 17, 10, 8] },
     'theodas-ilphelkiir': { art: 'theodas', scores: [8, 18, 14, 8, 10, 16] },
     'vaelis-rimehart': { art: 'vaelis', scores: [8, 14, 14, 10, 10, 18] },
-    'edwin-everbane': { art: 'edwin' }
+    'edwin-everbane': { art: 'edwin', scores: [8, 16, 14, 8, 18, 10] }
   };
   const abilities = [
     ['STR', 'Strength', 'M8 4h8v6l4 4v6H4v-6l4-4V4Zm0 6h8M8 16h8'],
@@ -29,11 +29,11 @@
       <path class="frame-gem" d="m250 13 9 12-9 12-9-12Zm0 362 9 22-9 12-9-12ZM20 193l8-10 8 10-8 10Zm444 0 8-10 8 10-8 10Z"/>
     </svg>`;
   }
-  function stats(character, scores) {
+  function stats(character, scores, label = 'Ability Scores') {
     return `<section class="grimoire-stats" aria-label="${escape(character.name)} ability scores">
       ${frame()}
       <div class="grimoire-stats-inner">
-        <p class="grimoire-stats-label">Ability Scores</p>
+        <p class="grimoire-stats-label">${escape(label)}</p>
         <h3>${escape(character.className)}</h3>
         <p class="grimoire-specialty">${escape(character.subclass)}</p>
         <div class="grimoire-divider" aria-hidden="true"><span>◆</span></div>
@@ -49,13 +49,13 @@
     const root = 'assets/grimwood/characters/sheets/';
     return `<article class="grimwood-sheet" style="--char-rgb:${character.accent}">
       <header class="grimwood-sheet-heading">
-        <p class="eyebrow">Into the Grimwood Manor · Character Chronicle</p>
+        <p class="eyebrow">Into the Grimwood Manor · Level 6</p>
         <h2>${escape(character.name)}</h2>
         <p class="player-credit">Played by ${escape(character.player)}</p>
       </header>
       <div class="grimwood-sheet-art">
         <img class="grimwood-landscape" src="${asset(root + sheet.art + '.png')}" alt="${escape(character.name)} before Grimwood Manor" decoding="async" width="1671" height="942">
-        ${sheet.scores ? stats(character, sheet.scores) : `<img class="grimwood-wip" src="${asset(root + 'work-in-progress.png')}" alt="Ability scores — work in progress" width="1774" height="887">`}
+        ${stats(character, sheet.scores, 'Level 6 · Ability Scores')}
       </div>
       <div class="grimwood-sheet-lore">
         <aside class="grimwood-sheet-identity" aria-label="Character class">
@@ -69,5 +69,5 @@
       </div>
     </article>`;
   }
-  window.GrimwoodSheet = { render };
+  window.GrimwoodSheet = { render, stats };
 })();

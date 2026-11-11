@@ -10,54 +10,96 @@ const ELDEN_DATA = {
       "player": "Gianluca Amato",
       "slug": "son-goku",
       "accent": "205, 174, 109",
-      "fullImage": "assets/elden/characters/son-goku.webp",
-      "variantImage": "assets/elden/characters/son-goku-godly.webp",
+      "fullImage": "assets/elden/characters/sheets/son-goku-original.webp",
+      "variantImage": "assets/elden/characters/sheets/son-goku-godly.webp",
       "variantLabel": "Godly Form",
-      "width": 1024,
-      "height": 1536,
+      "width": 1672,
+      "height": 941,
       "description": [
         "Son Goku was once little more than a common warrior among his orcish clan, known for his strength but holding no position of particular importance. That life ended when the Frenzied Flame descended upon his people, consuming their minds and reducing warriors, friends, and family alike to maddened husks of who they once were.",
         "Somehow spared from the madness, Goku was left with a single horrific task: put down what remained of his clan. With nothing but his bare hands, he fought through those he had once called kin, killing them one after another until only the clan's leader remained—his own father. Their battle ended with Goku standing as the sole survivor, having personally slain everyone he had ever known.",
         "His victory offered no salvation. Broken and exhausted beyond his limits, Goku collapsed among the bodies of his clan, no longer possessing the strength to even move. There, the Frenzied Flame finally claimed him as well. Unlike the others, it did not take his mind. It simply burned him, reducing the last warrior of his clan to ash.",
         "And as the flames consumed him, Goku held onto one final, impossible wish: that he had been strong enough to reach into the heavens, seize the sun with his bare hands, and snuff out its flame."
       ],
-      "cardImage": "assets/elden/characters/son-goku-card.webp",
-      "variantCardImage": "assets/elden/characters/son-goku-godly-card.webp",
+      "cardImage": "assets/elden/characters/sheets/son-goku-original-card.webp",
+      "variantCardImage": "assets/elden/characters/sheets/son-goku-godly-card.webp",
       "className": "Monk",
-      "subclass": "Warrior of the Open Hand"
+      "subclass": "Warrior of the Open Hand",
+      "variantWidth": 1672,
+      "variantHeight": 941,
+      "abilityScores": [
+        14,
+        20,
+        16,
+        8,
+        15,
+        12
+      ],
+      "godlyAbilityScores": [
+        20,
+        18,
+        20,
+        18,
+        17,
+        16
+      ],
+      "originalLevel": 9,
+      "godlyLevel": 20,
+      "landscapeSheet": true
     },
     {
       "name": "Zevlor",
       "player": "Matthias Martino",
       "slug": "zevlor",
       "accent": "205, 174, 109",
-      "fullImage": "assets/elden/characters/zevlor.webp",
-      "variantImage": "assets/elden/characters/zevlor-variant.webp",
+      "fullImage": "assets/elden/characters/sheets/zevlor-original.webp",
+      "variantImage": "assets/elden/characters/sheets/zevlor-godly.webp",
       "variantLabel": "Godly Form",
-      "width": 1024,
-      "height": 1536,
+      "width": 1672,
+      "height": 941,
       "description": [
         "Zevlor, a powerful sorcerer gifted with the fiery might of draconic ancestry, was awakened by Melina alongside a group of fellow warriors to embark on a perilous journey to defeat the Lord of Frenzied Flame. However, from the moment he laid eyes upon Melina, his ambitions extended far beyond their quest.",
         "Captivated by her beauty and spirit, Zevlor became determined not only to fulfil his destiny but also to win her heart and one day take her as his wife. Charismatic, bold, and occasionally reckless, Zevlor possessed a playful arrogance and an unwavering confidence in his abilities.",
         "Though often lighthearted and prone to mischief, beneath his charming exterior lay a fiercely loyal companion who would go to extraordinary lengths to protect those he held dear."
       ],
-      "cardImage": "assets/elden/characters/zevlor-card.webp",
-      "variantCardImage": "assets/elden/characters/zevlor-variant-card.webp",
+      "cardImage": "assets/elden/characters/sheets/zevlor-original-card.webp",
+      "variantCardImage": "assets/elden/characters/sheets/zevlor-godly-card.webp",
       "className": "Sorcerer",
-      "subclass": "Draconic Ancestry (Fire)"
+      "subclass": "Draconic Ancestry (Fire)",
+      "variantWidth": 1672,
+      "variantHeight": 941,
+      "abilityScores": [
+        13,
+        16,
+        14,
+        15,
+        10,
+        20
+      ],
+      "godlyAbilityScores": [
+        20,
+        17,
+        20,
+        14,
+        16,
+        15
+      ],
+      "originalLevel": 9,
+      "godlyLevel": 20,
+      "landscapeSheet": true
     },
     {
       "name": "Corvan Nightbane",
       "player": "Denzel Baldacchino",
       "slug": "corvan-nightbane",
       "accent": "205, 174, 109",
-      "fullImage": "assets/elden/characters/corvan-nightbane.webp",
-      "variantImage": "assets/elden/characters/corvan-nightbane-godly.webp",
+      "fullImage": "assets/elden/characters/sheets/corvan-nightbane-original.webp",
+      "variantImage": "assets/elden/characters/sheets/corvan-nightbane-godly.webp",
       "variantLabel": "Godly Form",
-      "width": 1024,
-      "height": 1536,
-      "variantWidth": 1083,
-      "variantHeight": 1453,
+      "width": 1672,
+      "height": 941,
+      "variantWidth": 1672,
+      "variantHeight": 941,
       "className": "Rogue",
       "description": [
         "Corvan NightBane, a red-skinned tiefling with a dark and troubled past, was abandoned by his parents at a young age and left to grow up within the walls of a rundown tavern. Surrounded by thieves, cutthroats, and criminals, Corvan quickly learned that survival depended on cunning, deception, and staying hidden in the shadows.",
@@ -65,50 +107,107 @@ const ELDEN_DATA = {
         "Lost to time and forgotten by the world, Corvan fell into a deep slumber, only to be awakened years later by the mysterious Melina, who sought his deadly skills for a dangerous operation to bring an end to the Age of the Frenzied Flame and restore hope to the Lands Between."
       ],
       "subclass": "Assassin",
-      "cardImage": "assets/elden/characters/corvan-nightbane-card.webp",
-      "variantCardImage": "assets/elden/characters/corvan-nightbane-godly-card.webp"
+      "cardImage": "assets/elden/characters/sheets/corvan-nightbane-original-card.webp",
+      "variantCardImage": "assets/elden/characters/sheets/corvan-nightbane-godly-card.webp",
+      "abilityScores": [
+        13,
+        20,
+        18,
+        12,
+        12,
+        15
+      ],
+      "godlyAbilityScores": [
+        20,
+        18,
+        20,
+        15,
+        17,
+        17
+      ],
+      "originalLevel": 9,
+      "godlyLevel": 20,
+      "landscapeSheet": true
     },
     {
       "name": "Ragnaurak",
       "player": "Remsi Agius",
       "slug": "ragnaurak",
       "accent": "205, 174, 109",
-      "fullImage": "assets/elden/characters/ragnaurak-20261014.webp",
-      "variantImage": "assets/elden/characters/ragnaurak-godly-20261014.webp",
+      "fullImage": "assets/elden/characters/sheets/ragnaurak-original.webp",
+      "variantImage": "assets/elden/characters/sheets/ragnaurak-godly.webp",
       "variantLabel": "Godly Form",
-      "width": 1024,
-      "height": 1536,
-      "variantWidth": 1024,
-      "variantHeight": 1536,
+      "width": 1670,
+      "height": 941,
+      "variantWidth": 1672,
+      "variantHeight": 941,
       "className": "Barbarian",
       "description": [
         "Ragnaurak is a 5'5\" half-orc barbarian whose short stature hides an incredibly powerful and battle-hardened warrior. Despite his intimidating appearance, he is calm, collected, and rarely speaks more than necessary. Often underestimated because of his height, Ragnaurak lets his actions speak for themselves.",
         "He is fiercely loyal to those he considers friends, placing their safety above his own. Though normally patient and difficult to provoke, threatening his companions unleashes the terrifying fury of a berserker. Beneath his tough exterior lies a surprisingly gentle soul who values loyalty, friendship, and protection above glory or power."
       ],
-      "cardImage": "assets/elden/characters/ragnaurak-20261014-card.webp",
-      "variantCardImage": "assets/elden/characters/ragnaurak-godly-20261014-card.webp",
-      "subclass": "Berserker"
+      "cardImage": "assets/elden/characters/sheets/ragnaurak-original-card.webp",
+      "variantCardImage": "assets/elden/characters/sheets/ragnaurak-godly-card.webp",
+      "subclass": "Berserker",
+      "abilityScores": [
+        18,
+        14,
+        15,
+        9,
+        11,
+        12
+      ],
+      "godlyAbilityScores": [
+        19,
+        17,
+        20,
+        18,
+        17,
+        12
+      ],
+      "originalLevel": 9,
+      "godlyLevel": 20,
+      "landscapeSheet": true
     },
     {
       "name": "Morten",
       "player": "Dathan Baldacchino",
       "slug": "morten",
       "accent": "205, 174, 109",
-      "fullImage": "assets/elden/characters/morten.webp",
-      "variantImage": "assets/elden/characters/morten-godly.webp",
+      "fullImage": "assets/elden/characters/sheets/morten-original.webp",
+      "variantImage": "assets/elden/characters/sheets/morten-godly.webp",
       "variantLabel": "Godly Form",
-      "width": 1087,
-      "height": 1446,
-      "variantWidth": 1024,
-      "variantHeight": 1536,
+      "width": 1671,
+      "height": 941,
+      "variantWidth": 1672,
+      "variantHeight": 941,
       "className": "Fighter",
       "description": [
         "Morten Crowhurst was once a simple man-at-arms, until his life was claimed during the Incident of the Frenzied Flame. Yet death was not the end for him.",
         "Returned to the Lands Between by a force he does not fully understand, Morten has been granted a second chance not to reclaim the life he lost, but to finish what fate left undone. Armed with steel, grim determination, and the memory of a world consumed by madness, he now walks a single path: to hunt down the source of the Frenzied Flame and extinguish it once and for all, no matter the cost."
       ],
       "subclass": "Champion",
-      "cardImage": "assets/elden/characters/morten-card.webp",
-      "variantCardImage": "assets/elden/characters/morten-godly-card.webp"
+      "cardImage": "assets/elden/characters/sheets/morten-original-card.webp",
+      "variantCardImage": "assets/elden/characters/sheets/morten-godly-card.webp",
+      "abilityScores": [
+        18,
+        14,
+        15,
+        11,
+        11,
+        11
+      ],
+      "godlyAbilityScores": [
+        16,
+        20,
+        20,
+        15,
+        16,
+        16
+      ],
+      "originalLevel": 9,
+      "godlyLevel": 20,
+      "landscapeSheet": true
     },
     {
       "name": "Shalashaska Drahaka",
@@ -121,35 +220,59 @@ const ELDEN_DATA = {
       "description": [
         "A dragonborn soon to be reawakened by Melina to take down the new Frenzied Flame of Madness, cursed with visions of the forecoming fight, the betrayal by an ally, and the final battle against their newly emerged foe. What the visions failed to show was Miquella pulling the strings of him and his allies to succeed for his own benefit."
       ],
-      "width": 1024,
-      "height": 1536,
-      "fullImage": "assets/elden/characters/shalashaska-drahaka-20261014-v3.webp",
-      "cardImage": "assets/elden/characters/shalashaska-drahaka-20261014-v3-card.webp",
-      "variantWidth": 1024,
-      "variantHeight": 1536,
-      "variantImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014-v2.webp",
-      "variantCardImage": "assets/elden/characters/shalashaska-drahaka-godly-20261014-v2-card.webp"
+      "width": 1670,
+      "height": 941,
+      "fullImage": "assets/elden/characters/sheets/shalashaska-drahaka-original.webp",
+      "cardImage": "assets/elden/characters/sheets/shalashaska-drahaka-original-card.webp",
+      "variantWidth": 1671,
+      "variantHeight": 941,
+      "variantImage": "assets/elden/characters/sheets/shalashaska-drahaka-godly.webp",
+      "variantCardImage": "assets/elden/characters/sheets/shalashaska-drahaka-godly-card.webp",
+      "originalLevel": 9,
+      "godlyLevel": 20,
+      "landscapeSheet": true,
+      "abilityScores": null,
+      "godlyAbilityScores": null
     },
     {
       "name": "Slyren",
       "player": "Daniel Mercieca",
       "slug": "slyren",
       "accent": "205, 174, 109",
-      "fullImage": "assets/elden/characters/slyren.webp",
-      "variantImage": "assets/elden/characters/slyren-godly.webp",
+      "fullImage": "assets/elden/characters/sheets/slyren-original.webp",
+      "variantImage": "assets/elden/characters/sheets/slyren-godly.webp",
       "variantLabel": "Godly Form",
-      "width": 1164,
-      "height": 1351,
-      "variantWidth": 1145,
-      "variantHeight": 1374,
+      "width": 1672,
+      "height": 941,
+      "variantWidth": 1672,
+      "variantHeight": 941,
       "className": "Tactician",
       "description": [
         "He is a man who understands that battles are won not through brute strength, but through careful planning and the exploitation of weakness. Rarely found at the front lines, he prefers to observe the battlefield from a distance, studying the movements of enemies and allies alike. Every misplaced step, every opening in an opponent's defense, and every shift in momentum is another piece of a puzzle only he can see. With calculated precision, he directs his companions through the chaos, turning seemingly hopeless encounters into decisive victories. To him, the battlefield is a chessboard, his enemies are obstacles to be overcome, and his allies are pieces whose true potential can only be realized through proper guidance.",
         "Yet beneath his composed exterior lies an ambition far greater than the desire for victory. He possesses an insatiable hunger for power, driven by the belief that even the sharpest mind is shackled by the limitations of its own existence. Knowledge, influence, forbidden magic—he seeks them all, not necessarily for their own sake, but for the advantages they might provide. His pursuit of power knows few boundaries, and he would willingly bargain away pieces of his own sanity if it meant gaining a glimpse of truths beyond mortal comprehension."
       ],
       "subclass": "Scholar",
-      "cardImage": "assets/elden/characters/slyren-card.webp",
-      "variantCardImage": "assets/elden/characters/slyren-godly-card.webp"
+      "cardImage": "assets/elden/characters/sheets/slyren-original-card.webp",
+      "variantCardImage": "assets/elden/characters/sheets/slyren-godly-card.webp",
+      "originalLevel": 9,
+      "godlyLevel": 20,
+      "landscapeSheet": true,
+      "abilityScores": [
+        11,
+        12,
+        13,
+        20,
+        16,
+        14
+      ],
+      "godlyAbilityScores": [
+        18,
+        19,
+        20,
+        17,
+        18,
+        18
+      ]
     }
   ],
   "npcs": [
@@ -246,10 +369,10 @@ const ELDEN_DATA = {
       else button.removeAttribute('aria-current');
     });
   }
-  function route(path, replace = false) {
+  function route(path, replace = false, preserveScroll = false) {
     const hash = `#/elden/${path}`;
     if (location.hash !== hash) history[replace ? 'replaceState' : 'pushState'](null, '', hash);
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    if (!preserveScroll) window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }
   function showPage(id, { replace = false, focus = true } = {}) {
     if (currentChronicle !== 'elden') return;
@@ -263,15 +386,18 @@ const ELDEN_DATA = {
     return window.CharacterPresentation.card(character, openCharacter);
   }
   function renderCharacter(character) {
-    detail.replaceChildren(window.CharacterPresentation.profile(character, 'Beyond the Frenzied Flame'));
+    detail.replaceChildren(character.landscapeSheet
+      ? window.EldenSheet.profile(character)
+      : window.CharacterPresentation.profile(character, 'Beyond the Frenzied Flame'));
     window.ChronicleTools?.updateCharacterNavigation('elden', character);
   }
-  function openCharacter(character, { replace = false } = {}) {
+  function openCharacter(character, { replace = false, preserveScroll = false } = {}) {
     if (currentChronicle !== 'elden' || !ELDEN_DATA.characters.includes(character)) return;
+    if (!preserveScroll) detail.style.minHeight = '';
     lastCharacter = character;
     setActive('character-detail');
     renderCharacter(character);
-    route(`character-${character.slug}`, replace);
+    route(`character-${character.slug}`, replace, preserveScroll);
     focusTitle(detail.querySelector('h2'));
   }
   ELDEN_DATA.characters.forEach(character => document.getElementById('elden-character-grid').appendChild(makeCard(character)));
