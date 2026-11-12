@@ -3,6 +3,7 @@
 .roots-sheet .mystery-digits { font-family:Georgia,serif; font-size:1em; line-height:1; }
 .roots-sheet .mystery-digits .mystery-symbol-line { gap:0; }
 .roots-sheet .mystery-digits .mystery-symbol-slot { width:.6em; flex-basis:.6em; height:1.1em; }
+.roots-sheet .mystery-digits .mystery-number-slot { width:1.2em; flex-basis:1.2em; font-variant-numeric:tabular-nums; }
 .roots-sheet .mystery-digits .mystery-symbol-glyph { line-height:1; }
 .roots-sheet .grimoire-stats .mystery-symbols:not(.mystery-digits) { font-size:.7em; }
 .roots-sheet .grimwood-sheet-heading .mystery-symbols { font-size:.65em; }

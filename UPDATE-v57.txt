@@ -1,0 +1,7 @@
+WEBSITE UPDATE v.57 — The Roots Remember
+
+• Mystery character's rotating ability scores now use complete numbers from 1 to 20.
+• Single-digit and double-digit values alternate, with alternating starting values among the six stats.
+• The value 20 is guaranteed to appear within the first four double-digit rolls in each shuffled batch.
+• Each score retains its own independent rotating animation; all other mystery character symbols are unchanged.
+• Updated cache versions for mystery-character.js and roots-sheets.css.

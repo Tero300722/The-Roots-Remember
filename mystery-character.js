@@ -17,8 +17,43 @@
     return choices[Math.floor(Math.random() * choices.length)];
   }
 
-  function field(element, label, lengths, canRun, prose = false, numeric = false) {
-    const nextGlyph = previous => numeric ? String((Number(previous || 0) + 1 + Math.floor(Math.random() * 9)) % 10) : randomSymbol(previous);
+  // Shuffle complete ranges so every number is reachable, including the maximum 20.
+  function shuffledRange(min, max) {
+    const values = Array.from({ length: max - min + 1 }, (_, i) => i + min);
+    for (let i = values.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [values[i], values[j]] = [values[j], values[i]];
+    }
+    return values;
+  }
+
+  function numberRoller(index) {
+    // Start alternating abilities on opposite ranges for a balanced visible mix.
+    let nextIsSingle = index % 2 === 0;
+    let singleDigits = [];
+    let doubleDigits = [];
+    return () => {
+      const single = nextIsSingle;
+      nextIsSingle = !nextIsSingle;
+      if (single) {
+        if (!singleDigits.length) singleDigits = shuffledRange(1, 9);
+        return String(singleDigits.pop());
+      }
+      if (!doubleDigits.length) {
+        doubleDigits = shuffledRange(10, 20);
+        // Make 20 appear during the first four double-digit turns of each batch.
+        // It never gets excluded by chance, and no number exceeds it.
+        const twentyIndex = doubleDigits.indexOf(20);
+        const earlyIndex = doubleDigits.length - 1 - Math.floor(Math.random() * 4);
+        [doubleDigits[twentyIndex], doubleDigits[earlyIndex]] =
+          [doubleDigits[earlyIndex], doubleDigits[twentyIndex]];
+      }
+      return String(doubleDigits.pop());
+    };
+  }
+
+  function field(element, label, lengths, canRun, prose = false, numeric = false, numericIndex = 0) {
+    const nextGlyph = numeric ? numberRoller(numericIndex) : randomSymbol;
     const wrapper = document.createElement('span');
     wrapper.className = 'mystery-symbols' + (prose ? ' mystery-prose' : '') + (numeric ? ' mystery-digits' : '');
     wrapper.setAttribute('role', 'img');
@@ -29,13 +64,16 @@
       const line = document.createElement('span');
       line.className = prose ? 'mystery-symbol-word' : 'mystery-symbol-line';
       line.setAttribute('aria-hidden', 'true');
-      for (let i = 0; i < length; i++) {
+      // A numeric score is one rolling value, not two independently rolling digits.
+      // Otherwise the tens/ones could accidentally display values above 20.
+      for (let i = 0; i < (numeric ? 1 : length); i++) {
         const slot = document.createElement('span');
-        slot.className = 'mystery-symbol-slot';
+        slot.className = 'mystery-symbol-slot' + (numeric ? ' mystery-number-slot' : '');
+        const initialNumber = numeric ? (reducedMotion.matches ? '?' : nextGlyph()) : null;
         const layers = [0, 1].map(index => {
           const layer = document.createElement('span');
           layer.className = 'mystery-symbol-glyph';
-          layer.textContent = numeric && reducedMotion.matches ? '?' : nextGlyph();
+          layer.textContent = numeric ? initialNumber : nextGlyph();
           layer.style.transform = index ? 'translateY(110%)' : 'translateY(0)';
           layer.style.opacity = index ? '0' : '1';
           slot.appendChild(layer);
@@ -115,10 +153,10 @@
       fields.push(field(el, 'Description concealed', lengths,
         () => root.isConnected && !document.hidden && !reducedMotion.matches, true));
     });
-    if (profile) root.querySelectorAll('.grimoire-ability dd').forEach(el => {
+    if (profile) root.querySelectorAll('.grimoire-ability dd').forEach((el, index) => {
       const label = el.parentElement.querySelector('abbr').title;
       fields.push(field(el, label + ' concealed', [2],
-        () => root.isConnected && !document.hidden && !reducedMotion.matches, false, true));
+        () => root.isConnected && !document.hidden && !reducedMotion.matches, false, true, index));
     });
     const portrait = root.querySelector('img');
     if (portrait) portrait.alt = 'Silhouetted adventurer — identity concealed';
