@@ -1,0 +1,11 @@
+CHRONICLES WEBSITE v59 — VALEN CURSOR FIX
+
+Issue: When Valen's farewell opened, the custom decorative cursor was hidden
+while the site's global CSS still forced the native pointer to cursor:none.
+
+Fix: Restore the visible native pointer throughout Valen's scene, including
+clickable pointer styling on Next, Show full dialogue, and Return to menu.
+Outside Valen's farewell, the original custom-cursor behavior is unchanged.
+
+Only index.html's Valen CSS cache identifier and valen-farewell.css changed.
+All original images, dialogues, navigation, audio, and campaign content are retained.

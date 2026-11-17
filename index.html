@@ -50,14 +50,31 @@
   <link rel="stylesheet" href="mystery-character.css?v=20261019-short-bio" />
   <link rel="stylesheet" href="npc-archive.css?v=20261101-v43" />
   <link rel="stylesheet" href="grimwood-npcs.css?v=20261101-v45" />
-  <link rel="stylesheet" href="serpent.css?v=20261022-covers" />
+  <link rel="stylesheet" href="serpent.css?v=58" />
   <link rel="stylesheet" href="collection.css?v=51" />
   <link rel="stylesheet" href="responsive-scale.css?v=48" />
-  <link rel="stylesheet" href="grimwood-sheets.css?v=52" />
+  <link rel="stylesheet" href="grimwood-sheets.css?v=58" />
   <link rel="stylesheet" href="roots-sheets.css?v=57" />
-  <link rel="stylesheet" href="elden-sheets.css?v=53" />
+  <link rel="stylesheet" href="elden-sheets.css?v=58" />
+  <link rel="stylesheet" href="valen-farewell.css?v=59-cursor-fix" />
+  <link rel="stylesheet" href="rift.css?v=61" />
 </head>
-<body>
+<body class="rift-booting">
+  <section id="rift-loader" class="rift-loader" role="dialog" aria-modal="true" aria-label="Loading the archive" tabindex="-1" data-phase="clean">
+    <div class="rift-boot-inner">
+      <p class="rift-boot-eyebrow">The Chronicle Collection</p>
+      <div class="rift-logo-stack" aria-hidden="true">
+        <img class="rift-logo-old" src="assets/site-logo.webp" alt="" width="310" height="310" fetchpriority="high">
+        <img class="rift-logo-new" src="assets/rift/world-gate-logo.png" alt="" width="310" height="310" fetchpriority="high">
+        <img class="rift-logo-slice" src="assets/rift/world-gate-logo.png" alt="" width="310" height="310">
+      </div>
+      <h1 class="rift-boot-title">Main Manual Campaigns</h1>
+      <p class="rift-boot-status" role="status">Opening the archive…</p>
+      <div class="rift-progress" aria-hidden="true"><span></span></div>
+      <p class="rift-boot-count" aria-hidden="true">0%</p>
+    </div>
+  </section>
+  <noscript><style>.rift-loader{display:none}body.rift-booting{overflow:auto!important}</style><p>Enable JavaScript to view the archive.</p></noscript>
   <div class="world-bg" aria-hidden="true">
     <div class="aurora aurora-a"></div>
     <div class="aurora aurora-b"></div>
@@ -675,14 +692,16 @@
     </section>
   </div>
 
-  <script src="collection.js?v=51"></script>
+  <script src="rift.js?v=61"></script>
+  <script src="valen-farewell.js?v=60"></script>
+  <script src="collection.js?v=60"></script>
   <script src="music.js?v=20261012-echoes-music"></script>
   <script src="npc-archive.js?v=20261101-v45"></script>
   <script src="mystery-character.js?v=57"></script>
   <script src="serpent.js?v=20261019-controls2"></script>
   <script src="grimwood-sheets.js?v=54"></script>
   <script src="roots-sheets.js?v=55"></script>
-  <script src="script.js?v=56"></script>
+  <script src="script.js?v=59"></script>
   <script src="grimwood-npcs.js?v=20261108-v47"></script>
   <script src="character-presentation.js?v=20261014-three-four"></script>
   <script src="echoes.js?v=54"></script>

@@ -1,0 +1,40 @@
+CHRONICLES WEBSITE v59 — VALEN'S FAREWELL
+
+This is the COMPLETE website, based on Chronicles-Website-v58-Exact(1).zip.
+Extract the ZIP and open index.html, or serve this folder with your usual static host.
+This package is the website source, not a compiled Windows executable.
+
+Changes
+- Selecting any of the five chronicle books or pressing Open chronicle now opens
+  Valen's full-screen farewell. Campaign navigation and campaign music do not start.
+- Uses the supplied transparent Valen portrait and Infinite Corridor backdrop.
+- Animated corridor drift, expanding light arcs, particles, and subtle portrait motion.
+- A teal/violet fantasy dialogue panel with gold edging and Valen's nameplate.
+- All five supplied dialogues appear in order with animated text and italic emphasis.
+- Next appears only when the current dialogue is fully revealed. Show full dialogue
+  is available to finish the current line immediately.
+- Farewell, Return to menu, or Escape returns to the menu. Reopening starts at line 1.
+- Keyboard focus stays inside the scene, returns to the invoking button, and does
+  not shift the scene. Reduced-motion preferences show the full text without motion.
+- All previous campaign assets and source files are retained.
+
+Resolution
+The animation canvas renders at device resolution, up to 3840 x 2160.
+The interface uses scalable CSS and text. The supplied 1280 x 720 backdrop and
+1024 x 1536 character are preserved unchanged; they are not native 4K artwork.
+
+Verification
+- JavaScript syntax checks passed.
+- Browser checks passed for all five book selections, Open chronicle, all dialogue
+  steps, delayed Next, final return, replay, Escape, focus trapping, and scroll stability.
+- Checked desktop, 390 x 844 and 320 x 568 mobile layouts, and a 3840 x 2160 viewport.
+- Confirmed the 4K viewport creates a 3840 x 2160 animation canvas.
+- Original package files were compared byte-for-byte: only index.html, script.js,
+  and collection.js changed; new farewell files and this note were added.
+
+Implementation
+valen-farewell.js / valen-farewell.css contain the scene.
+assets/valen-farewell/ contains the supplied artwork.
+The existing selectChronicle function is gated before entering any campaign.
+Book selection is also intercepted in collection.js. Both entry points must be
+restored together if campaign entry is re-enabled for a future desktop release.

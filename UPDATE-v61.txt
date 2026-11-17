@@ -1,0 +1,5 @@
+v61 — Loader progress update
+Progress now shows 0–100% in uneven jumps with brief stalls.
+Added archive signature, identity, integrity and recovery errors.
+The loader remains unskippable for ten seconds.
+All v60 features and campaign files remain included.

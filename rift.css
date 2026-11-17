@@ -1,0 +1,70 @@
+/* Corruption is confined to the boot screen and archive, never the dialogue. */
+body.rift-booting { overflow: hidden !important; }
+.rift-loader { position: fixed; inset: 0; z-index: 2147483050; display: grid; place-items: center; overflow: clip; background: #06070a; color: #d5caae; font-family: Georgia, serif; }
+.rift-loader[hidden] { display: none !important; }
+.rift-boot-inner { width: min(520px, 86vw); text-align: center; position: relative; }
+.rift-boot-eyebrow { margin: 0 0 24px; font: 10px/1.5 monospace; letter-spacing: .36em; color: #8c8997; }
+.rift-logo-stack { position: relative; width: clamp(170px, 24vw, 310px); aspect-ratio: 1; margin: auto; }
+.rift-logo-stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.rift-logo-old { filter: drop-shadow(0 0 20px #b4933a25); }
+.rift-logo-new { opacity: 0; }
+.rift-logo-slice { opacity: 0; }
+.rift-boot-title { margin: 28px 0 14px; font-size: clamp(19px, 2vw, 28px); letter-spacing: .16em; text-transform: uppercase; font-weight: 400; }
+.rift-boot-status { min-height: 1.5em; font: 11px/1.5 monospace; color: #aba1b3; letter-spacing: .08em; }
+.rift-progress { height: 2px; margin: 28px auto 12px; width: min(300px, 75%); background: #322c39; overflow: hidden; }
+.rift-progress span { display: block; height: 100%; width: 0; background: #bb9e74; box-shadow: 0 0 14px #ba89f8; }
+.rift-boot-count { color: #777180; font: 10px/1.5 monospace; letter-spacing: .18em; }
+.rift-loader::after { content: ''; pointer-events: none; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, #0000 0 3px, #0003 3px 4px); opacity: .18; }
+.rift-loader[data-phase="split"] .rift-logo-old { transform: translateX(-5px); filter: drop-shadow(8px 0 #76457f80); }
+.rift-loader[data-phase="split"] .rift-logo-new { opacity: 1; clip-path: polygon(0 19%,100% 19%,100% 31%,0 31%,0 56%,100% 56%,100% 76%,0 76%); transform: translateX(13px); }
+.rift-loader[data-phase="split"] .rift-logo-slice { opacity: .8; clip-path: inset(34% 0 48%); transform: translate(-17px, 3px); filter: hue-rotate(25deg); }
+.rift-loader[data-phase="gate"] .rift-logo-old { opacity: 0; }
+.rift-loader[data-phase="gate"] .rift-logo-new { opacity: 1; }
+.rift-loader[data-phase="fracture"] .rift-logo-old { opacity: .5; clip-path: inset(42% 0 36%); transform: translateX(18px); }
+.rift-loader[data-phase="fracture"] .rift-logo-new { opacity: 1; clip-path: polygon(0 0,100% 0,100% 42%,0 42%,0 64%,100% 64%,100% 100%,0 100%); transform: translateX(-6px); }
+.rift-loader[data-phase="fracture"] .rift-logo-slice { opacity: 1; clip-path: inset(42% 0 36%); transform: translateX(22px); }
+.rift-loader[data-phase="fracture"] .rift-boot-title { text-shadow: -3px 0 #8185bd, 3px 0 #6b304b; transform: translateX(3px); }
+.rift-loader[data-phase="lost"] .rift-logo-old { opacity: .2; transform: translateX(-4px); }
+.rift-loader[data-phase="lost"] .rift-logo-new { opacity: .95; clip-path: inset(0 0 12%); }
+.rift-loader[data-phase="lost"] .rift-logo-slice { opacity: .8; clip-path: inset(63% 0 28%); transform: translateX(-20px); }
+.rift-loader[data-phase="lost"] .rift-boot-status { color: #bb8ca7; }
+
+/* The supplied future menu intrudes as mismatched frames, not a new clickable menu. */
+.rift-interference { position: fixed; inset: 0; z-index: 2147482900; pointer-events: none; overflow: clip; opacity: 0; visibility: hidden; contain: layout paint; }
+.rift-frame, .rift-strip { position: absolute; inset: 0; background: #0c1018 url('assets/rift/world-gate-menu.png') center top / 100% 100% no-repeat; }
+.rift-frame { opacity: 0; }
+.rift-strip { opacity: .9; }
+.rift-strip-a { clip-path: inset(16% 0 72%); transform: translateX(23px); filter: hue-rotate(12deg); }
+.rift-strip-b { clip-path: inset(46% 0 45%); transform: translateX(-32px); }
+.rift-strip-c { clip-path: inset(78% 0 12%); transform: translateX(13px); filter: saturate(.6); }
+.rift-interference::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 4px, #0003 4px 5px); opacity: .3; }
+body.rift-burst .rift-interference { opacity: 1; visibility: visible; }
+body.rift-burst #chronicle-selector .library-inner { filter: saturate(.6); text-shadow: 2px 0 #754968, -2px 0 #286978; }
+body.rift-burst[data-rift-frame="tear"] #chronicle-selector .library-feature { transform: translateX(-7px) skewX(.3deg); }
+body.rift-burst[data-rift-frame="invade"] .rift-frame { opacity: .94; }
+body.rift-burst[data-rift-frame="invade"] .rift-strip-a { transform: translateX(-12px); clip-path: inset(22% 0 71%); }
+body.rift-burst[data-rift-frame="echo"] .rift-frame { opacity: .6; clip-path: inset(33% 0 13%); transform: translateX(7px); }
+body.rift-burst[data-rift-frame="echo"] .rift-strip-b { clip-path: inset(7% 0 79%); transform: translateX(18px); }
+body.rift-burst[data-rift-frame="scar"] .rift-strip-a { opacity: 0; }
+body.rift-burst[data-rift-frame="scar"] .rift-strip-b { clip-path: inset(61% 0 36%); transform: translateX(-9px); }
+body.rift-burst[data-rift-frame="scar"] .rift-strip-c { opacity: .4; }
+.rift-controls { position: fixed; right: 18px; bottom: 14px; z-index: 2147483100; display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid #8a789e60; background: #0b1018ed; color: #bfb6c9; font: 11px/1.4 system-ui, sans-serif; border-radius: 3px; }
+.rift-controls button { color: inherit; background: none; border: none; padding: 4px; font: inherit; min-height: 28px; }
+.rift-controls input { width: 65px; accent-color: #b7a073; }
+.rift-controls label { display: flex; align-items: center; gap: 7px; }
+.rift-controls button:focus-visible, .rift-controls input:focus-visible { outline: 2px solid #dccb9b; outline-offset: 3px; }
+html.custom-cursor-enabled body .rift-controls, html.custom-cursor-enabled body .rift-controls * { cursor: default !important; }
+html.custom-cursor-enabled body .rift-controls button, html.custom-cursor-enabled body .rift-controls input { cursor: pointer !important; }
+body.rift-booting .custom-cursor { display: none !important; }
+html.custom-cursor-enabled body.rift-booting, html.custom-cursor-enabled body.rift-booting * { cursor: default !important; }
+@media(max-width:600px) { .rift-controls { bottom: 8px; right: 8px; font-size: 10px; padding: 3px 8px; gap: 5px; } .rift-controls input { width: 48px; } .valen-open .rift-controls { bottom: 2px; } }
+@media(prefers-reduced-motion:reduce) {
+  .rift-interference { display: none !important; }
+  .rift-logo-slice { display: none !important; }
+  .rift-logo-stack img, .rift-boot-title { transform: none !important; clip-path: none !important; filter: none !important; text-shadow: none !important; }
+}
+
+/* Progress advances only at discrete checkpoints. */
+.rift-progress span { transition: none !important; }
+.rift-loader[data-phase="fracture"] .rift-boot-status,
+.rift-loader[data-phase="lost"] .rift-boot-status { color: #e49a98; }

@@ -1,0 +1,10 @@
+WEBSITE UPDATE v.58 — Rounded Landscape Artwork (all campaigns)
+
+• The Roots Remember: wide character sheet artwork now has smooth rounded corners.
+• Into the Grimwood Manor: all wide character sheets share the same corner treatment.
+• Elden Ring — Beyond the Frenzied Flame: both original and godly landscape forms have matching rounded corners.
+• Elden Ring — The Serpent's Lament: the campaign's wide hero artwork now has rounded corners.
+• Echoes of Eternity: wide presentations and NPC/character images already use rounded frames; existing styling is preserved.
+• Updated stylesheet cache versions so the changes show up on GitHub Pages.
+• Includes v.57's rotating-number update: the mystery adventurer rolls 1–20, alternates 1- and 2-digit values, and includes 20.
+• No pictures, character designs, audio, or campaign content were altered.

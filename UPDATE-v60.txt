@@ -1,0 +1,46 @@
+CHRONICLES WEBSITE v60 — CORRUPTED ARCHIVE
+
+Complete website package, based on v59 Valen Cursor Fixed FULL.
+Extract the whole ZIP before opening index.html. Keep all folders together.
+
+CHANGES
+- Selecting a chronicle now changes its preview only. Valen appears when
+  Open chronicle is pressed. All five chronicles use this behavior.
+- Every menu load has a mandatory ten-second introduction. Clicking or
+  pressing Escape/Enter cannot skip it.
+- The original logo corrupts into the supplied World Gate logo, using torn
+  horizontal bands, displaced image fragments, and changing archive text.
+- The menu intermittently breaks into the supplied World Gate menu image.
+  Each intrusion lasts about 1.6 seconds, with 7.5–16 seconds of calm between
+  subsequent bursts. These interruptions stop during Valen's dialogue.
+- The supplied music is included locally. It fades in, crossfades between
+  loop passes, and lowers to half volume during dialogue.
+- Added a sound toggle and music volume slider. Music starts at 5% by default;
+  a changed volume is remembered when browser storage is available.
+- Added original short synthesized speech tones synchronized to Valen's
+  animated letters. They stop when text finishes or is revealed, and when
+  sound is muted. No existing game character's voice was sampled.
+- Reduced-motion preferences suppress menu intrusions and logo tearing.
+  The ten-second loading duration still applies.
+
+PRESERVED
+Campaign content, artwork, existing five-part Valen dialogue, corridor scene,
+and the v59 cursor fix remain included. This is a website source package;
+it does not contain a compiled Windows or macOS application.
+
+AUDIO NOTE
+The website attempts music playback immediately. Some browsers require a
+user gesture before audible playback; in that case any first click/key or
+the Enable sound button starts it. Browser autoplay policy cannot be
+overridden by ordinary website code. No internet is needed for the new
+images, soundtrack, or synthesized dialogue sounds.
+
+VALIDATION
+- JavaScript syntax checks passed for the three edited/new scripts.
+- Browser-tested the ten-second lock, including Escape and Enter attempts.
+- Confirmed all five chronicle choices only preview; Open chronicle opens Valen.
+- Confirmed music continues at reduced volume during Valen's scene.
+- Exercised the loop boundary and observed the two-track audio crossfade.
+- Confirmed mute suppresses both music and subsequent dialogue tones.
+- Observed all boot phases and the four-stage menu intrusion sequence.
+- Compared retained files against v59 and verified full ZIP integrity.

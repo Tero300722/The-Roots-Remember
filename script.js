@@ -535,6 +535,12 @@ function showChronicleSelector() {
 
 function selectChronicle(chronicle) {
   if (!['trr', 'grimwood', 'echoes', 'elden', 'serpent'].includes(chronicle)) return;
+  // v59: the farewell replaces campaign entry. Keep the original entry flow for the desktop release.
+  const chronicleEntrySuspended = true;
+  if (chronicleEntrySuspended) {
+    window.ValenFarewell?.open();
+    return; // Fail closed if the farewell script has not loaded.
+  }
   window.SerpentChronicle.leave();
   window.ChronicleTools?.close({ restoreFocus: false });
   if (chronicle === 'serpent') chronicleMusic.destroy();

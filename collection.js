@@ -1,4 +1,4 @@
-/* The collection previews a volume; only Open chronicle starts its music or trailer. */
+/* Selecting a volume only previews it. Open chronicle presents Valen’s farewell. */
 (() => {
   const volumes = [
     {id:'trr',title:'The Roots Remember',type:'Main Campaign',status:'Ongoing · Pinned',creator:'Mikael Delia',art:'assets/campaign-hero.webp',color:'148, 178, 126',note:'The story continues. Return to the party, follow the latest leads, and revisit the adventures that brought them here.'},
@@ -38,7 +38,7 @@
     const enter=document.getElementById('library-enter');enter.dataset.chronicle=v.id;
     enter.setAttribute('aria-label',`Open ${v.series?v.series+': ':''}${v.title}`);
     document.getElementById('library-position').textContent=`0${i+1} / 05`;
-    document.getElementById('library-trailer').hidden=v.id!=='serpent';
+    document.getElementById('library-trailer').hidden=true;
     if(shelf.scrollWidth>shelf.clientWidth) shelf.scrollTo({left:buttons[i].offsetLeft-shelf.offsetLeft-5,behavior:'auto'});
   }
   document.getElementById('library-prev').addEventListener('click',()=>choose((selected+4)%5));
@@ -62,7 +62,7 @@
       preview.querySelector('#library-status').textContent=v.status;
       preview.querySelector('#library-description').textContent=v.note;
       preview.querySelector('#library-creator').textContent=v.creator;
-      preview.querySelector('#library-trailer').hidden=v.id!=='serpent';
+      preview.querySelector('#library-trailer').hidden=true;
       preview.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
       copy.parentElement.appendChild(preview);
       return preview;

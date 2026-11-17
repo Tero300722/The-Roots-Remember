@@ -18,8 +18,8 @@ body.chronicle-serpent-active .world-bg .aurora,body.chronicle-serpent-active .w
 .serpent-nav .nav-link{white-space:nowrap}
 .serpent-shell .nav-link.active,.serpent-shell .nav-link:hover{background:#9b84401a;color:#e2d3b1;border-color:#b69b5c44}
 .serpent-shell button:focus-visible,.serpent-shell a:focus-visible,.serpent-trailer button:focus-visible,.serpent-trailer input:focus-visible{outline:2px solid #ead29c;outline-offset:5px}
-.serpent-hero{position:relative;isolation:isolate;min-height:540px;display:grid;align-items:center;text-align:center;overflow:hidden;border:1px solid #b49a603f;background:#22231a}
-.serpent-hero::after{content:'';position:absolute;inset:12px;z-index:-1;border:1px solid #d1b7772b;pointer-events:none}
+.serpent-hero{position:relative;border-radius:var(--panel-radius, 24px);isolation:isolate;min-height:540px;display:grid;align-items:center;text-align:center;overflow:hidden;border:1px solid #b49a603f;background:#22231a}
+.serpent-hero::after{content:'';position:absolute;inset:12px;border-radius:calc(var(--panel-radius, 24px) - 12px);z-index:-1;border:1px solid #d1b7772b;pointer-events:none}
 .serpent-hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;z-index:-3}
 .serpent-hero::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#11120f63 0%,#11120f4d 30%,#11120f9c 63%,#11120ff0 100%),linear-gradient(90deg,#11120f12,#11120f45)}
 .serpent-hero-meta{position:absolute;top:31px;left:35px;right:35px;display:flex;justify-content:space-between;gap:12px;color:#e0d0a8;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 2px 9px #000}
