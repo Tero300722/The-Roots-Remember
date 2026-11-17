@@ -1,0 +1,5 @@
+Version 62
+- Extended the corrupted boot loader to 17 seconds with continuous glitch pulses.
+- Increased post-load glitch frequency.
+- Added the provided World Gate launcher image into the glitch interference frames.
+- Improved loader startup reliability so the percentage animation starts without needing a refresh.

@@ -1,13 +1,18 @@
-/* v60: a staged ten-second boot, brief corrupted frames, and local audio. */
+/* v63: preserve the 17-second stepped boot with logo-only corruption. Full-screen
+   alternate-image glitches are exclusive to the campaign selection menu. */
 (() => {
   'use strict';
   const body = document.body, loader = document.getElementById('rift-loader');
+  if (!body || !loader || body.dataset.riftInitialized === '1') return;
+  body.dataset.riftInitialized = '1';
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const menu = document.getElementById('chronicle-selector');
   const logo = menu.querySelector('.library-brand img');
   const oldLogo = logo.getAttribute('src');
   const gateLogo = 'assets/rift/world-gate-logo.png';
   let loading = true, inScene = false, burstTimer = 0, burstSteps = [], bootFrame = 0;
+  let loaderGlitchSteps = [], bootStart = 0, nextLoaderGlitchAt = 900;
+  const TOTAL_BOOT_MS = 17000;
   const controls = document.createElement('div'); controls.className = 'rift-controls';
   controls.setAttribute('role', 'group'); controls.setAttribute('aria-label', 'Sound controls');
   controls.innerHTML = '<button type="button" class="rift-sound">Enable sound</button><label>Volume <input type="range" min="0" max="100" value="5" aria-label="Music volume"></label>';
@@ -125,53 +130,83 @@
   document.addEventListener('keydown', activateSound, true);
 
   const interference = document.createElement('div'); interference.className = 'rift-interference'; interference.setAttribute('aria-hidden', 'true');
-  interference.innerHTML = '<div class="rift-frame"></div><div class="rift-strip rift-strip-a"></div><div class="rift-strip rift-strip-b"></div><div class="rift-strip rift-strip-c"></div>';
+  interference.innerHTML = '<div class="rift-frame rift-frame-main"></div><div class="rift-frame rift-frame-alt"></div><div class="rift-strip rift-strip-a"></div><div class="rift-strip rift-strip-b"></div><div class="rift-strip rift-strip-c"></div><div class="rift-strip rift-strip-d"></div>';
   body.appendChild(interference);
+  function clearLoaderGlitch() {
+    loaderGlitchSteps.forEach(clearTimeout); loaderGlitchSteps = [];
+    // Only the three stacked boot logos ever glitch. Never corrupt the page itself during loading.
+    delete loader.dataset.logoGlitch;
+  }
   function clearBurst() {
     burstSteps.forEach(clearTimeout); burstSteps = []; body.classList.remove('rift-burst'); delete body.dataset.riftFrame; logo.src = oldLogo;
   }
-  function scheduleBurst(delay = 7500 + Math.random() * 8500) {
+  function scheduleBurst(delay = 2300 + Math.random() * 2600) {
     clearTimeout(burstTimer);
     if (!inScene && !loading && !document.hidden && !motion.matches) burstTimer = setTimeout(burst, delay);
   }
+  function runBurstFrames(sequence, doneDelay, cssClass) {
+    clearBurst();
+    body.classList.add(cssClass);
+    sequence.forEach(([ms, frame]) => burstSteps.push(setTimeout(() => { body.dataset.riftFrame = frame; }, ms)));
+    burstSteps.push(setTimeout(() => { clearBurst(); scheduleBurst(); }, doneDelay));
+  }
   function burst() {
     if (inScene || loading || document.hidden || motion.matches) return;
-    clearBurst(); body.classList.add('rift-burst'); body.dataset.riftFrame = 'tear'; logo.src = gateLogo;
-    // One sustained intrusion, with torn strips on entry and exit. No strobe loop.
-    [[220, 'invade'], [980, 'echo'], [1320, 'scar']].forEach(([ms, frame]) => burstSteps.push(setTimeout(() => { body.dataset.riftFrame = frame; }, ms)));
-    burstSteps.push(setTimeout(() => { clearBurst(); scheduleBurst(); }, 1620));
+    runBurstFrames([[0, 'tear'], [150, 'invade'], [480, 'echo'], [810, 'scar'], [1180, 'alt'], [1560, 'static']], 1920, 'rift-burst');
+    logo.src = gateLogo;
+  }
+  function triggerLoaderGlitch(duration = 280) {
+    if (!loading || document.hidden || motion.matches) return;
+    clearLoaderGlitch();
+    const phases = ['slice', 'swap', 'offset'];
+    loader.dataset.logoGlitch = phases[Math.floor(Math.random() * phases.length)];
+    loaderGlitchSteps.push(setTimeout(() => {
+      if (loading) loader.dataset.logoGlitch = phases[Math.floor(Math.random() * phases.length)];
+    }, Math.max(70, duration * .35)));
+    loaderGlitchSteps.push(setTimeout(clearLoaderGlitch, duration));
   }
   const protectedElements = [...body.children].filter(el => ![loader, controls].includes(el) && !['SCRIPT', 'AUDIO'].includes(el.tagName)).map(el => [el, el.inert]);
   protectedElements.forEach(([el]) => { el.inert = true; });
+  loader.hidden = false;
+  loader.dataset.phase = 'clean';
+  loader.querySelector('.rift-progress span').style.width = '0%';
+  loader.querySelector('.rift-boot-count').textContent = '0%';
   loader.focus({ preventScroll: true });
-  const bootStart = performance.now();
   const bootStates = [
     [0, 'clean', 'Opening the archive…', 'Main Manual Campaigns'],
-    [1500, 'split', 'Restoring the archive…', 'Main Manual Campaigns'],
-    [2400, 'gate', 'ERROR 0x03 — Unknown archive signature.', 'The World Gate'],
-    [3500, 'fracture', 'ERROR 0x17 — Archive identity mismatch.', 'Main Manual Campaigns'],
-    [4400, 'clean', 'Restoring the archive…', 'Main Manual Campaigns'],
-    [5800, 'split', 'WARNING — Archive integrity compromised.', 'Main Manual Campaigns'],
-    [6700, 'gate', 'This is not where you left it.', 'The World Gate'],
-    [7900, 'fracture', 'ERROR 0x59 — Restoration failed.', 'The World Gate'],
-    [9000, 'lost', 'RECOVERY FAILED — Opening remaining connection…', 'The World Gate']
+    [1600, 'split', 'Reading unstable campaign index…', 'Main Manual Campaigns'],
+    [3000, 'gate', 'ERROR 0x03 — Unknown archive signature.', 'The World Gate'],
+    [4300, 'fracture', 'ERROR 0x17 — Archive identity mismatch.', 'Main Manual Campaigns'],
+    [5600, 'clean', 'Attempting controlled recovery…', 'Main Manual Campaigns'],
+    [7100, 'split', 'WARNING — Archive integrity compromised.', 'Main Manual Campaigns'],
+    [8600, 'gate', 'A different gate is responding.', 'The World Gate'],
+    [10100, 'fracture', 'ERROR 0x59 — Restoration failed.', 'The World Gate'],
+    [11800, 'split', 'Signal leak detected.', 'The World Gate'],
+    [13400, 'gate', 'The archive remembers another shape.', 'The World Gate'],
+    [14900, 'lost', 'RECOVERY FAILED — Opening remaining connection…', 'The World Gate'],
+    [16200, 'lost', 'Connection stabilising…', 'The World Gate']
   ];
+  const checkpoints = [[0,0],[550,2],[1100,6],[1700,11],[2400,11],[3100,17],[3900,23],[4700,28],[5500,33],[6400,39],[7300,47],[8100,53],[9000,61],[9900,68],[10800,74],[11800,82],[12900,88],[14100,93],[15250,97],[16350,99],[16750,100]];
   let lastState = -1;
   function boot(now) {
+    if (!bootStart) bootStart = now;
     const elapsed = now - bootStart;
-    if (elapsed >= 10000) {
-      loading = false; loader.hidden = true; body.classList.remove('rift-booting');
+    if (elapsed >= TOTAL_BOOT_MS) {
+      loading = false; clearLoaderGlitch(); loader.hidden = true; body.classList.remove('rift-booting');
       protectedElements.forEach(([el, value]) => { el.inert = value; });
-      document.getElementById('library-enter')?.focus({ preventScroll: true }); scheduleBurst(3500); return;
+      document.getElementById('library-enter')?.focus({ preventScroll: true }); scheduleBurst(2200); return;
     }
     const index = bootStates.findLastIndex(state => elapsed >= state[0]);
     if (index !== lastState) {
       lastState = index; const [, phase, status, title] = bootStates[index];
-      loader.dataset.phase = motion.matches ? (index >= 4 ? 'gate' : 'clean') : phase;
+      loader.dataset.phase = motion.matches ? (index >= 6 ? 'gate' : 'clean') : phase;
       loader.querySelector('.rift-boot-status').textContent = status;
       loader.querySelector('.rift-boot-title').textContent = title;
     }
-    const checkpoints = [[0,0],[450,3],[1000,11],[1800,11],[2400,29],[3100,34],[3900,34],[4500,52],[5400,58],[6200,73],[7100,73],[7900,86],[8800,91],[9500,99],[9800,100]];
+    if (!motion.matches && elapsed >= nextLoaderGlitchAt) {
+      triggerLoaderGlitch(180 + Math.random() * 300);
+      nextLoaderGlitchAt = elapsed + 700 + Math.random() * 1100;
+    }
     const percent = checkpoints.findLast(point => elapsed >= point[0])[1];
     loader.querySelector('.rift-progress span').style.width = `${percent}%`;
     loader.querySelector('.rift-boot-count').textContent = `${percent}%`;
@@ -186,18 +221,25 @@
     }
   }, true);
   document.addEventListener('visibilitychange', () => {
-    clearTimeout(burstTimer); clearBurst(); stopVoice();
+    clearTimeout(burstTimer); clearBurst(); clearLoaderGlitch(); stopVoice();
     if (document.hidden) {
       tracks.forEach(audio => { audio.pause(); audio.volume = 0; }); playing = false; crossfade = null; cancelAnimationFrame(audioFrame);
       if (voiceContext?.state === 'running') voiceContext.suspend().catch(() => {});
     } else { startMusic(); if (voiceContext) unlockVoice(); scheduleBurst(); }
   });
-  motion.addEventListener('change', () => { clearTimeout(burstTimer); clearBurst(); scheduleBurst(); });
+  motion.addEventListener('change', () => { clearTimeout(burstTimer); clearBurst(); clearLoaderGlitch(); scheduleBurst(); });
   window.ChroniclesRift = Object.freeze({
     get loading() { return loading; },
     blip, stopVoice,
     enter(scene) { inScene = true; clearTimeout(burstTimer); clearBurst(); scene.appendChild(controls); unlockVoice(); startMusic(); },
     leave() { inScene = false; stopVoice(); body.appendChild(controls); scheduleBurst(); }
+  });
+  window.addEventListener('pageshow', event => {
+    if (event.persisted && loading) {
+      bootStart = 0; nextLoaderGlitchAt = 500;
+      loader.hidden = false; body.classList.add('rift-booting');
+      cancelAnimationFrame(bootFrame); bootFrame = requestAnimationFrame(boot);
+    }
   });
   startMusic(); bootFrame = requestAnimationFrame(boot);
 })();

@@ -1,0 +1,8 @@
+CHRONICLES WEBSITE v63 — GLITCH SCOPE FIX
+
+- Loading screen kept at 17 seconds, with the same stepped percentage and error messages.
+- Only the stacked loading logo glitches during the loading screen. The rest of the screen stays clear.
+- Full-screen alternate image glitches now occur only in the campaign-selection menu, with the higher v62 frequency kept.
+- Preserved the supplied World Gate image as one of the menu glitch frames.
+- Valen's sequence and the campaign lockout are unchanged.
+- Updated loader asset cache stamps to v63.
